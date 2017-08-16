@@ -1,4 +1,5 @@
 package com.acuit.jointdistribution.fragment;
+
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -36,9 +37,10 @@ public class ContentFragment extends baseFragment {
     public View initViews() {
 
         View view = View.inflate(mActivity, R.layout.fragment_context, null);
-        mViewPager = view.findViewById(R.id.vp_content);
-        rgGroup = view.findViewById(R.id.rg_group);
-        com.lidroid.xutils.ViewUtils.inject(this,view);
+
+        mViewPager = (ViewPager) view.findViewById(R.id.vp_content);
+        rgGroup = (RadioGroup) view.findViewById(R.id.rg_group);
+
         return view;
 
     }
