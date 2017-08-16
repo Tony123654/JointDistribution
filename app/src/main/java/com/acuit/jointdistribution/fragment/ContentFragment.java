@@ -12,6 +12,7 @@ import com.acuit.jointdistribution.bean.impl.BussinessOrderPager;
 import com.acuit.jointdistribution.bean.impl.HomePager;
 import com.acuit.jointdistribution.bean.impl.SettingPager;
 import com.acuit.jointdistribution.bean.impl.StatisticalAnalysisPager;
+import com.acuit.jointdistribution.view.NoScrollViewPager;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 public class ContentFragment extends baseFragment {
 
     private ArrayList<BasePager>mList;
-    private ViewPager mViewPager;
+    private NoScrollViewPager mViewPager;
     private RadioGroup rgGroup;
 
 
@@ -38,7 +39,7 @@ public class ContentFragment extends baseFragment {
 
         View view = View.inflate(mActivity, R.layout.fragment_context, null);
 
-        mViewPager = (ViewPager) view.findViewById(R.id.vp_content);
+        mViewPager = (NoScrollViewPager) view.findViewById(R.id.vp_content);
         rgGroup = (RadioGroup) view.findViewById(R.id.rg_group);
 
         return view;
