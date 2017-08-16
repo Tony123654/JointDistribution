@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.fragment;
+package com.acuit.jointdistribution.Supplier.Fragment;
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -6,15 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
-import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.bean.BasePager;
-import com.acuit.jointdistribution.bean.impl.BussinessOrderPager;
-import com.acuit.jointdistribution.bean.impl.HomePager;
-import com.acuit.jointdistribution.bean.impl.SettingPager;
-import com.acuit.jointdistribution.bean.impl.StatisticalAnalysisPager;
 import com.acuit.jointdistribution.Common.View.NoScrollViewPager;
+import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Supplier.Bean.BasePager;
+import com.acuit.jointdistribution.Supplier.Bean.impl.BussinessOrderPager;
+import com.acuit.jointdistribution.Supplier.Bean.impl.HomePager;
+import com.acuit.jointdistribution.Supplier.Bean.impl.SettingPager;
+import com.acuit.jointdistribution.Supplier.Bean.impl.StatisticalAnalysisPager;
 
 import java.util.ArrayList;
+
 
 /**
  * 类名: ContentFragment <p>
@@ -27,9 +28,9 @@ import java.util.ArrayList;
  * 更新描述: <p>
  */
 
-public class ContentFragment extends baseFragment {
+public class ContentFragment extends BaseFragment {
 
-    private ArrayList<BasePager>mList;
+    private ArrayList<BasePager> mList;
     private NoScrollViewPager mViewPager;
     private RadioGroup rgGroup;
 
@@ -48,7 +49,7 @@ public class ContentFragment extends baseFragment {
 
     @Override
     protected void initData() {
-       rgGroup.check(R.id.rb_home);
+        rgGroup.check(R.id.rb_home);
         //初始化4个标签页面对象
         mList = new ArrayList<BasePager>();
         mList.add(new HomePager(mActivity));
@@ -58,12 +59,12 @@ public class ContentFragment extends baseFragment {
 
         mViewPager.setAdapter(new ContentAdapter());
 
-      rgGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-          @Override
-          public void onCheckedChanged(RadioGroup group,  int checkedId) {
-                switch (checkedId){
+        rgGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
                     case R.id.rb_home:
-                        mViewPager.setCurrentItem(0,false);
+                        mViewPager.setCurrentItem(0, false);
                         break;
                     case R.id.rb_businessDocument:
                         mViewPager.setCurrentItem(1, false);
@@ -77,34 +78,33 @@ public class ContentFragment extends baseFragment {
                     default:
                         break;
                 }
-          }
-      });
+            }
+        });
 
         //监听ViewPager页面切换事件, 初始化当前页面数据
-       mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-           @Override
-           public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-           }
+            }
 
-           @Override
-           public void onPageSelected(int position) {
-           //选中页面后再初始化
-               BasePager pager = mList.get(position);
-               pager.initData();
-           }
+            @Override
+            public void onPageSelected(int position) {
+                //选中页面后再初始化
+                BasePager pager = mList.get(position);
+                pager.initData();
+            }
 
-           @Override
-           public void onPageScrollStateChanged(int state) {
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
-           }
-       });
+            }
+        });
 
         //手动初始化第一个页面的数据
         mList.get(0).initData();
 
     }
-
 
 
     class ContentAdapter extends PagerAdapter {
@@ -139,7 +139,7 @@ public class ContentFragment extends baseFragment {
 
     //获取业务订单对象
     public BussinessOrderPager getBussinessOrderPager() {
-       return (BussinessOrderPager) mList.get(1);
+        return (BussinessOrderPager) mList.get(1);
 
     }
-    }
+}
