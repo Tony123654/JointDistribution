@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Supplier.Activity;
+package com.acuit.jointdistribution.Supplier.Acitivity;
 
 import android.content.Intent;
 import android.os.Bundle;

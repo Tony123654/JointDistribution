@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Supplier.Activity;
+package com.acuit.jointdistribution.Supplier.Acitivity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

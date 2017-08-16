@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/rl_root"
-    tools:context="com.acuit.jointdistribution.Supplier.Activity.ReceivedActivity">
+    tools:context="com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     }
        public void Login(View v){
 
-           startActivity(new Intent(LoginActivity.this, com.acuit.jointdistribution.Supplier.Activity.HomeActivity.class));
+           startActivity(new Intent(LoginActivity.this, com.acuit.jointdistribution.Supplier.Acitivity.HomeActivity.class));
 
 
        }

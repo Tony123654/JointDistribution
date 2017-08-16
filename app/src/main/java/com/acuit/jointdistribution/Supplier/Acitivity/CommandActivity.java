@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Supplier.Activity;
+package com.acuit.jointdistribution.Supplier.Acitivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Supplier.HomeActivity;
 
 public class CommandActivity extends AppCompatActivity {
 

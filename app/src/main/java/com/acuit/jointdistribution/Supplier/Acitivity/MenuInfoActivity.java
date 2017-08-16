@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Supplier.Activity;
+package com.acuit.jointdistribution.Supplier.Acitivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Supplier.ReceivedActivity;
 
 /**
  * 订单列表

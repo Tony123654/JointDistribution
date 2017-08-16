@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#4FC39A"
+        android:id="@+id/relativeLayout8">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="24sp"
+            android:text="个人中心"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/relativeLayout12"
+        android:layout_below="@+id/relativeLayout8"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="125dp"
+            android:text="杭州蔬菜物流有限公司"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+           android:layout_marginLeft="145dp"
+            android:layout_marginBottom="11dp"
+            android:text="蔬菜类" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout12"
+        >
+
+        <TextView
+            android:id="@+id/tv_advice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="57dp"
+            android:layout_marginTop="74dp"
+            android:text="意见反馈" />
+
+        <TextView
+            android:id="@+id/tv_modify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/tv_advice"
+            android:layout_below="@id/tv_advice"
+            android:layout_marginTop="69dp"
+            android:text="修改密码" />
+
+        <TextView
+            android:id="@+id/tv_aboutus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="79dp"
+            android:text="关于我们"
+            android:layout_below="@+id/tv_modify"
+            android:layout_alignStart="@+id/tv_modify" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/AppTheme">
         <activity android:name="com.acuit.jointdistribution.Common.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,15 +19,15 @@
             </intent-filter>
 
         </activity>
-        <activity android:name="com.acuit.jointdistribution.Supplier.Activity.HomeActivity"/>
-        <activity android:name="com.acuit.jointdistribution.Supplier.Activity.ReceivedActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Activity.MenuActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Activity.MenuInfoActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Activity.SendActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Activity.SendInfoActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Activity.DistributionActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Activity.CommandActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Activity.BusinessOrderActivity"></activity>
+        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.HomeActivity"/>
+        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity" />
+        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.MenuActivity" />
+        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.MenuInfoActivity" />
+        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.SendActivity" />
+        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.SendInfoActivity" />
+        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.DistributionActivity" />
+        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.CommandActivity" />
+        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.BusinessOrderActivity"></activity>
     </application>
 
 </manifest>
