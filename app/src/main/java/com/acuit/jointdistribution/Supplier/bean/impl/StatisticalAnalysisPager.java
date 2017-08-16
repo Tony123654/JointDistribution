@@ -26,7 +26,7 @@ public class StatisticalAnalysisPager extends BasePager {
 		view.setTextSize(22);
 		view.setTextColor(Color.GREEN);
 		view.setGravity(Gravity.CENTER);//居中显示
-		view.setText("首页");
+		view.setText("统计分析");
 
 		flContainer.addView(view);//给帧布局添加对象
 
