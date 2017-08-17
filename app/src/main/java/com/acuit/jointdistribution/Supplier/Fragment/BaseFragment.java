@@ -23,16 +23,18 @@ public abstract class BaseFragment extends android.support.v4.app.Fragment {
     public Activity mActivity;
     public View mRootView;
 
+    public BaseFragment(Activity mActivity) {
+        this.mActivity = mActivity;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActivity = getActivity();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        System.out.print("_________________________________");
          mRootView = initViews();
         return mRootView;
     }

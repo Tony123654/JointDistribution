@@ -27,8 +27,11 @@ public class BasePager {
 
 
 	public View initViews() {
+
 		View view = View.inflate(mActivity, R.layout.base_pager, null);
+
 		tvTitle = (TextView) view.findViewById(R.id.tv_title);
+
 		flContainer = (FrameLayout) view.findViewById(R.id.fl_container);
 
 		return view;

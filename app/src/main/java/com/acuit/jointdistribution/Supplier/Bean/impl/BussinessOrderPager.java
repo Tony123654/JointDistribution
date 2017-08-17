@@ -30,12 +30,12 @@ public class BussinessOrderPager extends BasePager {
 //				view.setTextSize(22);
 //				view.setTextColor(Color.GREEN);
 //				view.setGravity(Gravity.CENTER);//居中显示
-//				view.setText("业务订单");
+//              view.setText("业务订单");
 		view = View.inflate(mActivity, R.layout.order_business,null);
 
 				flContainer.addView(view);//给帧布局添加对象
 
-//		       tvTitle.setText("业务订单");
+		       tvTitle.setText("业务订单");
 
 
 	}

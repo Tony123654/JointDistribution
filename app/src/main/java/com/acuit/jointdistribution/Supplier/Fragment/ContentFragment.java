@@ -1,5 +1,6 @@
 package com.acuit.jointdistribution.Supplier.Fragment;
 
+import android.app.Activity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -33,6 +34,10 @@ public class ContentFragment extends BaseFragment {
     private ArrayList<BasePager> mList;
     private NoScrollViewPager mViewPager;
     private RadioGroup rgGroup;
+
+    public ContentFragment(Activity mActivity) {
+        super(mActivity);
+    }
 
 
     @Override

@@ -12,9 +12,11 @@ import com.acuit.jointdistribution.Supplier.Bean.BasePager;
 
 
 public class StatisticalAnalysisPager extends BasePager {
+	public Activity mActivity;
 private View view;
 	public StatisticalAnalysisPager(Activity activity) {
 		super(activity);
+		 mActivity = activity;
 	}
 
 	@Override

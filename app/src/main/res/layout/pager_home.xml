@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
    >
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -18,33 +20,37 @@
             android:text="首页"/>
     </RelativeLayout>
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:background="#339966"
-        android:layout_below="@+id/relativeLayout8"
-        android:layout_alignParentStart="true"
-        android:id="@+id/relativeLayout9">
+        android:id="@+id/relativeLayout9"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="79dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginStart="57dp"
             android:textColor="#ffffff"
-            android:textSize="12sp"
-            android:text="今日订单量(个)" />
+            android:textSize="16sp"
+            android:text="今日订单量(个)"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="9dp" />
 
         <TextView
             android:id="@+id/textView12"
             android:textColor="#ffffff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/textView10"
-            android:layout_marginStart="220dp"
-            android:textSize="12sp"
-            android:text="今日总金额（元）" />
+            android:textSize="16sp"
+            android:text="今日总金额（元）"
+            android:layout_alignBaseline="@+id/textView10"
+            android:layout_alignBottom="@+id/textView10"
+            android:layout_toEndOf="@+id/textView10"
+            android:layout_marginStart="34dp" />
 
 
 
@@ -68,10 +74,11 @@
 
         <TextView
             android:onClick="OrderForm"
-            android:id="@+id/tv_dingdan"
+            android:id="@+id/tv_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@mipmap/icon_home_jd"
+            android:drawablePadding="3dp"
             android:text="订单"
             android:layout_below="@+id/textView13"
             android:layout_alignEnd="@+id/tv_peihuo"
@@ -83,10 +90,11 @@
             android:id="@+id/tv_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/tv_dingdan"
+            android:layout_alignTop="@+id/tv_order"
             android:layout_marginStart="48dp"
+            android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_fh"
-            android:layout_toEndOf="@+id/tv_dingdan"
+            android:layout_toEndOf="@+id/tv_order"
             android:text="发货" />
 
         <TextView
@@ -94,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView13"
-            android:layout_below="@+id/tv_dingdan"
+            android:layout_below="@+id/tv_order"
             android:layout_marginTop="23dp"
             android:text="常用功能" />
 
@@ -104,6 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="配货单"
+            android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_phd"
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@+id/textView17" />
@@ -116,6 +125,7 @@
             android:layout_alignBottom="@+id/tv_peihuo"
             android:layout_marginStart="180dp"
             android:text="我的评价"
+            android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_pj"
             android:layout_alignTop="@+id/tv_peihuo" />
     </RelativeLayout>

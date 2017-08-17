@@ -1,10 +1,12 @@
 package com.acuit.jointdistribution.Supplier.Bean.impl;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
 import com.acuit.jointdistribution.Supplier.Bean.BasePager;
 /**
  * 首页
@@ -16,11 +18,12 @@ import com.acuit.jointdistribution.Supplier.Bean.BasePager;
 public class HomePager extends BasePager {
 
 	private View view;
-	private TextView jiedan;
-
+	private TextView tv_order;
+    public Activity mActivity;
 	public HomePager(Activity activity) {
-
 		super(activity);
+       mActivity=activity;
+
 	}
 
 	@Override
@@ -33,13 +36,21 @@ public class HomePager extends BasePager {
 //		view.setGravity(Gravity.CENTER);
 //		view.setText("首页");
 //		flContainer.addView(view);
-//		tvTitle.setText("首页");
-
+		tvTitle.setText("首页");
 
 		view = View.inflate(mActivity, R.layout.pager_home, null);
 		flContainer.addView(view);
-		jiedan = (TextView) view.findViewById(R.id.tv_jiedan);
+		tv_order = (TextView) view.findViewById(R.id.tv_order);
+		tv_order.setOnClickListener(new View.OnClickListener() {
 
+	@Override
+	public void onClick(View view) {
+		Intent intent = new Intent(mActivity,ReceivedActivity.class);
+
+		mActivity.startActivity(intent);
+
+	}
+});
 	}
 
 

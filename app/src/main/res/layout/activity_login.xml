@@ -29,10 +29,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="120dp"
-            app:srcCompat="@mipmap/logo"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="45dp" />
+            android:layout_marginBottom="45dp"
+            app:srcCompat="@mipmap/logo" />
 
 
     </RelativeLayout>
@@ -87,12 +87,11 @@
             android:id="@+id/btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/et_mm"
+            android:layout_alignEnd="@id/et_mm"
             android:layout_alignStart="@id/imageView3"
             android:layout_below="@+id/et_mm"
             android:layout_marginTop="56dp"
             android:background="#23b587"
-            android:onClick="Login"
             android:text="登录" />
 
 
