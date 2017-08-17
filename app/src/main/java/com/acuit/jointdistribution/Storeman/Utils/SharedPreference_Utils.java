@@ -62,4 +62,9 @@ public class SharedPreference_Utils {
 
         return configs;
     }
+
+    // TODO: 2017/8/17 获取sharedPrefrence信息
+    public ArrayMap<String, String> getConfigs() {
+        return null;
+    }
 }

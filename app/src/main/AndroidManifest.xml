@@ -3,17 +3,17 @@
     package="com.acuit.jointdistribution">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <application
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-        android:allowBackup="true"
+    <application
         android:name=".Common.Base.BaseApplication"
+        android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.acuit.jointdistribution.Common.Activity.LoginActivity">
+        <activity android:name=".Common.Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,20 +21,18 @@
             </intent-filter>
         </activity>
 
-        <!--供应商-->
-        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.HomeActivity"/>
-        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.MenuActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.MenuInfoActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.SendActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.SendInfoActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.DistributionActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.CommandActivity" />
-        <activity android:name="com.acuit.jointdistribution.Supplier.Acitivity.BusinessOrderActivity"></activity>
+        <!-- 供应商 -->
+        <activity android:name=".Supplier.Acitivity.HomeActivity" />
+        <activity android:name=".Supplier.Acitivity.ReceivedActivity" />
+        <activity android:name=".Supplier.Acitivity.MenuActivity" />
+        <activity android:name=".Supplier.Acitivity.MenuInfoActivity" />
+        <activity android:name=".Supplier.Acitivity.SendActivity" />
+        <activity android:name=".Supplier.Acitivity.SendInfoActivity" />
+        <activity android:name=".Supplier.Acitivity.DistributionActivity" />
+        <activity android:name=".Supplier.Acitivity.CommandActivity" />
+        <activity android:name=".Supplier.Acitivity.BusinessOrderActivity" />
 
-        <!--保管员-->
-
-
+        <!-- 保管员 -->
 
     </application>
 
