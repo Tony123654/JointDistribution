@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Common.View;
+package com.acuit.jointdistribution.Common.Widget;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
