@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.ArrayMap;
 
+import java.util.Set;
+
 /**
  * 类名: SharedPreference_Utils <p>
  * 创建人: YanJ <p>
@@ -17,6 +19,10 @@ import android.util.ArrayMap;
 
 public class SharedPreference_Utils {
 
+    public final static String KEY_PWD = "pwd";
+    public final static String KEY_PHONE = "phone";
+    public final static String KEY_ACCOUNT = "account";
+
     private static SharedPreference_Utils instance;
 
     private static SharedPreferences sharedPreferences;
@@ -25,7 +31,12 @@ public class SharedPreference_Utils {
 
     private static Context context;
 
-    //    构造器
+
+    /**
+     * 构造器 完成数据获取
+     *
+     * @param context
+     */
     private SharedPreference_Utils(Context context) {
         this.context = context;
         this.sharedPreferences = context.getSharedPreferences("configs", context.MODE_PRIVATE);
@@ -33,38 +44,65 @@ public class SharedPreference_Utils {
 
     }
 
-    //    单例
+    /**
+     * 获取单例
+     *
+     * @param context
+     * @return
+     */
     public synchronized static SharedPreference_Utils getInstance(Context context) {
         if (null == instance) instance = new SharedPreference_Utils(context);
         return instance;
     }
 
 
-    //获取全部参数(若为空，则使用URL_Util中的默认值)
-    public static ArrayMap<String, String> getValuesALL() {
+    /**
+     * 从sharedPrefrence内  获取全部参数(若为空，则返回"")
+     *
+     * @return 返回查询集合
+     */
+    private static ArrayMap<String, String> getValuesALL() {
 
         ArrayMap<String, String> configs = new ArrayMap<>();
-//
-//        configs.put(KEY_REMOTE_SERVER_IP, sharedPreferences.getString(KEY_REMOTE_SERVER_IP, ""));
-//        configs.put(KEY_REMOTE_SERVER_DEPATEMENT_CODE, sharedPreferences.getString(KEY_REMOTE_SERVER_DEPATEMENT_CODE, URL_Util.REMOTE_SERVER_DEPARTMENT_CODE_TEST));
-//
-//        configs.put(KEY_DB_IP, sharedPreferences.getString(KEY_DB_IP, ""));
-//        configs.put(KEY_DB_PWD, sharedPreferences.getString(KEY_DB_PWD, URL_Util.DB_PWD_TEST));
-//        configs.put(KEY_DB_PORT, sharedPreferences.getString(KEY_DB_PORT, URL_Util.DB_PORT_TEST));
-//        configs.put(KEY_DB_NAME, sharedPreferences.getString(KEY_DB_NAME, URL_Util.DB_NAME_TEST));
-//        configs.put(KEY_DB_USER, sharedPreferences.getString(KEY_DB_USER, URL_Util.DB_USER_TEST));
-//        configs.put(KEY_DB_CHARATER_SET, sharedPreferences.getString(KEY_DB_CHARATER_SET, URL_Util.DB_CHARACTER_ENCODE));
-//
-//        // TODO: 2017/7/28 默认管理员账户
-//        configs.put(KEY_ADMIN_NAME, sharedPreferences.getString(KEY_ADMIN_NAME, "admin"));
-//        configs.put(KEY_ADMIN_PWD, sharedPreferences.getString(KEY_ADMIN_PWD, "admin"));
 
+        configs.put(KEY_ACCOUNT, sharedPreferences.getString(KEY_ACCOUNT, ""));
+        configs.put(KEY_PWD, sharedPreferences.getString(KEY_PWD, ""));
+        configs.put(KEY_PHONE, sharedPreferences.getString(KEY_PHONE, ""));
 
         return configs;
     }
 
-    // TODO: 2017/8/17 获取sharedPrefrence信息
+    /**
+     * 获取 当前对象已经获取的 存储信息
+     *
+     * @return
+     */
     public ArrayMap<String, String> getConfigs() {
-        return null;
+        if (null == configs) {
+            return getInstance(context).getConfigs();
+        }
+        return configs;
     }
+
+    /**
+     * 批量设置参数，返回操作结果
+     * @param data 需要存放的键值对
+     * @return 返回保存结果
+     */
+    public static boolean setValues(ArrayMap<String, String> data) {
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+
+        Set<String> keySet = data.keySet();
+        for (String s : keySet) {
+            edit.putString(s, data.get(s));
+            System.out.println("aaa sharedPrefrence:" + s + "  " + data.get(s));
+        }
+//        提交成功则更新app中config
+        if (edit.commit()) {
+            SharedPreference_Utils.configs = getValuesALL();
+            return true;
+        }
+        return false;
+    }
+
 }
