@@ -45,10 +45,10 @@
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView10"
-            android:layout_alignBottom="@+id/textView10"
+            android:layout_alignBaseline="@id/textView10"
+            android:layout_alignBottom="@id/textView10"
             android:layout_marginStart="34dp"
-            android:layout_toEndOf="@+id/textView10"
+            android:layout_toEndOf="@id/textView10"
             android:text="今日总金额（元）"
             android:textColor="#ffffff"
             android:textSize="16sp" />
@@ -59,7 +59,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout10"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="240dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/relativeLayout9">
 
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="33dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
             android:text="订单管理" />
 
@@ -76,13 +76,13 @@
             android:id="@+id/tv_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/tv_peihuo"
-            android:layout_below="@+id/textView13"
-            android:layout_centerInParent="true"
-            android:layout_marginEnd="17dp"
-            android:layout_marginTop="14dp"
+            android:layout_alignStart="@id/textView13"
+            android:layout_below="@id/textView13"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_jd"
+            android:gravity="center"
             android:onClick="OrderForm"
             android:text="订单" />
 
@@ -90,11 +90,12 @@
             android:id="@+id/tv_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/tv_order"
-            android:layout_marginStart="48dp"
-            android:layout_toEndOf="@+id/tv_order"
+            android:layout_alignBaseline="@id/tv_order"
+            android:layout_marginLeft="33dp"
+            android:layout_toEndOf="@id/tv_order"
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_fh"
+            android:gravity="center"
             android:onClick="Send"
             android:text="发货" />
 
@@ -102,19 +103,23 @@
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView13"
-            android:layout_below="@+id/tv_order"
-            android:layout_marginTop="23dp"
+            android:layout_alignStart="@id/textView13"
+            android:layout_below="@id/textView13"
+            android:layout_marginTop="90dp"
+            android:gravity="center"
             android:text="常用功能" />
 
         <TextView
             android:id="@+id/tv_peihuo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/textView17"
+            android:layout_alignStart="@id/textView17"
+            android:layout_below="@id/textView17"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_phd"
+            android:gravity="center"
             android:onClick="FaHuo"
             android:text="配货单" />
 
@@ -122,11 +127,12 @@
             android:id="@+id/tv_command"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tv_peihuo"
-            android:layout_alignTop="@+id/tv_peihuo"
-            android:layout_marginStart="180dp"
+            android:layout_alignBaseline="@id/tv_peihuo"
+            android:layout_marginLeft="30dp"
+            android:layout_toEndOf="@id/tv_peihuo"
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_pj"
+            android:gravity="center"
             android:onClick="Command"
             android:text="我的评价" />
     </RelativeLayout>
@@ -136,7 +142,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/relativeLayout10" />
+        android:layout_below="@id/relativeLayout10" />
 
 
 </RelativeLayout>
