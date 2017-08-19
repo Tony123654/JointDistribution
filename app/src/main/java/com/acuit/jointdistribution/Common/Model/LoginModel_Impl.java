@@ -109,7 +109,7 @@ public class LoginModel_Impl implements LoginModel_Interface {
                             break;
 //                            厨师长
 //                            case 154 + "":
-//                                intent = new Intent(context, MainActivity.class);
+//                                intent = new Intent(context, HomeActivity.class);
 //                                break;
                         default:
                             break;

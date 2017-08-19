@@ -1,6 +1,6 @@
 package com.acuit.jointdistribution.Common.Base;
 
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 
 import com.squareup.leakcanary.RefWatcher;
 
@@ -16,7 +16,7 @@ import com.squareup.leakcanary.RefWatcher;
  * 更新描述: <p>
  */
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends FragmentActivity {
     // TODO: 2017/7/12 BaseActivity待追加
 
 

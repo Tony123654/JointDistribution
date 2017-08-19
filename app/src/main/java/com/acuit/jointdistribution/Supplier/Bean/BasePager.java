@@ -3,7 +3,6 @@ package com.acuit.jointdistribution.Supplier.Bean;
 import android.app.Activity;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.acuit.jointdistribution.R;
 
@@ -14,7 +13,7 @@ public class BasePager {
 
 	public Activity mActivity;
 
-	public TextView tvTitle;
+//	public TextView tvTitle;
 
 	public FrameLayout flContainer;
 
@@ -30,7 +29,7 @@ public class BasePager {
 
 		View view = View.inflate(mActivity, R.layout.base_pager, null);
 
-		tvTitle = (TextView) view.findViewById(R.id.tv_title);
+//		tvTitle = (TextView) view.findViewById(R.id.tv_title);
 
 		flContainer = (FrameLayout) view.findViewById(R.id.fl_container);
 

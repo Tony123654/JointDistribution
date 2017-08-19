@@ -33,7 +33,7 @@ private View view;
 		flContainer.addView(view);//给帧布局添加对象
 
 		//修改标题
-		tvTitle.setText("统计分析");
+//		tvTitle.setText("统计分析");
 	}
 
 }

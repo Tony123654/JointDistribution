@@ -25,7 +25,9 @@
         <activity android:name=".Common.Activity.LoginActivity"/>
 
         <!-- 供应商 -->
-        <activity android:name=".Supplier.Acitivity.HomeActivity" />
+        <activity
+            android:launchMode="singleInstance"
+            android:name=".Supplier.Acitivity.HomeActivity" />
         <activity android:name=".Supplier.Acitivity.ReceivedActivity" />
         <activity android:name=".Supplier.Acitivity.MenuActivity" />
         <activity android:name=".Supplier.Acitivity.MenuInfoActivity" />
@@ -36,7 +38,9 @@
         <activity android:name=".Supplier.Acitivity.BusinessOrderActivity" />
 
         <!-- 保管员 -->
-        <activity android:name=".Storeman.Activity.MainActivity" />
+        <activity
+            android:launchMode="singleInstance"
+            android:name=".Storeman.Activity.HomeActivity" />
 
 
     </application>

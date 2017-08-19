@@ -11,8 +11,7 @@ import android.widget.Toast;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Presenter.LoginPresenter;
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Storeman.Activity.MainActivity;
-import com.acuit.jointdistribution.Supplier.Acitivity.HomeActivity;
+import com.acuit.jointdistribution.Storeman.Activity.HomeActivity;
 
 import static com.acuit.jointdistribution.R.id.et_mm;
 import static com.acuit.jointdistribution.R.id.et_zh;
@@ -88,12 +87,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
 
     @Override
     public void startStoremanHome() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
     }
 
     @Override
     public void startSupplierHome() {
-        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, com.acuit.jointdistribution.Supplier.Acitivity.HomeActivity.class));
     }
 
     @Override

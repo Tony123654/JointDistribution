@@ -35,7 +35,7 @@ public class BussinessOrderPager extends BasePager {
 
 				flContainer.addView(view);//给帧布局添加对象
 
-		       tvTitle.setText("业务订单");
+//		       tvTitle.setText("业务订单");
 
 
 	}

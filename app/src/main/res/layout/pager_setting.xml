@@ -2,83 +2,87 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <RelativeLayout
+        android:id="@+id/relativeLayout8"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#4FC39A"
-        android:id="@+id/relativeLayout8">
+        android:background="#4FC39A">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textSize="24sp"
-            android:text="个人中心"/>
+            android:text="个人中心"
+            android:textSize="24sp" />
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout12"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:id="@+id/relativeLayout12"
-        android:layout_below="@+id/relativeLayout8"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/relativeLayout8"
+        android:background="#339866">
 
         <TextView
-            android:id="@+id/textView30"
+            android:id="@+id/tv_depName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="125dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
             android:text="杭州蔬菜物流有限公司"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="12dp" />
+            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView31"
+            android:id="@+id/tv_userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-           android:layout_marginLeft="145dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="11dp"
-            android:text="蔬菜类" />
-
+            android:layout_marginTop="50dp"
+            android:text="用户名"
+            android:textSize="16sp" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/relativeLayout12"
-        >
+        android:layout_below="@id/relativeLayout12"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_advice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="57dp"
-            android:layout_marginTop="74dp"
+            style="@style/TextViewStyle_SettingsModel"
             android:text="意见反馈" />
 
         <TextView
-            android:id="@+id/tv_modify"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@id/tv_advice"
-            android:layout_below="@id/tv_advice"
-            android:layout_marginTop="69dp"
+            android:id="@+id/tv_modifyPwd"
+            style="@style/TextViewStyle_SettingsModel"
             android:text="修改密码" />
 
         <TextView
-            android:id="@+id/tv_aboutus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="79dp"
-            android:text="关于我们"
-            android:layout_below="@+id/tv_modify"
-            android:layout_alignStart="@+id/tv_modify" />
-    </RelativeLayout>
+            android:id="@+id/tv_aboutUs"
+            style="@style/TextViewStyle_SettingsModel"
+            android:text="关于我们" />
+
+        <TextView
+            android:id="@+id/tv_bindPhone"
+            style="@style/TextViewStyle_SettingsModel"
+            android:text="手机绑定" />
+
+        <TextView
+            android:id="@+id/tv_quit"
+            style="@style/TextViewStyle_SettingsModel"
+            android:text="退出登录" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -2,66 +2,66 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   >
+    android:orientation="vertical">
 
 
     <RelativeLayout
+        android:id="@+id/relativeLayout8"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#4FC39A"
-        android:id="@+id/relativeLayout8">
+        android:background="#4FC39A">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textSize="24sp"
-            android:text="首页"/>
+            android:text="首页"
+            android:textSize="24sp" />
     </RelativeLayout>
 
 
     <RelativeLayout
+        android:id="@+id/relativeLayout9"
         android:layout_width="match_parent"
         android:layout_height="110dp"
-        android:background="#339966"
-        android:id="@+id/relativeLayout9"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/relativeLayout8"
+        android:background="#339966">
+
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="57dp"
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            android:text="今日订单量(个)"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="9dp" />
+            android:layout_marginBottom="9dp"
+            android:layout_marginStart="57dp"
+            android:text="今日订单量(个)"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView12"
-            android:textColor="#ffffff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="今日总金额（元）"
             android:layout_alignBaseline="@+id/textView10"
             android:layout_alignBottom="@+id/textView10"
+            android:layout_marginStart="34dp"
             android:layout_toEndOf="@+id/textView10"
-            android:layout_marginStart="34dp" />
-
+            android:text="今日总金额（元）"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
 
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout10"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:id="@+id/relativeLayout10"
-        android:layout_below="@+id/relativeLayout9"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout9">
 
         <TextView
             android:id="@+id/textView13"
@@ -73,28 +73,29 @@
             android:text="订单管理" />
 
         <TextView
-            android:onClick="OrderForm"
             android:id="@+id/tv_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@mipmap/icon_home_jd"
-            android:drawablePadding="3dp"
-            android:text="订单"
-            android:layout_below="@+id/textView13"
             android:layout_alignEnd="@+id/tv_peihuo"
+            android:layout_below="@+id/textView13"
+            android:layout_centerInParent="true"
             android:layout_marginEnd="17dp"
-            android:layout_marginTop="14dp" />
+            android:layout_marginTop="14dp"
+            android:drawablePadding="3dp"
+            android:drawableTop="@mipmap/icon_home_jd"
+            android:onClick="OrderForm"
+            android:text="订单" />
 
         <TextView
-            android:onClick="Send"
             android:id="@+id/tv_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/tv_order"
             android:layout_marginStart="48dp"
+            android:layout_toEndOf="@+id/tv_order"
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_fh"
-            android:layout_toEndOf="@+id/tv_order"
+            android:onClick="Send"
             android:text="发货" />
 
         <TextView
@@ -108,34 +109,34 @@
 
         <TextView
             android:id="@+id/tv_peihuo"
-            android:onClick="FaHuo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="配货单"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/textView17"
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_phd"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/textView17" />
+            android:onClick="FaHuo"
+            android:text="配货单" />
 
         <TextView
             android:id="@+id/tv_command"
-            android:onClick="Command"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/tv_peihuo"
+            android:layout_alignTop="@+id/tv_peihuo"
             android:layout_marginStart="180dp"
-            android:text="我的评价"
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_pj"
-            android:layout_alignTop="@+id/tv_peihuo" />
+            android:onClick="Command"
+            android:text="我的评价" />
     </RelativeLayout>
 
     <ListView
         android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/relativeLayout10"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout10" />
 
 
 </RelativeLayout>

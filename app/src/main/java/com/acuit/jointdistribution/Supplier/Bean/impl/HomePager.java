@@ -17,41 +17,42 @@ import com.acuit.jointdistribution.Supplier.Bean.BasePager;
  */
 public class HomePager extends BasePager {
 
-	private View view;
-	private TextView tv_order;
+    private View view;
+    private TextView tv_order;
     public Activity mActivity;
-	public HomePager(Activity activity) {
-		super(activity);
-       mActivity=activity;
 
-	}
+    public HomePager(Activity activity) {
+        super(activity);
+        mActivity = activity;
 
-	@Override
-	public void initData() {
+    }
 
-		//给空的帧布局动态添加布局对象
+    @Override
+    public void initData() {
+
+        //给空的帧布局动态添加布局对象
 //		TextView view = new TextView(mActivity);
 //		view.setTextSize(22);
 //		view.setTextColor(Color.GREEN);
 //		view.setGravity(Gravity.CENTER);
 //		view.setText("首页");
 //		flContainer.addView(view);
-		tvTitle.setText("首页");
+//		tvTitle.setText("首页");
 
-		view = View.inflate(mActivity, R.layout.pager_home, null);
-		flContainer.addView(view);
-		tv_order = (TextView) view.findViewById(R.id.tv_order);
-		tv_order.setOnClickListener(new View.OnClickListener() {
+        view = View.inflate(mActivity, R.layout.pager_home, null);
+        flContainer.addView(view);
+        tv_order = (TextView) view.findViewById(R.id.tv_order);
+        tv_order.setOnClickListener(new View.OnClickListener() {
 
-	@Override
-	public void onClick(View view) {
-		Intent intent = new Intent(mActivity,ReceivedActivity.class);
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mActivity, ReceivedActivity.class);
 
-		mActivity.startActivity(intent);
+                mActivity.startActivity(intent);
 
-	}
-});
-	}
+            }
+        });
+    }
 
 
 }
