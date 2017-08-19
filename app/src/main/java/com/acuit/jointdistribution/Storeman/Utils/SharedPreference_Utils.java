@@ -77,7 +77,7 @@ public class SharedPreference_Utils {
      *
      * @return
      */
-    public ArrayMap<String, String> getConfigs() {
+    public static ArrayMap<String, String> getConfigs() {
         if (null == configs) {
             return getInstance(context).getConfigs();
         }

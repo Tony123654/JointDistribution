@@ -28,8 +28,8 @@ public class BaseApplication extends LitePalApplication {
 
     private static BaseApplication instance;
     private static RefWatcher mRefWatcher;
-    private RequestQueue mRequestQueue;
-    private MyImageLoader mImageLoader;
+    private static RequestQueue mRequestQueue;
+    private static MyImageLoader mImageLoader;
 
 
     /**
