@@ -22,7 +22,7 @@ public class GlobalContants {
 
 
 //    登录
-    public static final String URL_LOGIN = SERVER_URL + "login";
+    public static final String URL_LOGIN_BY_USERNAME = SERVER_URL + "login";
 
 
 //    验证验证码

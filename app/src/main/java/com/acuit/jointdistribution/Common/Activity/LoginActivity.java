@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Presenter.LoginPresenter;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Activity.MainActivity;
@@ -103,5 +104,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
     @Override
     public void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        BaseApplication.getRequestQueue().cancelAll("login");
     }
 }

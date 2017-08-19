@@ -66,17 +66,25 @@ public class LoginModel_Impl implements LoginModel_Interface {
 
     public LoginModel_Impl(LoginPresenter presenter) {
         this.presenter = presenter;
-        getUserInfo();
     }
 
 
     public void login() {
 
-//            非初次，获取参数信息，直接登录，根据登录结果dispatch页面
+//            分账户和手机号登录，根据登录结果dispatch页面
+
+        String login_url = null;
+        if (null == phone || phone.isEmpty()) {
+            login_url = GlobalContants.URL_LOGIN_BY_USERNAME;
+        } else {
+            // TODO: 2017/8/19 手机号码登陆
+//            login_url = GlobalContants.URL_LOGIN_BY_PHONE;
+        }
+
 
         RequestQueue requestQueue = BaseApplication.getRequestQueue();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_LOGIN, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -89,8 +97,8 @@ public class LoginModel_Impl implements LoginModel_Interface {
 
                     loginBean.getData().getUser_info().getRoleid();
 
+//                    角色id字符串分割
                     switch (loginBean.getData().getUser_info().getRoleid()) {
-//                      角色id
 //                            供应商
                         case 137 + "":
                             msg.what = TAG_SUPPLIER;
@@ -107,25 +115,30 @@ public class LoginModel_Impl implements LoginModel_Interface {
                             break;
                     }
 
-//                        handler.sendMessage(msg);
                     handler.sendMessageDelayed(msg, 1000);
+                    saveUserInfo();
 
                 } else {
 //                        登录失败
                     presenter.showToast(loginBean.getMsg());
+
+                    startLoginActivity(1000);
                 }
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                presenter.showToast("登录失败，请检查网络");
+
+                presenter.showToast(error.getMessage());
+                startLoginActivity(1000);
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 ArrayMap<String, String> params = new ArrayMap<>();
 
+                // TODO: 2017/8/19 手机号码登录
                 params.put("username", account);
                 params.put("password", pwd);
 
@@ -133,18 +146,44 @@ public class LoginModel_Impl implements LoginModel_Interface {
             }
         };
 
+        stringRequest.setTag("login");
         requestQueue.add(stringRequest);
-        requestQueue.start();
 
+    }
+
+    private void saveUserInfo() {
+        ArrayMap<String, String> userInfo = new ArrayMap<>();
+        userInfo.put(SharedPreference_Utils.KEY_ACCOUNT, account);
+        userInfo.put(SharedPreference_Utils.KEY_PHONE, phone);
+        userInfo.put(SharedPreference_Utils.KEY_PWD, pwd);
+        SharedPreference_Utils.setValues(userInfo);
+    }
+
+    @Override
+    public void login(String account, String phone, String pwd) {
+        this.account = account;
+        this.phone = phone;
+        this.pwd = pwd;
+
+        login();
+    }
+
+    @Override
+    public void startLoginActivity(int daley) {
+        Message msg = Message.obtain();
+        msg.what = TAG_LOGIN;
+        handler.sendMessageDelayed(msg, daley);
     }
 
     /**
      * 查看sharedPrefrence是否存有登录账户
+     *
      * @return 有账户返回true
      */
     @Override
     public boolean chickHistory() {
-        if  (pwd.isEmpty()||(account.isEmpty()&&phone.isEmpty())){
+        getUserInfo();
+        if (pwd.isEmpty() || (account.isEmpty() && phone.isEmpty())) {
             return false;
         }
         return true;

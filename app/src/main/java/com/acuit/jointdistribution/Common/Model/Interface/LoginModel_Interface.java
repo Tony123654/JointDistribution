@@ -17,6 +17,8 @@ public interface LoginModel_Interface {
 
     void login();
 
+    void login(String account, String phone, String pwd);
 
+    void startLoginActivity(int daley);
 
 }

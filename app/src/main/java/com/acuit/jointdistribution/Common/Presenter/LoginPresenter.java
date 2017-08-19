@@ -2,9 +2,10 @@ package com.acuit.jointdistribution.Common.Presenter;
 
 import android.app.Activity;
 
+import com.acuit.jointdistribution.Common.Activity.FirstActivity;
 import com.acuit.jointdistribution.Common.Activity.LoginView_Interface;
-import com.acuit.jointdistribution.Common.Model.LoginModel_Impl;
 import com.acuit.jointdistribution.Common.Model.Interface.LoginModel_Interface;
+import com.acuit.jointdistribution.Common.Model.LoginModel_Impl;
 
 /**
  * 类名: LoginPresenter <p>
@@ -39,13 +40,16 @@ public class LoginPresenter {
 //            存在账户记录
             mModel.login();
 
-        }else {
+        } else {
 //            跳转登录界面
-            mView.startLoginActivity();
+            mModel.startLoginActivity(1000);
         }
     }
 
 
+    public void login(String account, String phone, String pwd) {
+        mModel.login(account, phone, pwd);
+    }
 
     public void showToast(String msg) {
         mView.showToast(msg);
@@ -53,7 +57,9 @@ public class LoginPresenter {
 
     public void startLoginActivity() {
         mView.startLoginActivity();
-        mView.finish();
+        if (mView instanceof FirstActivity ? true : false) {
+            mView.finish();
+        }
     }
 
     public void startStoremanHome() {
