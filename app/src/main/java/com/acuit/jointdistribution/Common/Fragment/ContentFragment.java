@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Supplier.Fragment;
+package com.acuit.jointdistribution.Common.Fragment;
 
 import android.app.Activity;
 import android.support.v4.view.PagerAdapter;
@@ -7,9 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
+import com.acuit.jointdistribution.Common.Base.BaseFragment;
+import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.Widget.NoScrollViewPager;
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Supplier.Bean.BasePager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.BussinessOrderPager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.HomePager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.SettingPager;

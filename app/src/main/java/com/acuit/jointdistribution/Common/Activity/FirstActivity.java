@@ -8,7 +8,6 @@ import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Presenter.LoginPresenter;
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Storeman.Activity.HomeActivity;
 
 /**
  * 类名: FirstActivity <p>
@@ -55,7 +54,7 @@ public class FirstActivity extends Activity implements LoginView_Interface {
 
     @Override
     public void startSupplierHome() {
-        startActivity(new Intent(this, com.acuit.jointdistribution.Supplier.Acitivity.HomeActivity.class));
+        startActivity(new Intent(this, com.acuit.jointdistribution.Common.Activity.HomeActivity.class));
     }
 
     @Override

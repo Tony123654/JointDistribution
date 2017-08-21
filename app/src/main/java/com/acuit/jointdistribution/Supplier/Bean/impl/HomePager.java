@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
-import com.acuit.jointdistribution.Supplier.Bean.BasePager;
+import com.acuit.jointdistribution.Common.Base.BasePager;
 /**
  * 首页
  */

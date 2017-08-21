@@ -90,15 +90,16 @@ public class LoginModel_Impl implements LoginModel_Interface {
 
                 Gson gson = new Gson();
                 LoginBean loginBean = gson.fromJson(response, LoginBean.class);
+                BaseApplication.setLoginBean(loginBean);
 
                 Message msg = Message.obtain();
 //                    登录成功
                 if (200 == loginBean.getCode()) {
 
-                    loginBean.getData().getUser_info().getRoleid();
+                    String roleid = loginBean.getData().getUser_info().getRoleid();
 
 //                    角色id字符串分割
-                    switch (loginBean.getData().getUser_info().getRoleid()) {
+                    switch (roleid) {
 //                            供应商
                         case 137 + "":
                             msg.what = TAG_SUPPLIER;

@@ -13,6 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--公共模块-->
         <activity android:name=".Common.Activity.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,14 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!--公共模块-->
         <activity android:name=".Common.Activity.LoginActivity"/>
-
-        <!-- 供应商 -->
         <activity
             android:launchMode="singleInstance"
-            android:name=".Supplier.Acitivity.HomeActivity" />
+            android:name=".Common.Activity.HomeActivity" />
+
+        <!-- 供应商 -->
         <activity android:name=".Supplier.Acitivity.ReceivedActivity" />
         <activity android:name=".Supplier.Acitivity.MenuActivity" />
         <activity android:name=".Supplier.Acitivity.MenuInfoActivity" />
@@ -38,9 +38,7 @@
         <activity android:name=".Supplier.Acitivity.BusinessOrderActivity" />
 
         <!-- 保管员 -->
-        <activity
-            android:launchMode="singleInstance"
-            android:name=".Storeman.Activity.HomeActivity" />
+
 
 
     </application>

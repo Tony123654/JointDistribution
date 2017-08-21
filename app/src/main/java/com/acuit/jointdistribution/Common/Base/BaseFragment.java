@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Supplier.Fragment;
+package com.acuit.jointdistribution.Common.Base;
 
 import android.app.Activity;
 import android.os.Bundle;

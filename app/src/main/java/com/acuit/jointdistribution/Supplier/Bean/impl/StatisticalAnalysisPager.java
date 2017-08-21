@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.View;
 
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Supplier.Bean.BasePager;
+import com.acuit.jointdistribution.Common.Base.BasePager;
 
 /**
  *统计分析

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.acuit.jointdistribution.Common.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 
 public class CommandActivity extends AppCompatActivity {

@@ -3,6 +3,7 @@ package com.acuit.jointdistribution.Common.Base;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 
+import com.acuit.jointdistribution.Common.Bean.LoginBean;
 import com.acuit.jointdistribution.Storeman.Utils.MyImageLoader;
 import com.acuit.jointdistribution.Storeman.Utils.SharedPreference_Utils;
 import com.android.volley.RequestQueue;
@@ -110,4 +111,16 @@ public class BaseApplication extends LitePalApplication {
     }
 
 
+    
+
+    //---------------------全局变量区----------------------------------------------
+    private static LoginBean loginBean;
+
+    public static LoginBean getLoginBean() {
+        return loginBean;
+    }
+
+    public static void setLoginBean(LoginBean loginBean) {
+        BaseApplication.loginBean = loginBean;
+    }
 }
