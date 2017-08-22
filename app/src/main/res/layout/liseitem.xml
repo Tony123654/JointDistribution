@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
+
     <RelativeLayout
         android:id="@+id/relativeLayout8"
         android:layout_width="match_parent"
@@ -23,52 +24,51 @@
         android:id="@+id/tv_create_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="创建日期："
-        android:layout_marginTop="17dp"
         android:layout_below="@id/relativeLayout8"
-        android:layout_alignStart="@id/textView18" />
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="17dp"
+        android:text="创建日期：" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/tv_department_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@id/tv_create_date"
+        android:layout_below="@id/tv_create_date"
         android:layout_marginTop="13dp"
         android:drawableLeft="@mipmap/dizhi"
         android:drawablePadding="5dp"
-        android:text="东区食堂(浙大-紫金港)"
-        android:layout_below="@id/tv_create_date"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="41dp" />
+        android:text="东区食堂(浙大-紫金港)" />
 
     <TextView
         android:id="@+id/tv_pian_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@id/tv_department_location"
+        android:layout_below="@id/tv_department_location"
         android:layout_marginTop="12dp"
         android:drawableLeft="@mipmap/shijian"
         android:drawablePadding="5dp"
-        android:text="计划送达日期："
-        android:layout_below="@id/textView18"
-        android:layout_alignStart="@id/textView18" />
+        android:text="计划送达日期：" />
 
     <TextView
         android:id="@+id/tv_total_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:text="总数量："
-        android:layout_below="@id/tv_pian_data"
         android:layout_alignStart="@id/tv_pian_data"
-        android:layout_marginStart="18dp" />
+        android:layout_below="@id/tv_pian_data"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="23dp"
+        android:text="总数量：" />
 
     <TextView
         android:id="@+id/tv_total_money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="总金额："
         android:layout_alignBaseline="@id/tv_total_amount"
         android:layout_alignBottom="@id/tv_total_amount"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="总金额：" />
 
 
 </RelativeLayout>
