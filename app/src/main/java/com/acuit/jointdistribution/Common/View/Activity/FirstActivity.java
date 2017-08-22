@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Common.Activity;
+package com.acuit.jointdistribution.Common.View.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -54,7 +54,7 @@ public class FirstActivity extends Activity implements LoginView_Interface {
 
     @Override
     public void startSupplierHome() {
-        startActivity(new Intent(this, com.acuit.jointdistribution.Common.Activity.HomeActivity.class));
+        startActivity(new Intent(this, com.acuit.jointdistribution.Common.View.Activity.HomeActivity.class));
     }
 
     @Override

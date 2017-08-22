@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Common.Activity;
+package com.acuit.jointdistribution.Common.View.Activity;
 
 /**
  * 类名: LoginView_Interface <p>

@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Common.Activity;
+package com.acuit.jointdistribution.Common.View.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
 
     @Override
     public void startSupplierHome() {
-        startActivity(new Intent(this, com.acuit.jointdistribution.Common.Activity.HomeActivity.class));
+        startActivity(new Intent(this, com.acuit.jointdistribution.Common.View.Activity.HomeActivity.class));
     }
 
     @Override

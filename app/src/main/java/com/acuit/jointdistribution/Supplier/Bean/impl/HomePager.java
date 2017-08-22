@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
+import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
-import com.acuit.jointdistribution.Common.Base.BasePager;
 /**
  * 首页
  */
@@ -50,8 +50,10 @@ public class HomePager extends BasePager {
 
                 mActivity.startActivity(intent);
 
+
             }
         });
+
     }
 
 

@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Supplier.Bean.impl;
+package com.acuit.jointdistribution.Common.View.Page;
 
 import android.app.Activity;
 import android.view.View;

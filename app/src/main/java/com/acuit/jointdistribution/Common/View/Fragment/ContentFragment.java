@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Common.Fragment;
+package com.acuit.jointdistribution.Common.View.Fragment;
 
 import android.app.Activity;
 import android.support.v4.view.PagerAdapter;
@@ -13,7 +13,7 @@ import com.acuit.jointdistribution.Common.Widget.NoScrollViewPager;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Bean.impl.BussinessOrderPager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.HomePager;
-import com.acuit.jointdistribution.Supplier.Bean.impl.SettingPager;
+import com.acuit.jointdistribution.Common.View.Page.SettingPager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.StatisticalAnalysisPager;
 
 import java.util.ArrayList;

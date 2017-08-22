@@ -1,4 +1,4 @@
-package com.acuit.jointdistribution.Common.Activity;
+package com.acuit.jointdistribution.Common.View.Activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Common.Fragment.ContentFragment;
+import com.acuit.jointdistribution.Common.View.Fragment.ContentFragment;
 
 /**
  * 类名: HomeActivity <p>

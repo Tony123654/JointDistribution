@@ -1,30 +1,43 @@
 package com.acuit.jointdistribution.Supplier.Acitivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import com.acuit.jointdistribution.Common.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Supplier.Adapter.MyAdapter;
+import com.acuit.jointdistribution.Supplier.Domain.OrderList_Purchase;
+import com.acuit.jointdistribution.Supplier.Utils.ToastUtils;
+import com.google.gson.Gson;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 
-import static com.acuit.jointdistribution.R.id.lv;
+import java.lang.reflect.Parameter;
+import java.util.ArrayList;
+
+import feign.Param;
 
 /**
  * 接单界面
  */
-public class ReceivedActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class ReceivedActivity extends AppCompatActivity {
 
-    private static final String[] strs = new String[] {
-        "first", "second", "third", "fourth", "fifth"
-    };
+    private ArrayList<OrderList_Purchase> orderList;
+
     private ImageButton ib_back_menu;
     private ImageButton ib_choose;
-    private ListView lv_order;
+    private ListView lv_list;
+    private OrderList_Purchase orderListPurchaseMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,36 +47,76 @@ public class ReceivedActivity extends AppCompatActivity implements AdapterView.O
 
         ib_back_menu = (ImageButton) findViewById(R.id.ib_back_menu);
 
-        lv_order = (ListView) findViewById(lv);
-//        lv_order.setAdapter(new mAdapter());
+        lv_list = (ListView) findViewById(R.id.lv);
 
-
-        lv_order.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_checked,strs));
-        lv_order.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-
-        ib_back_menu.setOnClickListener(new View.OnClickListener() {
-
-
+        orderList = new ArrayList<OrderList_Purchase>();
+        lv_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ReceivedActivity.this,HomeActivity.class));
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String userId = orderList.get(i).getData().getUser_info().getUserid();
+                Intent intent = new Intent(ReceivedActivity.this, MenuActivity.class);
+                intent.putExtra("userId", userId);
+                startActivity(intent);
+
             }
         });
-        ib_choose.setOnClickListener(new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ReceivedActivity.this,MenuInfoActivity.class));
-            }
-        });
+        initData();
 
     }
 
+    private void initData() {
+        getDataFromServer();
+    }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    private void getDataFromServer() {
+        HttpUtils http = new HttpUtils();
+        RequestParams params = new RequestParams();
+        params.addBodyParameter("token","");
+        params.addBodyParameter("start_date","");
+        params.addBodyParameter("end_date","");
+        params.addBodyParameter("status","");
+        params.addBodyParameter("rows","");
+        params.addBodyParameter("page","");
+        http.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=buy_order_list",
+
+                new RequestCallBack<String>() {
+
+
+                    private MyAdapter myAdapter;
+                    private TextView tv;
+
+                    @Override
+                    public void onFailure(HttpException error, String msg) {
+                        ToastUtils.showToast(getApplicationContext(), "呵呵");
+                    }
+
+                    @Override
+                    public void onSuccess(ResponseInfo<String> responseInfo) {
+                        String result = responseInfo.result;
+                        ProcessData(result);
+                    }
+
+                    private void ProcessData(String result) {
+                        Gson gson = new Gson();
+                        orderListPurchaseMenu = gson.fromJson(result, OrderList_Purchase.class);
+                        String menuList = orderListPurchaseMenu.getData().getUser_info().getMobile_interface().get_$1856();
+                        if (lv_list == null) {
+                            tv = new TextView(getApplicationContext());
+                            tv.setText("暂时无订单");
+                            tv.setTextSize(44);
+                            tv.setTextColor(Color.GREEN);
+                            lv_list.setEmptyView(tv);
+
+                        } else {
+                            myAdapter = new MyAdapter(orderList);
+                            lv_list.setAdapter(myAdapter);
+
+                        }
+                    }
+
+
+                });
 
     }
+
 }

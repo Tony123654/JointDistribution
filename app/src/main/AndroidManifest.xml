@@ -15,20 +15,19 @@
         android:theme="@style/AppTheme">
 
         <!--公共模块-->
-        <activity android:name=".Common.Activity.FirstActivity">
+        <activity android:name=".Common.View.Activity.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Common.Activity.LoginActivity"/>
+        <activity android:name=".Common.View.Activity.LoginActivity"/>
         <activity
             android:launchMode="singleInstance"
-            android:name=".Common.Activity.HomeActivity" />
+            android:name=".Common.View.Activity.HomeActivity" />
 
         <!-- 供应商 -->
-        <activity android:name=".Supplier.Acitivity.ReceivedActivity" />
         <activity android:name=".Supplier.Acitivity.MenuActivity" />
         <activity android:name=".Supplier.Acitivity.MenuInfoActivity" />
         <activity android:name=".Supplier.Acitivity.SendActivity" />

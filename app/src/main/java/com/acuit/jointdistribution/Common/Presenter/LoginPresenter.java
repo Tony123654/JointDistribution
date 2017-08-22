@@ -2,8 +2,8 @@ package com.acuit.jointdistribution.Common.Presenter;
 
 import android.app.Activity;
 
-import com.acuit.jointdistribution.Common.Activity.FirstActivity;
-import com.acuit.jointdistribution.Common.Activity.LoginView_Interface;
+import com.acuit.jointdistribution.Common.View.Activity.FirstActivity;
+import com.acuit.jointdistribution.Common.View.Activity.LoginView_Interface;
 import com.acuit.jointdistribution.Common.Model.Interface.LoginModel_Interface;
 import com.acuit.jointdistribution.Common.Model.LoginModel_Impl;
 

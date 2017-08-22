@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.acuit.jointdistribution.Common.Activity.HomeActivity;
+import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 
 /**
