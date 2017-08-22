@@ -9,11 +9,11 @@ import android.widget.RadioGroup;
 
 import com.acuit.jointdistribution.Common.Base.BaseFragment;
 import com.acuit.jointdistribution.Common.Base.BasePager;
+import com.acuit.jointdistribution.Common.View.Page.SettingPager;
 import com.acuit.jointdistribution.Common.Widget.NoScrollViewPager;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Bean.impl.BussinessOrderPager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.HomePager;
-import com.acuit.jointdistribution.Common.View.Page.SettingPager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.StatisticalAnalysisPager;
 
 import java.util.ArrayList;
@@ -41,6 +41,11 @@ public class ContentFragment extends BaseFragment {
     }
 
 
+    /**
+     * 对应BaseFragment中的OnCreateView()
+     *
+     * @return
+     */
     @Override
     public View initViews() {
 
@@ -53,6 +58,9 @@ public class ContentFragment extends BaseFragment {
 
     }
 
+    /**
+     * 对应BaseFragment中的OnActivityCreated()
+     */
     @Override
     protected void initData() {
         rgGroup.check(R.id.rb_home);
@@ -88,7 +96,7 @@ public class ContentFragment extends BaseFragment {
         });
 
         //监听ViewPager页面切换事件, 初始化当前页面数据
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -143,9 +151,11 @@ public class ContentFragment extends BaseFragment {
 
     }
 
-    //获取业务订单对象
+    /**
+     * 获取业务表单page对象
+     * @return
+     */
     public BussinessOrderPager getBussinessOrderPager() {
         return (BussinessOrderPager) mList.get(1);
-
     }
 }

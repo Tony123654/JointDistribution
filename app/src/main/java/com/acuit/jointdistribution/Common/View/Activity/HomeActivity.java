@@ -22,6 +22,7 @@ import com.acuit.jointdistribution.Common.View.Fragment.ContentFragment;
 public class HomeActivity extends BaseActivity {
 
     private static final String FRAG_CONTENT = "frag_content";
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +34,15 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void initFragment() {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
+        fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.fl_main, new ContentFragment(HomeActivity.this));
         ft.commit();
 
     }
+
     public ContentFragment getContentFragment() {
-        FragmentManager fm = getSupportFragmentManager();
-        ContentFragment fragment = (ContentFragment) fm.findFragmentByTag(FRAG_CONTENT);
+        ContentFragment fragment = (ContentFragment) fragmentManager.findFragmentByTag(FRAG_CONTENT);
         return fragment;
     }
 

@@ -1,11 +1,10 @@
 package com.acuit.jointdistribution.Common.Presenter;
 
-import android.app.Activity;
-
-import com.acuit.jointdistribution.Common.View.Activity.FirstActivity;
-import com.acuit.jointdistribution.Common.View.Activity.LoginView_Interface;
 import com.acuit.jointdistribution.Common.Model.Interface.LoginModel_Interface;
 import com.acuit.jointdistribution.Common.Model.LoginModel_Impl;
+import com.acuit.jointdistribution.Common.View.Activity.FirstActivity;
+import com.acuit.jointdistribution.Common.View.Activity.LoginActivity;
+import com.acuit.jointdistribution.Common.View.Activity.LoginView_Interface;
 
 /**
  * 类名: LoginPresenter <p>
@@ -22,13 +21,10 @@ public class LoginPresenter {
 
     private LoginView_Interface mView;
     private LoginModel_Interface mModel;
-    private Activity activity;
-
 
     public LoginPresenter(LoginView_Interface mView) {
         this.mView = mView;
         this.mModel = new LoginModel_Impl(this);
-        this.activity = (Activity) mView;
     }
 
 
@@ -55,10 +51,16 @@ public class LoginPresenter {
         mView.showToast(msg);
     }
 
-    public void startLoginActivity() {
-        mView.startLoginActivity();
-        if (mView instanceof FirstActivity ? true : false) {
+    /**
+     * 当前为初始动画界面：需要页面跳转，结束当前页
+     * 否则为登录页面，将传递的账户赋值给页面控件
+     */
+    public void startLoginActivity(String account) {
+        if (mView instanceof FirstActivity) {
+            mView.startLoginActivity();
             mView.finish();
+        } else {
+            ((LoginActivity) mView).initData(account);
         }
     }
 

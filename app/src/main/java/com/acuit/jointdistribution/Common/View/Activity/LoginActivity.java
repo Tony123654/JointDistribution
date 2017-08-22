@@ -1,9 +1,11 @@
 package com.acuit.jointdistribution.Common.View.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -43,12 +45,24 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
         loginPresenter = new LoginPresenter(this);
 
         btnLogin.setOnClickListener(this);
+
+        loginPresenter.chickHistory();
     }
 
     private void initView() {
         etAccount = (EditText) findViewById(et_zh);
         etPsw = (EditText) findViewById(et_mm);
         btnLogin = (Button) findViewById(R.id.btn);
+    }
+
+    // TODO: 2017/8/22 若存在帐号，填充（登录状态记录logined）
+    public void initData(String account) {
+        if (null != account && !account.isEmpty()) {
+            etAccount.setText(account);
+            etPsw.requestFocus();
+            InputMethodManager imm = (InputMethodManager)LoginActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
 
 
@@ -66,7 +80,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
             Toast.makeText(this, "密码不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
-
 
 
         {

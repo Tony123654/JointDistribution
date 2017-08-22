@@ -38,6 +38,7 @@ public class LoginModel_Impl implements LoginModel_Interface {
     private String pwd;
     private String phone;
     private String account;
+    private String logined;
     private LoginPresenter presenter;
 
 
@@ -50,7 +51,7 @@ public class LoginModel_Impl implements LoginModel_Interface {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case TAG_LOGIN:
-                    presenter.startLoginActivity();
+                    presenter.startLoginActivity(account);
                     break;
                 case TAG_STOREMAN:
                     presenter.startStoremanHome();
@@ -68,7 +69,69 @@ public class LoginModel_Impl implements LoginModel_Interface {
         this.presenter = presenter;
     }
 
+    private void saveUserInfo() {
+        ArrayMap<String, String> userInfo = new ArrayMap<>();
 
+        userInfo.put(SharedPreference_Utils.KEY_LOGINED, "true");
+        userInfo.put(SharedPreference_Utils.KEY_ACCOUNT, account);
+        userInfo.put(SharedPreference_Utils.KEY_PHONE, phone);
+        userInfo.put(SharedPreference_Utils.KEY_PWD, pwd);
+        SharedPreference_Utils.setValues(userInfo);
+    }
+
+    @Override
+    public void startLoginActivity(int daley) {
+        Message msg = Message.obtain();
+        msg.what = TAG_LOGIN;
+        handler.sendMessageDelayed(msg, daley);
+    }
+
+    /**
+     * 查看sharedPrefrence是否存有登录账户
+     *
+     * @return 有账户返回true
+     */
+    @Override
+    public boolean chickHistory() {
+        getUserInfo();
+        if (null != logined && logined.equals("true")) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 获取登录账户记录
+     *
+     * @return
+     */
+    public boolean getUserInfo() {
+
+        try {
+            ArrayMap<String, String> userInfo = SharedPreference_Utils.getConfigs();
+
+            pwd = userInfo.get(SharedPreference_Utils.KEY_PWD);
+            phone = userInfo.get(SharedPreference_Utils.KEY_PHONE);
+            account = userInfo.get(SharedPreference_Utils.KEY_ACCOUNT);
+            logined = userInfo.get(SharedPreference_Utils.KEY_LOGINED);
+        } catch (Exception e) {
+            Log.e("aaa", "getUserInfo: " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+
+    @Override
+    public void login(String account, String phone, String pwd) {
+        this.account = account;
+        this.phone = phone;
+        this.pwd = pwd;
+
+        login();
+    }
+
+    @Override
     public void login() {
 
 //            分账户和手机号登录，根据登录结果dispatch页面
@@ -97,24 +160,38 @@ public class LoginModel_Impl implements LoginModel_Interface {
                 if (200 == loginBean.getCode()) {
 
                     String roleid = loginBean.getData().getUser_info().getRoleid();
-
 //                    角色id字符串分割
-                    switch (roleid) {
-//                            供应商
-                        case 137 + "":
+                    String[] roleIDs = roleid.split(",");
+
+
+                    // TODO: 2017/8/22 角色集合的处理
+                    for (String roleID : roleIDs) {
+//                        System.out.println("aaa roleID:" + roleID);
+                        if ((137 + "").equals(roleID)) {
                             msg.what = TAG_SUPPLIER;
-                            break;
-//                            保管员
-                        case 157 + "":
+                        }
+                        if ((157 + "").equals(roleID)) {
                             msg.what = TAG_STOREMAN;
-                            break;
-//                            厨师长
-//                            case 154 + "":
-//                                intent = new Intent(context, HomeActivity.class);
-//                                break;
-                        default:
-                            break;
+                        }
+
                     }
+
+//                    switch (roleid) {
+////                            供应商
+//                        case 137 + "":
+//                            msg.what = TAG_SUPPLIER;
+//                            break;
+////                            保管员
+//                        case 157 + "":
+//                            msg.what = TAG_STOREMAN;
+//                            break;
+////                            厨师长
+////                            case 154 + "":
+////                                intent = new Intent(context, HomeActivity.class);
+////                                break;
+//                        default:
+//                            break;
+//                    }
 
                     handler.sendMessageDelayed(msg, 1000);
                     saveUserInfo();
@@ -150,64 +227,6 @@ public class LoginModel_Impl implements LoginModel_Interface {
         stringRequest.setTag("login");
         requestQueue.add(stringRequest);
 
-    }
-
-    private void saveUserInfo() {
-        ArrayMap<String, String> userInfo = new ArrayMap<>();
-        userInfo.put(SharedPreference_Utils.KEY_ACCOUNT, account);
-        userInfo.put(SharedPreference_Utils.KEY_PHONE, phone);
-        userInfo.put(SharedPreference_Utils.KEY_PWD, pwd);
-        SharedPreference_Utils.setValues(userInfo);
-    }
-
-    @Override
-    public void login(String account, String phone, String pwd) {
-        this.account = account;
-        this.phone = phone;
-        this.pwd = pwd;
-
-        login();
-    }
-
-    @Override
-    public void startLoginActivity(int daley) {
-        Message msg = Message.obtain();
-        msg.what = TAG_LOGIN;
-        handler.sendMessageDelayed(msg, daley);
-    }
-
-    /**
-     * 查看sharedPrefrence是否存有登录账户
-     *
-     * @return 有账户返回true
-     */
-    @Override
-    public boolean chickHistory() {
-        getUserInfo();
-        if (pwd.isEmpty() || (account.isEmpty() && phone.isEmpty())) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * 获取登录账户记录
-     *
-     * @return
-     */
-    public boolean getUserInfo() {
-
-        try {
-            ArrayMap<String, String> userInfo = SharedPreference_Utils.getConfigs();
-
-            pwd = userInfo.get(SharedPreference_Utils.KEY_PWD);
-            phone = userInfo.get(SharedPreference_Utils.KEY_PHONE);
-            account = userInfo.get(SharedPreference_Utils.KEY_ACCOUNT);
-        } catch (Exception e) {
-            Log.e("aaa", "getUserInfo: " + e.getMessage());
-            return false;
-        }
-        return true;
     }
 
 

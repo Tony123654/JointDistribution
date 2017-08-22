@@ -3,6 +3,7 @@ package com.acuit.jointdistribution.Common.Base;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import android.view.ViewGroup;
  * 更新描述: <p>
  */
 
-public abstract class BaseFragment extends android.support.v4.app.Fragment {
+public abstract class BaseFragment extends Fragment {
 
     public Activity mActivity;
     public View mRootView;

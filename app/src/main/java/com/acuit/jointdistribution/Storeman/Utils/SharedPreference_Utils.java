@@ -21,6 +21,7 @@ public class SharedPreference_Utils {
 
     public final static String KEY_PWD = "pwd";
     public final static String KEY_PHONE = "phone";
+    public final static String KEY_LOGINED = "logined";
     public final static String KEY_ACCOUNT = "account";
 
     private static SharedPreference_Utils instance;
@@ -68,6 +69,7 @@ public class SharedPreference_Utils {
         configs.put(KEY_ACCOUNT, sharedPreferences.getString(KEY_ACCOUNT, ""));
         configs.put(KEY_PWD, sharedPreferences.getString(KEY_PWD, ""));
         configs.put(KEY_PHONE, sharedPreferences.getString(KEY_PHONE, ""));
+        configs.put(KEY_PHONE, sharedPreferences.getString(KEY_LOGINED, "false"));
 
         return configs;
     }
