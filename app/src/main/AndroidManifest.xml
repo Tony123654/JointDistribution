@@ -23,12 +23,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:launchMode="singleInstance"
-            android:name=".Common.View.Activity.HomeActivity" />
+            android:name=".Common.View.Activity.HomeActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".Common.View.Activity.SuggestionFeedbackActivity"
+            android:launchMode="singleInstance" />
 
-        <activity android:name=".Common.View.Activity.LoginActivity"/>
-        <activity android:name=".Common.View.Activity.AboutUsActivity"/>
-        <activity android:name=".Common.View.Activity.SuggestionFeedbackActivity"/>
+        <activity android:name=".Common.View.Activity.LoginActivity" />
+        <activity android:name=".Common.View.Activity.AboutUsActivity" />
 
         <!-- 供应商 -->
         <activity android:name=".Supplier.Acitivity.MenuActivity" />
@@ -40,7 +42,6 @@
         <activity android:name=".Supplier.Acitivity.BusinessOrderActivity" />
 
         <!-- 保管员 -->
-
 
 
     </application>

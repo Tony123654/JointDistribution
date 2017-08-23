@@ -90,7 +90,9 @@ public class SettingPager extends BasePager implements View.OnClickListener {
                 showAlter();
                 break;
             case R.id.tv_suggestionFeedback:
-                mActivity.startActivity(new Intent(mActivity, SuggestionFeedbackActivity.class));
+                Intent intent = new Intent(mActivity, SuggestionFeedbackActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                mActivity.startActivity(intent);
                 break;
         }
     }
