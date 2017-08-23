@@ -72,8 +72,8 @@ public class LoginModel_Impl implements LoginModel_Interface {
     private void saveUserInfo() {
         ArrayMap<String, String> userInfo = new ArrayMap<>();
 
-        userInfo.put(SharedPreference_Utils.KEY_LOGINED, "true");
         userInfo.put(SharedPreference_Utils.KEY_ACCOUNT, account);
+        userInfo.put(SharedPreference_Utils.KEY_LOGINED, "true");
         userInfo.put(SharedPreference_Utils.KEY_PHONE, phone);
         userInfo.put(SharedPreference_Utils.KEY_PWD, pwd);
         SharedPreference_Utils.setValues(userInfo);

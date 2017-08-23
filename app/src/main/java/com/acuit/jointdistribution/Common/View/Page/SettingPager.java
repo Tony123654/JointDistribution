@@ -12,6 +12,7 @@ import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.Bean.LoginBean;
 import com.acuit.jointdistribution.Common.Presenter.SettingsPage_Presenter;
 import com.acuit.jointdistribution.Common.View.Activity.AboutUsActivity;
+import com.acuit.jointdistribution.Common.View.Activity.SuggestionFeedbackActivity;
 import com.acuit.jointdistribution.R;
 
 
@@ -89,7 +90,7 @@ public class SettingPager extends BasePager implements View.OnClickListener {
                 showAlter();
                 break;
             case R.id.tv_suggestionFeedback:
-
+                mActivity.startActivity(new Intent(mActivity, SuggestionFeedbackActivity.class));
                 break;
         }
     }

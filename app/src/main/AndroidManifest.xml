@@ -28,6 +28,7 @@
 
         <activity android:name=".Common.View.Activity.LoginActivity"/>
         <activity android:name=".Common.View.Activity.AboutUsActivity"/>
+        <activity android:name=".Common.View.Activity.SuggestionFeedbackActivity"/>
 
         <!-- 供应商 -->
         <activity android:name=".Supplier.Acitivity.MenuActivity" />

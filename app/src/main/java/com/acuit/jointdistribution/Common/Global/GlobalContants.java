@@ -31,5 +31,4 @@ public class GlobalContants {
     public static final String URL_SEND_VERIFY_TO_USER = MOBILE_URL + "sendMsgToUser";
 
 
-
 }
