@@ -12,6 +12,7 @@ import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.Bean.LoginBean;
 import com.acuit.jointdistribution.Common.Presenter.SettingsPage_Presenter;
 import com.acuit.jointdistribution.Common.View.Activity.AboutUsActivity;
+import com.acuit.jointdistribution.Common.View.Activity.ModifyPwdActivity;
 import com.acuit.jointdistribution.Common.View.Activity.SuggestionFeedbackActivity;
 import com.acuit.jointdistribution.R;
 
@@ -75,12 +76,13 @@ public class SettingPager extends BasePager implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        Intent intent = null;
         switch (view.getId()) {
             case R.id.tv_aboutUs:
-                mActivity.startActivity(new Intent(mActivity, AboutUsActivity.class));
+                intent = new Intent(mActivity, AboutUsActivity.class);
                 break;
             case R.id.tv_modifyPwd:
-
+                intent = new Intent(mActivity, ModifyPwdActivity.class);
                 break;
             case R.id.tv_bindPhone:
 
@@ -90,11 +92,12 @@ public class SettingPager extends BasePager implements View.OnClickListener {
                 showAlter();
                 break;
             case R.id.tv_suggestionFeedback:
-                Intent intent = new Intent(mActivity, SuggestionFeedbackActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                mActivity.startActivity(intent);
+                intent = new Intent(mActivity, SuggestionFeedbackActivity.class);
                 break;
         }
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        mActivity.startActivity(intent);
     }
 
 

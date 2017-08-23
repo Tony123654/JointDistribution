@@ -52,7 +52,7 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_submitSuggestion"
+            android:id="@+id/btn_submitPwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/et_suggestion"

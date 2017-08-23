@@ -28,6 +28,9 @@
         <activity
             android:name=".Common.View.Activity.SuggestionFeedbackActivity"
             android:launchMode="singleInstance" />
+        <activity
+            android:name=".Common.View.Activity.ModifyPwdActivity"
+            android:launchMode="singleInstance" />
 
         <activity android:name=".Common.View.Activity.LoginActivity" />
         <activity android:name=".Common.View.Activity.AboutUsActivity" />

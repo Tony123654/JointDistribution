@@ -7,7 +7,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.R;
@@ -28,6 +30,7 @@ public class SuggestionFeedbackActivity extends BaseActivity implements View.OnC
     private EditText etSuggestion;
     private TextView tvSize;
     private Button btnSubmit;
+    private ImageView ivBack;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,9 +47,10 @@ public class SuggestionFeedbackActivity extends BaseActivity implements View.OnC
 
     private void initView() {
 
+        ivBack = (ImageView) findViewById(R.id.iv_back);
         tvSize = (TextView) findViewById(R.id.tv_sizeOfSuggestion);
         etSuggestion = (EditText) findViewById(R.id.et_suggestion);
-        btnSubmit = (Button) findViewById(R.id.btn_submitSuggestion);
+        btnSubmit = (Button) findViewById(R.id.btn_submitPwd);
     }
 
     private void initData() {
@@ -54,16 +58,28 @@ public class SuggestionFeedbackActivity extends BaseActivity implements View.OnC
     }
 
     private void initEvent() {
+        ivBack.setOnClickListener(this);
         btnSubmit.setOnClickListener(this);
         etSuggestion.addTextChangedListener(this);
+
     }
 
 
     @Override
     public void onClick(View v) {
-        if (6 < Integer.parseInt(tvSize.getText().toString())) {
-            submit();
+        switch (v.getId()) {
+            case R.id.iv_back:
+                onBackPressed();
+                break;
+            case R.id.btn_submitPwd:
+                if (6 < Integer.parseInt(tvSize.getText().toString())) {
+                    submit();
+                } else {
+                    Toast.makeText(this, "请描述得更详细一点吧。", Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
+
     }
 
 
@@ -85,12 +101,18 @@ public class SuggestionFeedbackActivity extends BaseActivity implements View.OnC
     //  -------------------  TextWatcher  ------------------------
 
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     /**
      * 提交意见（内容不多，未采用mvp）
      */
     private void submit() {
+        Toast.makeText(this, "上传成功！", Toast.LENGTH_SHORT).show();
         // TODO: 2017/8/23 提交反馈意见
-                
+
 //
 ////        提交反馈意见
 //        String login_url = GlobalContants.URL_LOGIN_BY_USERNAME;
