@@ -12,7 +12,7 @@ import com.acuit.jointdistribution.Storeman.Utils.SharedPreference_Utils;
  * 类名: SettingsPage_Presenter <p>
  * 创建人: YanJ <p>
  * 创建时间: 2017/8/22 17:15 <p>
- * 描述:
+ * 描述: 设置模块presenter
  * <p>
  * 更新人: <p>
  * 更新时间: <p>
@@ -27,6 +27,9 @@ public class SettingsPage_Presenter {
         this.settingPager = context;
     }
 
+    /**
+     * 退出当前登录状态
+     */
     public void quitAccount() {
         ArrayMap<String, String> data = new ArrayMap<>();
         data.put(SharedPreference_Utils.KEY_LOGINED, "false");

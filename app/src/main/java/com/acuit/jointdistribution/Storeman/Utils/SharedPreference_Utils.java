@@ -66,10 +66,10 @@ public class SharedPreference_Utils {
 
         ArrayMap<String, String> configs = new ArrayMap<>();
 
-        configs.put(KEY_ACCOUNT, sharedPreferences.getString(KEY_ACCOUNT, ""));
         configs.put(KEY_PWD, sharedPreferences.getString(KEY_PWD, ""));
         configs.put(KEY_PHONE, sharedPreferences.getString(KEY_PHONE, ""));
-        configs.put(KEY_PHONE, sharedPreferences.getString(KEY_LOGINED, "false"));
+        configs.put(KEY_ACCOUNT, sharedPreferences.getString(KEY_ACCOUNT, ""));
+        configs.put(KEY_LOGINED, sharedPreferences.getString(KEY_LOGINED, "false"));
 
         return configs;
     }
@@ -97,7 +97,7 @@ public class SharedPreference_Utils {
         Set<String> keySet = data.keySet();
         for (String s : keySet) {
             edit.putString(s, data.get(s));
-            System.out.println("aaa sharedPrefrence:" + s + "  " + data.get(s));
+//            System.out.println("aaa sharedPrefrence:" + s + "  " + data.get(s));
         }
 //        提交成功则更新app中config
         if (edit.commit()) {

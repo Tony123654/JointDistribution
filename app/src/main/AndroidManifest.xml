@@ -22,10 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Common.View.Activity.LoginActivity"/>
         <activity
             android:launchMode="singleInstance"
             android:name=".Common.View.Activity.HomeActivity" />
+
+        <activity android:name=".Common.View.Activity.LoginActivity"/>
+        <activity android:name=".Common.View.Activity.AboutUsActivity"/>
 
         <!-- 供应商 -->
         <activity android:name=".Supplier.Acitivity.MenuActivity" />

@@ -22,10 +22,8 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 
-import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 
-import feign.Param;
 
 /**
  * 接单界面
