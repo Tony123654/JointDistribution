@@ -47,7 +47,7 @@
         android:layout_alignStart="@id/tv_department_location"
         android:layout_below="@id/tv_department_location"
         android:layout_marginTop="12dp"
-        android:drawableLeft="@mipmap/shijian"
+        android:drawableLeft="@mipmap/icon_clock"
         android:drawablePadding="5dp"
         android:text="计划送达日期：" />
 

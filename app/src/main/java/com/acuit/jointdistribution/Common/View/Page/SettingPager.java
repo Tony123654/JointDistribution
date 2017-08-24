@@ -12,6 +12,7 @@ import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.Bean.LoginBean;
 import com.acuit.jointdistribution.Common.Presenter.SettingsPage_Presenter;
 import com.acuit.jointdistribution.Common.View.Activity.AboutUsActivity;
+import com.acuit.jointdistribution.Common.View.Activity.BindPhoneActivity;
 import com.acuit.jointdistribution.Common.View.Activity.ModifyPwdActivity;
 import com.acuit.jointdistribution.Common.View.Activity.SuggestionFeedbackActivity;
 import com.acuit.jointdistribution.R;
@@ -85,7 +86,7 @@ public class SettingPager extends BasePager implements View.OnClickListener {
                 intent = new Intent(mActivity, ModifyPwdActivity.class);
                 break;
             case R.id.tv_bindPhone:
-
+                intent = new Intent(mActivity, BindPhoneActivity.class);
                 break;
             case R.id.tv_quitAccount:
                 ACTION_FLAG = FLAG_QUIT_ACCOUNT;
@@ -96,8 +97,10 @@ public class SettingPager extends BasePager implements View.OnClickListener {
                 break;
         }
 
-        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        mActivity.startActivity(intent);
+        if (null != intent) {
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            mActivity.startActivity(intent);
+        }
     }
 
 
