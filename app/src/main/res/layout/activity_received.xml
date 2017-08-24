@@ -51,12 +51,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/relativeLayout"
         >
-<ListView
-    android:id="@+id/lv"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-</ListView>
+        <ListView
+            android:id="@+id/lv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
 
 
     </LinearLayout>

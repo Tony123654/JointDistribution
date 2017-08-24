@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
@@ -12,9 +13,6 @@ import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
  * 首页
  */
 
-/**
- * 首页
- */
 public class HomePager extends BasePager {
 
     private View view;
@@ -46,7 +44,7 @@ public class HomePager extends BasePager {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mActivity, ReceivedActivity.class);
+                Intent intent = new Intent(BaseApplication.getContext(), ReceivedActivity.class);
 
                 mActivity.startActivity(intent);
 

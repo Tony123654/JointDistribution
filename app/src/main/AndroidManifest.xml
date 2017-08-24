@@ -43,6 +43,7 @@
         <activity android:name=".Supplier.Acitivity.DistributionActivity" />
         <activity android:name=".Supplier.Acitivity.CommandActivity" />
         <activity android:name=".Supplier.Acitivity.BusinessOrderActivity" />
+        <activity android:name=".Supplier.Acitivity.ReceivedActivity" />
 
         <!-- 保管员 -->
 

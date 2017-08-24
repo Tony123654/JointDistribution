@@ -7,14 +7,14 @@ import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Supplier.Domain.OrderList_Purchase;
+import com.acuit.jointdistribution.Supplier.Domain.OrderList;
 
 import java.util.List;
 
 /**
  * 类名: MyAdapter <p>
  * 创建人: Mwb <p>
- * 创建时间: 2017/8/21 0021 16:33 <p>
+ * 创建时间: 2017/8/21 0021 16>:33 <p
  * 描述:
  * <p>
  * 更新人: <p>
@@ -23,9 +23,9 @@ import java.util.List;
  */
 
 public class MyAdapter extends BaseAdapter {
-    private List<OrderList_Purchase> dataList;
+    private List<OrderList> dataList;
 
-    public MyAdapter(List<OrderList_Purchase> dataList) {
+    public MyAdapter(List<OrderList> dataList) {
         this.dataList = dataList;
     }
 
@@ -58,13 +58,23 @@ public class MyAdapter extends BaseAdapter {
         }else{
             holder= (ViewHolder) convertView.getTag();
         }
+//        OrderList_Purchase item = (OrderList_Purchase) getItem(position);
 
-        Object item = getItem(position);
+        OrderList item = (OrderList) getItem(position);
+        holder.CreateDate.setText(item.getData().getRows().size());
+        holder.TotalMoney.setText(item.getData().getTotal_money());
+        holder.TotalAmount.setText(item.getData().getTotal_amount());
+//        holder.PlanDate.setText(item.getData().getRows().indexOf(plan_date));
 
-//        holder.CreateDate.setText(item.create_date);
-//        holder.TotalAmount.setText(item.TotalAmount.);
-//        holder.TotalMoney.setText(item.TotalMoney.);
-//        holder.PlanDate.setText(item.PlanDate.);
+
+//        item.getData().getUser_info().getMobile_interface().get_$1856().
+
+//           holder.CreateDate.setText(item.getData().getUser_info().getDep_info().getCreate_date());
+//           holder.TotalAmount.setText(item.getData().getUser_info().getDep_info().getTotal);
+//        holder.CreateDate.setText(item.getData());
+//        holder.TotalAmount.setText(item.getData().getPriv().getBuy().getBuy_order_list().);
+//        holder.TotalMoney.setText();
+//        holder.PlanDate.setText();
 
 
         return convertView;

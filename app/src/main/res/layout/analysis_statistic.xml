@@ -1,82 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     >
-    <RelativeLayout
+
+    <GridView
+        android:id="@+id/gview"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#4FC39A"
-        android:id="@+id/rl">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:textSize="24sp"
-            android:text="统计报表"/>
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:numColumns="2"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="60dp"
+    android:horizontalSpacing="30dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="85dp"
-            android:layout_marginTop="81dp"
-            android:text="今日订单金额" />
-
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView24"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="100dp"
-            android:text="今日订单数量" />
-
-        <TextView
-            android:id="@+id/textView26"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/textView24"
-            android:layout_below="@+id/textView24"
-            android:layout_marginTop="100dp"
-            android:text="本周订单数量" />
-
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView26"
-            android:layout_alignEnd="@+id/textView25"
-            android:text="本周订单金额" />
-
-        <TextView
-            android:id="@+id/textView28"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/textView26"
-            android:layout_below="@+id/textView26"
-            android:layout_marginTop="126dp"
-            android:text="本月订单数量" />
-
-        <TextView
-            android:id="@+id/textView29"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView28"
-            android:layout_alignStart="@+id/textView27"
-            android:text="本月订单金额" />
-
-
-    </RelativeLayout>
-
-
-</RelativeLayout>
+    </GridView>
+</LinearLayout>

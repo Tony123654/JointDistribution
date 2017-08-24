@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Adapter.MyAdapter;
-import com.acuit.jointdistribution.Supplier.Domain.OrderList_Purchase;
+import com.acuit.jointdistribution.Supplier.Domain.OrderList;
 import com.acuit.jointdistribution.Supplier.Utils.ToastUtils;
 import com.google.gson.Gson;
 import com.lidroid.xutils.HttpUtils;
@@ -24,18 +24,19 @@ import com.lidroid.xutils.http.client.HttpRequest;
 
 import java.util.ArrayList;
 
-
 /**
  * 接单界面
  */
 public class ReceivedActivity extends AppCompatActivity {
 
-    private ArrayList<OrderList_Purchase> orderList;
+    private ArrayList<OrderList> mList;
 
     private ImageButton ib_back_menu;
     private ImageButton ib_choose;
     private ListView lv_list;
-    private OrderList_Purchase orderListPurchaseMenu;
+    private OrderList orderList;
+    private MyAdapter mAdapter;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +48,13 @@ public class ReceivedActivity extends AppCompatActivity {
 
         lv_list = (ListView) findViewById(R.id.lv);
 
-        orderList = new ArrayList<OrderList_Purchase>();
+        mList = new ArrayList<OrderList>();
         lv_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String userId = orderList.get(i).getData().getUser_info().getUserid();
+
                 Intent intent = new Intent(ReceivedActivity.this, MenuActivity.class);
-                intent.putExtra("userId", userId);
+
                 startActivity(intent);
 
             }
@@ -69,23 +70,20 @@ public class ReceivedActivity extends AppCompatActivity {
     private void getDataFromServer() {
         HttpUtils http = new HttpUtils();
         RequestParams params = new RequestParams();
-        params.addBodyParameter("token","");
         params.addBodyParameter("start_date","");
         params.addBodyParameter("end_date","");
-        params.addBodyParameter("status","");
-        params.addBodyParameter("rows","");
-        params.addBodyParameter("page","");
+        params.addBodyParameter("rows","10");
+        params.addBodyParameter("page","1");
         http.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=buy_order_list",
 
                 new RequestCallBack<String>() {
 
 
-                    private MyAdapter myAdapter;
-                    private TextView tv;
+
 
                     @Override
                     public void onFailure(HttpException error, String msg) {
-                        ToastUtils.showToast(getApplicationContext(), "呵呵");
+                        ToastUtils.showToast(getApplicationContext(), msg);
                     }
 
                     @Override
@@ -96,8 +94,14 @@ public class ReceivedActivity extends AppCompatActivity {
 
                     private void ProcessData(String result) {
                         Gson gson = new Gson();
-                        orderListPurchaseMenu = gson.fromJson(result, OrderList_Purchase.class);
-                        String menuList = orderListPurchaseMenu.getData().getUser_info().getMobile_interface().get_$1856();
+                        OrderList orderList = gson.fromJson(result, OrderList.class);
+                        String create_date = orderList.getData().getRows().get(0).getCreate_date();
+                        String plan_date = orderList.getData().getRows().get(0).getPlan_date();
+
+
+
+//                        List<OrderList.DataBean.RowsBean> rows = orderList.getData().getRows();
+
                         if (lv_list == null) {
                             tv = new TextView(getApplicationContext());
                             tv.setText("暂时无订单");
@@ -106,8 +110,8 @@ public class ReceivedActivity extends AppCompatActivity {
                             lv_list.setEmptyView(tv);
 
                         } else {
-                            myAdapter = new MyAdapter(orderList);
-                            lv_list.setAdapter(myAdapter);
+                            mAdapter = new MyAdapter(mList);
+                            lv_list.setAdapter(mAdapter);
 
                         }
                     }
