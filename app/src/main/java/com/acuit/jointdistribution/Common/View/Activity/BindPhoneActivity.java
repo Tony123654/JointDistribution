@@ -51,6 +51,12 @@ public class BindPhoneActivity extends BaseActivity implements View.OnClickListe
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        // TODO: 2017/8/25  返回键或图标，返回之前fragment页面，当前为直接退出activity
+    }
+
     private void initView() {
 
         ivBack = (ImageView) findViewById(R.id.iv_back);

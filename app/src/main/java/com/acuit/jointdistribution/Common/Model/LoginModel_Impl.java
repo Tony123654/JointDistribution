@@ -35,6 +35,7 @@ import java.util.Map;
 public class LoginModel_Impl implements LoginModel_Interface {
 
 
+    public static final String REGEX = "1(3[0-9]|47|5((?!4)[0-9])|7(0|1|[6-8])|8[0-9])\\d{8,8}";
     private String pwd;
     private String phone;
     private String account;

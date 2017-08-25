@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
+import com.acuit.jointdistribution.Common.Bean.SendVerifyCodeBean;
+import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.BindPhoneActivity;
 import com.acuit.jointdistribution.R;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
+
+import java.util.Map;
 
 /**
  * 类名: PhoneExistFragment <p>
@@ -64,7 +77,7 @@ public class PhoneInexistenetFragment extends Fragment implements View.OnClickLi
         mActivity.setTvTitle("手机绑定");
         etPhone.requestFocus();
 
-        InputMethodManager imm = (InputMethodManager)mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
 
         btnBind.setOnClickListener(this);
@@ -73,14 +86,63 @@ public class PhoneInexistenetFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        if (etPhone.getText().toString().matches(mActivity.getREGEX())) {
-            FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneVerifyFragment(mActivity));
-            fragmentTransaction.commit();
+        String phone = etPhone.getText().toString();
+
+        if (phone.isEmpty()) {
+            Toast.makeText(mActivity, "请输入手机号", Toast.LENGTH_SHORT).show();
+        } else if (phone.matches(mActivity.getREGEX())) {
+
+            sendVerifyCode(phone);
+
         } else {
             Toast.makeText(mActivity, "手机号格式错误，请重新输入", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+
+    /**
+     * 向指定手机号发送验证码
+     *
+     * @param phone
+     */
+    private void sendVerifyCode(final String phone) {
+        RequestQueue requestQueue = BaseApplication.getRequestQueue();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_SEND_VERIFY_TO_USER, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+                SendVerifyCodeBean sendVerifyCodeBean = gson.fromJson(response, SendVerifyCodeBean.class);
+
+                FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneVerifyFragment(mActivity, sendVerifyCodeBean));
+                fragmentTransaction.commit();
+
+                if (sendVerifyCodeBean.getCode().equals("请求成功")) {
+                    Toast.makeText(mActivity, "发送成功", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(mActivity, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new ArrayMap<String, String>();
+
+                params.put("token", BaseApplication.getLoginBean().getData().getToken());
+                params.put("phone", phone);
+
+                return params;
+            }
+        };
+
+        requestQueue.add(stringRequest);
     }
 }

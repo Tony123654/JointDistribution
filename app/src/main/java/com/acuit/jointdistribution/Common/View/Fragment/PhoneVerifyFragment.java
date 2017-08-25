@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +15,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
+import com.acuit.jointdistribution.Common.Bean.CheckPwdBean;
+import com.acuit.jointdistribution.Common.Bean.SendVerifyCodeBean;
+import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.BindPhoneActivity;
 import com.acuit.jointdistribution.R;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
+
+import java.util.Map;
 
 /**
  * 类名: PhoneExistFragment <p>
@@ -32,9 +48,11 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
     private Button btnSubmit;
     private EditText etVerifyCode;
     private Button btnGetVerity;
+    private SendVerifyCodeBean mVerifyCodeBean;
 
-    public PhoneVerifyFragment(BindPhoneActivity mActivity) {
+    public PhoneVerifyFragment(BindPhoneActivity mActivity, SendVerifyCodeBean sendVerifyCodeBean) {
         this.mActivity = mActivity;
+        this.mVerifyCodeBean = sendVerifyCodeBean;
     }
 
     @Override
@@ -69,6 +87,9 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
 
         btnSubmit.setOnClickListener(this);
         btnGetVerity.setOnClickListener(this);
+
+
+
     }
 
 
@@ -82,10 +103,62 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
             case R.id.btn_submitVerifyCode:
                 if (verifyCode.isEmpty()) {
                     Toast.makeText(mActivity, "请输入验证码", Toast.LENGTH_SHORT).show();
+                } else if ((System.currentTimeMillis() / 1000) > mVerifyCodeBean.getTime() + 60) {
+                    Toast.makeText(mActivity, "验证码已过期，请重新获取", Toast.LENGTH_SHORT).show();
+                } else if (!verifyCode.equals(mVerifyCodeBean.getVerify_code()+"")) {
+                    System.out.println("aaa inputVerifyCode:"+verifyCode+"  realVerifyCode:"+mVerifyCodeBean.getVerify_code());
+                    Toast.makeText(mActivity, "验证码错误", Toast.LENGTH_SHORT).show();
+                    etVerifyCode.setText("");
+                } else {
+                    changePhone();
                 }
 
                 break;
         }
+    }
+
+    /**
+     * 修改绑定的手机号
+     */
+    private void changePhone() {
+        RequestQueue requestQueue = BaseApplication.getRequestQueue();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_BIND_PHONE, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+                CheckPwdBean checkPwdBean = gson.fromJson(response, CheckPwdBean.class);
+
+                Toast.makeText(mActivity, checkPwdBean.getMsg(), Toast.LENGTH_SHORT).show();
+                if (200 == checkPwdBean.getCode()) {
+                    FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneExistFragment(mActivity));
+                    fragmentTransaction.commit();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(mActivity, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new ArrayMap<String, String>();
+
+                params.put("token", BaseApplication.getLoginBean().getData().getToken());
+                params.put("phone", mVerifyCodeBean.getPhone_number() + "");
+
+                return params;
+            }
+        };
+
+        requestQueue.add(stringRequest);
 
     }
+
+
 }
