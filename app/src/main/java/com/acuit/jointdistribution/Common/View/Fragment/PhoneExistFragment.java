@@ -1,5 +1,6 @@
 package com.acuit.jointdistribution.Common.View.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v4.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,7 +77,10 @@ public class PhoneExistFragment extends Fragment implements View.OnClickListener
 
         mActivity.setTvTitle("手机绑定");
 
-        gitPhone();
+        InputMethodManager imm = (InputMethodManager) mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_IMPLICIT_ONLY);
+
+        getPhone();
 
         tvPhone.setText(mActivity.getMobilePhone());
 
@@ -95,7 +100,7 @@ public class PhoneExistFragment extends Fragment implements View.OnClickListener
     /**
      * 获取手机号
      */
-    private void gitPhone() {
+    private void getPhone() {
         RequestQueue requestQueue = BaseApplication.getRequestQueue();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_GET_PHONE, new Response.Listener<String>() {

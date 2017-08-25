@@ -64,13 +64,9 @@ public class LoginPresenter {
         }
     }
 
-    public void startStoremanHome() {
-        mView.startStoremanHome();
+    public void startHomepage() {
+        mView.startHomePage();
         mView.finish();
     }
 
-    public void startSupplierHome() {
-        mView.startSupplierHome();
-        mView.finish();
-    }
 }

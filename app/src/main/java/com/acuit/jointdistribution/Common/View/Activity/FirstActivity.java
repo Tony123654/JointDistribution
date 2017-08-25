@@ -48,13 +48,8 @@ public class FirstActivity extends Activity implements LoginView_Interface {
     }
 
     @Override
-    public void startStoremanHome() {
+    public void startHomePage() {
         startActivity(new Intent(this,HomeActivity.class));
-    }
-
-    @Override
-    public void startSupplierHome() {
-        startActivity(new Intent(this, com.acuit.jointdistribution.Common.View.Activity.HomeActivity.class));
     }
 
     @Override

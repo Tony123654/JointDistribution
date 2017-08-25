@@ -98,13 +98,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
     }
 
     @Override
-    public void startStoremanHome() {
+    public void startHomePage() {
         startActivity(new Intent(this, HomeActivity.class));
-    }
-
-    @Override
-    public void startSupplierHome() {
-        startActivity(new Intent(this, com.acuit.jointdistribution.Common.View.Activity.HomeActivity.class));
     }
 
     @Override

@@ -21,6 +21,14 @@ public class CodeAndMsg {
     private int code;
     private String msg;
 
+    @Override
+    public String toString() {
+        return "CodeAndMsg{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                '}';
+    }
+
     public int getCode() {
         return code;
     }

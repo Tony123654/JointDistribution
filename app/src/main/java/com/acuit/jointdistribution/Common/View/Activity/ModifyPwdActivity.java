@@ -222,7 +222,7 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
                 Map<String, String> params = new ArrayMap<String, String>();
 
                 params.put("token", BaseApplication.getLoginBean().getData().getToken());
-                params.put("new_pwd", md5Pwd);
+                params.put("new_pwd", EncodeUtils.md5(etEnsurePwd.getText().toString()));
 
                 return params;
             }

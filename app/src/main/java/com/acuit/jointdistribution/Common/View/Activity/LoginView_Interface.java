@@ -16,9 +16,7 @@ public interface LoginView_Interface {
 
     void startLoginActivity();
 
-    void startStoremanHome();
-
-    void startSupplierHome();
+    void startHomePage();
 
     void finish();
 

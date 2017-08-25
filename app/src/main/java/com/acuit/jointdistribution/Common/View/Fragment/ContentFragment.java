@@ -68,9 +68,23 @@ public class ContentFragment extends BaseFragment {
         //初始化4个标签页面对象
         mList = new ArrayList<BasePager>();
 
-        BaseApplication.getLoginBean().getData().getUser_info().getRoleid();
+        String[] roleIDs = BaseApplication.getLoginBean().getData().getUser_info().getRoleid().split(",");
+            System.out.println("aaa loginBean:" + BaseApplication.getLoginBean().toString());
 
-        mList.add(new HomePager(mActivity));
+        // TODO: 2017/8/22 角色集合的处理
+        for (String roleID : roleIDs) {
+            System.out.println("aaa roleID:" + roleID);
+//            供应商
+            if ((137 + "").equals(roleID)) {
+                mList.add(new HomePager(mActivity));
+            }
+//            保管员
+            if ((157 + "").equals(roleID)) {
+                mList.add(new HomePager(mActivity));
+            }
+
+        }
+
 
         mList.add(new BussinessOrderPager(mActivity));
         mList.add(new StatisticalAnalysisPager(mActivity));
@@ -158,6 +172,7 @@ public class ContentFragment extends BaseFragment {
 
     /**
      * 获取业务表单page对象
+     *
      * @return
      */
     public BussinessOrderPager getBussinessOrderPager() {

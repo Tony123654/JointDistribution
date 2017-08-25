@@ -35,7 +35,6 @@ import java.util.Map;
 public class LoginModel_Impl implements LoginModel_Interface {
 
 
-    public static final String REGEX = "1(3[0-9]|47|5((?!4)[0-9])|7(0|1|[6-8])|8[0-9])\\d{8,8}";
     private String pwd;
     private String phone;
     private String account;
@@ -45,7 +44,7 @@ public class LoginModel_Impl implements LoginModel_Interface {
 
     public static final int TAG_LOGIN = 0;
     public static final int TAG_SUPPLIER = 1;
-    public static final int TAG_STOREMAN = 2;
+    public static final int TAG_HOME = 2;
 
     private Handler handler = new Handler() {
         @Override
@@ -54,11 +53,8 @@ public class LoginModel_Impl implements LoginModel_Interface {
                 case TAG_LOGIN:
                     presenter.startLoginActivity(account);
                     break;
-                case TAG_STOREMAN:
-                    presenter.startStoremanHome();
-                    break;
-                case TAG_SUPPLIER:
-                    presenter.startSupplierHome();
+                case TAG_HOME:
+                    presenter.startHomepage();
                     break;
             }
 
@@ -160,39 +156,7 @@ public class LoginModel_Impl implements LoginModel_Interface {
 //                    登录成功
                 if (200 == loginBean.getCode()) {
 
-                    String roleid = loginBean.getData().getUser_info().getRoleid();
-//                    角色id字符串分割
-                    String[] roleIDs = roleid.split(",");
-
-
-                    // TODO: 2017/8/22 角色集合的处理
-                    for (String roleID : roleIDs) {
-//                        System.out.println("aaa roleID:" + roleID);
-                        if ((137 + "").equals(roleID)) {
-                            msg.what = TAG_SUPPLIER;
-                        }
-                        if ((157 + "").equals(roleID)) {
-                            msg.what = TAG_STOREMAN;
-                        }
-
-                    }
-
-//                    switch (roleid) {
-////                            供应商
-//                        case 137 + "":
-//                            msg.what = TAG_SUPPLIER;
-//                            break;
-////                            保管员
-//                        case 157 + "":
-//                            msg.what = TAG_STOREMAN;
-//                            break;
-////                            厨师长
-////                            case 154 + "":
-////                                intent = new Intent(context, HomeActivity.class);
-////                                break;
-//                        default:
-//                            break;
-//                    }
+                    msg.what = TAG_HOME;
 
                     handler.sendMessageDelayed(msg, 1000);
                     saveUserInfo();

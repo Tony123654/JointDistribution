@@ -27,6 +27,15 @@ public class LoginBean {
     private DataBean data;
     private String msg;
 
+    @Override
+    public String toString() {
+        return "LoginBean{" +
+                "code=" + code +
+                ", data=" + data +
+                ", msg='" + msg + '\'' +
+                '}';
+    }
+
     public int getCode() {
         return code;
     }
