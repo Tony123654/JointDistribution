@@ -143,6 +143,7 @@ public class PhoneInexistenetFragment extends Fragment implements View.OnClickLi
             }
         };
 
+        stringRequest.setTag("BindPhoneActivity");
         requestQueue.add(stringRequest);
     }
 }

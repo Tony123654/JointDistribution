@@ -96,6 +96,11 @@ public class BindPhoneActivity extends BaseActivity implements View.OnClickListe
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        BaseApplication.getRequestQueue().cancelAll("BindPhoneActivity");
+    }
 
     public String getMobilePhone() {
         return mobilePhone;

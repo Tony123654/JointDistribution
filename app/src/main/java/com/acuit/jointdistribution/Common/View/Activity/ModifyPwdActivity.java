@@ -2,6 +2,7 @@ package com.acuit.jointdistribution.Common.View.Activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.util.ArrayMap;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -11,7 +12,20 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
+import com.acuit.jointdistribution.Common.Bean.CodeAndMsg;
+import com.acuit.jointdistribution.Common.Global.GlobalContants;
+import com.acuit.jointdistribution.Common.Utils.EncodeUtils;
 import com.acuit.jointdistribution.R;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
+
+import java.util.Map;
 
 /**
  * 类名: ModifyPwdActivity <p>
@@ -32,9 +46,9 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
     private ImageView ivBack;
     private Button btnSubmitPwd;
 
-    public String msg = "";
-    public static boolean LEGAL = false;
     public static final String REGEX = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$";
+    private RequestQueue requestQueue;
+    private String md5Pwd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,16 +82,6 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
         ivBack.setOnClickListener(this);
         btnSubmitPwd.setOnClickListener(this);
 
-        etPwd.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    legalChick();
-                }
-            }
-        });
-
-
         etNewPwd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -96,7 +100,6 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
                     etEnsurePwd.setFocusable(false);
                     etEnsurePwd.setFocusableInTouchMode(false);
                     etEnsurePwd.setHint("新密码需为6~20位的数字字母混合");
-                    LEGAL = false;
                     btnSubmitPwd.setClickable(false);
                 }
             }
@@ -116,11 +119,9 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().equals(etNewPwd.getText().toString())) {
                     etEnsurePwd.setTextColor(0xff000000);
-                    LEGAL = true;
                     btnSubmitPwd.setClickable(true);
                 } else {
                     etEnsurePwd.setTextColor(0xffff0000);
-                    LEGAL = false;
                 }
             }
 
@@ -132,10 +133,6 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
 
     }
 
-    @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
-    }
 
     @Override
     public void onClick(View v) {
@@ -144,46 +141,100 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
                 onBackPressed();
                 break;
             case R.id.btn_submitPwd:
-                if (LEGAL) {
-                    submitPwd();
+                if (etPwd.getText().toString().isEmpty()) {
+                    Toast.makeText(ModifyPwdActivity.this, "原密码不能为空", Toast.LENGTH_SHORT).show();
+                } else if (etNewPwd.getText().toString().isEmpty()) {
+                    Toast.makeText(ModifyPwdActivity.this, "新密码不能为空", Toast.LENGTH_SHORT).show();
+                } else if (etEnsurePwd.getText().toString().isEmpty()) {
+                    Toast.makeText(ModifyPwdActivity.this, "请再次输入新密码", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "新密码错误", Toast.LENGTH_SHORT).show();
+                    md5Pwd = EncodeUtils.md5(etPwd.getText().toString());
+                    checkPwd();
                 }
                 break;
         }
     }
 
 
-    private void submitPwd() {
-        Toast.makeText(this, "修改密码成功！", Toast.LENGTH_SHORT).show();
+    private void checkPwd() {
+        requestQueue = BaseApplication.getRequestQueue();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_CHECK_PWD, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+                CodeAndMsg codeAndMsg = gson.fromJson(response, CodeAndMsg.class);
+
+                if (200 == codeAndMsg.getCode()) {
+                    updatePwd();
+                } else {
+                    Toast.makeText(ModifyPwdActivity.this, codeAndMsg.getMsg(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ModifyPwdActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new ArrayMap<String, String>();
+
+                params.put("token", BaseApplication.getLoginBean().getData().getToken());
+                params.put("old_pwd", md5Pwd);
+
+                return params;
+            }
+        };
+
+        stringRequest.setTag("ModifyPwdActivity");
+        requestQueue.add(stringRequest);
+
     }
 
+    private void updatePwd() {
 
-    private void legalChick() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_UPDATE_PWD, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                System.out.println("aaa updatePwdJson:" + response);
+                Gson gson = new Gson();
+                CodeAndMsg codeAndMsg = gson.fromJson(response, CodeAndMsg.class);
 
-        LEGAL = false;
-        btnSubmitPwd.setClickable(false);
-        if (etPwd.getText().toString().isEmpty()) {
-            Toast.makeText(this, "请输入原密码", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (etNewPwd.getText().toString().isEmpty()) {
-            Toast.makeText(this, "请输入新密码", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (etEnsurePwd.getText().toString().isEmpty()) {
-            Toast.makeText(this, "请在此输入新密码", Toast.LENGTH_SHORT).show();
-            return;
-        }
+                Toast.makeText(ModifyPwdActivity.this, codeAndMsg.getMsg(), Toast.LENGTH_SHORT).show();
+                if (200 == codeAndMsg.getCode()) {
+                    finish();
+                }
 
-        if (!etEnsurePwd.getText().toString().equals(etNewPwd.getText().toString())) {
-            Toast.makeText(this, "两次新密码需要一致", Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            btnSubmitPwd.setClickable(true);
-        }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ModifyPwdActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
 
+                Map<String, String> params = new ArrayMap<String, String>();
+
+                params.put("token", BaseApplication.getLoginBean().getData().getToken());
+                params.put("new_pwd", md5Pwd);
+
+                return params;
+            }
+        };
+
+        stringRequest.setTag("ModifyPwdActivity");
+        requestQueue.add(stringRequest);
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        requestQueue.cancelAll("ModifyPwdActivity");
+    }
 }

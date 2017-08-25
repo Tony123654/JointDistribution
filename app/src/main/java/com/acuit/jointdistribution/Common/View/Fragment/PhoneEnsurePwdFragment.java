@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.util.ArrayMap;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +16,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
-import com.acuit.jointdistribution.Common.Bean.CheckPwdBean;
+import com.acuit.jointdistribution.Common.Bean.CodeAndMsg;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
+import com.acuit.jointdistribution.Common.Utils.EncodeUtils;
 import com.acuit.jointdistribution.Common.View.Activity.BindPhoneActivity;
 import com.acuit.jointdistribution.R;
 import com.android.volley.AuthFailureError;
@@ -29,8 +29,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 /**
@@ -93,7 +91,7 @@ public class PhoneEnsurePwdFragment extends Fragment implements View.OnClickList
             Toast.makeText(mActivity, "请输入密码", Toast.LENGTH_SHORT).show();
         } else {
 
-            String md5Pwd = md5(pwd);
+            String md5Pwd = EncodeUtils.md5(pwd);
 
             checkPwd(md5Pwd);
 
@@ -108,8 +106,8 @@ public class PhoneEnsurePwdFragment extends Fragment implements View.OnClickList
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                CheckPwdBean checkPwdBean = gson.fromJson(response, CheckPwdBean.class);
-                if (200 == checkPwdBean.getCode()) {
+                CodeAndMsg codeAndMsg = gson.fromJson(response, CodeAndMsg.class);
+                if (200 == codeAndMsg.getCode()) {
 //          --------------------密码正确，跳转----------------
                     FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -117,7 +115,7 @@ public class PhoneEnsurePwdFragment extends Fragment implements View.OnClickList
                     fragmentTransaction.commit();
 
                 }
-                Toast.makeText(mActivity, checkPwdBean.getMsg(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity, codeAndMsg.getMsg(), Toast.LENGTH_SHORT).show();
 
             }
         }, new Response.ErrorListener() {
@@ -138,35 +136,9 @@ public class PhoneEnsurePwdFragment extends Fragment implements View.OnClickList
             }
         };
 
+        stringRequest.setTag("BindPhoneActivity");
         requestQueue.add(stringRequest);
     }
 
-    /**
-     * 字符串md5加密
-     *
-     * @param string
-     * @return
-     */
-    public static String md5(String string) {
-        if (TextUtils.isEmpty(string)) {
-            return "";
-        }
-        MessageDigest md5 = null;
-        try {
-            md5 = MessageDigest.getInstance("MD5");
-            byte[] bytes = md5.digest(string.getBytes());
-            String result = "";
-            for (byte b : bytes) {
-                String temp = Integer.toHexString(b & 0xff);
-                if (temp.length() == 1) {
-                    temp = "0" + temp;
-                }
-                result += temp;
-            }
-            return result;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
+
 }

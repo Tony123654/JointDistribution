@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
-import com.acuit.jointdistribution.Common.Bean.CheckPwdBean;
+import com.acuit.jointdistribution.Common.Bean.CodeAndMsg;
 import com.acuit.jointdistribution.Common.Bean.SendVerifyCodeBean;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.BindPhoneActivity;
@@ -127,10 +127,10 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                CheckPwdBean checkPwdBean = gson.fromJson(response, CheckPwdBean.class);
+                CodeAndMsg codeAndMsg = gson.fromJson(response, CodeAndMsg.class);
 
-                Toast.makeText(mActivity, checkPwdBean.getMsg(), Toast.LENGTH_SHORT).show();
-                if (200 == checkPwdBean.getCode()) {
+                Toast.makeText(mActivity, codeAndMsg.getMsg(), Toast.LENGTH_SHORT).show();
+                if (200 == codeAndMsg.getCode()) {
                     FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneExistFragment(mActivity));
@@ -156,6 +156,7 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
             }
         };
 
+        stringRequest.setTag("BindPhoneActivity");
         requestQueue.add(stringRequest);
 
     }

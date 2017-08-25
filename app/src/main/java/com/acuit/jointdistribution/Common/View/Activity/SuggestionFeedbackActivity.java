@@ -2,6 +2,7 @@ package com.acuit.jointdistribution.Common.View.Activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.util.ArrayMap;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -12,7 +13,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
+import com.acuit.jointdistribution.Common.Bean.CodeAndMsg;
+import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.R;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
+
+import java.util.Map;
 
 /**
  * 类名: SuggestionFeedbackActivity <p>
@@ -110,59 +123,51 @@ public class SuggestionFeedbackActivity extends BaseActivity implements View.OnC
      * 提交意见（内容不多，未采用mvp）
      */
     private void submit() {
-        Toast.makeText(this, "上传成功！", Toast.LENGTH_SHORT).show();
-        // TODO: 2017/8/23 提交反馈意见
 
-//
-////        提交反馈意见
-//        String login_url = GlobalContants.URL_LOGIN_BY_USERNAME;
-//
-//        RequestQueue requestQueue = BaseApplication.getRequestQueue();
-//
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//
-//                Gson gson = new Gson();
-//                LoginBean loginBean = gson.fromJson(response, LoginBean.class);
-//                BaseApplication.setLoginBean(loginBean);
-//
-//                Message msg = Message.obtain();
-////                    登录成功
-//                if (200 == loginBean.getCode()) {
-//
-////                    msg.obj =
-//                    handler.sendMessageDelayed(msg);
-//
-//                } else {
-////                        登录失败
-//                    presenter.showToast(loginBean.getMsg());
-//
-//                    startLoginActivity(1000);
-//                }
-//
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//                presenter.showToast(error.getMessage());
-//                startLoginActivity(1000);
-//            }
-//        }) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                ArrayMap<String, String> params = new ArrayMap<>();
-//
-//                params.put("username", account);
-//                params.put("password", pwd);
-//
-//                return params;
-//            }
-//        };
-//
-//        stringRequest.setTag("login");
-//        requestQueue.add(stringRequest);
+//        提交反馈意见
+        RequestQueue requestQueue = BaseApplication.getRequestQueue();
 
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_SUBMIT_SUGGESTION, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Gson gson = new Gson();
+                CodeAndMsg codeAndMsg = gson.fromJson(response, CodeAndMsg.class);
+
+//                    登录成功
+                if (200 == codeAndMsg.getCode()) {
+                    Toast.makeText(SuggestionFeedbackActivity.this, codeAndMsg.getMsg(), Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                ArrayMap<String, String> params = new ArrayMap<>();
+//                token	string	网页调用可不传
+//                brief	String	意见内容
+//                name	String	意见标题
+
+                params.put("passwtokenord", BaseApplication.getLoginBean().getData().getToken());
+                params.put("brief", etSuggestion.getText().toString());
+                params.put("name", "");
+
+                return params;
+            }
+        };
+
+        stringRequest.setTag("SuggestionFeedbackActivity");
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        BaseApplication.getRequestQueue().cancelAll("SuggestionFeedbackActivity");
     }
 }

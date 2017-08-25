@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Base.BaseFragment;
 import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.View.Page.SettingPager;
@@ -66,7 +67,11 @@ public class ContentFragment extends BaseFragment {
         rgGroup.check(R.id.rb_home);
         //初始化4个标签页面对象
         mList = new ArrayList<BasePager>();
+
+        BaseApplication.getLoginBean().getData().getUser_info().getRoleid();
+
         mList.add(new HomePager(mActivity));
+
         mList.add(new BussinessOrderPager(mActivity));
         mList.add(new StatisticalAnalysisPager(mActivity));
         mList.add(new SettingPager(mActivity));

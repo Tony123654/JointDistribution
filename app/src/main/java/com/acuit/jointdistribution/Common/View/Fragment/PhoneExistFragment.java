@@ -101,7 +101,6 @@ public class PhoneExistFragment extends Fragment implements View.OnClickListener
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_GET_PHONE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("aaa json:" + response);
                 Gson gson = new Gson();
                 PhoneGetBean phoneGetBean = gson.fromJson(response, PhoneGetBean.class);
 
@@ -127,8 +126,8 @@ public class PhoneExistFragment extends Fragment implements View.OnClickListener
             }
         };
 
+        stringRequest.setTag("BindPhoneActivity");
         requestQueue.add(stringRequest);
-
     }
 
 
