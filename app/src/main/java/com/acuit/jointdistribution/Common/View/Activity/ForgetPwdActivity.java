@@ -5,36 +5,32 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
-import com.acuit.jointdistribution.Common.View.Fragment.PhoneExistFragment;
 import com.acuit.jointdistribution.Common.View.Fragment.PhoneInexistenetFragment;
 import com.acuit.jointdistribution.R;
 
 /**
- * 类名: BindPhoneActivity <p>
+ * 类名: ForgetPwdActivity <p>
  * 创建人: YanJ <p>
- * 创建时间: 2017/8/24 14:12 <p>
- * 描述: 设置模块——绑定手机号码界面
+ * 创建时间: 2017/8/26 10:00 <p>
+ * 描述: 忘记密码——找回密码功能页
  * <p>
  * 更新人: <p>
  * 更新时间: <p>
  * 更新描述: <p>
  */
 
-public class BindPhoneActivity extends BaseActivity implements View.OnClickListener {
+public class ForgetPwdActivity extends BaseActivity implements View.OnClickListener {
 
-    private String mobilePhone;
     private ImageView ivBack;
     private TextView tvTitle;
-    private FrameLayout flContent;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
-
+    private String mobilePhone;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,8 +43,8 @@ public class BindPhoneActivity extends BaseActivity implements View.OnClickListe
         initData();
 
         initEvent();
-
     }
+
 
     @Override
     public void onBackPressed() {
@@ -60,17 +56,11 @@ public class BindPhoneActivity extends BaseActivity implements View.OnClickListe
 
         ivBack = (ImageView) findViewById(R.id.iv_back);
         tvTitle = (TextView) findViewById(R.id.tv_title);
-//        flContent = (FrameLayout) findViewById(R.id.fl_contentBindPhone);
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
 
-        mobilePhone = BaseApplication.getLoginBean().getData().getUser_info().getMobile_phone();
-        if (mobilePhone.isEmpty()) {
-            fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneInexistenetFragment(this));
-        } else {
-            fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneExistFragment(this));
-        }
+        fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneInexistenetFragment(this));
         fragmentTransaction.commit();
 
     }
@@ -98,8 +88,9 @@ public class BindPhoneActivity extends BaseActivity implements View.OnClickListe
     @Override
     public void onDestroy() {
         super.onDestroy();
-        BaseApplication.getRequestQueue().cancelAll("BindPhoneActivity");
+        BaseApplication.getRequestQueue().cancelAll("ForgetPwdActivity");
     }
+
 
     public String getMobilePhone() {
         return mobilePhone;
@@ -116,5 +107,4 @@ public class BindPhoneActivity extends BaseActivity implements View.OnClickListe
     public void setTvTitle(String title) {
         this.tvTitle.setText(title);
     }
-
 }

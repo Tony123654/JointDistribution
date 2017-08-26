@@ -34,7 +34,7 @@
 
 
         <activity android:name=".Common.View.Activity.BindPhoneActivity" />
-
+        <activity android:name=".Common.View.Activity.ForgetPwdActivity" />
         <activity android:name=".Common.View.Activity.LoginActivity" />
         <activity android:name=".Common.View.Activity.AboutUsActivity" />
 

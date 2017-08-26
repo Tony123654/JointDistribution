@@ -15,11 +15,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Bean.CodeAndMsg;
 import com.acuit.jointdistribution.Common.Bean.SendVerifyCodeBean;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.BindPhoneActivity;
+import com.acuit.jointdistribution.Common.View.Activity.ForgetPwdActivity;
 import com.acuit.jointdistribution.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -37,21 +39,30 @@ import java.util.Map;
  * 创建时间: 2017/8/24 15:11 <p>
  * 描述:  绑定手机模块——验证码界面
  * <p>
- * 更新人: <p>
- * 更新时间: <p>
- * 更新描述: <p>
+ * 更新人: YanJ<p>
+ * 更新时间: 2017-08-26 10:29<p>
+ * 更新描述: 找回密码功能复用本页面<p>
  */
 
 public class PhoneVerifyFragment extends Fragment implements View.OnClickListener {
 
-    private BindPhoneActivity mActivity;
+    private boolean isBindPhone = true;
+    private BindPhoneActivity mPhoneActivity;
+    private ForgetPwdActivity mForgetActivity;
+    private BaseActivity mActivity;
     private Button btnSubmit;
     private EditText etVerifyCode;
     private Button btnGetVerity;
     private SendVerifyCodeBean mVerifyCodeBean;
 
-    public PhoneVerifyFragment(BindPhoneActivity mActivity, SendVerifyCodeBean sendVerifyCodeBean) {
+    public PhoneVerifyFragment(BaseActivity mActivity, SendVerifyCodeBean sendVerifyCodeBean) {
         this.mActivity = mActivity;
+        if (mActivity instanceof BindPhoneActivity) {
+            this.mPhoneActivity = (BindPhoneActivity) mActivity;
+        } else {
+            this.mForgetActivity = (ForgetPwdActivity) mActivity;
+            isBindPhone = false;
+        }
         this.mVerifyCodeBean = sendVerifyCodeBean;
     }
 
@@ -79,7 +90,8 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mActivity.setTvTitle("输入验证码");
+//        mPhoneActivity.setTvTitle("输入验证码");
+
         etVerifyCode.requestFocus();
 
         InputMethodManager imm = (InputMethodManager) mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -87,7 +99,6 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
 
         btnSubmit.setOnClickListener(this);
         btnGetVerity.setOnClickListener(this);
-
 
 
     }
@@ -105,12 +116,22 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
                     Toast.makeText(mActivity, "请输入验证码", Toast.LENGTH_SHORT).show();
                 } else if ((System.currentTimeMillis() / 1000) > mVerifyCodeBean.getTime() + 60) {
                     Toast.makeText(mActivity, "验证码已过期，请重新获取", Toast.LENGTH_SHORT).show();
-                } else if (!verifyCode.equals(mVerifyCodeBean.getVerify_code()+"")) {
-                    System.out.println("aaa inputVerifyCode:"+verifyCode+"  realVerifyCode:"+mVerifyCodeBean.getVerify_code());
+                } else if (!verifyCode.equals(mVerifyCodeBean.getVerify_code() + "")) {
                     Toast.makeText(mActivity, "验证码错误", Toast.LENGTH_SHORT).show();
                     etVerifyCode.setText("");
                 } else {
-                    changePhone();
+
+                    if (isBindPhone) {
+                        changePhone();
+                    } else {
+                        FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                        fragmentTransaction.replace(R.id.fl_contentBindPhone, new PwdUpdateFragment(mActivity,mVerifyCodeBean));
+
+                        fragmentTransaction.commit();
+                    }
+
                 }
 
                 break;
@@ -133,7 +154,7 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
                 if (200 == codeAndMsg.getCode()) {
                     FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneExistFragment(mActivity));
+                    fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneExistFragment(mPhoneActivity));
                     fragmentTransaction.commit();
                 }
 

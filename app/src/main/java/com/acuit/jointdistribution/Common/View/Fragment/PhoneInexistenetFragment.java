@@ -13,16 +13,19 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Bean.SendVerifyCodeBean;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
+import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.Common.View.Activity.BindPhoneActivity;
+import com.acuit.jointdistribution.Common.View.Activity.ForgetPwdActivity;
 import com.acuit.jointdistribution.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -36,19 +39,31 @@ import java.util.Map;
  * 创建时间: 2017/8/24 15:11 <p>
  * 描述:  绑定手机模块——手机号输入界面
  * <p>
- * 更新人: <p>
- * 更新时间: <p>
- * 更新描述: <p>
+ * 更新人: YanJ<p>
+ * 更新时间: 2017-08-26 10:29<p>
+ * 更新描述: 找回密码功能复用本页面<p>
  */
 
 public class PhoneInexistenetFragment extends Fragment implements View.OnClickListener {
 
-    private BindPhoneActivity mActivity;
+
+    private BindPhoneActivity mPhoneActivity;
+    private ForgetPwdActivity mForgetActivity;
+    private boolean isBindPhone = true;
     private Button btnBind;
     private EditText etPhone;
+    private BaseActivity mActivity;
+    private TextView tvMsg;
 
-    public PhoneInexistenetFragment(BindPhoneActivity mActivity) {
+    public PhoneInexistenetFragment(BaseActivity mActivity) {
+
         this.mActivity = mActivity;
+        if (mActivity instanceof BindPhoneActivity) {
+            this.mPhoneActivity = (BindPhoneActivity) mActivity;
+        } else {
+            this.mForgetActivity = (ForgetPwdActivity) mActivity;
+            isBindPhone = false;
+        }
     }
 
     @Override
@@ -64,6 +79,7 @@ public class PhoneInexistenetFragment extends Fragment implements View.OnClickLi
 
         etPhone = (EditText) view.findViewById(R.id.et_phone);
         btnBind = (Button) view.findViewById(R.id.btn_submit);
+        tvMsg = (TextView) view.findViewById(R.id.tv_msg);
 
 
         return view;
@@ -74,7 +90,16 @@ public class PhoneInexistenetFragment extends Fragment implements View.OnClickLi
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mActivity.setTvTitle("手机绑定");
+        if (isBindPhone) {
+            mPhoneActivity.setTvTitle("手机绑定");
+            tvMsg.setText("请完成手机号的绑定，便于密码找回和更好地为您服务");
+            etPhone.setHint("请输入您常用的手机号码");
+        } else {
+            mForgetActivity.setTvTitle("密码找回");
+            tvMsg.setText("");
+            etPhone.setHint("请输入您绑定的手机号码");
+        }
+
         etPhone.requestFocus();
 
         InputMethodManager imm = (InputMethodManager) mActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -90,7 +115,7 @@ public class PhoneInexistenetFragment extends Fragment implements View.OnClickLi
 
         if (phone.isEmpty()) {
             Toast.makeText(mActivity, "请输入手机号", Toast.LENGTH_SHORT).show();
-        } else if (phone.matches(mActivity.getREGEX())) {
+        } else if (phone.matches(Tools.REGEX_PHONE)) {
 
             sendVerifyCode(phone);
 
@@ -107,7 +132,6 @@ public class PhoneInexistenetFragment extends Fragment implements View.OnClickLi
      * @param phone
      */
     private void sendVerifyCode(final String phone) {
-        RequestQueue requestQueue = BaseApplication.getRequestQueue();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_SEND_VERIFY_TO_USER, new Response.Listener<String>() {
             @Override
@@ -115,13 +139,14 @@ public class PhoneInexistenetFragment extends Fragment implements View.OnClickLi
                 Gson gson = new Gson();
                 SendVerifyCodeBean sendVerifyCodeBean = gson.fromJson(response, SendVerifyCodeBean.class);
 
-                FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneVerifyFragment(mActivity, sendVerifyCodeBean));
-                fragmentTransaction.commit();
-
-                if (sendVerifyCodeBean.getCode().equals("请求成功")) {
+                if (1 == sendVerifyCodeBean.getStatus()){
                     Toast.makeText(mActivity, "发送成功", Toast.LENGTH_SHORT).show();
+                    FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneVerifyFragment(mActivity, sendVerifyCodeBean));
+                    fragmentTransaction.commit();
+                }else{
+                    Toast.makeText(mActivity, sendVerifyCodeBean.getCode(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -136,14 +161,18 @@ public class PhoneInexistenetFragment extends Fragment implements View.OnClickLi
 
                 Map<String, String> params = new ArrayMap<String, String>();
 
-                params.put("token", BaseApplication.getLoginBean().getData().getToken());
+//                params.put("token", BaseApplication.getLoginBean().getData().getToken());
                 params.put("phone", phone);
 
                 return params;
             }
         };
 
-        stringRequest.setTag("BindPhoneActivity");
-        requestQueue.add(stringRequest);
+        if (isBindPhone) {
+            stringRequest.setTag("BindPhoneActivity");
+        } else {
+            stringRequest.setTag("ForgetPwdActivity");
+        }
+        BaseApplication.getRequestQueue().add(stringRequest);
     }
 }

@@ -92,8 +92,19 @@
                 android:inputType="textPassword" />
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tv_forgetPwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/ll_pwd"
+            android:layout_below="@id/ll_pwd"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:text="忘记密码?"
+            android:textSize="12sp" />
+
         <Button
-            android:id="@+id/btn"
+            android:id="@+id/btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@id/ll_pwd"
@@ -103,8 +114,7 @@
             android:background="#23b587"
             android:gravity="center"
             android:text="登     录"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
 
     </RelativeLayout>

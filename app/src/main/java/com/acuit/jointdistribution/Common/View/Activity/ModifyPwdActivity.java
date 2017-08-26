@@ -15,7 +15,7 @@ import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Bean.CodeAndMsg;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
-import com.acuit.jointdistribution.Common.Utils.EncodeUtils;
+import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -46,7 +46,6 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
     private ImageView ivBack;
     private Button btnSubmitPwd;
 
-    public static final String REGEX = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$";
     private RequestQueue requestQueue;
     private String md5Pwd;
 
@@ -89,7 +88,7 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().matches(REGEX)) {
+                if (s.toString().matches(Tools.REGEX_PWD)) {
                     etNewPwd.setTextColor(0xff000000);
                     etEnsurePwd.setFocusable(true);
                     etEnsurePwd.setFocusableInTouchMode(true);
@@ -148,7 +147,7 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
                 } else if (etEnsurePwd.getText().toString().isEmpty()) {
                     Toast.makeText(ModifyPwdActivity.this, "请再次输入新密码", Toast.LENGTH_SHORT).show();
                 } else {
-                    md5Pwd = EncodeUtils.md5(etPwd.getText().toString());
+                    md5Pwd = Tools.md5(etPwd.getText().toString());
                     checkPwd();
                 }
                 break;
@@ -157,7 +156,6 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
 
 
     private void checkPwd() {
-        requestQueue = BaseApplication.getRequestQueue();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_CHECK_PWD, new Response.Listener<String>() {
             @Override
@@ -191,7 +189,7 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
         };
 
         stringRequest.setTag("ModifyPwdActivity");
-        requestQueue.add(stringRequest);
+        BaseApplication.getRequestQueue().add(stringRequest);
 
     }
 
@@ -222,19 +220,19 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
                 Map<String, String> params = new ArrayMap<String, String>();
 
                 params.put("token", BaseApplication.getLoginBean().getData().getToken());
-                params.put("new_pwd", EncodeUtils.md5(etEnsurePwd.getText().toString()));
+                params.put("new_pwd", Tools.md5(etEnsurePwd.getText().toString()));
 
                 return params;
             }
         };
 
         stringRequest.setTag("ModifyPwdActivity");
-        requestQueue.add(stringRequest);
+        BaseApplication.getRequestQueue().add(stringRequest);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        requestQueue.cancelAll("ModifyPwdActivity");
+        BaseApplication.getRequestQueue().cancelAll("ModifyPwdActivity");
     }
 }

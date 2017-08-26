@@ -15,12 +15,12 @@ public class GlobalContants {
     //    http://xxx/admin.php?c=Minterface&a=login
     public static final String SERVER_IP = "192.168.2.241";
 
-    public static final String BASE_URL = "http:" + File.separator + File.separator + SERVER_IP + File.separator + "admin.php";
+    public static final String BASE_URL = "http:" + File.separator + File.separator + SERVER_IP + File.separator + "admin.php?";
 
-    public static final String SERVER_URL = BASE_URL + "?c=Minterface&a=";
-    public static final String MOBILE_BIND_URL = BASE_URL + "?c=mobilebind&a=";
-    public static final String AJAX_URL = BASE_URL + "?c=ajax&a=";
-    public static final String ADMIN_URL = BASE_URL + "?c=Admin_manage&a=";
+    public static final String SERVER_URL = BASE_URL + "c=Minterface&a=";
+    public static final String MOBILE_BIND_URL = BASE_URL + "c=mobilebind&a=";
+    public static final String AJAX_URL = BASE_URL + "c=ajax&a=";
+    public static final String ADMIN_URL = BASE_URL + "c=Admin_manage&a=";
 
 
     //    登录
@@ -30,6 +30,8 @@ public class GlobalContants {
     public static final String URL_CHECK_PWD = AJAX_URL + "yzmima";
     //    修改密码
     public static final String URL_UPDATE_PWD = AJAX_URL + "updatePwd";
+    //    手机修改密码
+    public static final String URL_UPDATE_PWD_BY_PHONE = MOBILE_BIND_URL + "setPasswordByPhoneNumber";
 
     //    获取手机号
     public static final String URL_GET_PHONE = AJAX_URL + "getBindPhone";

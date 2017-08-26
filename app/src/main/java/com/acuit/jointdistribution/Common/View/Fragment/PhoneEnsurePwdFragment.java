@@ -18,12 +18,11 @@ import android.widget.Toast;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Bean.CodeAndMsg;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
-import com.acuit.jointdistribution.Common.Utils.EncodeUtils;
+import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.Common.View.Activity.BindPhoneActivity;
 import com.acuit.jointdistribution.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -91,7 +90,7 @@ public class PhoneEnsurePwdFragment extends Fragment implements View.OnClickList
             Toast.makeText(mActivity, "请输入密码", Toast.LENGTH_SHORT).show();
         } else {
 
-            String md5Pwd = EncodeUtils.md5(pwd);
+            String md5Pwd = Tools.md5(pwd);
 
             checkPwd(md5Pwd);
 
@@ -100,7 +99,6 @@ public class PhoneEnsurePwdFragment extends Fragment implements View.OnClickList
     }
 
     private void checkPwd(final String md5Pwd) {
-        RequestQueue requestQueue = BaseApplication.getRequestQueue();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_CHECK_PWD, new Response.Listener<String>() {
             @Override
@@ -137,7 +135,7 @@ public class PhoneEnsurePwdFragment extends Fragment implements View.OnClickList
         };
 
         stringRequest.setTag("BindPhoneActivity");
-        requestQueue.add(stringRequest);
+        BaseApplication.getRequestQueue().add(stringRequest);
     }
 
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
     private String phone = null;
     private String pwd = null;
     private LoginPresenter loginPresenter;
+    private TextView tvForgetPwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +47,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
         loginPresenter = new LoginPresenter(this);
 
         btnLogin.setOnClickListener(this);
+        tvForgetPwd.setOnClickListener(this);
 
         loginPresenter.chickHistory();
     }
 
     private void initView() {
-        etAccount = (EditText) findViewById(et_zh);
         etPsw = (EditText) findViewById(et_mm);
-        btnLogin = (Button) findViewById(R.id.btn);
+        etAccount = (EditText) findViewById(et_zh);
+        btnLogin = (Button) findViewById(R.id.btn_login);
+        tvForgetPwd = (TextView) findViewById(R.id.tv_forgetPwd);
     }
 
     // TODO: 2017/8/22 若存在帐号，填充（登录状态记录logined）
@@ -60,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
         if (null != account && !account.isEmpty()) {
             etAccount.setText(account);
             etPsw.requestFocus();
-            InputMethodManager imm = (InputMethodManager)LoginActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) LoginActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
@@ -69,6 +73,18 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
     @Override
     public void onClick(View view) {
 
+        switch (view.getId()) {
+            case R.id.btn_login:
+                login();
+                break;
+            case R.id.tv_forgetPwd:
+                startActivity(new Intent(LoginActivity.this, ForgetPwdActivity.class));
+                break;
+        }
+
+    }
+
+    private void login() {
         account = etAccount.getText().toString();
         pwd = etPsw.getText().toString();
 
@@ -81,15 +97,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
             return;
         }
 
-
         {
 //        合法性校验（11位纯数字则赋值给phone）
 
         }
 
         loginPresenter.login(account, phone, pwd);
-
-
     }
 
 
@@ -115,6 +128,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        BaseApplication.getRequestQueue().cancelAll("login");
+        BaseApplication.getRequestQueue().cancelAll("LoginActivity");
     }
 }

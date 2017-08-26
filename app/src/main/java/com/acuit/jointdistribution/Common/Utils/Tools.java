@@ -6,7 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * 类名: EncodeUtils <p>
+ * 类名: Tools <p>
  * 创建人: YanJ <p>
  * 创建时间: 2017/8/25 15:30 <p>
  * 描述: 加密工具
@@ -16,7 +16,12 @@ import java.security.NoSuchAlgorithmException;
  * 更新描述: <p>
  */
 
-public class EncodeUtils {
+public class Tools {
+
+
+    public static final String REGEX_PHONE = "1(3[0-9]|47|5((?!4)[0-9])|7(0|1|[6-8])|8[0-9])\\d{8,8}";
+
+    public static final String REGEX_PWD = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$";
 
     /**
      * 字符串md5加密

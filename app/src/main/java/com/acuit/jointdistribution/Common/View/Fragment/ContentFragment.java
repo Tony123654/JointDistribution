@@ -7,14 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
-import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Base.BaseFragment;
 import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.View.Page.SettingPager;
 import com.acuit.jointdistribution.Common.Widget.NoScrollViewPager;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Bean.impl.BussinessOrderPager;
-import com.acuit.jointdistribution.Supplier.Bean.impl.HomePager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.StatisticalAnalysisPager;
 
 import java.util.ArrayList;
@@ -68,22 +66,22 @@ public class ContentFragment extends BaseFragment {
         //初始化4个标签页面对象
         mList = new ArrayList<BasePager>();
 
-        String[] roleIDs = BaseApplication.getLoginBean().getData().getUser_info().getRoleid().split(",");
-            System.out.println("aaa loginBean:" + BaseApplication.getLoginBean().toString());
-
-        // TODO: 2017/8/22 角色集合的处理
-        for (String roleID : roleIDs) {
-            System.out.println("aaa roleID:" + roleID);
-//            供应商
-            if ((137 + "").equals(roleID)) {
-                mList.add(new HomePager(mActivity));
-            }
-//            保管员
-            if ((157 + "").equals(roleID)) {
-                mList.add(new HomePager(mActivity));
-            }
-
-        }
+//        String[] roleIDs = BaseApplication.getLoginBean().getData().getUser_info().getRoleid().split(",");
+//            System.out.println("aaa loginBean:" + BaseApplication.getLoginBean().toString());
+//
+//        // TODO: 2017/8/22 角色集合的处理
+//        for (String roleID : roleIDs) {
+//            System.out.println("aaa roleID:" + roleID);
+////            供应商
+//            if ((137 + "").equals(roleID)) {
+//                mList.add(new HomePager(mActivity));
+//            }
+////            保管员
+//            if ((157 + "").equals(roleID)) {
+//                mList.add(new HomePager(mActivity));
+//            }
+//
+//        }
 
 
         mList.add(new BussinessOrderPager(mActivity));

@@ -13,7 +13,6 @@ import com.acuit.jointdistribution.Common.Presenter.LoginPresenter;
 import com.acuit.jointdistribution.Storeman.Utils.SharedPreference_Utils;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -142,12 +141,9 @@ public class LoginModel_Impl implements LoginModel_Interface {
         }
 
 
-        RequestQueue requestQueue = BaseApplication.getRequestQueue();
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
                 Gson gson = new Gson();
                 LoginBean loginBean = gson.fromJson(response, LoginBean.class);
                 BaseApplication.setLoginBean(loginBean);
@@ -189,8 +185,8 @@ public class LoginModel_Impl implements LoginModel_Interface {
             }
         };
 
-        stringRequest.setTag("login");
-        requestQueue.add(stringRequest);
+        stringRequest.setTag("LoginActivity");
+        BaseApplication.getRequestQueue().add(stringRequest);
 
     }
 
