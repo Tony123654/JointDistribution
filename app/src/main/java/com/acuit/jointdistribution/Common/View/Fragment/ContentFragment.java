@@ -13,6 +13,7 @@ import com.acuit.jointdistribution.Common.View.Page.SettingPager;
 import com.acuit.jointdistribution.Common.Widget.NoScrollViewPager;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Bean.impl.BussinessOrderPager;
+import com.acuit.jointdistribution.Supplier.Bean.impl.HomePager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.StatisticalAnalysisPager;
 
 import java.util.ArrayList;
@@ -69,7 +70,8 @@ public class ContentFragment extends BaseFragment {
 //        String[] roleIDs = BaseApplication.getLoginBean().getData().getUser_info().getRoleid().split(",");
 //            System.out.println("aaa loginBean:" + BaseApplication.getLoginBean().toString());
 //
-//        // TODO: 2017/8/22 角色集合的处理
+//        // TODO: 2017/8/22 角色集合的处理……根据角色进入不同页面
+        mList.add(new HomePager(mActivity));
 //        for (String roleID : roleIDs) {
 //            System.out.println("aaa roleID:" + roleID);
 ////            供应商

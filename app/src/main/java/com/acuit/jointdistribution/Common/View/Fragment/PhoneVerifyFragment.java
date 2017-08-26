@@ -2,6 +2,8 @@ package com.acuit.jointdistribution.Common.View.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -25,7 +27,6 @@ import com.acuit.jointdistribution.Common.View.Activity.ForgetPwdActivity;
 import com.acuit.jointdistribution.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -100,7 +101,8 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
         btnSubmit.setOnClickListener(this);
         btnGetVerity.setOnClickListener(this);
 
-
+        btnGetVerity.setClickable(false);
+        (new TimeThread()).start();
     }
 
 
@@ -109,7 +111,8 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
         String verifyCode = etVerifyCode.getText().toString();
         switch (v.getId()) {
             case R.id.btn_getVerifyCode:
-
+                sendVerifyCode((String) mVerifyCodeBean.getPhone_number());
+                (new TimeThread()).start();
                 break;
             case R.id.btn_submitVerifyCode:
                 if (verifyCode.isEmpty()) {
@@ -127,7 +130,7 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
                         FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                        fragmentTransaction.replace(R.id.fl_contentBindPhone, new PwdUpdateFragment(mActivity,mVerifyCodeBean));
+                        fragmentTransaction.replace(R.id.fl_contentBindPhone, new PwdUpdateFragment(mActivity, mVerifyCodeBean));
 
                         fragmentTransaction.commit();
                     }
@@ -142,7 +145,6 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
      * 修改绑定的手机号
      */
     private void changePhone() {
-        RequestQueue requestQueue = BaseApplication.getRequestQueue();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_BIND_PHONE, new Response.Listener<String>() {
             @Override
@@ -178,9 +180,109 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
         };
 
         stringRequest.setTag("BindPhoneActivity");
-        requestQueue.add(stringRequest);
+        BaseApplication.getRequestQueue().add(stringRequest);
 
     }
 
+    private int TAG_VERIFY_INVALIDATE = -1;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+
+            if (TAG_VERIFY_INVALIDATE == msg.what) {
+
+                String time = "(" + msg.arg1 + "s)";
+                if ("(0s)".equals(time)) {
+                    btnGetVerity.setClickable(true);
+                    btnGetVerity.setText("重新获取");
+                    try {
+                        Thread timeThread = (Thread) msg.obj;
+                        timeThread.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    btnGetVerity.setText("重新获取" + time);
+                }
+
+            }
+
+        }
+    };
+
+
+    private class TimeThread extends Thread {
+        @Override
+        public void run() {
+            String timeStr = "";
+            int time = 60;
+
+            while (time > 0) {
+                try {
+                    this.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                time--;
+                Message msg = Message.obtain();
+                msg.what = TAG_VERIFY_INVALIDATE;
+                msg.arg1 = time;
+                msg.obj = this;
+                handler.sendMessage(msg);
+            }
+
+        }
+    }
+
+
+    /**
+     * 向指定手机号发送验证码
+     *
+     * @param phone
+     */
+    private void sendVerifyCode(final String phone) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_SEND_VERIFY_TO_USER, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+                SendVerifyCodeBean sendVerifyCodeBean = gson.fromJson(response, SendVerifyCodeBean.class);
+
+                if (1 == sendVerifyCodeBean.getStatus()) {
+                    Toast.makeText(mActivity, "发送成功", Toast.LENGTH_SHORT).show();
+                    FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneVerifyFragment(mActivity, sendVerifyCodeBean));
+                    fragmentTransaction.commit();
+                } else {
+                    Toast.makeText(mActivity, sendVerifyCodeBean.getCode(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(mActivity, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new ArrayMap<String, String>();
+
+//                params.put("token", BaseApplication.getLoginBean().getData().getToken());
+                params.put("phone", phone);
+
+                return params;
+            }
+        };
+
+        if (isBindPhone) {
+            stringRequest.setTag("BindPhoneActivity");
+        } else {
+            stringRequest.setTag("ForgetPwdActivity");
+        }
+        BaseApplication.getRequestQueue().add(stringRequest);
+    }
 
 }
