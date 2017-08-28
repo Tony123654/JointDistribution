@@ -17,11 +17,9 @@ public class HomePager extends BasePager {
 
     private View view;
     private TextView tv_order;
-    public Activity mActivity;
 
     public HomePager(Activity activity) {
         super(activity);
-        mActivity = activity;
 
     }
 

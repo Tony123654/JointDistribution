@@ -169,7 +169,11 @@ public class LoginModel_Impl implements LoginModel_Interface {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                presenter.showToast(error.getMessage());
+                if (null == error.getMessage()) {
+                    presenter.showToast("无法登录，请检查网络环境");
+                } else {
+                    presenter.showToast(error.getMessage());
+                }
                 startLoginActivity(1000);
             }
         }) {

@@ -21,11 +21,11 @@ public class BasePager {
 
 	public BasePager(Activity activity) {
 		mActivity = activity;
-		mRootView = initViews();
+		mRootView = initRootView();
 	}
 
 
-	public View initViews() {
+	public View initRootView() {
 
 		View view = View.inflate(mActivity, R.layout.base_pager, null);
 

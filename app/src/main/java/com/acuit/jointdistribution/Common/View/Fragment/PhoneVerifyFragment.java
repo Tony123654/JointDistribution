@@ -214,7 +214,6 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
     private class TimeThread extends Thread {
         @Override
         public void run() {
-            String timeStr = "";
             int time = 60;
 
             while (time > 0) {

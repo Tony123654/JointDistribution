@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Base.BaseFragment;
 import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.View.Page.SettingPager;
 import com.acuit.jointdistribution.Common.Widget.NoScrollViewPager;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Storeman.View.StoremanHomePage;
 import com.acuit.jointdistribution.Supplier.Bean.impl.BussinessOrderPager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.HomePager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.StatisticalAnalysisPager;
@@ -69,9 +71,15 @@ public class ContentFragment extends BaseFragment {
 
 //        String[] roleIDs = BaseApplication.getLoginBean().getData().getUser_info().getRoleid().split(",");
 //            System.out.println("aaa loginBean:" + BaseApplication.getLoginBean().toString());
-//
-//        // TODO: 2017/8/22 角色集合的处理……根据角色进入不同页面
-        mList.add(new HomePager(mActivity));
+
+        int priv_edit = BaseApplication.getLoginBean().getData().getPriv().getStore().getStore_in_list().getPriv_edit();
+        if (1 == priv_edit) {
+            mList.add(new StoremanHomePage(mActivity));
+        } else {
+            mList.add(new HomePager(mActivity));
+        }
+
+//        mList.add(new HomePager(mActivity));
 //        for (String roleID : roleIDs) {
 //            System.out.println("aaa roleID:" + roleID);
 ////            供应商
