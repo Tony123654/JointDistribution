@@ -14,15 +14,17 @@ import java.util.List;
  */
 
 public class OrderList {
+
+
     /**
      * code : 200
+     * data : {"count":"42","rows":[{"cat_name":"果蔬类","code":"CGDD1708289407","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-28","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3731","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-29 09:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"1","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708289403","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-28","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3730","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-29 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"1","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708269398","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-26","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3729","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-27 09:00","realname":"同保一","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708269395","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-26","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3728","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-27 09:00","realname":"系统管理员","request_dep_strs":"东区食堂,一食堂","status":"2","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708239388","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3727","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"系统管理员","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708239365","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3725","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"","request_dep_strs":"同力测试食堂","status":"2","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708239362","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3724","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"鲜肉类","code":"CGDD1708219302","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-22","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3722","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-22 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"4","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708219298","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-22","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3720","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-22 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"5","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708219293","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-22","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3718","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-22 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"5","supply_name":"杭州蔬菜物流有限公司"}],"total":"42","total_amount":"2000018187.48","total_money":"2000097134.83"}
      * msg : 执行成功！
-     * data : {"total":"40","rows":[{"is_del":"0","code":"CGDD1708239388","realname":"系统管理员","plan_date":"2017-08-24 09:00","id":"3727","create_date":"2017-08-23","status":"2","com_name":"浙江同力教育后勤管理有限公司","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"同力一级","dep_root_id":"163","com_id":"4","is_new":0,"com_brief_name":"同力","dep_brief_name":"tlyj","request_dep_strs":"同力测试食堂"},{"is_del":"0","code":"CGDD1708239365","realname":"","plan_date":"2017-08-24 09:00","id":"3725","create_date":"2017-08-23","status":"2","com_name":"浙江同力教育后勤管理有限公司","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"同力一级","dep_root_id":"163","com_id":"4","is_new":0,"com_brief_name":"同力","dep_brief_name":"tlyj","request_dep_strs":"同力测试食堂"},{"is_del":"0","code":"CGDD1708239362","realname":"","plan_date":"2017-08-24 09:00","id":"3724","create_date":"2017-08-23","status":"2","com_name":"浙江同力教育后勤管理有限公司","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"同力一级","dep_root_id":"163","com_id":"4","is_new":0,"com_brief_name":"同力","dep_brief_name":"tlyj","request_dep_strs":"同力测试食堂"},{"is_del":"0","code":"CGDD1708219302","realname":"系统管理员","plan_date":"2017-08-22 09:00","id":"3722","create_date":"2017-08-22","status":"2","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"鲜肉类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"},{"is_del":"0","code":"CGDD1708219298","realname":"系统管理员","plan_date":"2017-08-22 09:00","id":"3720","create_date":"2017-08-22","status":"5","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"},{"is_del":"0","code":"CGDD1708219293","realname":"系统管理员","plan_date":"2017-08-22 09:00","id":"3718","create_date":"2017-08-22","status":"5","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"},{"is_del":"0","code":"CGDD1708219291","realname":"系统管理员","plan_date":"2017-08-22 09:00","id":"3717","create_date":"2017-08-22","status":"5","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"},{"is_del":"0","code":"CGDD1708199270","realname":"陈燕华","plan_date":"2017-08-20 09:00","id":"3716","create_date":"2017-08-19","status":"2","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"西区食堂,休闲餐厅"},{"is_del":"0","code":"CGDD1708199208","realname":"系统管理员","plan_date":"2017-08-19 00:00","id":"3712","create_date":"2017-08-19","status":"5","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"鲜肉类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"},{"is_del":"0","code":"CGDD1708199205","realname":"系统管理员","plan_date":"2017-08-19 00:00","id":"3710","create_date":"2017-08-19","status":"5","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"}],"total_amount":"2000016752.48","total_money":"2000089134.23","count":"40"}
      */
 
     private int code;
-    private String msg;
     private DataBean data;
+    private String msg;
 
     public int getCode() {
         return code;
@@ -30,14 +32,6 @@ public class OrderList {
 
     public void setCode(int code) {
         this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
     }
 
     public DataBean getData() {
@@ -48,20 +42,36 @@ public class OrderList {
         this.data = data;
     }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
     public static class DataBean {
         /**
-         * total : 40
-         * rows : [{"is_del":"0","code":"CGDD1708239388","realname":"系统管理员","plan_date":"2017-08-24 09:00","id":"3727","create_date":"2017-08-23","status":"2","com_name":"浙江同力教育后勤管理有限公司","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"同力一级","dep_root_id":"163","com_id":"4","is_new":0,"com_brief_name":"同力","dep_brief_name":"tlyj","request_dep_strs":"同力测试食堂"},{"is_del":"0","code":"CGDD1708239365","realname":"","plan_date":"2017-08-24 09:00","id":"3725","create_date":"2017-08-23","status":"2","com_name":"浙江同力教育后勤管理有限公司","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"同力一级","dep_root_id":"163","com_id":"4","is_new":0,"com_brief_name":"同力","dep_brief_name":"tlyj","request_dep_strs":"同力测试食堂"},{"is_del":"0","code":"CGDD1708239362","realname":"","plan_date":"2017-08-24 09:00","id":"3724","create_date":"2017-08-23","status":"2","com_name":"浙江同力教育后勤管理有限公司","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"同力一级","dep_root_id":"163","com_id":"4","is_new":0,"com_brief_name":"同力","dep_brief_name":"tlyj","request_dep_strs":"同力测试食堂"},{"is_del":"0","code":"CGDD1708219302","realname":"系统管理员","plan_date":"2017-08-22 09:00","id":"3722","create_date":"2017-08-22","status":"2","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"鲜肉类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"},{"is_del":"0","code":"CGDD1708219298","realname":"系统管理员","plan_date":"2017-08-22 09:00","id":"3720","create_date":"2017-08-22","status":"5","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"},{"is_del":"0","code":"CGDD1708219293","realname":"系统管理员","plan_date":"2017-08-22 09:00","id":"3718","create_date":"2017-08-22","status":"5","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"},{"is_del":"0","code":"CGDD1708219291","realname":"系统管理员","plan_date":"2017-08-22 09:00","id":"3717","create_date":"2017-08-22","status":"5","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"},{"is_del":"0","code":"CGDD1708199270","realname":"陈燕华","plan_date":"2017-08-20 09:00","id":"3716","create_date":"2017-08-19","status":"2","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"西区食堂,休闲餐厅"},{"is_del":"0","code":"CGDD1708199208","realname":"系统管理员","plan_date":"2017-08-19 00:00","id":"3712","create_date":"2017-08-19","status":"5","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"鲜肉类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"},{"is_del":"0","code":"CGDD1708199205","realname":"系统管理员","plan_date":"2017-08-19 00:00","id":"3710","create_date":"2017-08-19","status":"5","com_name":"浙大饮食中心","is_used":"0","supply_name":"杭州蔬菜物流有限公司","cat_name":"果蔬类","dep_root_name":"第一餐饮中心（紫金港）","dep_root_id":"1","com_id":"1","is_new":0,"com_brief_name":"浙大","dep_brief_name":"紫金","request_dep_strs":"总仓"}]
-         * total_amount : 2000016752.48
-         * total_money : 2000089134.23
-         * count : 40
+         * count : 42
+         * rows : [{"cat_name":"果蔬类","code":"CGDD1708289407","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-28","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3731","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-29 09:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"1","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708289403","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-28","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3730","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-29 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"1","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708269398","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-26","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3729","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-27 09:00","realname":"同保一","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708269395","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-26","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3728","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-27 09:00","realname":"系统管理员","request_dep_strs":"东区食堂,一食堂","status":"2","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708239388","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3727","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"系统管理员","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708239365","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3725","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"","request_dep_strs":"同力测试食堂","status":"2","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708239362","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3724","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"鲜肉类","code":"CGDD1708219302","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-22","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3722","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-22 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"4","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708219298","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-22","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3720","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-22 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"5","supply_name":"杭州蔬菜物流有限公司"},{"cat_name":"果蔬类","code":"CGDD1708219293","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-22","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3718","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-22 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"5","supply_name":"杭州蔬菜物流有限公司"}]
+         * total : 42
+         * total_amount : 2000018187.48
+         * total_money : 2000097134.83
          */
 
+        private String count;
         private String total;
         private String total_amount;
         private String total_money;
-        private String count;
         private List<RowsBean> rows;
+
+        public String getCount() {
+            return count;
+        }
+
+        public void setCount(String count) {
+            this.count = count;
+        }
 
         public String getTotal() {
             return total;
@@ -87,14 +97,6 @@ public class OrderList {
             this.total_money = total_money;
         }
 
-        public String getCount() {
-            return count;
-        }
-
-        public void setCount(String count) {
-            this.count = count;
-        }
-
         public List<RowsBean> getRows() {
             return rows;
         }
@@ -105,51 +107,51 @@ public class OrderList {
 
         public static class RowsBean {
             /**
-             * is_del : 0
-             * code : CGDD1708239388
-             * realname : 系统管理员
-             * plan_date : 2017-08-24 09:00
-             * id : 3727
-             * create_date : 2017-08-23
-             * status : 2
-             * com_name : 浙江同力教育后勤管理有限公司
-             * is_used : 0
-             * supply_name : 杭州蔬菜物流有限公司
              * cat_name : 果蔬类
-             * dep_root_name : 同力一级
-             * dep_root_id : 163
-             * com_id : 4
+             * code : CGDD1708289407
+             * com_brief_name : 浙大
+             * com_id : 1
+             * com_name : 浙大饮食中心
+             * create_date : 2017-08-28
+             * dep_brief_name : 紫金
+             * dep_root_id : 1
+             * dep_root_name : 第一餐饮中心（紫金港）
+             * id : 3731
+             * is_del : 0
              * is_new : 0
-             * com_brief_name : 同力
-             * dep_brief_name : tlyj
-             * request_dep_strs : 同力测试食堂
+             * is_used : 0
+             * plan_date : 2017-08-29 09:00
+             * realname : 系统管理员
+             * request_dep_strs : 西区食堂
+             * status : 1
+             * supply_name : 杭州蔬菜物流有限公司
              */
 
-            private String is_del;
-            private String code;
-            private String realname;
-            private String plan_date;
-            private String id;
-            private String create_date;
-            private String status;
-            private String com_name;
-            private String is_used;
-            private String supply_name;
             private String cat_name;
-            private String dep_root_name;
-            private String dep_root_id;
-            private String com_id;
-            private int is_new;
+            private String code;
             private String com_brief_name;
+            private String com_id;
+            private String com_name;
+            private String create_date;
             private String dep_brief_name;
+            private String dep_root_id;
+            private String dep_root_name;
+            private String id;
+            private String is_del;
+            private int is_new;
+            private String is_used;
+            private String plan_date;
+            private String realname;
             private String request_dep_strs;
+            private String status;
+            private String supply_name;
 
-            public String getIs_del() {
-                return is_del;
+            public String getCat_name() {
+                return cat_name;
             }
 
-            public void setIs_del(String is_del) {
-                this.is_del = is_del;
+            public void setCat_name(String cat_name) {
+                this.cat_name = cat_name;
             }
 
             public String getCode() {
@@ -160,92 +162,12 @@ public class OrderList {
                 this.code = code;
             }
 
-            public String getRealname() {
-                return realname;
+            public String getCom_brief_name() {
+                return com_brief_name;
             }
 
-            public void setRealname(String realname) {
-                this.realname = realname;
-            }
-
-            public String getPlan_date() {
-                return plan_date;
-            }
-
-            public void setPlan_date(String plan_date) {
-                this.plan_date = plan_date;
-            }
-
-            public String getId() {
-                return id;
-            }
-
-            public void setId(String id) {
-                this.id = id;
-            }
-
-            public String getCreate_date() {
-                return create_date;
-            }
-
-            public void setCreate_date(String create_date) {
-                this.create_date = create_date;
-            }
-
-            public String getStatus() {
-                return status;
-            }
-
-            public void setStatus(String status) {
-                this.status = status;
-            }
-
-            public String getCom_name() {
-                return com_name;
-            }
-
-            public void setCom_name(String com_name) {
-                this.com_name = com_name;
-            }
-
-            public String getIs_used() {
-                return is_used;
-            }
-
-            public void setIs_used(String is_used) {
-                this.is_used = is_used;
-            }
-
-            public String getSupply_name() {
-                return supply_name;
-            }
-
-            public void setSupply_name(String supply_name) {
-                this.supply_name = supply_name;
-            }
-
-            public String getCat_name() {
-                return cat_name;
-            }
-
-            public void setCat_name(String cat_name) {
-                this.cat_name = cat_name;
-            }
-
-            public String getDep_root_name() {
-                return dep_root_name;
-            }
-
-            public void setDep_root_name(String dep_root_name) {
-                this.dep_root_name = dep_root_name;
-            }
-
-            public String getDep_root_id() {
-                return dep_root_id;
-            }
-
-            public void setDep_root_id(String dep_root_id) {
-                this.dep_root_id = dep_root_id;
+            public void setCom_brief_name(String com_brief_name) {
+                this.com_brief_name = com_brief_name;
             }
 
             public String getCom_id() {
@@ -256,20 +178,20 @@ public class OrderList {
                 this.com_id = com_id;
             }
 
-            public int getIs_new() {
-                return is_new;
+            public String getCom_name() {
+                return com_name;
             }
 
-            public void setIs_new(int is_new) {
-                this.is_new = is_new;
+            public void setCom_name(String com_name) {
+                this.com_name = com_name;
             }
 
-            public String getCom_brief_name() {
-                return com_brief_name;
+            public String getCreate_date() {
+                return create_date;
             }
 
-            public void setCom_brief_name(String com_brief_name) {
-                this.com_brief_name = com_brief_name;
+            public void setCreate_date(String create_date) {
+                this.create_date = create_date;
             }
 
             public String getDep_brief_name() {
@@ -280,12 +202,92 @@ public class OrderList {
                 this.dep_brief_name = dep_brief_name;
             }
 
+            public String getDep_root_id() {
+                return dep_root_id;
+            }
+
+            public void setDep_root_id(String dep_root_id) {
+                this.dep_root_id = dep_root_id;
+            }
+
+            public String getDep_root_name() {
+                return dep_root_name;
+            }
+
+            public void setDep_root_name(String dep_root_name) {
+                this.dep_root_name = dep_root_name;
+            }
+
+            public String getId() {
+                return id;
+            }
+
+            public void setId(String id) {
+                this.id = id;
+            }
+
+            public String getIs_del() {
+                return is_del;
+            }
+
+            public void setIs_del(String is_del) {
+                this.is_del = is_del;
+            }
+
+            public int getIs_new() {
+                return is_new;
+            }
+
+            public void setIs_new(int is_new) {
+                this.is_new = is_new;
+            }
+
+            public String getIs_used() {
+                return is_used;
+            }
+
+            public void setIs_used(String is_used) {
+                this.is_used = is_used;
+            }
+
+            public String getPlan_date() {
+                return plan_date;
+            }
+
+            public void setPlan_date(String plan_date) {
+                this.plan_date = plan_date;
+            }
+
+            public String getRealname() {
+                return realname;
+            }
+
+            public void setRealname(String realname) {
+                this.realname = realname;
+            }
+
             public String getRequest_dep_strs() {
                 return request_dep_strs;
             }
 
             public void setRequest_dep_strs(String request_dep_strs) {
                 this.request_dep_strs = request_dep_strs;
+            }
+
+            public String getStatus() {
+                return status;
+            }
+
+            public void setStatus(String status) {
+                this.status = status;
+            }
+
+            public String getSupply_name() {
+                return supply_name;
+            }
+
+            public void setSupply_name(String supply_name) {
+                this.supply_name = supply_name;
             }
         }
     }

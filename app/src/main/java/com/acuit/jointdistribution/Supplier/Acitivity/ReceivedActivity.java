@@ -33,7 +33,7 @@ public class ReceivedActivity extends AppCompatActivity {
 
     private ImageButton ib_back_menu;
     private ImageButton ib_choose;
-    private ListView lv_list;
+    private ListView listView;
     private OrderList orderList;
     private MyAdapter mAdapter;
     private TextView tv;
@@ -42,16 +42,21 @@ public class ReceivedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_received);
+
         ib_choose = (ImageButton) findViewById(R.id.ib_choose);
 
         ib_back_menu = (ImageButton) findViewById(R.id.ib_back_menu);
 
-        lv_list = (ListView) findViewById(R.id.lv);
-
         mList = new ArrayList<OrderList>();
-        lv_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        listView = (ListView) findViewById(R.id.lv);
+        // 列表信息
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
 
                 Intent intent = new Intent(ReceivedActivity.this, MenuActivity.class);
 
@@ -59,26 +64,27 @@ public class ReceivedActivity extends AppCompatActivity {
 
             }
         });
+
         initData();
 
     }
 
+
     private void initData() {
+
         getDataFromServer();
     }
 
     private void getDataFromServer() {
+
         HttpUtils http = new HttpUtils();
         RequestParams params = new RequestParams();
-        params.addBodyParameter("start_date","");
-        params.addBodyParameter("end_date","");
-        params.addBodyParameter("rows","10");
-        params.addBodyParameter("page","1");
-        http.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=buy_order_list",
+        params.addBodyParameter("page", "1");
+        params.addBodyParameter("rows", "10");
+
+        http.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=buy_order_list", params,
 
                 new RequestCallBack<String>() {
-
-
 
 
                     @Override
@@ -89,29 +95,30 @@ public class ReceivedActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(ResponseInfo<String> responseInfo) {
                         String result = responseInfo.result;
+                        System.out.print("返回结果是" + result);
                         ProcessData(result);
                     }
 
+                    //解析数据
                     private void ProcessData(String result) {
+
                         Gson gson = new Gson();
                         OrderList orderList = gson.fromJson(result, OrderList.class);
-                        String create_date = orderList.getData().getRows().get(0).getCreate_date();
-                        String plan_date = orderList.getData().getRows().get(0).getPlan_date();
 
-
-
-//                        List<OrderList.DataBean.RowsBean> rows = orderList.getData().getRows();
-
-                        if (lv_list == null) {
+                        if (listView == null) {
                             tv = new TextView(getApplicationContext());
-                            tv.setText("暂时无订单");
+                            tv.setText("暂无订单");
                             tv.setTextSize(44);
                             tv.setTextColor(Color.GREEN);
-                            lv_list.setEmptyView(tv);
+                            listView.setEmptyView(tv);
 
                         } else {
-                            mAdapter = new MyAdapter(mList);
-                            lv_list.setAdapter(mAdapter);
+                            if (null == mList) {
+                                System.out.println("aaa :");
+                            }
+//                            mAdapter = new MyAdapter(mList);
+
+                            listView.setAdapter(new MyAdapter(mList));
 
                         }
                     }

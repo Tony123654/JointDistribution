@@ -55,11 +55,9 @@
         android:id="@+id/tv_total_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@id/tv_pian_data"
-        android:layout_below="@id/tv_pian_data"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="23dp"
-        android:text="总数量：" />
+        android:text="总数量："
+        android:layout_below="@+id/radioButton2"
+        android:layout_alignEnd="@+id/tv_create_date" />
 
     <TextView
         android:id="@+id/tv_total_money"
@@ -77,14 +75,7 @@
         android:layout_alignTop="@+id/tv_pian_data"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:id="@+id/tv_plan_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/radioButton2"
-        android:layout_marginStart="37dp"
-        android:layout_toEndOf="@+id/tv_total_money"
-        android:text="计划送达日期：" />
+
 
 
 </RelativeLayout>

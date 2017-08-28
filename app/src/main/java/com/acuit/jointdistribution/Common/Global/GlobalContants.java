@@ -9,7 +9,8 @@ import java.io.File;
  * 修改者：yanj
  * 修改时间：2017-08-18 17:22
  */
-public class GlobalContants {
+public class
+GlobalContants {
 
 
     //    http://xxx/admin.php?c=Minterface&a=login

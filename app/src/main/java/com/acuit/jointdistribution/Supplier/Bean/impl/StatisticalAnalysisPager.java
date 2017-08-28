@@ -2,93 +2,79 @@ package com.acuit.jointdistribution.Supplier.Bean.impl;
 
 import android.app.Activity;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.R;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.acuit.jointdistribution.Supplier.Domain.Count_Money;
+import com.acuit.jointdistribution.Supplier.Utils.ToastUtils;
+import com.google.gson.Gson;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 
 /**
- *统计分析
+ * 统计分析
  */
 
 
 public class StatisticalAnalysisPager extends BasePager {
-	public Activity mActivity;
+    public Activity mActivity;
     private View view;
-    private GridView gView;
-    private List<Map<String, Object>> data_list;
     private SimpleAdapter sim_adapter;
-
-
-
-    private int[] icon = {R.mipmap.yellowjine,R.mipmap.yellow_day,R.mipmap.green_jine,R.mipmap.green_jine_zhou,R.mipmap.blue_jine,
-    R.mipmap.blue_month};
-
-    private String[] iconNum = {"2543.00","50","25413.00","254","35121.00","6589"};
-
-    private String[] iconName = {"今日订单金额","今日订单数量","本周订单金额","本周订单数量",
-            "本月订单金额","本月订单数量"};
+    private TextView count;
+    private String count1;
 
     public StatisticalAnalysisPager(Activity activity) {
-		super(activity);
-		 mActivity = activity;
+        super(activity);
+        mActivity = activity;
 
-
-	}
-
-	@Override
-	public void initData() {
-
-		//给空的帧布局动态添加布局对象
-//		TextView view = new TextView(mActivity);
-//		view.setTextSize(22);
-//		view.setTextColor(Color.GREEN);
-//		view.setGravity(Gravity.CENTER);//居中显示
-//		view.setText("统计分析");
-		view = View.inflate(mActivity, R.layout.analysis_statistic,null);
-
-		flContainer.addView(view);//给帧布局添加对象
-        gView = (GridView)flContainer.findViewById(R.id.gview);
-
-      data_list = new ArrayList<Map<String,Object>>();
-
-
-
-        String [] from ={"image","text"};
-        int [] to = {R.id.image,R.id.text};
-        sim_adapter = new SimpleAdapter(BaseApplication.getInstance(), data_list, R.layout.grid_item, from, to);
-        //配置适配器
-        gView.setAdapter(sim_adapter);
     }
 
+    @Override
+    public void initData() {
 
 
-    public List<Map<String, Object>> getData(){
-            //长度相同，任取一个即可
-        for(int i=0;i<icon.length;i++){
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("image", icon[i]);
-            map.put("text", iconName[i]);
-            data_list.add(map);
-        }
+        view = View.inflate(mActivity, R.layout.analysis_statistic, null);
 
-        return data_list;
+        flContainer.addView(view);
+
+        count = (TextView) view.findViewById(R.id.tv_count);
+
+        HttpUtils http = new HttpUtils();
+        RequestParams params = new RequestParams();
+        params.addBodyParameter("page", "1");
+        params.addBodyParameter("rows", "5");
+
+
+        http.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=count_order_money_number", new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(ResponseInfo<String> responseInfo) {
+                String result = responseInfo.result;
+                Gson gson = new Gson();
+                System.out.println("json:" + result);
+
+                Count_Money count_money = gson.fromJson(result, Count_Money.class);
+                count1 = count_money.getData().getDay().getCount();
+
+                count.setText(count1);
+
+
+            }
+
+            @Override
+            public void onFailure(HttpException error, String msg) {
+                ToastUtils.showToast(BaseApplication.getContext(), "网络异常");
+            }
+        });
+
     }
 
-
-
-
-        //修改标题
-//		tvTitle.setText("统计分析")
-
-
-	}
+}
 
 
