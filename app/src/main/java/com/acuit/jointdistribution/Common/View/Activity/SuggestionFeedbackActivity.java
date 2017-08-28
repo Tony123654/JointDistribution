@@ -19,7 +19,6 @@ import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -125,8 +124,6 @@ public class SuggestionFeedbackActivity extends BaseActivity implements View.OnC
     private void submit() {
 
 //        提交反馈意见
-        RequestQueue requestQueue = BaseApplication.getRequestQueue();
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_SUBMIT_SUGGESTION, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -143,7 +140,7 @@ public class SuggestionFeedbackActivity extends BaseActivity implements View.OnC
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(SuggestionFeedbackActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -162,7 +159,7 @@ public class SuggestionFeedbackActivity extends BaseActivity implements View.OnC
         };
 
         stringRequest.setTag("SuggestionFeedbackActivity");
-        requestQueue.add(stringRequest);
+        BaseApplication.getRequestQueue().add(stringRequest);
     }
 
     @Override

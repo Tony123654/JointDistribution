@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Common.View.Fragment.ContentFragment;
 
@@ -46,5 +47,9 @@ public class HomeActivity extends BaseActivity {
         return fragment;
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        BaseApplication.getRequestQueue().cancelAll("HomeActivity");
+    }
 }

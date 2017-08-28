@@ -277,7 +277,7 @@ public class LoginBean {
                 private String name;
                 private Object p_menu_id;
                 private Object pp_menu_id;
-                private Object ajax_url;
+                private String ajax_url;
 
                 public String getPage_url() {
                     return page_url;
@@ -311,11 +311,11 @@ public class LoginBean {
                     this.pp_menu_id = pp_menu_id;
                 }
 
-                public Object getAjax_url() {
+                public String getAjax_url() {
                     return ajax_url;
                 }
 
-                public void setAjax_url(Object ajax_url) {
+                public void setAjax_url(String ajax_url) {
                     this.ajax_url = ajax_url;
                 }
             }

@@ -15,12 +15,13 @@ public class GlobalContants {
     //    http://xxx/admin.php?c=Minterface&a=login
     public static final String SERVER_IP = "192.168.2.241";
 
-    public static final String BASE_URL = "http:" + File.separator + File.separator + SERVER_IP + File.separator + "admin.php?";
+    public static final String BASE_URL = "http:" + File.separator + File.separator + SERVER_IP;
 
-    public static final String SERVER_URL = BASE_URL + "c=Minterface&a=";
-    public static final String MOBILE_BIND_URL = BASE_URL + "c=mobilebind&a=";
-    public static final String AJAX_URL = BASE_URL + "c=ajax&a=";
-    public static final String ADMIN_URL = BASE_URL + "c=Admin_manage&a=";
+    public static final String SERVER_URL = BASE_URL + File.separator + "admin.php?c=Minterface&a=";
+    public static final String MOBILE_BIND_URL = BASE_URL + File.separator + "admin.php?c=mobilebind&a=";
+    public static final String AJAX_URL = BASE_URL + File.separator + "admin.php?c=ajax&a=";
+    public static final String ADMIN_URL = BASE_URL + File.separator + "admin.php?c=Admin_manage&a=";
+    public static final String AJAXREPORT_URL = BASE_URL + File.separator + "admin.php?c=ajaxreport&a=";
 
 
     //    登录
@@ -48,6 +49,12 @@ public class GlobalContants {
     //    查看反馈意见
     public static final String URL_VIEW_SUGGESTION = SERVER_URL + "submit_bug_list";
 
+
+    //    保管员首页展示信息(订单数据、供应商数据)获取链接：
+    //    供应商
+    public static final String URL_SUPPLIERS_DATA = AJAXREPORT_URL + "supply_order";//&dep_id=8
+    //    送货
+    public static final String URL_DELIVER_DATA = AJAXREPORT_URL + "storekeeper_order";//&dep_id=8
 
 
 }
