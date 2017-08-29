@@ -1,5 +1,6 @@
 package com.acuit.jointdistribution.Storeman.Bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -75,7 +76,7 @@ public class SuppliersListBean {
             this.store_in_list = store_in_list;
         }
 
-        public static class StoreInListBean {
+        public static class StoreInListBean implements Serializable {
             /**
              * count : 8
              * supply_code : HZSCWLYXGS

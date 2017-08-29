@@ -50,7 +50,9 @@
 
         <!-- 保管员 -->
         <activity android:name=".Storeman.View.ScanCodeActivity" />
+        <activity android:name=".Storeman.View.StoreInListActivity" />
         <activity android:name=".Storeman.View.SupplierListActivity" />
+        <activity android:name=".Storeman.View.StoreInDetilsActivity" />
 
 
     </application>

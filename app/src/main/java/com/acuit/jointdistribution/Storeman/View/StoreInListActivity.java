@@ -7,16 +7,16 @@ import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Storeman.Adapter.SuppliersListAdapter;
+import com.acuit.jointdistribution.Storeman.Adapter.StoreInListAdapter;
+import com.acuit.jointdistribution.Storeman.Bean.StoreInListBySupplierBean;
 import com.acuit.jointdistribution.Storeman.Bean.SuppliersListBean;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -31,50 +31,49 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类名: SupplierListActivity <p>
+ * 类名: StoreInListActivity <p>
  * 创建人: YanJ <p>
- * 创建时间: 2017/8/28 14:08 <p>
- * 描述: 供应商对入库单——验收入库  操作界面
+ * 创建时间: 2017/8/29 12:08 <p>
+ * 描述: 保管员验收入库——特定供货商入库单列表
  * <p>
  * 更新人: <p>
  * 更新时间: <p>
  * 更新描述: <p>
  */
 
-public class SupplierListActivity extends BaseActivity implements View.OnClickListener {
+public class StoreInListActivity extends BaseActivity implements View.OnClickListener {
 
-    private RecyclerView rvSupplierList;
-    private EditText etSearchBar;
-    private Button btnSearchSupplier;
+    private SuppliersListBean.DataBean.StoreInListBean supplier;
     private ImageView ivBack;
     private ImageView ivScanCode;
+    private TextView tvSupplierName;
+    private RecyclerView rvStoreList;
     private int page = 1;
-    private List<SuppliersListBean.DataBean.StoreInListBean> suppliersList = new ArrayList<SuppliersListBean.DataBean.StoreInListBean>();
-    private SuppliersListAdapter suppliersAdapter;
+    private List<StoreInListBySupplierBean.DataBean.StoreInListBean> storeInList = new ArrayList<StoreInListBySupplierBean.DataBean.StoreInListBean>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_checkorder_supplierlist);
+        setContentView(R.layout.activity_storeinlist_by_supplier);
 
         initView();
         initData();
         initEvent();
+
     }
 
     private void initView() {
+
         ivBack = (ImageView) findViewById(R.id.iv_back);
         ivScanCode = (ImageView) findViewById(R.id.iv_scanCode);
-        btnSearchSupplier = (Button) findViewById(R.id.btn_searchSuppliers);
-        etSearchBar = (EditText) findViewById(R.id.et_searchBySupplierName);
-        rvSupplierList = (RecyclerView) findViewById(R.id.rl_suppliersList);
+        tvSupplierName = (TextView) findViewById(R.id.tv_supplierName);
+        rvStoreList = (RecyclerView) findViewById(R.id.rv_storeInList);
     }
 
 
     private void initEvent() {
         ivBack.setOnClickListener(this);
         ivScanCode.setOnClickListener(this);
-        btnSearchSupplier.setOnClickListener(this);
 
         // TODO: 2017/8/29  下拉刷新，上拉加载
 
@@ -87,32 +86,34 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.iv_scanCode:
-                startActivity(new Intent(SupplierListActivity.this, ScanCodeActivity.class));
-                break;
-            case R.id.btn_searchSuppliers:
-
+                startActivity(new Intent(StoreInListActivity.this, ScanCodeActivity.class));
                 break;
         }
     }
 
+
     private void initData() {
+
+        supplier = (SuppliersListBean.DataBean.StoreInListBean) getIntent().getSerializableExtra("SupplierId");
+        tvSupplierName.setText(supplier.getSupply_name());
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STORE_IN_LIST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                System.out.println("aaa response" + response);
                 Gson gson = new Gson();
-                SuppliersListBean suppliersListBean = gson.fromJson(response, SuppliersListBean.class);
+                StoreInListBySupplierBean storeInListBySupplierBean = gson.fromJson(response, StoreInListBySupplierBean.class);
 //                    登录成功
-                if (200 == suppliersListBean.getCode()) {
-                    suppliersList.clear();
-                    suppliersList.addAll(suppliersListBean.getData().getStore_in_list());
+                if (200 == storeInListBySupplierBean.getCode()) {
+                    storeInList.clear();
+                    storeInList.addAll(storeInListBySupplierBean.getData().getStore_in_list());
                     initAdapter();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(SupplierListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(StoreInListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -124,36 +125,35 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
                 params.put("end_date", System.currentTimeMillis() / 1000 + "");
                 params.put("rows", "20");
                 params.put("page", page + "");
-                params.put("get_supply_list", "1");
+                params.put("supply_id", supplier.getSupply_id());
 
                 return params;
             }
         };
 
-        stringRequest.setTag("SupplierListActivity");
+        stringRequest.setTag("StoreInListActivity");
         BaseApplication.getRequestQueue().add(stringRequest);
     }
 
     private void initAdapter() {
 
-        rvSupplierList.setHasFixedSize(true);
-        rvSupplierList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rvStoreList.setHasFixedSize(true);
+        rvStoreList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        if (0 != suppliersList.size()) {
+        if (0 != storeInList.size()) {
 
-            suppliersAdapter = new SuppliersListAdapter(suppliersList, SupplierListActivity.this);
-            rvSupplierList.setAdapter(suppliersAdapter);
+            StoreInListAdapter storeInListAdapter = new StoreInListAdapter(storeInList, StoreInListActivity.this);
+            rvStoreList.setAdapter(storeInListAdapter);
 
         } else {
-            Toast.makeText(SupplierListActivity.this, "没有数据", Toast.LENGTH_SHORT).show();
+            Toast.makeText(StoreInListActivity.this, "没有数据", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        BaseApplication.getRequestQueue().cancelAll("SupplierListActivity");
+        BaseApplication.getRequestQueue().cancelAll("StoreInListActivity");
     }
-
 
 }
