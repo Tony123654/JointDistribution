@@ -45,6 +45,7 @@ public class ScanCodeActivity extends BaseActivity implements View.OnClickListen
 
     private void initData() {
 
+
     }
 
     private void initEvent() {
@@ -64,4 +65,6 @@ public class ScanCodeActivity extends BaseActivity implements View.OnClickListen
 
         }
     }
+
+
 }

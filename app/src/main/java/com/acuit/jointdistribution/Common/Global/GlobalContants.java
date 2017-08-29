@@ -56,6 +56,12 @@ GlobalContants {
     public static final String URL_SUPPLIERS_DATA = AJAXREPORT_URL + "supply_order";//&dep_id=8
     //    送货
     public static final String URL_DELIVER_DATA = AJAXREPORT_URL + "storekeeper_order";//&dep_id=8
+    //    获取入库单列表
+    public static final String URL_STORE_IN_LIST = SERVER_URL + "store_in_list";
+
+//    public static final String URL_DELIVER_DATA = AJAXREPORT_URL + "storekeeper_order";//&dep_id=8
+
+
 
 
 }

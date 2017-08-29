@@ -45,4 +45,5 @@ dependencies {
     compile 'org.litepal.android:core:1.5.1'
     testCompile 'junit:junit:4.12'
     compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.google.zxing:android-core:3.3.0'
 }

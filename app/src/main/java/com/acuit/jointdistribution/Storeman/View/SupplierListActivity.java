@@ -3,15 +3,32 @@ package com.acuit.jointdistribution.Storeman.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.util.ArrayMap;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
+import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Storeman.Adapter.SuppliersListAdapter;
+import com.acuit.jointdistribution.Storeman.Bean.SuppliersListBean;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 类名: SupplierListActivity <p>
@@ -31,6 +48,9 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
     private Button btnSearchSupplier;
     private ImageView ivBack;
     private ImageView ivScanCode;
+    private int page = 1;
+    private List<SuppliersListBean.DataBean.StoreInListBean> suppliersList = new ArrayList<SuppliersListBean.DataBean.StoreInListBean>();
+    private SuppliersListAdapter suppliersAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,7 +58,7 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_checkorder_supplierlist);
 
         initView();
-//        initData();
+        initData();
         initEvent();
     }
 
@@ -55,6 +75,9 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         ivBack.setOnClickListener(this);
         ivScanCode.setOnClickListener(this);
         btnSearchSupplier.setOnClickListener(this);
+
+        // TODO: 2017/8/29  下拉刷新，上拉加载
+
     }
 
     @Override
@@ -72,46 +95,66 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         }
     }
 
-//    private void initData() {
-//
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//
-//                Gson gson = new Gson();
-//                CodeAndMsg codeAndMsg = gson.fromJson(response, CodeAndMsg.class);
-////                    登录成功
-//                if (200 == codeAndMsg.getCode()) {
-//                    Toast.makeText(SupplierListActivity.this, codeAndMsg.getMsg(), Toast.LENGTH_SHORT).show();
-//                    finish();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(SupplierListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        }) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                ArrayMap<String, String> params = new ArrayMap<>();
-//
-//                params.put("passwtokenord", BaseApplication.getLoginBean().getData().getToken());
-//                params.put("name", "");
-//
-//                return params;
-//            }
-//        };
-//
-//
-//        stringRequest.setTag("SupplierListActivity");
-//        BaseApplication.getRequestQueue().add(stringRequest);
-//
-//    }
+    private void initData() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STORE_IN_LIST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                System.out.println("aaa response" + response);
+                Gson gson = new Gson();
+                SuppliersListBean suppliersListBean = gson.fromJson(response, SuppliersListBean.class);
+//                    登录成功
+                if (200 == suppliersListBean.getCode()) {
+                    suppliersList.clear();
+                    suppliersList.addAll(suppliersListBean.getData().getStore_in_list());
+                    initAdapter();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(SupplierListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                ArrayMap<String, String> params = new ArrayMap<String, String>();
+
+                params.put("token", BaseApplication.getLoginBean().getData().getToken());
+                params.put("start_date", (new Date(0)).getTime() / 1000 + "");
+                params.put("end_date", System.currentTimeMillis() / 1000 + "");
+                params.put("rows", "20");
+                params.put("page", page + "");
+                params.put("get_supply_list", "1");
+
+                return params;
+            }
+        };
+
+        stringRequest.setTag("SupplierListActivity");
+        BaseApplication.getRequestQueue().add(stringRequest);
+    }
+
+    private void initAdapter() {
+
+        rvSupplierList.setHasFixedSize(true);
+        rvSupplierList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        if (0 != suppliersList.size()) {
+
+            suppliersAdapter = new SuppliersListAdapter(suppliersList, SupplierListActivity.this);
+            rvSupplierList.setAdapter(suppliersAdapter);
+
+        } else {
+            Toast.makeText(SupplierListActivity.this, "没有数据", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         BaseApplication.getRequestQueue().cancelAll("SupplierListActivity");
     }
+
+
 }
