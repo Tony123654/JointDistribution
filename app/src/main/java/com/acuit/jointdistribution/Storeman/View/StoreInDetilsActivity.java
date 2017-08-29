@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
+import com.acuit.jointdistribution.R;
 
 /**
  * 类名: StoreInDetilsActivity <p>
@@ -20,7 +21,11 @@ public class StoreInDetilsActivity extends BaseActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.);
-        String supplierId = getIntent().getStringExtra("SupplierId");
+        setContentView(R.layout.activity_storein_detiles);
+        String StoreInId = getIntent().getStringExtra("StoreInId");
+
+
     }
+
+
 }

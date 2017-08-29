@@ -13,8 +13,6 @@ import com.acuit.jointdistribution.Storeman.Bean.StoreInListBySupplierBean;
 import com.acuit.jointdistribution.Storeman.View.StoreInDetilsActivity;
 import com.acuit.jointdistribution.Storeman.View.StoreInListActivity;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -50,15 +48,9 @@ public class StoreInListAdapter extends RecyclerView.Adapter {
 
         StoreInList_ViewHold viewHold = (StoreInList_ViewHold) holder;
         viewHold.getTvOrderId().setText(dataList.get(position).getCode());
-
-        Date date = new Date(1503849600);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time = simpleDateFormat.format(date);
-        System.out.println("aaa plateDate:" + time);
-
         viewHold.getTvPlanDate().setText(dataList.get(position).getPlan_date_str());
         viewHold.getTvTotalAmount().setText(dataList.get(position).getStatis_num());
-
+        viewHold.setItemPosition(position);
     }
 
     @Override
@@ -73,6 +65,7 @@ public class StoreInListAdapter extends RecyclerView.Adapter {
         private final TextView tvPlanDate;
         private final TextView tvTotalAmount;
         private final TextView tvOrderId;
+        private int itemPosition;
 
         public StoreInList_ViewHold(View itemView) {
             super(itemView);
@@ -81,15 +74,13 @@ public class StoreInListAdapter extends RecyclerView.Adapter {
             tvPlanDate = (TextView) itemView.findViewById(R.id.tv_planDate);
             btnStoreIn = (Button) itemView.findViewById(R.id.btn_storeIn);
 
-            itemView.setOnClickListener(this);
+            btnStoreIn.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            RecyclerView parent = (RecyclerView) v.getParent();
-            int position = parent.getChildAdapterPosition(v);
             Intent intent = new Intent(mActivity, StoreInDetilsActivity.class);
-            intent.putExtra("StoreInId", dataList.get(position).getCode());
+            intent.putExtra("StoreInId", dataList.get(itemPosition).getCode());
             mActivity.startActivity(intent);
         }
 
@@ -110,6 +101,13 @@ public class StoreInListAdapter extends RecyclerView.Adapter {
             return tvOrderId;
         }
 
+        public int getItemPosition() {
+            return itemPosition;
+        }
+
+        public void setItemPosition(int itemPosition) {
+            this.itemPosition = itemPosition;
+        }
     }
 
 
