@@ -27,8 +27,15 @@ public class StatisticalAnalysisPager extends BasePager {
     public Activity mActivity;
     private View view;
     private SimpleAdapter sim_adapter;
-    private TextView count;
-    private String count1;
+    private TextView day_total_money;
+    private TextView day_total_count;
+    private TextView week_total_money;
+    private TextView week_total_count;
+    private TextView month_total_money;
+    private TextView month_total_count;
+    private int money=1;
+    private int count=0;
+
 
     public StatisticalAnalysisPager(Activity activity) {
         super(activity);
@@ -44,25 +51,45 @@ public class StatisticalAnalysisPager extends BasePager {
 
         flContainer.addView(view);
 
-        count = (TextView) view.findViewById(R.id.tv_count);
+        day_total_money = (TextView) view.findViewById(R.id.day_total_money);
+        day_total_count = (TextView) view.findViewById(R.id.day_total_count);
+        week_total_money = (TextView) view.findViewById(R.id.week_total_money);
+        week_total_count = (TextView) view.findViewById(R.id.week_total_count);
+        month_total_money = (TextView) view.findViewById(R.id.month_total_money);
+        month_total_count = (TextView) view.findViewById(R.id.month_total_count);
+
 
         HttpUtils http = new HttpUtils();
         RequestParams params = new RequestParams();
-        params.addBodyParameter("page", "1");
-        params.addBodyParameter("rows", "5");
+        params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
+        params.addBodyParameter("money",money+"");
+        params.addBodyParameter("count",count+"");
 
 
-        http.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=count_order_money_number", new RequestCallBack<String>() {
+
+        http.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=count_order_money_number",params,
+                new RequestCallBack<String>() {
             @Override
             public void onSuccess(ResponseInfo<String> responseInfo) {
                 String result = responseInfo.result;
                 Gson gson = new Gson();
                 System.out.println("json:" + result);
-
                 Count_Money count_money = gson.fromJson(result, Count_Money.class);
-                count1 = count_money.getData().getDay().getCount();
 
-                count.setText(count1);
+//                int money = count_money.getData().getDay().getMoney();
+//                String count = count_money.getData().getDay().getCount();
+//                day_total_money.setText(money);
+     //数据可以获取到就是不能显示到界面（数据类型的问题）
+                day_total_money.setText(count_money.getData().getDay().getMoney()+"");
+                day_total_count.setText(count_money.getData().getDay().getCount()+"");
+
+                week_total_money.setText(count_money.getData().getWeek().getMoney()+"");
+                week_total_count.setText(count_money.getData().getWeek().getCount()+"");
+
+
+                month_total_money.setText(count_money.getData().getMon().getMoney()+"");
+                month_total_count.setText(count_money.getData().getMon().getCount()+"");
+
 
 
             }

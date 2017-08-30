@@ -1,38 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_root"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#4FC39A">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="数据报表"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
 
     <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:id="@+id/rl_root"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="#CBFFE3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="28dp"
         android:layout_marginTop="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/yellowjine"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"/>
+        android:layout_weight="1">
+
+
+
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/textView14"
+            android:layout_width="120dp"
+            android:drawableLeft="@mipmap/yellowjine"
+            android:drawablePadding="8dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
-            android:text="今日订单数量"
-            android:layout_marginLeft="50dp"/>
+            android:text="今日订单总额" />
+
         <TextView
-            android:id="@+id/tv_count"
-            android:layout_width="wrap_content"
+            android:id="@+id/day_total_money"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
-            />
+            android:text="000"
+            android:layout_alignStart="@+id/textView14" />
+
+
+        <TextView
+            android:drawableLeft="@mipmap/yellow_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="30dp"
+            android:text="今日订单数量" />
+
+        <TextView
+            android:id="@+id/day_total_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="10dp" />
+
 
     </RelativeLayout>
-</RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_root1"
+        android:background="#CBFFE3"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="50dp"
+        android:layout_weight="1">
+
+
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:drawableLeft="@mipmap/green_jine"
+            android:drawablePadding="8dp"
+            android:layout_marginTop="30dp"
+            android:text="本周订单总额" />
+
+        <TextView
+            android:id="@+id/week_total_money"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:drawableLeft="@mipmap/green_zhou"
+            android:drawablePadding="8dp"
+            android:layout_marginTop="30dp"
+            android:text="本周订单数量" />
+
+        <TextView
+            android:id="@+id/week_total_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="10dp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_root12"
+        android:layout_width="wrap_content"
+        android:background="#CBFFE3"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="50dp"
+        android:layout_weight="1">
+
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:drawablePadding="8dp"
+            android:drawableLeft="@mipmap/blue_jine"
+            android:text="本月订单总额" />
+
+        <TextView
+            android:id="@+id/month_total_money"
+            android:layout_width="120dp"
+
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="30dp"
+            android:drawableLeft="@mipmap/blue_month"
+            android:drawablePadding="8dp"
+            android:text="本月订单数量" />
+
+        <TextView
+
+            android:id="@+id/month_total_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="10dp" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--公共模块-->
+        <!-- 公共模块 -->
         <activity android:name=".Common.View.Activity.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,8 +31,6 @@
         <activity
             android:name=".Common.View.Activity.ModifyPwdActivity"
             android:launchMode="singleInstance" />
-
-
         <activity android:name=".Common.View.Activity.LoginActivity" />
         <activity android:name=".Common.View.Activity.AboutUsActivity" />
         <activity android:name=".Common.View.Activity.BindPhoneActivity" />
@@ -53,8 +51,7 @@
         <activity android:name=".Storeman.View.StoreInListActivity" />
         <activity android:name=".Storeman.View.SupplierListActivity" />
         <activity android:name=".Storeman.View.StoreInDetilsActivity" />
-
-
+        <activity android:name=".Supplier.Acitivity.PurchaseChangedActivity" />
     </application>
 
 </manifest>

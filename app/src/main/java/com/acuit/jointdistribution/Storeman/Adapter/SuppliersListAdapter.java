@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Bean.SuppliersListBean;
-import com.acuit.jointdistribution.Storeman.View.StoreInDetilsActivity;
-import com.acuit.jointdistribution.Storeman.View.StoreInListActivity;
 import com.acuit.jointdistribution.Storeman.View.SupplierListActivity;
 
 import java.util.List;
@@ -83,12 +81,17 @@ public class SuppliersListAdapter extends RecyclerView.Adapter {
             int position = parent.getChildAdapterPosition(v);
             Intent intent;
             if (1 == dataList.get(position).getCount()) {
-                intent = new Intent(mActivity, StoreInDetilsActivity.class);
+//                intent = new Intent(mActivity, StoreInDetilsActivity.class);
             } else {
-                intent = new Intent(mActivity, StoreInListActivity.class);
+//                intent = new Intent(mActivity, StoreInListActivity.class);
             }
-            intent.putExtra("SupplierId", dataList.get(position));
-            mActivity.startActivity(intent);
+//<<<<<<< Updated upstream
+//            intent.putExtra("SupplierId", dataList.get(position));
+//            mActivity.startActivity(intent);
+//=======
+//            intent.putExtra("SupplierId", dataList.get(position).getSupply_id());
+//            mActivity.startActivity(intent);
+//>>>>>>> Stashed changes
         }
     }
 }

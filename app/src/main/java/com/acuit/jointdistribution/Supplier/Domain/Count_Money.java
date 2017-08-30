@@ -16,7 +16,7 @@ public class Count_Money {
 
     /**
      * code : 200
-     * data : {"day":{"count":"0","money":0},"mon":{"count":"36","money":2.00006124223E9},"week":{"count":"10","money":16767.93}}
+     * data : {"day":{"count":"0","money":0},"mon":{"count":"39","money":2.00007356973E9},"week":{"count":"3","money":12327.5}}
      * msg : 获取数据成功
      */
 
@@ -51,8 +51,8 @@ public class Count_Money {
     public static class DataBean {
         /**
          * day : {"count":"0","money":0}
-         * mon : {"count":"36","money":2.00006124223E9}
-         * week : {"count":"10","money":16767.93}
+         * mon : {"count":"39","money":2.00007356973E9}
+         * week : {"count":"3","money":12327.5}
          */
 
         private DayBean day;
@@ -111,8 +111,8 @@ public class Count_Money {
 
         public static class MonBean {
             /**
-             * count : 36
-             * money : 2.00006124223E9
+             * count : 39
+             * money : 2.00007356973E9
              */
 
             private String count;
@@ -137,8 +137,8 @@ public class Count_Money {
 
         public static class WeekBean {
             /**
-             * count : 10
-             * money : 16767.93
+             * count : 3
+             * money : 12327.5
              */
 
             private String count;

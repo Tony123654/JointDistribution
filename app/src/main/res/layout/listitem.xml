@@ -2,80 +2,112 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout8"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#4FC39A">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="接单"
-            android:textSize="24sp" />
-    </RelativeLayout>
-
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
     <TextView
-        android:id="@+id/tv_create_date"
+        android:id="@+id/tv_jintian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/relativeLayout8"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="17dp"
-        android:text="创建日期：" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/rb"
+        android:text="创建日期："
+        android:textColor="#7C7C7C" />
 
     <TextView
         android:id="@+id/tv_department_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@id/tv_create_date"
-        android:layout_below="@id/tv_create_date"
-        android:layout_marginTop="13dp"
+        android:layout_alignStart="@id/tv_jintian"
+        android:layout_below="@id/tv_jintian"
+        android:layout_marginTop="5dp"
         android:drawableLeft="@mipmap/dizhi"
         android:drawablePadding="5dp"
-        android:text="东区食堂(浙大-紫金港)" />
+        android:text="东区食堂(浙大-紫金港)"
+        android:textColor="#7C7C7C" />
 
     <TextView
-        android:id="@+id/tv_pian_data"
+        android:id="@+id/tv_jihua"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/tv_department_location"
         android:layout_below="@id/tv_department_location"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:drawableLeft="@mipmap/icon_clock"
         android:drawablePadding="5dp"
-        android:text="计划送达日期：" />
+        android:text="计划送达日期："
+        android:textColor="#7C7C7C" />
+
+    <TextView
+        android:id="@+id/tv_zongliang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tv_jintian"
+        android:layout_below="@id/tv_jihua"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="5dp"
+        android:text="总数量："
+        android:textColor="#7C7C7C" />
+
+    <TextView
+        android:id="@+id/tv_qian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_total_amount"
+        android:layout_alignBottom="@+id/tv_total_amount"
+        android:layout_toEndOf="@+id/tv_department_location"
+        android:text="总金额："
+        android:textColor="#7C7C7C" />
+
+    <RadioButton
+        android:id="@+id/rb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:textColor="#7C7C7C" />
 
     <TextView
         android:id="@+id/tv_total_amount"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_zongliang"
+        android:layout_alignBottom="@+id/tv_zongliang"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/tv_zongliang"
+        android:text="11111"
+        android:textColor="#7C7C7C" />
+
+
+    <TextView
+        android:id="@+id/tv_plan_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="总数量："
-        android:layout_below="@+id/radioButton2"
-        android:layout_alignEnd="@+id/tv_create_date" />
+        android:layout_alignTop="@+id/tv_jihua"
+        android:layout_toEndOf="@+id/tv_jihua"
+        android:text="555555"
+        android:textColor="#7C7C7C" />
 
     <TextView
         android:id="@+id/tv_total_money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/tv_total_amount"
-        android:layout_alignBottom="@id/tv_total_amount"
-        android:layout_centerHorizontal="true"
-        android:text="总金额：" />
+        android:layout_alignBottom="@+id/tv_qian"
+        android:layout_toEndOf="@+id/tv_qian"
+        android:text="TextView"
+        android:textColor="#7C7C7C" />
 
-    <RadioButton
-        android:id="@+id/radioButton2"
+    <TextView
+        android:id="@+id/tv_create_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tv_pian_data"
-        android:layout_alignParentStart="true" />
-
-
+        android:layout_above="@+id/tv_department_location"
+        android:layout_toEndOf="@+id/tv_jintian"
+        android:text="TextView"
+        android:textColor="#7C7C7C" />
 
 
 </RelativeLayout>
