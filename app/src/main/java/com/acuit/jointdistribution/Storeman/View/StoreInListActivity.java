@@ -100,7 +100,8 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STORE_IN_LIST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("aaa response" + response);
+                System.out.println("aaa url:" + GlobalContants.URL_STORE_IN_LIST);
+                System.out.println("aaa json:" + response);
                 Gson gson = new Gson();
                 StoreInListBySupplierBean storeInListBySupplierBean = gson.fromJson(response, StoreInListBySupplierBean.class);
 //                    登录成功
@@ -125,6 +126,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
                 params.put("end_date", System.currentTimeMillis() / 1000 + "");
                 params.put("rows", "20");
                 params.put("page", page + "");
+                params.put("status", "2");
                 params.put("supply_id", supplier.getSupply_id());
 
                 return params;

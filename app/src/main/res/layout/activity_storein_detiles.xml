@@ -29,22 +29,23 @@
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_margin="10dp"
             android:background="#00000000"
+            android:clickable="true"
+            android:padding="15dp"
             android:src="@mipmap/icon_nav_back" />
 
         <ImageView
             android:id="@+id/iv_more"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_margin="10dp"
             android:background="#00000000"
             android:clickable="true"
+            android:padding="15dp"
             android:src="@mipmap/icon_more" />
 
     </RelativeLayout>
@@ -62,8 +63,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="采购入库单"
             android:padding="5dp"
+            android:text="采购入库单"
             android:textColor="#333333"
             android:textSize="16sp" />
 
@@ -106,9 +107,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/border"
-        android:paddingLeft="10dp"
         android:background="#ffffff"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -176,28 +177,19 @@
     </LinearLayout>
 
 
-    <ScrollView
-        android:id="@+id/sv_goods"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_goodsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_orderDetiel"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="10dp" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rl_suppliersList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ll_supplierName">
-
-        </android.support.v7.widget.RecyclerView>
-
-    </ScrollView>
 
     <LinearLayout
         android:id="@+id/ll_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sv_goods"
+        android:layout_below="@id/rv_goodsList"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp">
 
@@ -209,12 +201,17 @@
             />
 
         <TextView
-            android:id="@+id/tv_contact"
+            android:id="@+id/tv_contacterName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="江映川【15626666666】"
+            android:text="江映川" />
 
-            />
+        <TextView
+            android:id="@+id/tv_contacterPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="【15626666666】"
+            android:textColor="#33b688" />
 
     </LinearLayout>
 
@@ -224,14 +221,12 @@
         android:layout_below="@id/ll_contact"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="直出部门："
-
-            />
+            android:text="直出部门：" />
 
         <TextView
             android:id="@+id/tv_straghtOutDep"
@@ -243,13 +238,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:layout_alignParentStart="true">
 
         <TextView
+            android:id="@+id/tv_save"
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#ffffff"
             android:clickable="true"
@@ -258,8 +255,9 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/tv_checked"
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#339866"
             android:clickable="true"

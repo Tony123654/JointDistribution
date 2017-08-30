@@ -80,7 +80,7 @@ public class StoreInListAdapter extends RecyclerView.Adapter {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(mActivity, StoreInDetilsActivity.class);
-            intent.putExtra("StoreInId", dataList.get(itemPosition).getCode());
+            intent.putExtra("StoreInId", dataList.get(itemPosition).getId());
             mActivity.startActivity(intent);
         }
 

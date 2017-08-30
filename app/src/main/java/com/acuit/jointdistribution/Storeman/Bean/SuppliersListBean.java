@@ -19,7 +19,7 @@ public class SuppliersListBean {
 
     /**
      * code : 200
-     * data : {"store_in_list":[{"count":8,"supply_code":"HZSCWLYXGS","supply_id":"53","supply_name":"杭州蔬菜物流有限公司"},{"count":1,"supply_code":"HZLMSPYXGS","supply_id":"73","supply_name":"杭州绿萌食品有限公司"},{"count":3,"supply_code":"HZYDMNFCPP","supply_id":"91","supply_name":"杭州杨大妈农副产品配送有限公司"},{"count":1,"supply_code":"HZZQNCPYXG","supply_id":"166","supply_name":"杭州昭强农产品有限公司"},{"count":1,"supply_code":"HZYHQLZLSS","supply_id":"167","supply_name":"杭州余杭区良渚罗树生禽产品经营部"},{"count":1,"supply_code":"HZSXHQSQSC","supply_id":"165","supply_name":"杭州市西湖区双桥蔬菜种植场"},{"count":1,"supply_code":"FXMFYXYXGS","supply_id":"46","supply_name":"福新面粉（宜兴）有限公司"},{"count":4,"supply_code":"HZHSLYMYYX","supply_id":"38","supply_name":"杭州宏盛粮油贸易有限公司"}],"total":"709"}
+     * data : {"store_in_list":[{"count":9,"supply_code":"HZSCWLYXGS","supply_id":"53","supply_name":"杭州蔬菜物流有限公司"},{"count":1,"supply_code":"HZLMSPYXGS","supply_id":"73","supply_name":"杭州绿萌食品有限公司"},{"count":3,"supply_code":"HZYDMNFCPP","supply_id":"91","supply_name":"杭州杨大妈农副产品配送有限公司"},{"count":2,"supply_code":"HZZQNCPYXG","supply_id":"166","supply_name":"杭州昭强农产品有限公司"},{"count":1,"supply_code":"HZYHQLZLSS","supply_id":"167","supply_name":"杭州余杭区良渚罗树生禽产品经营部"},{"count":4,"supply_code":"HZHSLYMYYX","supply_id":"38","supply_name":"杭州宏盛粮油贸易有限公司"}],"total":"21"}
      * msg : 执行成功！
      */
 
@@ -53,8 +53,8 @@ public class SuppliersListBean {
 
     public static class DataBean {
         /**
-         * store_in_list : [{"count":8,"supply_code":"HZSCWLYXGS","supply_id":"53","supply_name":"杭州蔬菜物流有限公司"},{"count":1,"supply_code":"HZLMSPYXGS","supply_id":"73","supply_name":"杭州绿萌食品有限公司"},{"count":3,"supply_code":"HZYDMNFCPP","supply_id":"91","supply_name":"杭州杨大妈农副产品配送有限公司"},{"count":1,"supply_code":"HZZQNCPYXG","supply_id":"166","supply_name":"杭州昭强农产品有限公司"},{"count":1,"supply_code":"HZYHQLZLSS","supply_id":"167","supply_name":"杭州余杭区良渚罗树生禽产品经营部"},{"count":1,"supply_code":"HZSXHQSQSC","supply_id":"165","supply_name":"杭州市西湖区双桥蔬菜种植场"},{"count":1,"supply_code":"FXMFYXYXGS","supply_id":"46","supply_name":"福新面粉（宜兴）有限公司"},{"count":4,"supply_code":"HZHSLYMYYX","supply_id":"38","supply_name":"杭州宏盛粮油贸易有限公司"}]
-         * total : 709
+         * store_in_list : [{"count":9,"supply_code":"HZSCWLYXGS","supply_id":"53","supply_name":"杭州蔬菜物流有限公司"},{"count":1,"supply_code":"HZLMSPYXGS","supply_id":"73","supply_name":"杭州绿萌食品有限公司"},{"count":3,"supply_code":"HZYDMNFCPP","supply_id":"91","supply_name":"杭州杨大妈农副产品配送有限公司"},{"count":2,"supply_code":"HZZQNCPYXG","supply_id":"166","supply_name":"杭州昭强农产品有限公司"},{"count":1,"supply_code":"HZYHQLZLSS","supply_id":"167","supply_name":"杭州余杭区良渚罗树生禽产品经营部"},{"count":4,"supply_code":"HZHSLYMYYX","supply_id":"38","supply_name":"杭州宏盛粮油贸易有限公司"}]
+         * total : 21
          */
 
         private String total;
@@ -76,9 +76,9 @@ public class SuppliersListBean {
             this.store_in_list = store_in_list;
         }
 
-        public static class StoreInListBean implements Serializable {
+        public static class StoreInListBean implements Serializable{
             /**
-             * count : 8
+             * count : 9
              * supply_code : HZSCWLYXGS
              * supply_id : 53
              * supply_name : 杭州蔬菜物流有限公司

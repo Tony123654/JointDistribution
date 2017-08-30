@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="73dp"
+    android:layout_weight="1"
+    android:background="@drawable/shape_goodsitem"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_goodsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="西红柿"
+        android:textColor="#33b688" />
+
+    <TextView
+        android:id="@+id/tv_goodsWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="596.00kg" />
+
+</LinearLayout>
+

@@ -51,15 +51,15 @@ GlobalContants {
     public static final String URL_VIEW_SUGGESTION = SERVER_URL + "submit_bug_list";
 
 
-    //    保管员首页展示信息(订单数据、供应商数据)获取链接：
-    //    供应商
+    //****************保管员首页展示信息(订单数据、供应商数据)获取链接：
+    //    订单数据
     public static final String URL_SUPPLIERS_DATA = AJAXREPORT_URL + "supply_order";//&dep_id=8
-    //    送货
+    //    送货(供应商)数据
     public static final String URL_DELIVER_DATA = AJAXREPORT_URL + "storekeeper_order";//&dep_id=8
     //    获取入库单列表
     public static final String URL_STORE_IN_LIST = SERVER_URL + "store_in_list";
-
-//    public static final String URL_DELIVER_DATA = AJAXREPORT_URL + "storekeeper_order";//&dep_id=8
+    //    获取入库单详情信息
+    public static final String URL_STOREIN_DETAIL = SERVER_URL + "view_store_in_for_cofirm";
 
 
 
