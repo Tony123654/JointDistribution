@@ -86,6 +86,7 @@ public class SuppliersListAdapter extends RecyclerView.Adapter {
                 // TODO: 2017/8/31 单个订单时，传参StoreInID
                 intent = new Intent(mActivity, StoreInDetilsActivity.class);
 //                intent.putExtra("StoreInId", );
+//                getStoreInId();
             } else {
                 intent = new Intent(mActivity, StoreInListActivity.class);
                 intent.putExtra("SupplierId", dataList.get(position));

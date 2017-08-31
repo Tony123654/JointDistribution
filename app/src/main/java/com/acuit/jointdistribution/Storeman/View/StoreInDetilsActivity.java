@@ -76,7 +76,7 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
         tvSave = (TextView) findViewById(R.id.tv_save);
         ivBack = (ImageView) findViewById(R.id.iv_back);
         ivMore = (ImageView) findViewById(R.id.iv_more);
-        tvChecked = (TextView) findViewById(R.id.tv_checked);
+        tvChecked = (TextView) findViewById(R.id.tv_check);
         tvOrderId = (TextView) findViewById(R.id.tv_orderId);
         tvPlanDate = (TextView) findViewById(R.id.tv_planDate);
         rvGoods = (RecyclerView) findViewById(R.id.rv_goodsList);
@@ -171,8 +171,8 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
             tvStoreInDep.setText(storeInDetailBean.getData().get(0).getDep_name2());
             tvSupplierName.setText(storeInDetailBean.getData().get(0).getSupply_name());
             tvContacterName.setText(storeInDetailBean.getData().get(0).getContact_person());
-            tvContacterPhone.setText(storeInDetailBean.getData().get(0).getContact_phone());
-            tvPlanDate.setText(Tools.getFormatedTime(storeInDetailBean.getData().get(0).getPlan_date()));
+            tvContacterPhone.setText("【" + storeInDetailBean.getData().get(0).getContact_phone() + "】");
+            tvPlanDate.setText(Tools.getSimpleFormatedTime(storeInDetailBean.getData().get(0).getPlan_date()));
 
             goodsList.clear();
             goodsList.addAll(storeInDetailBean.getData().get(0).getList());

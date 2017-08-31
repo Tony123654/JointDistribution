@@ -85,6 +85,6 @@ public class Tools {
 
 
     public static String getSimpleFormatedTime(String seconds) {
-        return getSimpleFormatedTime(seconds);
+        return getSimpleFormatedTime(Long.parseLong(seconds));
     }
 }
