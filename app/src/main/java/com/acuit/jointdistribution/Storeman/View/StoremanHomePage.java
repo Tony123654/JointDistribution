@@ -141,7 +141,12 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(mActivity, error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                if (null == error.getMessage()) {
+                    Toast.makeText(mActivity, "无法获取信息，请检查网络环境", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mActivity, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         }){
             @Override

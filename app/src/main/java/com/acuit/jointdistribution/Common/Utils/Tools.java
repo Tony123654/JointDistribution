@@ -4,6 +4,8 @@ import android.text.TextUtils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 类名: Tools <p>
@@ -50,5 +52,39 @@ public class Tools {
             e.printStackTrace();
         }
         return "";
+    }
+
+    /**
+     * 获取固定格式的时间字符串
+     * ("yyyy-MM-dd HH:mm:ss")
+     * @param seconds
+     * @return
+     */
+    public static String getFormatedTime(long seconds) {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return simpleDateFormat.format(new Date(1000 * seconds));
+    }
+
+    public static String getFormatedTime(String seconds) {
+
+        return getFormatedTime(Long.parseLong(seconds));
+    }
+
+    /**
+     * 获取固定格式的时间字符串
+     * (yyyy-MM-dd)
+     * @param seconds
+     * @return
+     */
+    public static String getSimpleFormatedTime(long seconds) {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return simpleDateFormat.format(new Date(1000 * seconds));
+    }
+
+
+    public static String getSimpleFormatedTime(String seconds) {
+        return getSimpleFormatedTime(seconds);
     }
 }

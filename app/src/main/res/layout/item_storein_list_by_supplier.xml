@@ -81,14 +81,15 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/btn_storeIn"
+    <TextView
+        android:id="@+id/tv_storeIn"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="18dp"
         android:background="#33b688"
+        android:gravity="center"
         android:text="入库" />
 
 

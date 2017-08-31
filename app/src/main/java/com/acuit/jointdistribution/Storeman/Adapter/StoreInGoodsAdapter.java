@@ -1,5 +1,6 @@
 package com.acuit.jointdistribution.Storeman.Adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,7 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
 
         Goods_ViewHolder viewHolder = (Goods_ViewHolder) holder;
         StoreInDetailBean.DataBean.ListBean itemBean = dataList.get(position);
+        System.out.println("aaa goodsName："+itemBean.getStock_name());
 
         viewHolder.getTvGoodsName().setText(itemBean.getStock_name());
         viewHolder.getTvGoodsWeight().setText(itemBean.getOrder_amount() + itemBean.getUnit());
@@ -73,7 +75,11 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
 
         @Override
         public void onClick(View v) {
-
+            RecyclerView parent = (RecyclerView) v.getParent();
+            int itemPosition = parent.getChildAdapterPosition(v);
+            Intent intent = new Intent(mActivity, StoreInDetilsActivity.class);
+            intent.putExtra("StoreInId", dataList.get(itemPosition).getId());
+            mActivity.startActivity(intent);
         }
 
 

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Bean.SuppliersListBean;
+import com.acuit.jointdistribution.Storeman.View.StoreInDetilsActivity;
+import com.acuit.jointdistribution.Storeman.View.StoreInListActivity;
 import com.acuit.jointdistribution.Storeman.View.SupplierListActivity;
 
 import java.util.List;
@@ -17,7 +19,7 @@ import java.util.List;
  * 类名: SuppliersListAdapter <p>
  * 创建人: YanJ <p>
  * 创建时间: 2017/8/29 10:29 <p>
- * 描述:
+ * 描述: 采购单供应商列表 适配器
  * <p>
  * 更新人: <p>
  * 更新时间: <p>
@@ -79,19 +81,17 @@ public class SuppliersListAdapter extends RecyclerView.Adapter {
         public void onClick(View v) {
             RecyclerView parent = (RecyclerView) v.getParent();
             int position = parent.getChildAdapterPosition(v);
-            Intent intent;
+            Intent intent = null;
             if (1 == dataList.get(position).getCount()) {
-//                intent = new Intent(mActivity, StoreInDetilsActivity.class);
+                // TODO: 2017/8/31 单个订单时，传参StoreInID
+                intent = new Intent(mActivity, StoreInDetilsActivity.class);
+//                intent.putExtra("StoreInId", );
             } else {
-//                intent = new Intent(mActivity, StoreInListActivity.class);
+                intent = new Intent(mActivity, StoreInListActivity.class);
+                intent.putExtra("SupplierId", dataList.get(position));
             }
-//<<<<<<< Updated upstream
-//            intent.putExtra("SupplierId", dataList.get(position));
-//            mActivity.startActivity(intent);
-//=======
-//            intent.putExtra("SupplierId", dataList.get(position).getSupply_id());
-//            mActivity.startActivity(intent);
-//>>>>>>> Stashed changes
+            mActivity.startActivity(intent);
+
         }
     }
 }
