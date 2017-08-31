@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.acuit.jointdistribution.R;
@@ -50,7 +49,6 @@ public class StoreInListAdapter extends RecyclerView.Adapter {
         viewHold.getTvOrderId().setText(dataList.get(position).getCode());
         viewHold.getTvPlanDate().setText(dataList.get(position).getPlan_date_str());
         viewHold.getTvTotalAmount().setText(dataList.get(position).getStatis_num());
-        viewHold.setItemPosition(position);
     }
 
     @Override
@@ -61,32 +59,33 @@ public class StoreInListAdapter extends RecyclerView.Adapter {
     class StoreInList_ViewHold extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
-        private final Button btnStoreIn;
+        private final TextView tvStoreIn;
         private final TextView tvPlanDate;
         private final TextView tvTotalAmount;
         private final TextView tvOrderId;
-        private int itemPosition;
 
         public StoreInList_ViewHold(View itemView) {
             super(itemView);
             tvOrderId = (TextView) itemView.findViewById(R.id.tv_orderId);
             tvTotalAmount = (TextView) itemView.findViewById(R.id.tv_total_amount);
             tvPlanDate = (TextView) itemView.findViewById(R.id.tv_planDate);
-            btnStoreIn = (Button) itemView.findViewById(R.id.btn_storeIn);
+            tvStoreIn = (TextView) itemView.findViewById(R.id.tv_storeIn);
 
-            btnStoreIn.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+            RecyclerView parent = (RecyclerView) v.getParent();
+            int itemPosition = parent.getChildAdapterPosition(v);
             Intent intent = new Intent(mActivity, StoreInDetilsActivity.class);
             intent.putExtra("StoreInId", dataList.get(itemPosition).getId());
             mActivity.startActivity(intent);
         }
 
 
-        public Button getBtnStoreIn() {
-            return btnStoreIn;
+        public TextView getTvStoreIn() {
+            return tvStoreIn;
         }
 
         public TextView getTvPlanDate() {
@@ -101,13 +100,6 @@ public class StoreInListAdapter extends RecyclerView.Adapter {
             return tvOrderId;
         }
 
-        public int getItemPosition() {
-            return itemPosition;
-        }
-
-        public void setItemPosition(int itemPosition) {
-            this.itemPosition = itemPosition;
-        }
     }
 
 

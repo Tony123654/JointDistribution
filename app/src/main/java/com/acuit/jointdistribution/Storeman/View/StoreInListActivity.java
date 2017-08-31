@@ -100,8 +100,6 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STORE_IN_LIST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("aaa url:" + GlobalContants.URL_STORE_IN_LIST);
-                System.out.println("aaa json:" + response);
                 Gson gson = new Gson();
                 StoreInListBySupplierBean storeInListBySupplierBean = gson.fromJson(response, StoreInListBySupplierBean.class);
 //                    登录成功
@@ -114,7 +112,11 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(StoreInListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                if (null == error.getMessage()) {
+                    Toast.makeText(StoreInListActivity.this, "无法获取信息，请检查网络环境", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(StoreInListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         }) {
             @Override

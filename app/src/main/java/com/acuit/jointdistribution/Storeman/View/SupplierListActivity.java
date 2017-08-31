@@ -100,7 +100,6 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STORE_IN_LIST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("aaa json:" + response);
                 Gson gson = new Gson();
                 SuppliersListBean suppliersListBean = gson.fromJson(response, SuppliersListBean.class);
 //                    登录成功
@@ -113,7 +112,11 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(SupplierListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                if (null == error.getMessage()) {
+                    Toast.makeText(SupplierListActivity.this, "无法获取信息，请检查网络环境", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SupplierListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         }) {
             @Override
@@ -127,11 +130,7 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
                 params.put("page", page + "");
                 params.put("status", "2");
                 params.put("get_supply_list", "1");
-//
-//                Date date = new Date(System.currentTimeMillis());
-//                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//                String time = simpleDateFormat.format(date);
-//                System.out.println("aaa time:" + time);
+
 
                 return params;
             }

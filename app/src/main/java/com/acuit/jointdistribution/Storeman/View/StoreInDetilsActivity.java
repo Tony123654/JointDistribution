@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
+import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Adapter.StoreInGoodsAdapter;
 import com.acuit.jointdistribution.Storeman.Bean.StoreInDetailBean;
@@ -128,8 +129,6 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STOREIN_DETAIL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("aaa storeInId:" + storeInId);
-                System.out.println("aaa response:" + response);
                 Gson gson = new Gson();
                 storeInDetailBean = gson.fromJson(response, StoreInDetailBean.class);
 //                    登录成功
@@ -141,7 +140,12 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(StoreInDetilsActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                if (null == error.getMessage()) {
+                    Toast.makeText(StoreInDetilsActivity.this, "无法获取信息，请检查网络环境", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(StoreInDetilsActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         }) {
             @Override
@@ -162,11 +166,13 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
     private void initData() {
         if (null != storeInDetailBean) {
 
-            System.out.println("aaa PlanDate:"+storeInDetailBean.getData().get(0).getPlan_date());
             tvOrderId.setText(storeInDetailBean.getData().get(0).getCode());
-            tvPlanDate.setText(storeInDetailBean.getData().get(0).getPlan_date());
+
             tvStoreInDep.setText(storeInDetailBean.getData().get(0).getDep_name2());
             tvSupplierName.setText(storeInDetailBean.getData().get(0).getSupply_name());
+            tvContacterName.setText(storeInDetailBean.getData().get(0).getContact_person());
+            tvContacterPhone.setText(storeInDetailBean.getData().get(0).getContact_phone());
+            tvPlanDate.setText(Tools.getFormatedTime(storeInDetailBean.getData().get(0).getPlan_date()));
 
             goodsList.clear();
             goodsList.addAll(storeInDetailBean.getData().get(0).getList());
@@ -178,7 +184,6 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
 
         rvGoods.setHasFixedSize(true);
         rvGoods.setLayoutManager(new GridLayoutManager(this, 3));
-//        rvGoods.setLayoutManager(new GridLayoutManager(this,3, GridLayoutManager.HORIZONTAL,false));
         // TODO: 2017/8/30 RecyclerView添加分隔线 rvGoods.addItemDecoration();
 
         if (0 != goodsList.size()) {
