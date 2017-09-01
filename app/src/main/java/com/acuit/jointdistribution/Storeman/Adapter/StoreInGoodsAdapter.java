@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.acuit.jointdistribution.Common.Base.BaseArrayList;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Bean.StoreInDetailBean;
+import com.acuit.jointdistribution.Storeman.View.GoodsEditActivity;
 import com.acuit.jointdistribution.Storeman.View.StoreInDetilsActivity;
 
 import java.util.List;
@@ -27,10 +29,12 @@ import java.util.List;
 public class StoreInGoodsAdapter extends RecyclerView.Adapter {
 
     private StoreInDetilsActivity mActivity;
-    private List<StoreInDetailBean.DataBean.ListBean> dataList;
+    private BaseArrayList<StoreInDetailBean.DataBean.ListBean> dataList;
 
     public StoreInGoodsAdapter(List<StoreInDetailBean.DataBean.ListBean> dataList, StoreInDetilsActivity storeInDetilsActivity) {
-        this.dataList = dataList;
+        this.dataList = new BaseArrayList<StoreInDetailBean.DataBean.ListBean>();
+        this.dataList.clear();
+        this.dataList.addAll(dataList);
         this.mActivity = storeInDetilsActivity;
     }
 
@@ -46,11 +50,9 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
 
         Goods_ViewHolder viewHolder = (Goods_ViewHolder) holder;
         StoreInDetailBean.DataBean.ListBean itemBean = dataList.get(position);
-        System.out.println("aaa goodsName："+itemBean.getStock_name());
 
         viewHolder.getTvGoodsName().setText(itemBean.getStock_name());
         viewHolder.getTvGoodsWeight().setText(itemBean.getOrder_amount() + itemBean.getUnit());
-
 
     }
 
@@ -77,9 +79,11 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
         public void onClick(View v) {
             RecyclerView parent = (RecyclerView) v.getParent();
             int itemPosition = parent.getChildAdapterPosition(v);
-            Intent intent = new Intent(mActivity, StoreInDetilsActivity.class);
-            intent.putExtra("StoreInId", dataList.get(itemPosition).getId());
-            mActivity.startActivity(intent);
+            Intent intent = new Intent(mActivity, GoodsEditActivity.class);
+            intent.putExtra("GoodsList", dataList);
+            intent.putExtra("position", itemPosition);
+            mActivity.startActivityForResult(intent, 1);
+
         }
 
 

@@ -14,9 +14,9 @@ import android.view.ViewGroup;
  * 创建时间: 2017/8/8  16:49 <p>
  * 描述:Fragment基类
  * <p>
- * 更新人: <p>
- * 更新时间: <p>
- * 更新描述: <p>
+ * 更新人: YanJ<p>
+ * 更新时间: 2017-09-01 11:38<p>
+ * 更新描述:首页 页面嵌套 Fragment基类 <p>
  */
 
 public abstract class BaseFragment extends Fragment {

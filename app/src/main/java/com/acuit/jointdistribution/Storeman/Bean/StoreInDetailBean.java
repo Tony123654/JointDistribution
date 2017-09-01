@@ -1,5 +1,6 @@
 package com.acuit.jointdistribution.Storeman.Bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -736,7 +737,7 @@ public class StoreInDetailBean {
             }
         }
 
-        public static class ListBean {
+        public static class ListBean implements Serializable{
             /**
              * id : 15407
              * store_in_id : 2063
@@ -812,6 +813,48 @@ public class StoreInDetailBean {
             private String price_unit;
             private String buy_price;
             private String unit;
+
+            @Override
+            public String toString() {
+                return "ListBean{" +
+                        "id='" + id + '\'' +
+                        ", store_in_id='" + store_in_id + '\'' +
+                        ", code='" + code + '\'' +
+                        ", stock_id='" + stock_id + '\'' +
+                        ", stock_code='" + stock_code + '\'' +
+                        ", stock_name='" + stock_name + '\'' +
+                        ", unit_id='" + unit_id + '\'' +
+                        ", cat_id='" + cat_id + '\'' +
+                        ", cat_name='" + cat_name + '\'' +
+                        ", buy_order_id='" + buy_order_id + '\'' +
+                        ", request_stock_id='" + request_stock_id + '\'' +
+                        ", order_amount='" + order_amount + '\'' +
+                        ", already_in_amount='" + already_in_amount + '\'' +
+                        ", left_in_amount='" + left_in_amount + '\'' +
+                        ", dep_id='" + dep_id + '\'' +
+                        ", dep_code='" + dep_code + '\'' +
+                        ", dep_name='" + dep_name + '\'' +
+                        ", in_amount='" + in_amount + '\'' +
+                        ", in_price='" + in_price + '\'' +
+                        ", in_money='" + in_money + '\'' +
+                        ", total_money='" + total_money + '\'' +
+                        ", price_gap_ratio='" + price_gap_ratio + '\'' +
+                        ", money_gap='" + money_gap + '\'' +
+                        ", cost_code=" + cost_code +
+                        ", cost_property=" + cost_property +
+                        ", budget='" + budget + '\'' +
+                        ", hang_num='" + hang_num + '\'' +
+                        ", buy_order_list_id='" + buy_order_list_id + '\'' +
+                        ", back_brief='" + back_brief + '\'' +
+                        ", pic_url='" + pic_url + '\'' +
+                        ", back_amount='" + back_amount + '\'' +
+                        ", storage_unit='" + storage_unit + '\'' +
+                        ", unit_conv='" + unit_conv + '\'' +
+                        ", price_unit='" + price_unit + '\'' +
+                        ", buy_price='" + buy_price + '\'' +
+                        ", unit='" + unit + '\'' +
+                        '}';
+            }
 
             public String getId() {
                 return id;

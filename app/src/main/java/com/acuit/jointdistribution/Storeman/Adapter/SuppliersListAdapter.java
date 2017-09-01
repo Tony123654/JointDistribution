@@ -89,7 +89,7 @@ public class SuppliersListAdapter extends RecyclerView.Adapter {
 //                getStoreInId();
             } else {
                 intent = new Intent(mActivity, StoreInListActivity.class);
-                intent.putExtra("SupplierId", dataList.get(position));
+                intent.putExtra("SupplierBean", dataList.get(position));
             }
             mActivity.startActivity(intent);
 

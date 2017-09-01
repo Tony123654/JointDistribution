@@ -74,7 +74,7 @@
                     android:textColor="#999999" />
 
                 <TextView
-                    android:id="@+id/tv_amount"
+                    android:id="@+id/tv_goodsAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -83,6 +83,7 @@
                     android:textColor="#000000" />
 
                 <TextView
+                    android:id="@+id/tv_goodsUnit1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -117,7 +118,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="实收数量：" />
+                android:text="实收数量："
+                android:textColor="#333333"
+                android:textSize="16sp" />
 
 
             <ImageView
@@ -130,6 +133,7 @@
                 android:src="@mipmap/icon_input_minus" />
 
             <EditText
+                android:id="@+id/et_reciverAmount"
                 android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:background="@drawable/shape_edittext_border"
@@ -147,6 +151,7 @@
                 android:src="@mipmap/icon_input_plus" />
 
             <TextView
+                android:id="@+id/tv_goodsUnit2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -167,11 +172,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="拒收数量：" />
+                android:text="拒收数量："
+                android:textColor="#333333"
+                android:textSize="16sp" />
 
 
             <ImageView
-                android:id="@+id/iv_subtractMinus"
+                android:id="@+id/iv_rejectMinus"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/shape_button_minus"
@@ -180,6 +187,7 @@
                 android:src="@mipmap/icon_input_minus" />
 
             <EditText
+                android:id="@+id/et_rejectAmount"
                 android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:background="@drawable/shape_edittext_border"
@@ -188,7 +196,7 @@
                 android:textColor="#000000" />
 
             <ImageView
-                android:id="@+id/iv_subtractPlus"
+                android:id="@+id/iv_rejectPlus"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/shape_button_plus"
@@ -197,6 +205,7 @@
                 android:src="@mipmap/icon_input_plus" />
 
             <TextView
+                android:id="@+id/tv_goodsUnit3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -230,7 +239,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="拒收原因：" />
+                android:text="拒收原因："
+                android:textColor="#333333"
+                android:textSize="16sp" />
 
             <Spinner
                 android:id="@+id/spinner_rejectResion"
@@ -266,13 +277,15 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="添加照片：" />
+                android:text="添加照片："
+                android:textColor="#333333"
+                android:textSize="16sp" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <ImageView

@@ -1,5 +1,6 @@
 package com.acuit.jointdistribution.Storeman.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
@@ -82,7 +83,6 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
         rvGoods = (RecyclerView) findViewById(R.id.rv_goodsList);
         tvStoreInDep = (TextView) findViewById(R.id.tv_storeInDep);
         tvSupplierName = (TextView) findViewById(R.id.tv_supplierName);
-        tvStraghtOutDep = (TextView) findViewById(R.id.tv_straghtOutDep);
         tvContacterName = (TextView) findViewById(R.id.tv_contacterName);
         tvContacterPhone = (TextView) findViewById(R.id.tv_contacterPhone);
 
@@ -194,6 +194,12 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
         } else {
             Toast.makeText(StoreInDetilsActivity.this, "没有数据", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // TODO: 2017/9/1 获取编辑保存的商品列表，设置adapterItem背景色
     }
 
     @Override

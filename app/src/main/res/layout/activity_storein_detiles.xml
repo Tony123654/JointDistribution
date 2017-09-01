@@ -215,26 +215,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ll_contact"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="直出部门：" />
-
-        <TextView
-            android:id="@+id/tv_straghtOutDep"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="总仓(浙大紫金港)" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -263,7 +243,7 @@
             android:clickable="true"
             android:gravity="center"
             android:text="验收"
-            android:textColor="#ffffff "
+            android:textColor="#ffffff"
             android:textSize="20sp" />
 
 

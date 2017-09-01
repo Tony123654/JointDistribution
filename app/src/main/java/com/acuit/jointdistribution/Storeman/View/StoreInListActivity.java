@@ -94,7 +94,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
 
     private void initData() {
 
-        supplier = (SuppliersListBean.DataBean.StoreInListBean) getIntent().getSerializableExtra("SupplierId");
+        supplier = (SuppliersListBean.DataBean.StoreInListBean) getIntent().getSerializableExtra("SupplierBean");
         tvSupplierName.setText(supplier.getSupply_name());
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STORE_IN_LIST, new Response.Listener<String>() {
