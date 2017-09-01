@@ -57,7 +57,6 @@ public class GoodsEditActivity extends BaseActivity {
         tvTitle = (TextView) findViewById(R.id.tv_title);
         // TODO: 2017/9/1 viewPager优化fragment的预加载问题
         vpContent = (ViewPager) findViewById(R.id.vp_content);
-//        flContainer = (FrameLayout) findViewById(R.id.fl_container);
     }
 
 
@@ -77,6 +76,9 @@ public class GoodsEditActivity extends BaseActivity {
 
 
     private void initEvent() {
+
+
+
 
         vpContent.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -106,9 +108,6 @@ public class GoodsEditActivity extends BaseActivity {
         vpContent.setCurrentItem(position);
 
         setTitle(goodsList.get(position).getStock_name());
-//        supportFragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-//        fragmentTransaction.replace(new GoodsEditFragment())
 
     }
 

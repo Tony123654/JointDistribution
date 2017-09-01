@@ -45,6 +45,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
     private TextView tvGoodsUnit2;
     private EditText etRejectAmount;
     private EditText etReciverAmount;
+    private TextView tvSave;
 
     public GoodsEditFragment(StoreInDetailBean.DataBean.ListBean goodsBean, int position, GoodsEditActivity mActivity) {
         this.goodsBean = goodsBean;
@@ -79,6 +80,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
         etRejectAmount = (EditText) fragmentView.findViewById(R.id.et_rejectAmount);
         etReciverAmount = (EditText) fragmentView.findViewById(R.id.et_reciverAmount);
 
+        tvSave = (TextView) fragmentView.findViewById(R.id.tv_save);
         ivAddPic = (ImageView) fragmentView.findViewById(R.id.iv_addPic1);
         spinnerRejectResion = (Spinner) fragmentView.findViewById(R.id.spinner_rejectResion);
 
@@ -102,14 +104,57 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
         etReciverAmount.setText(goodsBean.getOrder_amount());
 
 
-
-        ivReciverMinus.setOnClickListener(this);
+        tvSave.setOnClickListener(this);
+        ivAddPic.setOnClickListener(this);
         ivReciverPlus.setOnClickListener(this);
+        ivReciverMinus.setOnClickListener(this);
+        ivSubtractPlus.setOnClickListener(this);
+        ivSubtractMinus.setOnClickListener(this);
+
+//        etReciverAmount.listener
+        etReciverAmount.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                String amount = "";
+                if (hasFocus) {
+                    amount = etReciverAmount.getText().toString();
+                    etReciverAmount.setText("");
+                } else {
+                    if (etReciverAmount.getText().toString().equals("")) {
+                        etReciverAmount.setText(amount);
+                    }
+                }
+            }
+        });
+
+
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
 
+            case R.id.iv_reciverPlus:
+                Float amount = Float.valueOf(etReciverAmount.getText().toString());
+                amount++;
+                etReciverAmount.setText(String.format("%.2f", amount));
+                break;
+            case R.id.iv_reciverMinus:
+                amount = Float.valueOf(etReciverAmount.getText().toString());
+                if (amount > 0) amount--;
+                etReciverAmount.setText(String.format("%.2f", amount));
+                break;
+            case R.id.iv_rejectPlus:
+                amount = Float.valueOf(etRejectAmount.getText().toString());
+                amount++;
+                etRejectAmount.setText(String.format("%.2f", amount));
+                break;
+            case R.id.iv_rejectMinus:
+                amount = Float.valueOf(etRejectAmount.getText().toString());
+                if (amount > 0) amount--;
+                etRejectAmount.setText(String.format("%.2f", amount));
+                break;
+        }
     }
 
     private void addSavedGoodsPosition() {
@@ -122,22 +167,6 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
     public void onDestroy() {
         super.onDestroy();
     }
-
-//
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//    }
-
-
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        mActivity.setTitle(goodsBean.getStock_name());
-//        System.out.println("aaa goodsBean:"+goodsBean.toString());
-//
-//    }
-
 
 
 }

@@ -111,6 +111,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -138,6 +140,7 @@
                 android:layout_height="30dp"
                 android:background="@drawable/shape_edittext_border"
                 android:gravity="center"
+                android:inputType="numberDecimal"
                 android:text="100"
                 android:textColor="#000000" />
 
@@ -165,6 +168,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
