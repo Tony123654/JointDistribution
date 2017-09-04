@@ -1,5 +1,7 @@
 package com.acuit.jointdistribution.Storeman.View;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +18,10 @@ import android.widget.TextView;
 import com.acuit.jointdistribution.Common.Base.BaseArrayList;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Bean.StoreInDetailBean;
+import com.zfdang.multiple_images_selector.ImagesSelectorActivity;
+import com.zfdang.multiple_images_selector.SelectorSettings;
+
+import java.util.ArrayList;
 
 /**
  * 类名: GoodsEditFragment <p>
@@ -41,7 +47,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
     private TextView tvGoodsAmount;
     private TextView tvUnitPrice;
     private Spinner spinnerRejectResion;
-    private ImageView ivAddPic;
+    private ImageView ivAddPic1;
     private TextView tvGoodsUnit3;
     private TextView tvGoodsUnit1;
     private TextView tvGoodsUnit2;
@@ -50,6 +56,8 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
     private TextView tvSave;
     private Float reciverAmount;
     private Float rejectAmount;
+    private ImageView ivAddPic3;
+    private ImageView ivAddPic2;
 
     public GoodsEditFragment(StoreInDetailBean.DataBean.ListBean goodsBean, int position, GoodsEditActivity mActivity) {
         this.goodsBean = goodsBean;
@@ -85,7 +93,9 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
         etReciverAmount = (EditText) fragmentView.findViewById(R.id.et_reciverAmount);
 
         tvSave = (TextView) fragmentView.findViewById(R.id.tv_save);
-        ivAddPic = (ImageView) fragmentView.findViewById(R.id.iv_addPic1);
+        ivAddPic1 = (ImageView) fragmentView.findViewById(R.id.iv_addPic1);
+        ivAddPic2 = (ImageView) fragmentView.findViewById(R.id.iv_addPic2);
+        ivAddPic3 = (ImageView) fragmentView.findViewById(R.id.iv_addPic3);
         spinnerRejectResion = (Spinner) fragmentView.findViewById(R.id.spinner_rejectResion);
 
         return fragmentView;
@@ -109,7 +119,9 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
 
 
         tvSave.setOnClickListener(this);
-        ivAddPic.setOnClickListener(this);
+        ivAddPic1.setOnClickListener(this);
+        ivAddPic2.setOnClickListener(this);
+        ivAddPic3.setOnClickListener(this);
         ivReciverPlus.setOnClickListener(this);
         ivReciverMinus.setOnClickListener(this);
         ivSubtractPlus.setOnClickListener(this);
@@ -190,8 +202,8 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
             }
         });
 
-
     }
+
 
     @Override
     public void onClick(View v) {
@@ -217,8 +229,43 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
                 if (amount > 0) amount--;
                 etRejectAmount.setText(String.format("%.2f", amount));
                 break;
+
+            case R.id.iv_addPic1:
+                addPic();
+                break;
+
+            case R.id.iv_addPic2:
+                addPic();
+                break;
+
+            case R.id.iv_addPic3:
+                addPic();
+                break;
+
         }
     }
+
+
+    // class variables
+    private static final int REQUEST_CODE = 123;
+    private ArrayList<String> mResults = new ArrayList<>();
+
+    private void addPic() {
+// start multiple photos selector
+        Intent intent = new Intent(mActivity, ImagesSelectorActivity.class);
+// max number of images to be selected
+        intent.putExtra(SelectorSettings.SELECTOR_MAX_IMAGE_NUMBER, 3);
+// min size of image which will be shown; to filter tiny images (mainly icons)
+        intent.putExtra(SelectorSettings.SELECTOR_MIN_IMAGE_SIZE, 100000);
+// show camera or not
+        intent.putExtra(SelectorSettings.SELECTOR_SHOW_CAMERA, true);
+// pass current selected images as the initial value
+        intent.putStringArrayListExtra(SelectorSettings.SELECTOR_INITIAL_SELECTED_LIST, mResults);
+// start the selector
+        mActivity.startActivityForResult(intent, REQUEST_CODE);
+
+    }
+
 
     private void addSavedGoodsPosition() {
         BaseArrayList<Integer> editedGoods = mActivity.getEditedGoods();
@@ -232,4 +279,28 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
     }
 
 
+    public void setPic(ArrayList<String> pics) {
+        mResults = pics;
+        String pic1 = mResults.get(0);
+        if (!pic1.isEmpty()) {
+            ivAddPic1.setImageURI(Uri.parse(pic1));
+        }
+        if (mResults.size() > 1) {
+            ivAddPic2.setVisibility(View.VISIBLE);
+            ivAddPic2.setImageURI(Uri.parse(mResults.get(1)));
+        }
+        if (mResults.size() > 2) {
+            ivAddPic3.setVisibility(View.VISIBLE);
+            ivAddPic3.setImageURI(Uri.parse(mResults.get(2)));
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if ((null != mResults && 0 != mResults.size())) {
+            setPic(mResults);
+        }
+    }
 }

@@ -1,8 +1,10 @@
 package com.acuit.jointdistribution.Storeman.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,7 +13,9 @@ import com.acuit.jointdistribution.Common.Base.BaseArrayList;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Adapter.GoodsViewPagerAdapter;
 import com.acuit.jointdistribution.Storeman.Bean.StoreInDetailBean;
+import com.zfdang.multiple_images_selector.SelectorSettings;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -25,7 +29,7 @@ import java.util.Collection;
  * 更新描述: <p>
  */
 
-public class GoodsEditActivity extends BaseActivity {
+public class GoodsEditActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView tvTitle;
     private ViewPager vpContent;
@@ -77,8 +81,7 @@ public class GoodsEditActivity extends BaseActivity {
 
     private void initEvent() {
 
-
-
+        ivBack.setOnClickListener(this);
 
         vpContent.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -119,8 +122,52 @@ public class GoodsEditActivity extends BaseActivity {
         return savedGoodsPosition;
     }
 
+
+
+    // class variables
+    private static final int REQUEST_CODE = 123;
+    private ArrayList<String> mResults = new ArrayList<>();
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // get selected images from selector
+        if(requestCode == REQUEST_CODE) {
+            if(resultCode == RESULT_OK) {
+                mResults = data.getStringArrayListExtra(SelectorSettings.SELECTOR_RESULTS);
+                assert mResults != null;
+
+                viewPic(mResults);
+
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+    private void viewPic(ArrayList<String> pics){
+        GoodsEditFragment currentFragment = (GoodsEditFragment) goodsViewPagerAdapter.getItem(vpContent.getCurrentItem());
+        currentFragment.setPic(pics);
+
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_back:
+                GoodsEditActivity.this.finish();
+                break;
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        moveTaskToBack(true);
     }
 }

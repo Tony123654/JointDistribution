@@ -8,6 +8,7 @@ import com.acuit.jointdistribution.Storeman.Utils.MyImageLoader;
 import com.acuit.jointdistribution.Storeman.Utils.SharedPreference_Utils;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -97,6 +98,9 @@ public class BaseApplication extends LitePalApplication {
 //        初始化SharedPreference工具
         SharedPreference_Utils.getInstance(this);
 
+//        初始化Multiple-Images-Selector第三方库
+        Fresco.initialize(this);
+
 
 //        初始化线程池——数据访问型（并发线程数量多，用时短）
 //        ThreadPool_Util.getInstance(this);
@@ -110,8 +114,6 @@ public class BaseApplication extends LitePalApplication {
 
     }
 
-
-    
 
     //---------------------全局变量区----------------------------------------------
     private static LoginBean loginBean;

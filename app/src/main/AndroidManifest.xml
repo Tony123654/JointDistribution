@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.acuit.jointdistribution">
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -10,10 +12,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!--android:roundIcon="@mipmap/ic_launcher_round"-->
         <!-- 公共模块 -->
         <activity android:name=".Common.View.Activity.FirstActivity">
             <intent-filter>
@@ -52,6 +54,13 @@
         <activity android:name=".Storeman.View.SupplierListActivity" />
         <activity android:name=".Storeman.View.StoreInDetilsActivity" />
         <activity android:name=".Supplier.Acitivity.PurchaseChangedActivity" />
+
+
+        <!--demo-->
+        <activity
+            android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
+            android:hardwareAccelerated="false"
+            android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>
