@@ -44,7 +44,6 @@
         <activity android:name=".Supplier.Acitivity.MenuInfoActivity" />
         <activity android:name=".Supplier.Acitivity.SendInfoActivity" />
         <activity android:name=".Supplier.Acitivity.DistributionActivity" />
-        <!--<activity android:name=".Supplier.Acitivity.BusinessOrderActivity" />-->
 
         <!-- 保管员 -->
         <activity android:name=".Storeman.View.ScanCodeActivity" />

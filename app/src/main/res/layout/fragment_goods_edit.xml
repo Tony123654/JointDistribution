@@ -197,6 +197,7 @@
                 android:layout_height="30dp"
                 android:background="@drawable/shape_edittext_border"
                 android:gravity="center"
+                android:inputType="numberDecimal"
                 android:text="0.00"
                 android:textColor="#000000" />
 

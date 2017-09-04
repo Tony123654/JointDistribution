@@ -3,6 +3,8 @@ package com.acuit.jointdistribution.Storeman.View;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +48,8 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
     private EditText etRejectAmount;
     private EditText etReciverAmount;
     private TextView tvSave;
+    private Float reciverAmount;
+    private Float rejectAmount;
 
     public GoodsEditFragment(StoreInDetailBean.DataBean.ListBean goodsBean, int position, GoodsEditActivity mActivity) {
         this.goodsBean = goodsBean;
@@ -111,18 +115,77 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener 
         ivSubtractPlus.setOnClickListener(this);
         ivSubtractMinus.setOnClickListener(this);
 
-//        etReciverAmount.listener
+
         etReciverAmount.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                String amount = "";
                 if (hasFocus) {
-                    amount = etReciverAmount.getText().toString();
                     etReciverAmount.setText("");
                 } else {
-                    if (etReciverAmount.getText().toString().equals("")) {
-                        etReciverAmount.setText(amount);
+                    String amount = etReciverAmount.getText().toString();
+                    if (amount.equals("")) {
+                        etReciverAmount.setText(String.format("%.2f", reciverAmount));
+                    } else {
+                        etReciverAmount.setText(String.format("%.2f", Float.valueOf(amount)));
                     }
+                }
+            }
+        });
+
+        etReciverAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (null == reciverAmount) {
+                    reciverAmount = Float.valueOf(String.valueOf(s));
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String str = String.valueOf(s);
+                if (null != str && !str.equals("")) {
+                    reciverAmount = Float.valueOf(str);
+                }
+            }
+        });
+
+        etRejectAmount.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    etRejectAmount.setText("");
+                } else {
+                    String amount = etRejectAmount.getText().toString();
+                    if (amount.equals("")) {
+                        etRejectAmount.setText(String.format("%.2f", rejectAmount));
+                    } else {
+                        etRejectAmount.setText(String.format("%.2f", Float.valueOf(amount)));
+                    }
+                }
+            }
+        });
+
+        etRejectAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (null == rejectAmount) {
+                    rejectAmount = Float.valueOf(String.valueOf(s));
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String str = String.valueOf(s);
+                if (null != str && !str.equals("")) {
+                    rejectAmount = Float.valueOf(str);
                 }
             }
         });
