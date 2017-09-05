@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Base.BaseArrayList;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Adapter.GoodsViewPagerAdapter;
@@ -123,7 +124,6 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
     }
 
 
-
     // class variables
     private static final int REQUEST_CODE = 123;
     private ArrayList<String> mResults = new ArrayList<>();
@@ -131,8 +131,8 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // get selected images from selector
-        if(requestCode == REQUEST_CODE) {
-            if(resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
                 mResults = data.getStringArrayListExtra(SelectorSettings.SELECTOR_RESULTS);
                 assert mResults != null;
 
@@ -144,7 +144,7 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
     }
 
 
-    private void viewPic(ArrayList<String> pics){
+    private void viewPic(ArrayList<String> pics) {
         GoodsEditFragment currentFragment = (GoodsEditFragment) goodsViewPagerAdapter.getItem(vpContent.getCurrentItem());
         currentFragment.setPic(pics);
 
@@ -153,6 +153,7 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
     @Override
     public void onDestroy() {
         super.onDestroy();
+        BaseApplication.getRequestQueue().cancelAll("GoodsEditActivity");
     }
 
     @Override

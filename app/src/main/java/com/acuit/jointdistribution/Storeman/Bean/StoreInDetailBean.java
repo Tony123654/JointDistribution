@@ -814,6 +814,17 @@ public class StoreInDetailBean {
             private String buy_price;
             private String unit;
 
+            //            拒收原因id
+            private String standard;
+
+            public String getStandard() {
+                return standard;
+            }
+
+            public void setStandard(String standard) {
+                this.standard = standard;
+            }
+
             @Override
             public String toString() {
                 return "ListBean{" +
@@ -853,6 +864,7 @@ public class StoreInDetailBean {
                         ", price_unit='" + price_unit + '\'' +
                         ", buy_price='" + buy_price + '\'' +
                         ", unit='" + unit + '\'' +
+                        ", standard='" + standard + '\'' +
                         '}';
             }
 

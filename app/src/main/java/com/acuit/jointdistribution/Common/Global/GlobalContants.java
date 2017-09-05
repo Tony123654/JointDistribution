@@ -60,6 +60,8 @@ GlobalContants {
     public static final String URL_STORE_IN_LIST = SERVER_URL + "store_in_list";
     //    获取入库单详情信息
     public static final String URL_STOREIN_DETAIL = SERVER_URL + "view_store_in_for_cofirm";
+    //    获取商品入库标准——拒收原因
+    public static final String URL_STOREIN_STANDARD = AJAX_URL + "get_store_in_standard";
 
 
 

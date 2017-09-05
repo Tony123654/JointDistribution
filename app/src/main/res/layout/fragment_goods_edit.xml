@@ -254,8 +254,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right"
-                android:text="请选择"
+                android:textAlignment="textEnd"
                 android:textColor="#999999" />
 
         </LinearLayout>
@@ -298,7 +297,8 @@
                     android:id="@+id/iv_addPic1"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
                     android:clickable="true"
                     android:src="@mipmap/icon_addpic" />
 
@@ -306,19 +306,21 @@
                     android:id="@+id/iv_addPic2"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
                     android:clickable="true"
                     android:src="@mipmap/icon_addpic"
-                    android:visibility="gone" />
+                    android:visibility="invisible" />
 
                 <ImageView
                     android:id="@+id/iv_addPic3"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
                     android:clickable="true"
                     android:src="@mipmap/icon_addpic"
-                    android:visibility="gone" />
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
