@@ -34,6 +34,7 @@ import com.google.gson.Gson;
 import com.zfdang.multiple_images_selector.ImagesSelectorActivity;
 import com.zfdang.multiple_images_selector.SelectorSettings;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -297,7 +298,13 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     }
 
 
-    public void setPic(ArrayList<String> pics) {
+    public void setPic(ArrayList<String> pics, ArrayList<String> tempPics) {
+
+        for (String tempPic : tempPics) {
+            System.out.println("aaa tempPic:" + tempPic);
+            File file = new File(tempPic);
+            System.out.println("aaa tempPic.size:" + file.length());
+        }
 
         mResults = pics;
         String pic1 = mResults.get(0);
@@ -330,7 +337,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         super.onResume();
 
         if ((null != mResults && 0 != mResults.size())) {
-            setPic(mResults);
+//            setPic(mResults, tempPics);
         }
 
     }

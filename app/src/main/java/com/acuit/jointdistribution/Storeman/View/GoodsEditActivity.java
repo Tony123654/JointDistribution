@@ -14,10 +14,15 @@ import com.acuit.jointdistribution.Common.Base.BaseArrayList;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Adapter.GoodsViewPagerAdapter;
 import com.acuit.jointdistribution.Storeman.Bean.StoreInDetailBean;
+import com.acuit.jointdistribution.Storeman.Utils.CacheUtils;
+import com.acuit.jointdistribution.Storeman.Utils.ImageFactory;
 import com.zfdang.multiple_images_selector.SelectorSettings;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+
 
 /**
  * 类名: GoodsEditActivity <p>
@@ -40,8 +45,6 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
     private int position;
     private BaseArrayList<Integer> savedGoodsPosition;
     private BaseArrayList<StoreInDetailBean.DataBean.ListBean> goodsList;
-//    private FrameLayout flContainer;
-//    private FragmentManager supportFragmentManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -124,32 +127,6 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
     }
 
 
-    // class variables
-    private static final int REQUEST_CODE = 123;
-    private ArrayList<String> mResults = new ArrayList<>();
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // get selected images from selector
-        if (requestCode == REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                mResults = data.getStringArrayListExtra(SelectorSettings.SELECTOR_RESULTS);
-                assert mResults != null;
-
-                viewPic(mResults);
-
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-
-    private void viewPic(ArrayList<String> pics) {
-        GoodsEditFragment currentFragment = (GoodsEditFragment) goodsViewPagerAdapter.getItem(vpContent.getCurrentItem());
-        currentFragment.setPic(pics);
-
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -171,4 +148,61 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
         super.onBackPressed();
         moveTaskToBack(true);
     }
+
+
+    // class variables
+    private static final int REQUEST_CODE = 123;
+    private ArrayList<String> mResults = new ArrayList<>();
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // get selected images from selector
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                mResults = data.getStringArrayListExtra(SelectorSettings.SELECTOR_RESULTS);
+                assert mResults != null;
+
+
+                viewPic(mResults, tempPics(mResults));
+
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void viewPic(ArrayList<String> pics, ArrayList<String> tempPics) {
+        GoodsEditFragment currentFragment = (GoodsEditFragment) goodsViewPagerAdapter.getItem(vpContent.getCurrentItem());
+        currentFragment.setPic(pics, tempPics);
+
+    }
+
+    /**
+     * 生成缓存图片，用于上传与优化页面
+     *
+     * @param mResults
+     * @return
+     */
+    private ArrayList<String> tempPics(ArrayList<String> mResults) {
+
+
+        ArrayList<String> temp = new ArrayList<>();
+        String tempPicsDir = CacheUtils.getTempPicsDir();
+        try {
+
+            for (String mResult : mResults) {
+//                System.out.println("aaa picPath:"+mResult);
+                String picName = CacheUtils.getNameFromPath(mResult);
+                ImageFactory.compressAndGenImage(mResult, tempPicsDir, 200, false);
+
+                String tempPicPath = tempPicsDir + File.separator + picName;
+                temp.add(tempPicPath);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return temp;
+    }
+
 }

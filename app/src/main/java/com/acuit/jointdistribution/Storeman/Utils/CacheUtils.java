@@ -28,6 +28,28 @@ import java.io.OutputStream;
  */
 
 public class CacheUtils {
+
+
+    /**
+     * 获取缓存图片路径
+     * @return
+     */
+    public static String getTempPicsDir() {
+        try {
+//        /data/user/0/com.acuit.jointdistribution/cache
+
+
+            File tempPics = new File(BaseApplication.getContext().getCacheDir().getAbsolutePath() + File.separator + "tempPics");
+            tempPics.createNewFile();
+            return tempPics.getAbsolutePath();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     private static boolean isMounted() {
         //// TODO: 2017/1/14
         return Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
@@ -75,11 +97,11 @@ public class CacheUtils {
         fos.close();
     }
 
-    private static String getNameFromPath(String path) {
+    public static String getNameFromPath(String path) {
         return path.substring(path.lastIndexOf("/") + 1);
     }
 
-    private static String getJsonNameFromPath(String path) {
+    public static String getJsonNameFromPath(String path) {
         return path.substring(path.lastIndexOf("&a=") + 1);
     }
 
