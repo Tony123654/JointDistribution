@@ -268,6 +268,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     // class variables
     private static final int REQUEST_CODE = 123;
     private ArrayList<String> mResults = new ArrayList<>();
+    private ArrayList<String> tempPics = new ArrayList<>();
 
     private void addPic() {
 // start multiple photos selector
@@ -300,6 +301,10 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
     public void setPic(ArrayList<String> pics, ArrayList<String> tempPics) {
 
+        if (null==pics || null==tempPics) {
+            return;
+        }
+
         for (String tempPic : tempPics) {
             System.out.println("aaa tempPic:" + tempPic);
             File file = new File(tempPic);
@@ -307,7 +312,8 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         }
 
         mResults = pics;
-        String pic1 = mResults.get(0);
+        this.tempPics = tempPics;
+        String pic1 = this.tempPics.get(0);
 
         if (!pic1.isEmpty()) {
 //            一张图片
@@ -321,14 +327,14 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         }
         ivAddPic3.setVisibility(View.INVISIBLE);
 //        两张图片
-        if (mResults.size() > 1) {
-            ivAddPic2.setImageURI(Uri.parse(mResults.get(1)));
+        if (this.tempPics.size() > 1) {
+            ivAddPic2.setImageURI(Uri.parse(this.tempPics.get(1)));
             ivAddPic3.setImageResource(R.mipmap.icon_addpic);
             ivAddPic3.setVisibility(View.VISIBLE);
         }
 //        三张图片
-        if (mResults.size() > 2) {
-            ivAddPic3.setImageURI(Uri.parse(mResults.get(2)));
+        if (this.tempPics.size() > 2) {
+            ivAddPic3.setImageURI(Uri.parse(this.tempPics.get(2)));
         }
     }
 

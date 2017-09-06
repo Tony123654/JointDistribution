@@ -171,6 +171,9 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void viewPic(ArrayList<String> pics, ArrayList<String> tempPics) {
+        if (null == tempPics) {
+            System.out.println("aaa tempPics is null");
+        }
         GoodsEditFragment currentFragment = (GoodsEditFragment) goodsViewPagerAdapter.getItem(vpContent.getCurrentItem());
         currentFragment.setPic(pics, tempPics);
 
@@ -184,25 +187,27 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
      */
     private ArrayList<String> tempPics(ArrayList<String> mResults) {
 
-
         ArrayList<String> temp = new ArrayList<>();
         String tempPicsDir = CacheUtils.getTempPicsDir();
-        try {
 
-            for (String mResult : mResults) {
-//                System.out.println("aaa picPath:"+mResult);
-                String picName = CacheUtils.getNameFromPath(mResult);
-                ImageFactory.compressAndGenImage(mResult, tempPicsDir, 200, false);
+        System.out.println("aaa tempPics:" + mResults.size());
+        for (String mResult : mResults) {
+            System.out.println("aaa picPath:" + mResult);
+            String picName = CacheUtils.getNameFromPath(mResult);
+            String tempPicPath = tempPicsDir + File.separator + picName;
 
-                String tempPicPath = tempPicsDir + File.separator + picName;
-                temp.add(tempPicPath);
+            try {
+                ImageFactory.compressAndGenImage(mResult, tempPicPath, 100, false);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("aaa IOException:" + e.getMessage());
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            temp.add(tempPicPath);
         }
 
         return temp;
+
     }
 
 }
