@@ -162,9 +162,7 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
                 mResults = data.getStringArrayListExtra(SelectorSettings.SELECTOR_RESULTS);
                 assert mResults != null;
 
-
                 viewPic(mResults, tempPics(mResults));
-
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -190,9 +188,9 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
         ArrayList<String> temp = new ArrayList<>();
         String tempPicsDir = CacheUtils.getTempPicsDir();
 
-        System.out.println("aaa tempPics:" + mResults.size());
+//        System.out.println("aaa tempPics:" + mResults.size());
         for (String mResult : mResults) {
-            System.out.println("aaa picPath:" + mResult);
+//            System.out.println("aaa picPath:" + mResult);
             String picName = CacheUtils.getNameFromPath(mResult);
             String tempPicPath = tempPicsDir + File.separator + picName;
 

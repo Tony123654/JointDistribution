@@ -5,9 +5,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.util.ArrayMap;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,10 +33,13 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.zfdang.multiple_images_selector.ImagesSelectorActivity;
 import com.zfdang.multiple_images_selector.SelectorSettings;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
+
+import okhttp3.Call;
 
 /**
  * 类名: GoodsEditFragment <p>
@@ -74,6 +77,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     private ImageView ivAddPic3;
     private ImageView ivAddPic2;
     private ArrayList<String> spinnerSelectData = new ArrayList<String>();
+    private int rejectResion = -1;
 
     public GoodsEditFragment(StoreInDetailBean.DataBean.ListBean goodsBean, int position, GoodsEditActivity mActivity) {
         this.goodsBean = goodsBean;
@@ -252,13 +256,15 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
             case R.id.iv_addPic1:
                 addPic();
                 break;
-
             case R.id.iv_addPic2:
                 addPic();
                 break;
-
             case R.id.iv_addPic3:
                 addPic();
+                break;
+
+            case R.id.tv_save:
+                saveGoodsEdition();
                 break;
 
         }
@@ -301,18 +307,23 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
     public void setPic(ArrayList<String> pics, ArrayList<String> tempPics) {
 
-        if (null==pics || null==tempPics) {
+        if (null == pics || null == tempPics) {
             return;
         }
 
-        for (String tempPic : tempPics) {
-            System.out.println("aaa tempPic:" + tempPic);
-            File file = new File(tempPic);
-            System.out.println("aaa tempPic.size:" + file.length());
-        }
+//        for (String tempPic : tempPics) {
+//            System.out.println("aaa tempPic:" + tempPic);
+//            File file = new File(tempPic);
+//            System.out.println("aaa tempPic.size:" + file.length());
+//        }
 
         mResults = pics;
         this.tempPics = tempPics;
+
+        showPics();
+    }
+
+    private void showPics() {
         String pic1 = this.tempPics.get(0);
 
         if (!pic1.isEmpty()) {
@@ -342,10 +353,9 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     public void onResume() {
         super.onResume();
 
-        if ((null != mResults && 0 != mResults.size())) {
-//            setPic(mResults, tempPics);
+        if (null != tempPics && 0 < tempPics.size()) {
+            showPics();
         }
-
     }
 
 
@@ -398,11 +408,138 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         BaseApplication.getRequestQueue().add(stringRequest);
     }
 
+
+    /**
+     * 保存当前商品——编辑状态
+     */
+    private void saveGoodsEdition() {
+
+        uploadImage();
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String tempPic : tempPics) {
+            if (0 != stringBuilder.length()) {
+                stringBuilder.append(tempPic).append(",");
+            }
+            System.out.println("aaa tempPic:" + tempPic);
+        }
+        goodsBean.setPic_url(stringBuilder.toString());
+//上传图片，存储网络路径
+
+        goodsBean.setStandard(position - 1 + "");
+        goodsBean.setBack_amount(etRejectAmount.getText().toString());
+        goodsBean.setAlready_in_amount(etReciverAmount.getText().toString());
+
+    }
+
+    private void uploadImage() {
+
+//        String picPath = tempPics.get(0);
+//        String nameFromPath = CacheUtils.getNameFromPath(picPath);
+
+//        ArrayList<File> files = new ArrayList<>();
+//        for (String tempPic : tempPics) {
+//            files.add(new File(tempPic));
+//        }
+
+//        ArrayMap<String, String> params = new ArrayMap<>();
+//        params.put("token", BaseApplication.getLoginBean().getData().getToken());
+////        params.put("file", nameFromPath);
+//
+//        MultipartRequest multipartRequest = new MultipartRequest(GlobalContants.URL_ADD_PIC, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                if (null == error.getMessage()) {
+//                    Toast.makeText(mActivity, "上传失败，请检查网络环境", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(mActivity, error.getMessage(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                System.out.println("aaa addPic:" + GlobalContants.URL_ADD_PIC);
+//                System.out.println("aaa PicUrl:" + response);
+//            }
+//        }, "file", new File(picPath, goodsBean.getId()), params);
+
+
+//         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_ADD_PIC_BASE64, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                System.out.println("aaa addPic:" + GlobalContants.URL_ADD_PIC_BASE64);
+//                System.out.println("aaa PicUrl:" + response);
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                if (null == error.getMessage()) {
+//                    Toast.makeText(mActivity, "上传失败，请检查网络环境", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(mActivity, error.getMessage(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }) {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//
+//
+////                String[][] files = new String[][]{};
+////                files[0][0] =
+//                ArrayMap<String, String> params = new ArrayMap<String, String>();
+//
+//                params.put("token", BaseApplication.getLoginBean().getData().getToken());
+//                params.put("file", ImageAndStream.file2String(new File(picPath)));
+//
+//                return params;
+//            }
+//        };
+
+
+//        BaseApplication.getRequestQueue().add(multipartRequest);
+//        BaseApplication.getRequestQueue().add(stringRequest);
+
+        ArrayMap<String, String> params = new ArrayMap<String, String>();
+        params.put("token", BaseApplication.getLoginBean().getData().getToken());
+        params.put("file[" + goodsBean.getId() + "]", tempPics.get(0));
+
+        OkHttpUtils.post()
+//                .addFile("file", goodsBean.getId(), new File(tempPics.get(0)))//
+                .url(GlobalContants.URL_ADD_PIC_BASE64)
+                .params(params)
+//                .headers(new Headers)
+                .build()
+                .execute(new MyStringCallback());
+
+
+    }
+
+    class MyStringCallback extends StringCallback {
+
+        @Override
+        public void onError(Call call, Exception e, int id) {
+            if (null == e.getMessage()) {
+                    Toast.makeText(mActivity, "上传失败，请检查网络环境", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mActivity, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+        }
+
+        @Override
+        public void onResponse(String response, int id) {
+                System.out.println("aaa addPic:" + GlobalContants.URL_ADD_PIC);
+                System.out.println("aaa PicUrl:" + response);
+        }
+    }
+
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         if (position > 0) {
-            goodsBean.setStandard(position - 1 + "");
+            rejectResion = position - 1;
+        } else {
+            rejectResion = -1;
         }
     }
 
