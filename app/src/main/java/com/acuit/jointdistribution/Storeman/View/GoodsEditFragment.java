@@ -33,13 +33,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.zfdang.multiple_images_selector.ImagesSelectorActivity;
 import com.zfdang.multiple_images_selector.SelectorSettings;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
 import java.util.Map;
 
-import okhttp3.Call;
 
 /**
  * 类名: GoodsEditFragment <p>
@@ -54,7 +51,7 @@ import okhttp3.Call;
 
 public class GoodsEditFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    private final int position;
+    private int position;
     private GoodsEditActivity mActivity;
     private StoreInDetailBean.DataBean.ListBean goodsBean;
     private ImageView ivReciverPlus;
@@ -77,7 +74,8 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     private ImageView ivAddPic3;
     private ImageView ivAddPic2;
     private ArrayList<String> spinnerSelectData = new ArrayList<String>();
-    private int rejectResion = -1;
+    private int rejectResionId = -1;
+    private String picString;
 
     public GoodsEditFragment(StoreInDetailBean.DataBean.ListBean goodsBean, int position, GoodsEditActivity mActivity) {
         this.goodsBean = goodsBean;
@@ -414,39 +412,72 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
      */
     private void saveGoodsEdition() {
 
-        uploadImage();
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    upload();
+//                }
+//            }).start();
 
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String tempPic : tempPics) {
-            if (0 != stringBuilder.length()) {
-                stringBuilder.append(tempPic).append(",");
-            }
-            System.out.println("aaa tempPic:" + tempPic);
-        }
-        goodsBean.setPic_url(stringBuilder.toString());
+        String picUrl1 = "http://image.baidu.com/search/detail?ct=503316480&z=&tn=baiduimagedetail&ipn=d&word=%E5%B0%8F%E5%9B%BE%E7%89%87&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=-1&cs=2987813084,4164859397&os=364807995,2811198630&simid=4227453938,887346176&pn=14&rn=1&di=598980690&ln=1963&fr=&fmq=1504864006901_R&ic=0&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&is=0,0&istype=2&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&objurl=http%3A%2F%2Fpic.58pic.com%2F58pic%2F14%2F03%2F29%2F25h58PICcJK_1024.jpg&rpstart=0&rpnum=0&adpicid=0";
+        String picUrl2 = "http://image.baidu.com/search/detail?ct=503316480&z=&tn=baiduimagedetail&ipn=d&word=%E5%B0%8F%E5%9B%BE%E7%89%87&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=-1&cs=154914511,4117749715&os=632832925,3086445294&simid=4148191829,551016456&pn=75&rn=1&di=96541734960&ln=1963&fr=&fmq=1504864006901_R&ic=0&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&is=0,0&istype=2&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=1e&objurl=http%3A%2F%2Fpic.58pic.com%2F58pic%2F16%2F57%2F99%2F41A58PICFah_1024.jpg&rpstart=0&rpnum=0&adpicid=0";
+        String picUrl3 = "http://image.baidu.com/search/detail?ct=503316480&z=&tn=baiduimagedetail&ipn=d&word=%E5%B0%8F%E5%9B%BE%E7%89%87&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=-1&cs=272798281,47645787&os=589944478,341674696&simid=0,0&pn=164&rn=1&di=1393835680&ln=1963&fr=&fmq=1504864006901_R&ic=0&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&is=1550204388,3897674891&istype=2&ist=&jit=&bdtype=17&spn=0&pi=0&gsm=78&objurl=http%3A%2F%2Fpic39.nipic.com%2F20140321%2F17561764_000307587182_2.jpg&rpstart=0&rpnum=0&adpicid=0";
+
+        StringBuilder picUrl = new StringBuilder();
+        picUrl.append(picUrl1).append(",");
+        picUrl.append(picUrl2).append(",");
+        picUrl.append(picUrl3);
+
 //上传图片，存储网络路径
+//       picUrl = uploadImage();
 
-        goodsBean.setStandard(position - 1 + "");
+        goodsBean.setPic_url(picUrl.toString());
+
+        if (-1 == rejectResionId) {
+            goodsBean.setStandard("");
+        }else {
+            goodsBean.setStandard(rejectResionId + "");
+        }
+
         goodsBean.setBack_amount(etRejectAmount.getText().toString());
         goodsBean.setAlready_in_amount(etReciverAmount.getText().toString());
 
     }
 
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        if (position > 0) {
+            rejectResionId = position - 1;
+        } else {
+            rejectResionId = -1;
+        }
+        System.out.println("aaa rejectResionId:" + rejectResionId);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+
     private void uploadImage() {
 
-//        String picPath = tempPics.get(0);
+        final String picPath = tempPics.get(0);
 //        String nameFromPath = CacheUtils.getNameFromPath(picPath);
 
 //        ArrayList<File> files = new ArrayList<>();
 //        for (String tempPic : tempPics) {
 //            files.add(new File(tempPic));
 //        }
-
+//
 //        ArrayMap<String, String> params = new ArrayMap<>();
 //        params.put("token", BaseApplication.getLoginBean().getData().getToken());
-////        params.put("file", nameFromPath);
-//
-//        MultipartRequest multipartRequest = new MultipartRequest(GlobalContants.URL_ADD_PIC, new Response.ErrorListener() {
+//        params.put("file", goodsBean.getId());
+
+//        MultipartRequest multipartRequest = new MultipartRequest(GlobalContants.URL_ADD_PIC_BASE64, new Response.ErrorListener() {
 //            @Override
 //            public void onErrorResponse(VolleyError error) {
 //                if (null == error.getMessage()) {
@@ -458,13 +489,13 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 //        }, new Response.Listener<String>() {
 //            @Override
 //            public void onResponse(String response) {
-//                System.out.println("aaa addPic:" + GlobalContants.URL_ADD_PIC);
+//                System.out.println("aaa addPic:" + GlobalContants.URL_ADD_PIC_BASE64);
 //                System.out.println("aaa PicUrl:" + response);
 //            }
-//        }, "file", new File(picPath, goodsBean.getId()), params);
+//        }, goodsBean.getId(), new File(picPath), params);
 
 
-//         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_ADD_PIC_BASE64, new Response.Listener<String>() {
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_ADD_PIC_BASE64, new Response.Listener<String>() {
 //            @Override
 //            public void onResponse(String response) {
 //                System.out.println("aaa addPic:" + GlobalContants.URL_ADD_PIC_BASE64);
@@ -489,8 +520,9 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 //                ArrayMap<String, String> params = new ArrayMap<String, String>();
 //
 //                params.put("token", BaseApplication.getLoginBean().getData().getToken());
-//                params.put("file", ImageAndStream.file2String(new File(picPath)));
+//                params.put("file", "[" + goodsBean.getId() + "]" + "[" + ImageAndStream.file2String(new File(picPath)) + "]");
 //
+//                System.out.println("aaa params:" + params.toString());
 //                return params;
 //            }
 //        };
@@ -499,52 +531,40 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 //        BaseApplication.getRequestQueue().add(multipartRequest);
 //        BaseApplication.getRequestQueue().add(stringRequest);
 
-        ArrayMap<String, String> params = new ArrayMap<String, String>();
-        params.put("token", BaseApplication.getLoginBean().getData().getToken());
-        params.put("file[" + goodsBean.getId() + "]", tempPics.get(0));
 
-        OkHttpUtils.post()
-//                .addFile("file", goodsBean.getId(), new File(tempPics.get(0)))//
-                .url(GlobalContants.URL_ADD_PIC_BASE64)
-                .params(params)
-//                .headers(new Headers)
-                .build()
-                .execute(new MyStringCallback());
+//        Map<String, String[]> configs = new HashMap<String, String[]>();
+//        configs.put(goodsBean.getId(), new String[]{picString});
+//
+//        picString = ImageAndStream.file2String(new File(tempPics.get(0)));
+//
+//        ArrayMap<String, String> params = new ArrayMap<String, String>();
+//
+//        params.put("token", BaseApplication.getLoginBean().getData().getToken());
+////        params.put("file", "[" + goodsBean.getId() + "]" + "[]");
+//        params.put("file", configs.toString());
+//
+//        System.out.println("aaa params:" + params.toString());
+
+
+//        OkHttpUtils.post()
+////                .addFile("file", goodsBean.getId(), new File(tempPics.get(0)))//
+//                .url(GlobalContants.URL_ADD_PIC_BASE64)
+//                .params(params)
+////                .headers(new Headers)
+//                .build()
+//                .execute(new MyStringCallback());
+
+//        OkHttpUtilsByArray.postArrayString(params);
+//
+//        PostArrayStringBuilder postArrayStringBuilder = OkHttpUtilsByArray.postArrayString(params);
+//        postArrayStringBuilder.url(GlobalContants.URL_ADD_PIC_BASE64)
+////                .addParams("token", BaseApplication.getLoginBean().getData().getToken())
+////                .addParams("file" + "[" + goodsBean.getId() + "]" + "[" + "]", picString)
+//                .build()
+//                .execute(new MyStringCallback());
 
 
     }
 
-    class MyStringCallback extends StringCallback {
-
-        @Override
-        public void onError(Call call, Exception e, int id) {
-            if (null == e.getMessage()) {
-                    Toast.makeText(mActivity, "上传失败，请检查网络环境", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(mActivity, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-        }
-
-        @Override
-        public void onResponse(String response, int id) {
-                System.out.println("aaa addPic:" + GlobalContants.URL_ADD_PIC);
-                System.out.println("aaa PicUrl:" + response);
-        }
-    }
-
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        if (position > 0) {
-            rejectResion = position - 1;
-        } else {
-            rejectResion = -1;
-        }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-    }
 
 }

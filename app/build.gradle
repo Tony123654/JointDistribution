@@ -49,8 +49,4 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     compile files('lib/BASE64Encoder.jar')
-    compile 'org.apache.httpcomponents:httpmime:4.2.5'
-
-    compile 'com.zhy:okhttputils:2.6.2'
-
 }
