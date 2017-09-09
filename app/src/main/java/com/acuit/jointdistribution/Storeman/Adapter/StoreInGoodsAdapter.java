@@ -13,8 +13,6 @@ import com.acuit.jointdistribution.Storeman.Bean.StoreInDetailBean;
 import com.acuit.jointdistribution.Storeman.View.GoodsEditActivity;
 import com.acuit.jointdistribution.Storeman.View.StoreInDetilsActivity;
 
-import java.util.List;
-
 /**
  * 类名: StoreInGoodsAdapter <p>
  * 创建人: YanJ <p>
@@ -30,11 +28,11 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
 
     private StoreInDetilsActivity mActivity;
     private BaseArrayList<StoreInDetailBean.DataBean.ListBean> dataList;
+    public static final int REQUEST_CODE = 1145;
 
-    public StoreInGoodsAdapter(List<StoreInDetailBean.DataBean.ListBean> dataList, StoreInDetilsActivity storeInDetilsActivity) {
+    public StoreInGoodsAdapter(BaseArrayList<StoreInDetailBean.DataBean.ListBean> dataList, StoreInDetilsActivity storeInDetilsActivity) {
         this.dataList = new BaseArrayList<StoreInDetailBean.DataBean.ListBean>();
-        this.dataList.clear();
-        this.dataList.addAll(dataList);
+        this.dataList = dataList;
         this.mActivity = storeInDetilsActivity;
     }
 
@@ -53,6 +51,7 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
 
         viewHolder.getTvGoodsName().setText(itemBean.getStock_name());
         viewHolder.getTvGoodsWeight().setText(itemBean.getOrder_amount() + itemBean.getUnit());
+        viewHolder.setEdited(itemBean.isEdited());
 
     }
 
@@ -64,12 +63,14 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
 
     class Goods_ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private View itemView;
         private TextView tvGoodsWeight;
         private TextView tvGoodsName;
 
         public Goods_ViewHolder(View itemView) {
             super(itemView);
 
+            this.itemView = itemView;
             tvGoodsName = (TextView) itemView.findViewById(R.id.tv_goodsName);
             tvGoodsWeight = (TextView) itemView.findViewById(R.id.tv_goodsWeight);
             itemView.setOnClickListener(this);
@@ -80,9 +81,10 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
             RecyclerView parent = (RecyclerView) v.getParent();
             int itemPosition = parent.getChildAdapterPosition(v);
             Intent intent = new Intent(mActivity, GoodsEditActivity.class);
-            intent.putExtra("GoodsList", dataList);
+            intent.putExtra(GoodsEditActivity.GOODSLIST_RESULT, dataList);
             intent.putExtra("position", itemPosition);
-            mActivity.startActivityForResult(intent, 1);
+
+            mActivity.startActivityForResult(intent, REQUEST_CODE);
 
         }
 
@@ -93,6 +95,14 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
 
         public TextView getTvGoodsName() {
             return tvGoodsName;
+        }
+
+        public void setEdited(boolean edited) {
+            if (edited) {
+                itemView.setBackgroundColor(0xffE2EFEA);
+            } else {
+                itemView.setBackgroundColor(0xffFFFFFF);
+            }
         }
     }
 

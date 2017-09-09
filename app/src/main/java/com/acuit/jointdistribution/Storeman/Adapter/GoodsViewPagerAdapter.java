@@ -24,7 +24,6 @@ import java.util.List;
 
 public class GoodsViewPagerAdapter extends FragmentPagerAdapter {
 
-    private int defaultPosition;
     private GoodsEditActivity mActivity;
     private SparseArray<GoodsEditFragment> fragmentsMap;
     private List<StoreInDetailBean.DataBean.ListBean> datalist;
@@ -34,11 +33,10 @@ public class GoodsViewPagerAdapter extends FragmentPagerAdapter {
         fragmentsMap = new SparseArray<GoodsEditFragment>();
     }
 
-    public GoodsViewPagerAdapter(List<StoreInDetailBean.DataBean.ListBean> datalist, int defaultPosition, GoodsEditActivity mActivity) {
+    public GoodsViewPagerAdapter(List<StoreInDetailBean.DataBean.ListBean> datalist,  GoodsEditActivity mActivity) {
         this(mActivity.getSupportFragmentManager());
         this.datalist = datalist;
         this.mActivity = mActivity;
-        this.defaultPosition = defaultPosition;
     }
 
     @Override

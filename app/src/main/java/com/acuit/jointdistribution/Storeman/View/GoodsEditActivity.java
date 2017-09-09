@@ -41,9 +41,11 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
     private ViewPager vpContent;
     private ImageView ivBack;
     private GoodsViewPagerAdapter goodsViewPagerAdapter;
+    public static final int RESULT_CODE = 1155;
+    public static final String GOODSLIST_RESULT = "GoodsList";
 
     private int position;
-    private BaseArrayList<Integer> savedGoodsPosition;
+    //    private BaseArrayList<Integer> savedGoodsPosition;
     private BaseArrayList<StoreInDetailBean.DataBean.ListBean> goodsList;
 
     @Override
@@ -70,11 +72,12 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
 
     private void initData() {
 
-        savedGoodsPosition = new BaseArrayList<Integer>();
+//        savedGoodsPosition = new BaseArrayList<Integer>();
 
         position = getIntent().getIntExtra("position", -1);
         goodsList = new BaseArrayList<StoreInDetailBean.DataBean.ListBean>();
         goodsList.addAll((Collection<? extends StoreInDetailBean.DataBean.ListBean>) getIntent().getSerializableExtra("GoodsList"));
+
 
         setTitle(goodsList.get(position).getStock_name());
 
@@ -109,7 +112,7 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
     private void initViewPager() {
 
         // TODO: 2017/9/1 viewPager优化fragment的预加载问题
-        goodsViewPagerAdapter = new GoodsViewPagerAdapter(goodsList, position, GoodsEditActivity.this);
+        goodsViewPagerAdapter = new GoodsViewPagerAdapter(goodsList, GoodsEditActivity.this);
         vpContent.setOffscreenPageLimit(0);
         vpContent.setAdapter(goodsViewPagerAdapter);
         vpContent.setCurrentItem(position);
@@ -122,9 +125,9 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
         tvTitle.setText(title);
     }
 
-    public BaseArrayList<Integer> getEditedGoods() {
-        return savedGoodsPosition;
-    }
+//    public BaseArrayList<Integer> getEditedGoods() {
+//        return savedGoodsPosition;
+//    }
 
 
     @Override
@@ -137,7 +140,8 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_back:
-                GoodsEditActivity.this.finish();
+//                GoodsEditActivity.this.finish();
+                onBackPressed();
                 break;
         }
     }
@@ -145,8 +149,14 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        moveTaskToBack(true);
+//        super.onBackPressed();
+//        moveTaskToBack(true);
+
+        Intent data = new Intent();
+        data.putExtra(GOODSLIST_RESULT, goodsList);
+        setResult(RESULT_CODE, data);
+
+        GoodsEditActivity.this.finish();
     }
 
 
@@ -188,9 +198,7 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
         ArrayList<String> temp = new ArrayList<>();
         String tempPicsDir = CacheUtils.getTempPicsDir();
 
-//        System.out.println("aaa tempPics:" + mResults.size());
         for (String mResult : mResults) {
-//            System.out.println("aaa picPath:" + mResult);
             String picName = CacheUtils.getNameFromPath(mResult);
             String tempPicPath = tempPicsDir + File.separator + picName;
 
@@ -205,7 +213,12 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
         }
 
         return temp;
-
     }
 
+
+    @Override
+    public void finish() {
+
+        super.finish();
+    }
 }

@@ -793,6 +793,7 @@ public class StoreInDetailBean {
             private String left_in_amount;
             private String dep_id;
             private String dep_code;
+            private String check_standard;
             private String dep_name;
             private String in_amount;
             private String in_price;
@@ -814,16 +815,16 @@ public class StoreInDetailBean {
             private String buy_price;
             private String unit;
 
-            //            拒收原因id
-            private String standard;
+            private boolean isEdited = false;
 
-            public String getStandard() {
-                return standard;
+            public boolean isEdited() {
+                return isEdited;
             }
 
-            public void setStandard(String standard) {
-                this.standard = standard;
+            public void setEdited(boolean edited) {
+                isEdited = edited;
             }
+
 
             @Override
             public String toString() {
@@ -844,6 +845,7 @@ public class StoreInDetailBean {
                         ", left_in_amount='" + left_in_amount + '\'' +
                         ", dep_id='" + dep_id + '\'' +
                         ", dep_code='" + dep_code + '\'' +
+                        ", check_standard='" + check_standard + '\'' +
                         ", dep_name='" + dep_name + '\'' +
                         ", in_amount='" + in_amount + '\'' +
                         ", in_price='" + in_price + '\'' +
@@ -864,8 +866,28 @@ public class StoreInDetailBean {
                         ", price_unit='" + price_unit + '\'' +
                         ", buy_price='" + buy_price + '\'' +
                         ", unit='" + unit + '\'' +
+                        ", isEdited=" + isEdited +
                         ", standard='" + standard + '\'' +
                         '}';
+            }
+
+            //            拒收原因id
+            private String standard;
+
+            public String getStandard() {
+                return standard;
+            }
+
+            public void setStandard(String standard) {
+                this.standard = standard;
+            }
+
+            public String getCheck_standard() {
+                return check_standard;
+            }
+
+            public void setCheck_standard(String check_standard) {
+                this.check_standard = check_standard;
             }
 
             public String getId() {

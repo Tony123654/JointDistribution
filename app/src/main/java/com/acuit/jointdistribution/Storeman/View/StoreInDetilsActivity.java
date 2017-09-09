@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
+import com.acuit.jointdistribution.Common.Base.BaseArrayList;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.R;
@@ -25,8 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -56,9 +56,9 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
     private TextView tvStraghtOutDep;
     private TextView tvContacterName;
     private TextView tvContacterPhone;
-    private List<StoreInDetailBean.DataBean.ListBean> goodsList = new ArrayList<StoreInDetailBean.DataBean.ListBean>();
-    private StoreInDetailBean storeInDetailBean = null;
     private StoreInGoodsAdapter storeInGoodsAdapter;
+    private StoreInDetailBean storeInDetailBean = null;
+    private BaseArrayList<StoreInDetailBean.DataBean.ListBean> goodsList = new BaseArrayList<StoreInDetailBean.DataBean.ListBean>();
 
 
     @Override
@@ -105,6 +105,15 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
 //        super.onBackPressed();
 //        moveTaskToBack(true);
 //    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (null != storeInGoodsAdapter) {
+            storeInGoodsAdapter.notifyDataSetChanged();
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -198,6 +207,16 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == StoreInGoodsAdapter.REQUEST_CODE) {
+            if (resultCode == GoodsEditActivity.RESULT_CODE) {
+                goodsList.clear();
+                goodsList.addAll((Collection<? extends StoreInDetailBean.DataBean.ListBean>) data.getSerializableExtra(GoodsEditActivity.GOODSLIST_RESULT));
+                assert goodsList != null;
+
+                storeInGoodsAdapter.notifyDataSetChanged();
+            }
+        }
+
         super.onActivityResult(requestCode, resultCode, data);
         // TODO: 2017/9/1 获取编辑保存的商品列表，设置adapterItem背景色
     }

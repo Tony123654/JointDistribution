@@ -48,8 +48,10 @@
         <activity android:name=".Supplier.Acitivity.DistributionActivity" />
 
         <!-- 保管员 -->
+        <activity
+            android:name=".Storeman.View.GoodsEditActivity"
+            android:launchMode="singleInstance" />
         <activity android:name=".Storeman.View.ScanCodeActivity" />
-        <activity android:name=".Storeman.View.GoodsEditActivity" />
         <activity android:name=".Storeman.View.StoreInListActivity" />
         <activity android:name=".Storeman.View.SupplierListActivity" />
         <activity android:name=".Storeman.View.StoreInDetilsActivity" />
@@ -59,8 +61,8 @@
         <!--添加图片 第三方-->
         <activity
             android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
-            android:hardwareAccelerated="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:hardwareAccelerated="false" />
     </application>
 
 </manifest>
