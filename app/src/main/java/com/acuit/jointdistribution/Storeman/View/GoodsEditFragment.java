@@ -443,9 +443,9 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
 //        保存拒收原因
         if (-1 == rejectResionId) {
-            goodsBean.setCheck_standard("");
+            goodsBean.setStandard("");
         } else {
-            goodsBean.setCheck_standard(rejectResionId + "");
+            goodsBean.setStandard(rejectResionId + "");
         }
 
 //        保存退货数量

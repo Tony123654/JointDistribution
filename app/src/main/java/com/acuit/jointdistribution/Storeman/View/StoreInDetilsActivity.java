@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -125,6 +126,9 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
             case R.id.iv_more:
 //                startActivity(new Intent(StoreInDetilsActivity.this, ScanCodeActivity.class));
                 break;
+            case R.id.tv_check:
+                checkStoreIn();
+                break;
 
 
         }
@@ -218,8 +222,68 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
         }
 
         super.onActivityResult(requestCode, resultCode, data);
-        // TODO: 2017/9/1 获取编辑保存的商品列表，设置adapterItem背景色
     }
+
+    /**
+     * 验收——入库
+     */
+    private void checkStoreIn() {
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_SAVE_STOREIN, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                System.out.println("aaa json:" + response);
+//                Gson gson = new Gson();
+//                storeInDetailBean = gson.fromJson(response, StoreInDetailBean.class);
+////                    登录成功
+//                if (200 == storeInDetailBean.getCode()) {
+//
+//                }
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                if (null == error.getMessage()) {
+                    Toast.makeText(StoreInDetilsActivity.this, "无法获取信息，请检查网络环境", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.e("aaa", "onErrorResponse: " + error.getMessage());
+                }
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                ArrayMap<String, String> params = new ArrayMap<String, String>();
+
+                params.put("is_direct_out", 1 + "");
+                params.put("store_in_id", storeInDetailBean.getData().get(0).getId()+"");
+                params.put("token", BaseApplication.getLoginBean().getData().getToken()+"");
+                params.put("out_dep_id", storeInDetailBean.getData().get(0).getDep_id2()+"");
+
+                for (StoreInDetailBean.DataBean.ListBean goodsBean : goodsList) {
+
+                    params.put("back_brief[" + goodsBean.getId() + "]", "");
+                    params.put("in_price[" + goodsBean.getId() + "]", goodsBean.getIn_price()+"");
+                    params.put("standard[" + goodsBean.getId() + "]", goodsBean.getStandard()+"");
+                    params.put("buy_price[" + goodsBean.getId() + "]", goodsBean.getBuy_price()+"");
+                    params.put("store_in_list_ids[" + goodsBean.getId() + "]", goodsBean.getId()+"");
+                    params.put("price_gap_ratio[" + goodsBean.getId() + "]", goodsBean.getPrice_gap_ratio()+"");
+                    params.put("already_in_amount[" + goodsBean.getId() + "]", goodsBean.getAlready_in_amount()+"");
+                }
+
+                System.out.println("aaa params:" + params);
+                return params;
+            }
+        };
+
+//        new JsonArrayRequest()
+
+        BaseApplication.getRequestQueue().add(stringRequest);
+
+    }
+
 
     @Override
     public void onDestroy() {

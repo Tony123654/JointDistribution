@@ -68,6 +68,8 @@ GlobalContants {
     public static final String URL_ADD_PIC_BASE64 = SERVER_URL + "add_pic_base64";
     //    上传图片
     public static final String URL_ADD_PIC_BASE64_APP = SERVER_URL + "add_pic_base64_app";
+    //    上传图片
+    public static final String URL_SAVE_STOREIN = SERVER_URL + "save_confirm_store_in";
 
 
 
