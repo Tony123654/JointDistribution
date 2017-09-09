@@ -19,6 +19,7 @@ import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Adapter.StoreInGoodsAdapter;
+import com.acuit.jointdistribution.Storeman.Bean.CodeMsgDataBean;
 import com.acuit.jointdistribution.Storeman.Bean.StoreInDetailBean;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -59,6 +60,7 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
     private TextView tvContacterPhone;
     private StoreInGoodsAdapter storeInGoodsAdapter;
     private StoreInDetailBean storeInDetailBean = null;
+    private final StoreInDetilsActivity mActivity = StoreInDetilsActivity.this;
     private BaseArrayList<StoreInDetailBean.DataBean.ListBean> goodsList = new BaseArrayList<StoreInDetailBean.DataBean.ListBean>();
 
 
@@ -234,12 +236,12 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
             @Override
             public void onResponse(String response) {
                 System.out.println("aaa json:" + response);
-//                Gson gson = new Gson();
-//                storeInDetailBean = gson.fromJson(response, StoreInDetailBean.class);
-////                    登录成功
-//                if (200 == storeInDetailBean.getCode()) {
-//
-//                }
+                Gson gson = new Gson();
+                CodeMsgDataBean codeMsgDataBean = gson.fromJson(response, CodeMsgDataBean.class);
+                Toast.makeText(mActivity, codeMsgDataBean.getMsg(), Toast.LENGTH_SHORT).show();
+                if (200 == codeMsgDataBean.getCode()) {
+                    finish();
+                }
             }
 
         }, new Response.ErrorListener() {
@@ -258,27 +260,25 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
                 ArrayMap<String, String> params = new ArrayMap<String, String>();
 
                 params.put("is_direct_out", 1 + "");
-                params.put("store_in_id", storeInDetailBean.getData().get(0).getId()+"");
-                params.put("token", BaseApplication.getLoginBean().getData().getToken()+"");
-                params.put("out_dep_id", storeInDetailBean.getData().get(0).getDep_id2()+"");
+                params.put("store_in_id", storeInDetailBean.getData().get(0).getId() + "");
+                params.put("token", BaseApplication.getLoginBean().getData().getToken() + "");
+                params.put("out_dep_id", storeInDetailBean.getData().get(0).getDep_id2() + "");
 
                 for (StoreInDetailBean.DataBean.ListBean goodsBean : goodsList) {
 
                     params.put("back_brief[" + goodsBean.getId() + "]", "");
-                    params.put("in_price[" + goodsBean.getId() + "]", goodsBean.getIn_price()+"");
-                    params.put("standard[" + goodsBean.getId() + "]", goodsBean.getStandard()+"");
-                    params.put("buy_price[" + goodsBean.getId() + "]", goodsBean.getBuy_price()+"");
-                    params.put("store_in_list_ids[" + goodsBean.getId() + "]", goodsBean.getId()+"");
-                    params.put("price_gap_ratio[" + goodsBean.getId() + "]", goodsBean.getPrice_gap_ratio()+"");
-                    params.put("already_in_amount[" + goodsBean.getId() + "]", goodsBean.getAlready_in_amount()+"");
+                    params.put("in_price[" + goodsBean.getId() + "]", goodsBean.getIn_price() + "");
+                    params.put("standard[" + goodsBean.getId() + "]", goodsBean.getCheck_standard() + "");
+                    params.put("buy_price[" + goodsBean.getId() + "]", goodsBean.getBuy_price() + "");
+                    params.put("store_in_list_ids[" + goodsBean.getId() + "]", goodsBean.getId() + "");
+                    params.put("price_gap_ratio[" + goodsBean.getId() + "]", goodsBean.getPrice_gap_ratio() + "");
+                    params.put("already_in_amount[" + goodsBean.getId() + "]", goodsBean.getAlready_in_amount() + "");
                 }
 
                 System.out.println("aaa params:" + params);
                 return params;
             }
         };
-
-//        new JsonArrayRequest()
 
         BaseApplication.getRequestQueue().add(stringRequest);
 

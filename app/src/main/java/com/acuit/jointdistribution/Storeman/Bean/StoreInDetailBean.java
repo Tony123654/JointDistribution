@@ -867,20 +867,9 @@ public class StoreInDetailBean {
                         ", buy_price='" + buy_price + '\'' +
                         ", unit='" + unit + '\'' +
                         ", isEdited=" + isEdited +
-                        ", standard='" + standard + '\'' +
                         '}';
             }
 
-            //            拒收原因id
-            private String standard;
-
-            public String getStandard() {
-                return standard;
-            }
-
-            public void setStandard(String standard) {
-                this.standard = standard;
-            }
 
             public String getCheck_standard() {
                 return check_standard;

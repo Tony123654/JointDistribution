@@ -78,6 +78,8 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     private ImageView ivAddPic2;
     private ArrayList<String> spinnerSelectData = new ArrayList<String>();
     private int rejectResionId = -1;
+    private ArrayAdapter<StoreInStandardBean.DataBean> spinnerAdapter;
+    private boolean isInit;
 
     public GoodsEditFragment(StoreInDetailBean.DataBean.ListBean goodsBean, int position, GoodsEditActivity mActivity) {
         this.goodsBean = goodsBean;
@@ -118,6 +120,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         ivAddPic3 = (ImageView) fragmentView.findViewById(R.id.iv_addPic3);
         spinnerRejectResion = (Spinner) fragmentView.findViewById(R.id.spinner_rejectResion);
 
+        isInit = true;
         return fragmentView;
 
     }
@@ -126,17 +129,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        tvGoodsUnit1.setText(goodsBean.getUnit());
-        tvGoodsUnit2.setText(goodsBean.getUnit());
-        tvGoodsUnit3.setText(goodsBean.getUnit());
-
-        tvGoodsName.setText(goodsBean.getStock_name());
-        tvUnitPrice.setText(goodsBean.getPrice_unit());
-        tvGoodsAmount.setText(goodsBean.getOrder_amount());
-
-        etRejectAmount.setText(0.00 + "");
-        etReciverAmount.setText(goodsBean.getOrder_amount());
-
+//        initData();
 
         tvSave.setOnClickListener(this);
         ivAddPic1.setOnClickListener(this);
@@ -147,8 +140,6 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         ivSubtractPlus.setOnClickListener(this);
         ivSubtractMinus.setOnClickListener(this);
 
-        rejectAmount = Float.valueOf(goodsBean.getBack_amount());
-        reciverAmount = Float.valueOf(goodsBean.getOrder_amount());
 
         etReciverAmount.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -156,7 +147,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                 if (hasFocus) {
                     etReciverAmount.setText("");
                 } else {
-                    reviewAmount(etRejectAmount,"");
+                    reviewAmount(etRejectAmount, "");
                 }
             }
         });
@@ -178,6 +169,10 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                 String str = String.valueOf(s);
                 if (null != str && !str.equals("")) {
                     reciverAmount = Float.valueOf(str);
+
+                    //        保存入库数量
+                    goodsBean.setIn_amount(etReciverAmount.getText().toString());
+                    System.out.println("aaa iv_reciverPlus:" + goodsBean.getIn_amount());
                 }
             }
         });
@@ -188,7 +183,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                 if (hasFocus) {
                     etRejectAmount.setText("");
                 } else {
-                    reviewAmount(etRejectAmount,"");
+                    reviewAmount(etRejectAmount, "");
                 }
             }
         });
@@ -210,6 +205,10 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                 String str = String.valueOf(s);
                 if (null != str && !str.equals("")) {
                     rejectAmount = Float.valueOf(str);
+
+                    //        保存拒收数量
+                    goodsBean.setBack_amount(etReciverAmount.getText().toString());
+                    System.out.println("aaa iv_reciverPlus:" + goodsBean.getBack_amount());
                 }
             }
         });
@@ -217,6 +216,31 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
         initSpinner();
         spinnerRejectResion.setOnItemSelectedListener(this);
+
+
+    }
+
+
+    private void initData() {
+        tvGoodsUnit1.setText(goodsBean.getUnit());
+        tvGoodsUnit2.setText(goodsBean.getUnit());
+        tvGoodsUnit3.setText(goodsBean.getUnit());
+
+        tvGoodsName.setText(goodsBean.getStock_name());
+        tvUnitPrice.setText(goodsBean.getPrice_unit());
+        tvGoodsAmount.setText(goodsBean.getOrder_amount());
+
+        etReciverAmount.setText(goodsBean.getIn_amount());
+        etRejectAmount.setText(goodsBean.getBack_amount());
+
+
+        rejectAmount = Float.valueOf(goodsBean.getBack_amount());
+        reciverAmount = Float.valueOf(goodsBean.getOrder_amount());
+
+//        if (null != spinnerAdapter && !goodsBean.getCheck_standard().equals("")) {
+//            spinnerRejectResion.setSelection(Integer.parseInt(goodsBean.getCheck_standard()) + 1, true);
+//            System.out.println("aaa onresume().standard:" + goodsBean.getCheck_standard());
+//        }
     }
 
     private void reviewAmount(EditText view, String str) {
@@ -231,7 +255,11 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                 } else if (str.equals("+")) {
                     view.setText(String.format("%.2f", Float.valueOf(amount) + 1));
                 } else if (str.equals("-")) {
-                    view.setText(String.format("%.2f", Float.valueOf(amount) - 1));
+                    float a = Float.valueOf(amount) - 1;
+                    if (a < 0) {
+                        a = 0;
+                    }
+                    view.setText(String.format("%.2f", a));
                 }
             }
         } else {
@@ -243,7 +271,11 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                 } else if (str.equals("+")) {
                     view.setText(String.format("%.2f", Float.valueOf(amount) + 1));
                 } else if (str.equals("-")) {
-                    view.setText(String.format("%.2f", Float.valueOf(amount) - 1));
+                    float a = Float.valueOf(amount) - 1;
+                    if (a < 0) {
+                        a = 0;
+                    }
+                    view.setText(String.format("%.2f", a));
                 }
             }
         }
@@ -255,16 +287,16 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         switch (v.getId()) {
 
             case R.id.iv_reciverPlus:
-                reviewAmount(etReciverAmount,"+");
+                reviewAmount(etReciverAmount, "+");
                 break;
             case R.id.iv_reciverMinus:
-                reviewAmount(etReciverAmount,"-");
+                reviewAmount(etReciverAmount, "-");
                 break;
             case R.id.iv_rejectPlus:
-                reviewAmount(etRejectAmount,"+");
+                reviewAmount(etRejectAmount, "+");
                 break;
             case R.id.iv_rejectMinus:
-                reviewAmount(etRejectAmount,"-");
+                reviewAmount(etRejectAmount, "-");
                 break;
 
             case R.id.iv_addPic1:
@@ -362,6 +394,8 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     public void onResume() {
         super.onResume();
 
+        initData();
+
         if (null != tempPics && 0 < tempPics.size()) {
             showPics();
         }
@@ -385,7 +419,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                         spinnerSelectData.add(dataBean.getName());
                     }
                     // TODO: 2017/9/5 选项间隔大、下拉框位置、文字右对齐、默认选项不方便等问题，后期使用自定义adapter(继承baseAdapter)替换
-                    ArrayAdapter<StoreInStandardBean.DataBean> spinnerAdapter = new ArrayAdapter(mActivity, android.R.layout.simple_selectable_list_item, spinnerSelectData);
+                    spinnerAdapter = new ArrayAdapter(mActivity, android.R.layout.simple_selectable_list_item, spinnerSelectData);
                     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerRejectResion.setAdapter(spinnerAdapter);
                 }
@@ -441,17 +475,6 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         }
         goodsBean.setPic_url(picUrls.toString());
 
-//        保存拒收原因
-        if (-1 == rejectResionId) {
-            goodsBean.setStandard("");
-        } else {
-            goodsBean.setStandard(rejectResionId + "");
-        }
-
-//        保存退货数量
-        goodsBean.setBack_amount(etRejectAmount.getText().toString());
-//        保存入库数量
-        goodsBean.setAlready_in_amount(etReciverAmount.getText().toString());
 
         Toast.makeText(mActivity, "保存成功", Toast.LENGTH_SHORT).show();
 
@@ -463,7 +486,17 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        rejectResionId = position - 1;
+
+        if (isInit && !goodsBean.getCheck_standard().equals("")) {
+            isInit = false;
+            spinnerRejectResion.setSelection(Integer.parseInt(goodsBean.getCheck_standard()) + 1, true);
+            System.out.println("aaa init.standard:" + goodsBean.getCheck_standard());
+        } else {
+
+            //        保存拒收原因
+            goodsBean.setCheck_standard(position - 1 + "");
+            System.out.println("aaa notinit.standard:" + goodsBean.getCheck_standard());
+        }
     }
 
     @Override

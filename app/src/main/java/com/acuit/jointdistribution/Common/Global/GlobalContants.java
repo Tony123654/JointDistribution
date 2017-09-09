@@ -9,12 +9,11 @@ import java.io.File;
  * 修改者：yanj
  * 修改时间：2017-08-18 17:22
  */
-public class
-GlobalContants {
-
+public class GlobalContants {
 
     //    http://xxx/admin.php?c=Minterface&a=login
-    public static final String SERVER_IP = "192.168.2.241";
+//    public static final String SERVER_IP = "192.168.2.241";
+    public static final String SERVER_IP = "api.acuit.net";
 
     public static final String BASE_URL = "http:" + File.separator + File.separator + SERVER_IP;
 
