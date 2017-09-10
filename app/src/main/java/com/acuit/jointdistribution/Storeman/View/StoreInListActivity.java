@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
+import com.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,6 +51,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
     private RecyclerView rvStoreList;
     private int page = 1;
     private List<StoreInListBySupplierBean.DataBean.StoreInListBean> storeInList = new ArrayList<StoreInListBySupplierBean.DataBean.StoreInListBean>();
+    private int requestCode = 1245;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,11 +88,26 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.iv_scanCode:
-                startActivity(new Intent(StoreInListActivity.this, ScanCodeActivity.class));
+//                startActivity(new Intent(StoreInListActivity.this, ScanCodeActivity.class));
+                startActivityForResult(new Intent(StoreInListActivity.this, CaptureActivity.class), requestCode);
                 break;
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == this.requestCode && resultCode == RESULT_OK && null != data) {
+            String resultString = data.getStringExtra("result");
+            String storeInId = resultString.substring(resultString.indexOf("=") + 1);
+            Intent intent = new Intent(StoreInListActivity.this, StoreInDetilsActivity.class);
+            intent.putExtra("StoreInId", storeInId);
+            startActivity(intent);
+
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     private void initData() {
 

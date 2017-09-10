@@ -1,19 +1,32 @@
 package com.acuit.jointdistribution.Storeman.Adapter;
 
 import android.content.Intent;
+import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
+import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Storeman.Bean.StoreInListBySupplierBean;
 import com.acuit.jointdistribution.Storeman.Bean.SuppliersListBean;
 import com.acuit.jointdistribution.Storeman.View.StoreInDetilsActivity;
 import com.acuit.jointdistribution.Storeman.View.StoreInListActivity;
 import com.acuit.jointdistribution.Storeman.View.SupplierListActivity;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 类名: SuppliersListAdapter <p>
@@ -83,16 +96,63 @@ public class SuppliersListAdapter extends RecyclerView.Adapter {
             int position = parent.getChildAdapterPosition(v);
             Intent intent = null;
             if (1 == dataList.get(position).getCount()) {
-                // TODO: 2017/8/31 单个订单时，传参StoreInID
-                intent = new Intent(mActivity, StoreInDetilsActivity.class);
-//                intent.putExtra("StoreInId", );
-//                getStoreInId();
+                getSingleStoreIn(dataList.get(position));
             } else {
                 intent = new Intent(mActivity, StoreInListActivity.class);
                 intent.putExtra("SupplierBean", dataList.get(position));
+                mActivity.startActivity(intent);
             }
-            mActivity.startActivity(intent);
 
         }
     }
+
+    /**
+     * 获取某供应商————单个订单的信息，用于直接进入订单详情页面
+     *
+     * @param supplier 供应商对象
+     */
+    private void getSingleStoreIn(final SuppliersListBean.DataBean.StoreInListBean supplier) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STORE_IN_LIST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+                StoreInListBySupplierBean storeInListBySupplierBean = gson.fromJson(response, StoreInListBySupplierBean.class);
+                if (200 == storeInListBySupplierBean.getCode()) {
+                    Intent intent = new Intent(mActivity, StoreInDetilsActivity.class);
+                    intent.putExtra("StoreInId", storeInListBySupplierBean.getData().getStore_in_list().get(0).getId());
+                    mActivity.startActivity(intent);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (null == error.getMessage()) {
+                    Toast.makeText(mActivity, "无法获取信息，请检查网络环境", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mActivity, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                ArrayMap<String, String> params = new ArrayMap<String, String>();
+
+                params.put("token", BaseApplication.getLoginBean().getData().getToken());
+                params.put("start_date", (new Date(0)).getTime() / 1000 + "");
+                params.put("end_date", System.currentTimeMillis() / 1000 + "");
+                params.put("rows", "20");
+                params.put("page", 1 + "");
+                params.put("status", "2");
+                params.put("supply_id", supplier.getSupply_id());
+
+                return params;
+            }
+        };
+
+        stringRequest.setTag("StoreInListActivity");
+        BaseApplication.getRequestQueue().add(stringRequest);
+    }
+
+
 }

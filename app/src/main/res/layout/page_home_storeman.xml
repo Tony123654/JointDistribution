@@ -18,6 +18,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="首页"
+            android:textColor="#ffffff"
             android:textSize="24sp" />
 
         <ImageView
@@ -67,14 +68,14 @@
             android:id="@+id/btn_evaluateOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btn_checkOrder"
+            android:layout_below="@+id/btn_checkOrder"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:onClick="OrderForm"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
-            android:text="评    价"
-            android:layout_below="@+id/btn_checkOrder"
-            android:layout_alignStart="@+id/btn_checkOrder" />
+            android:text="评    价" />
 
     </RelativeLayout>
 

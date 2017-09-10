@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="登     录"
+            android:textColor="#ffffff"
             android:textSize="22sp" />
     </RelativeLayout>
 
@@ -114,6 +115,7 @@
             android:background="#23b587"
             android:gravity="center"
             android:text="登     录"
+            android:textColor="#ffffff"
             android:textSize="18sp" />
 
 

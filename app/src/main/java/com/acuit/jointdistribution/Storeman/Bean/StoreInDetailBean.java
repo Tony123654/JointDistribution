@@ -171,7 +171,7 @@ public class StoreInDetailBean {
         private String is_paid;
         private String origin_code;
         private String request_ids;
-        private String plan_date;
+        private int plan_date;
         private String contact_person;
         private String contact_phone;
         private int item_count;
@@ -619,11 +619,11 @@ public class StoreInDetailBean {
             this.request_ids = request_ids;
         }
 
-        public String getPlan_date() {
+        public int getPlan_date() {
             return plan_date;
         }
 
-        public void setPlan_date(String plan_date) {
+        public void setPlan_date(int plan_date) {
             this.plan_date = plan_date;
         }
 
@@ -737,7 +737,7 @@ public class StoreInDetailBean {
             }
         }
 
-        public static class ListBean implements Serializable{
+        public static class ListBean implements Serializable {
             /**
              * id : 15407
              * store_in_id : 2063

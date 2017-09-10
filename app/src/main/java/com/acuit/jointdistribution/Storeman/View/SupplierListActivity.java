@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
+import com.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,6 +52,7 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
     private int page = 1;
     private List<SuppliersListBean.DataBean.StoreInListBean> suppliersList = new ArrayList<SuppliersListBean.DataBean.StoreInListBean>();
     private SuppliersListAdapter suppliersAdapter;
+    private int requestCode = 1245;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,30 +72,6 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         rvSupplierList = (RecyclerView) findViewById(R.id.rl_suppliersList);
     }
 
-
-    private void initEvent() {
-        ivBack.setOnClickListener(this);
-        ivScanCode.setOnClickListener(this);
-        btnSearchSupplier.setOnClickListener(this);
-
-        // TODO: 2017/8/29  下拉刷新，上拉加载
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.iv_back:
-                finish();
-                break;
-            case R.id.iv_scanCode:
-                startActivity(new Intent(SupplierListActivity.this, ScanCodeActivity.class));
-                break;
-            case R.id.btn_searchSuppliers:
-
-                break;
-        }
-    }
 
     private void initData() {
 
@@ -153,6 +131,48 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         } else {
             Toast.makeText(SupplierListActivity.this, "没有数据", Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+    private void initEvent() {
+        ivBack.setOnClickListener(this);
+        ivScanCode.setOnClickListener(this);
+        btnSearchSupplier.setOnClickListener(this);
+
+        // TODO: 2017/8/29  下拉刷新，上拉加载
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_back:
+                finish();
+                break;
+            case R.id.iv_scanCode:
+//                startActivity(new Intent(SupplierListActivity.this, ScanCodeActivity.class));
+                startActivityForResult(new Intent(SupplierListActivity.this, CaptureActivity.class), requestCode);
+
+                break;
+            case R.id.btn_searchSuppliers:
+
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == this.requestCode && resultCode == RESULT_OK && null != data) {
+            String resultString = data.getStringExtra("result");
+            String storeInId = resultString.substring(resultString.indexOf("=") + 1);
+            Intent intent = new Intent(SupplierListActivity.this, StoreInDetilsActivity.class);
+            intent.putExtra("StoreInId", storeInId);
+            startActivity(intent);
+
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

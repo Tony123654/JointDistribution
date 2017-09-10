@@ -146,7 +146,6 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
             public void onResponse(String response) {
                 Gson gson = new Gson();
                 storeInDetailBean = gson.fromJson(response, StoreInDetailBean.class);
-//                    登录成功
                 if (200 == storeInDetailBean.getCode()) {
                     initData();
                 }

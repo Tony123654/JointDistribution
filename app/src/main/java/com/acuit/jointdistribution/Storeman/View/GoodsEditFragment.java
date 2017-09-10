@@ -98,6 +98,27 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
         View fragmentView = inflater.inflate(R.layout.fragment_goods_edit, container, false);
 
+        initView(fragmentView);
+
+        isInit = true;
+        return fragmentView;
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+//        initData();
+
+        initEvent();
+
+        initSpinner();
+        spinnerRejectResion.setOnItemSelectedListener(this);
+
+    }
+
+    private void initView(View fragmentView) {
         tvGoodsName = (TextView) fragmentView.findViewById(R.id.tv_goodsName);
         tvUnitPrice = (TextView) fragmentView.findViewById(R.id.tv_unitPrice);
         tvGoodsAmount = (TextView) fragmentView.findViewById(R.id.tv_goodsAmount);
@@ -119,18 +140,31 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         ivAddPic2 = (ImageView) fragmentView.findViewById(R.id.iv_addPic2);
         ivAddPic3 = (ImageView) fragmentView.findViewById(R.id.iv_addPic3);
         spinnerRejectResion = (Spinner) fragmentView.findViewById(R.id.spinner_rejectResion);
-
-        isInit = true;
-        return fragmentView;
-
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    private void initData() {
+        tvGoodsUnit1.setText(goodsBean.getUnit());
+        tvGoodsUnit2.setText(goodsBean.getUnit());
+        tvGoodsUnit3.setText(goodsBean.getUnit());
 
-//        initData();
+        tvGoodsName.setText(goodsBean.getStock_name());
+        tvUnitPrice.setText(goodsBean.getPrice_unit());
+        tvGoodsAmount.setText(goodsBean.getOrder_amount());
 
+        etReciverAmount.setText(goodsBean.getIn_amount());
+        etRejectAmount.setText(goodsBean.getBack_amount());
+
+
+        rejectAmount = Float.valueOf(goodsBean.getIn_amount());
+        reciverAmount = Float.valueOf(goodsBean.getOrder_amount());
+
+//        if (null != spinnerAdapter && !goodsBean.getCheck_standard().equals("")) {
+//            spinnerRejectResion.setSelection(Integer.parseInt(goodsBean.getCheck_standard()) + 1, true);
+//            System.out.println("aaa onresume().standard:" + goodsBean.getCheck_standard());
+//        }
+    }
+
+    private void initEvent() {
         tvSave.setOnClickListener(this);
         ivAddPic1.setOnClickListener(this);
         ivAddPic2.setOnClickListener(this);
@@ -140,14 +174,14 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         ivSubtractPlus.setOnClickListener(this);
         ivSubtractMinus.setOnClickListener(this);
 
-
         etReciverAmount.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
+                    reciverAmount = Float.parseFloat(etReciverAmount.getText().toString());
                     etReciverAmount.setText("");
                 } else {
-                    reviewAmount(etRejectAmount, "");
+                    reviewAmount(etReciverAmount, "");
                 }
             }
         });
@@ -172,7 +206,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
                     //        保存入库数量
                     goodsBean.setIn_amount(etReciverAmount.getText().toString());
-                    System.out.println("aaa iv_reciverPlus:" + goodsBean.getIn_amount());
+//                    System.out.println("aaa iv_reciverPlus:" + goodsBean.getIn_amount());
                 }
             }
         });
@@ -181,6 +215,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
+                    rejectAmount = Float.parseFloat(etRejectAmount.getText().toString());
                     etRejectAmount.setText("");
                 } else {
                     reviewAmount(etRejectAmount, "");
@@ -207,40 +242,11 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                     rejectAmount = Float.valueOf(str);
 
                     //        保存拒收数量
-                    goodsBean.setBack_amount(etReciverAmount.getText().toString());
-                    System.out.println("aaa iv_reciverPlus:" + goodsBean.getBack_amount());
+                    goodsBean.setBack_amount(etRejectAmount.getText().toString());
+//                    System.out.println("aaa iv_reciverPlus:" + goodsBean.getBack_amount());
                 }
             }
         });
-
-
-        initSpinner();
-        spinnerRejectResion.setOnItemSelectedListener(this);
-
-
-    }
-
-
-    private void initData() {
-        tvGoodsUnit1.setText(goodsBean.getUnit());
-        tvGoodsUnit2.setText(goodsBean.getUnit());
-        tvGoodsUnit3.setText(goodsBean.getUnit());
-
-        tvGoodsName.setText(goodsBean.getStock_name());
-        tvUnitPrice.setText(goodsBean.getPrice_unit());
-        tvGoodsAmount.setText(goodsBean.getOrder_amount());
-
-        etReciverAmount.setText(goodsBean.getIn_amount());
-        etRejectAmount.setText(goodsBean.getBack_amount());
-
-
-        rejectAmount = Float.valueOf(goodsBean.getBack_amount());
-        reciverAmount = Float.valueOf(goodsBean.getOrder_amount());
-
-//        if (null != spinnerAdapter && !goodsBean.getCheck_standard().equals("")) {
-//            spinnerRejectResion.setSelection(Integer.parseInt(goodsBean.getCheck_standard()) + 1, true);
-//            System.out.println("aaa onresume().standard:" + goodsBean.getCheck_standard());
-//        }
     }
 
     private void reviewAmount(EditText view, String str) {
@@ -486,17 +492,18 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+        System.out.println("aaa spinner.onItemSelected:" + goodsBean.getStock_name());
 
         if (isInit && !goodsBean.getCheck_standard().equals("")) {
-            isInit = false;
+//            初始化view，且选过理由；恢复选项：
             spinnerRejectResion.setSelection(Integer.parseInt(goodsBean.getCheck_standard()) + 1, true);
             System.out.println("aaa init.standard:" + goodsBean.getCheck_standard());
         } else {
-
             //        保存拒收原因
             goodsBean.setCheck_standard(position - 1 + "");
             System.out.println("aaa notinit.standard:" + goodsBean.getCheck_standard());
         }
+        isInit = false;
     }
 
     @Override
