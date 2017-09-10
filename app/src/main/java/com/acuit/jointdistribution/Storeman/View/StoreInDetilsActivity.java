@@ -272,6 +272,7 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
                     params.put("store_in_list_ids[" + goodsBean.getId() + "]", goodsBean.getId() + "");
                     params.put("price_gap_ratio[" + goodsBean.getId() + "]", goodsBean.getPrice_gap_ratio() + "");
                     params.put("already_in_amount[" + goodsBean.getId() + "]", goodsBean.getAlready_in_amount() + "");
+                    params.put("img_urls[" + goodsBean.getId() + "]", goodsBean.getPic_url() + "");
                 }
 
                 System.out.println("aaa params:" + params);
