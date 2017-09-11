@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
@@ -61,7 +61,7 @@ public class SuppliersListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         SuppliersList_ViewHolder viewHolder = (SuppliersList_ViewHolder) holder;
-        viewHolder.getTvSupplierName().setText(dataList.get(position).getSupply_name());
+        viewHolder.getBtnSupplierName().setText(dataList.get(position).getSupply_name());
 
     }
 
@@ -74,31 +74,30 @@ public class SuppliersListAdapter extends RecyclerView.Adapter {
     class SuppliersList_ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
-        private TextView tvSupplierName;
+        private Button btnSupplierName;
 
         public SuppliersList_ViewHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
-            tvSupplierName = (TextView) itemView.findViewById(R.id.tv_supplierName);
+            btnSupplierName = (Button) itemView.findViewById(R.id.btn_supplierName);
+            btnSupplierName.setOnClickListener(this);
         }
 
-        public TextView getTvSupplierName() {
-            return tvSupplierName;
+        public Button getBtnSupplierName() {
+            return btnSupplierName;
         }
 
-        public void setTvSupplierName(TextView tvSupplierName) {
-            this.tvSupplierName = tvSupplierName;
+        public void setBtnSupplierName(Button btnSupplierName) {
+            this.btnSupplierName = btnSupplierName;
         }
 
         @Override
         public void onClick(View v) {
-            RecyclerView parent = (RecyclerView) v.getParent();
-            int position = parent.getChildAdapterPosition(v);
-            Intent intent = null;
+            RecyclerView parent = (RecyclerView) (v.getParent()).getParent();
+            int position = parent.getChildAdapterPosition((View) v.getParent()) - 1;
             if (1 == dataList.get(position).getCount()) {
                 getSingleStoreIn(dataList.get(position));
             } else {
-                intent = new Intent(mActivity, StoreInListActivity.class);
+                Intent intent = new Intent(mActivity, StoreInListActivity.class);
                 intent.putExtra("SupplierBean", dataList.get(position));
                 mActivity.startActivity(intent);
             }

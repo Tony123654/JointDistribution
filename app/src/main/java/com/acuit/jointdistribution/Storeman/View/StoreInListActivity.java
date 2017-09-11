@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
@@ -42,16 +42,20 @@ import java.util.Map;
  * 更新描述: <p>
  */
 
-public class StoreInListActivity extends BaseActivity implements View.OnClickListener {
+public class StoreInListActivity extends BaseActivity implements View.OnClickListener, XRecyclerView.LoadingListener {
 
     private SuppliersListBean.DataBean.StoreInListBean supplier;
     private ImageView ivBack;
     private ImageView ivScanCode;
     private TextView tvSupplierName;
-    private RecyclerView rvStoreList;
+    private XRecyclerView xrvStoreList;
+    private int rows = 10;
     private int page = 1;
+    private int total = -1;
     private List<StoreInListBySupplierBean.DataBean.StoreInListBean> storeInList = new ArrayList<StoreInListBySupplierBean.DataBean.StoreInListBean>();
     private int requestCode = 1245;
+    private StoreInListAdapter storeInListAdapter;
+    private boolean Flag_LoadMore = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,6 +63,9 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.activity_storeinlist_by_supplier);
 
         initView();
+
+        supplier = (SuppliersListBean.DataBean.StoreInListBean) getIntent().getSerializableExtra("SupplierBean");
+        tvSupplierName.setText(supplier.getSupply_name());
         initData();
         initEvent();
 
@@ -68,8 +75,8 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
 
         ivBack = (ImageView) findViewById(R.id.iv_back);
         ivScanCode = (ImageView) findViewById(R.id.iv_scanCode);
-        tvSupplierName = (TextView) findViewById(R.id.tv_supplierName);
-        rvStoreList = (RecyclerView) findViewById(R.id.rv_storeInList);
+        tvSupplierName = (TextView) findViewById(R.id.btn_supplierName);
+        xrvStoreList = (XRecyclerView) findViewById(R.id.xrv_storeInList);
     }
 
 
@@ -77,7 +84,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
         ivBack.setOnClickListener(this);
         ivScanCode.setOnClickListener(this);
 
-        // TODO: 2017/8/29  下拉刷新，上拉加载
+        xrvStoreList.setLoadingListener(this);
 
     }
 
@@ -111,9 +118,6 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
 
     private void initData() {
 
-        supplier = (SuppliersListBean.DataBean.StoreInListBean) getIntent().getSerializableExtra("SupplierBean");
-        tvSupplierName.setText(supplier.getSupply_name());
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STORE_IN_LIST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -121,8 +125,13 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
                 StoreInListBySupplierBean storeInListBySupplierBean = gson.fromJson(response, StoreInListBySupplierBean.class);
 //                    登录成功
                 if (200 == storeInListBySupplierBean.getCode()) {
-                    storeInList.clear();
+                    total = Integer.parseInt(storeInListBySupplierBean.getData().getTotal());
+                    if (!Flag_LoadMore) {
+                        storeInList.clear();
+                    }
+                    Flag_LoadMore = false;
                     storeInList.addAll(storeInListBySupplierBean.getData().getStore_in_list());
+
                     initAdapter();
                 }
             }
@@ -143,7 +152,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
                 params.put("token", BaseApplication.getLoginBean().getData().getToken());
                 params.put("start_date", (new Date(0)).getTime() / 1000 + "");
                 params.put("end_date", System.currentTimeMillis() / 1000 + "");
-                params.put("rows", "20");
+                params.put("rows", rows + "");
                 params.put("page", page + "");
                 params.put("status", "2");
                 params.put("supply_id", supplier.getSupply_id());
@@ -158,16 +167,29 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
 
     private void initAdapter() {
 
-        rvStoreList.setHasFixedSize(true);
-        rvStoreList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        xrvStoreList.setHasFixedSize(true);
+        xrvStoreList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         if (0 != storeInList.size()) {
 
-            StoreInListAdapter storeInListAdapter = new StoreInListAdapter(storeInList, StoreInListActivity.this);
-            rvStoreList.setAdapter(storeInListAdapter);
+            if (null != storeInListAdapter) {
+
+                xrvStoreList.refreshComplete();
+                xrvStoreList.loadMoreComplete();
+                storeInListAdapter.notifyDataSetChanged();
+
+            } else {
+
+                storeInListAdapter = new StoreInListAdapter(storeInList, StoreInListActivity.this);
+                xrvStoreList.setAdapter(storeInListAdapter);
+            }
 
         } else {
             Toast.makeText(StoreInListActivity.this, "没有数据", Toast.LENGTH_SHORT).show();
+        }
+
+        if (total == storeInList.size()) {
+            xrvStoreList.setLoadingMoreEnabled(false);
         }
     }
 
@@ -177,4 +199,19 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
         BaseApplication.getRequestQueue().cancelAll("StoreInListActivity");
     }
 
+    @Override
+    public void onRefresh() {
+
+        page = 1;
+        initData();
+        xrvStoreList.setLoadingMoreEnabled(true);
+    }
+
+    @Override
+    public void onLoadMore() {
+
+        page++;
+        Flag_LoadMore = true;
+        initData();
+    }
 }

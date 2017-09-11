@@ -5,7 +5,7 @@
     android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="#F0F0F0"
     tools:context=".Storeman.View.SupplierListActivity">
 
     <RelativeLayout
@@ -56,31 +56,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/relativeLayout"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_supplierName"
+            android:id="@+id/btn_supplierName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:gravity="center"
             android:padding="1dp"
             android:text="杭州蔬菜物流有限公司"
-            android:textSize="14sp" />
+            android:textColor="#666666"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_storeInList"
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/xrv_storeInList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/ll_supplierName"
         android:layout_margin="10dp">
 
 
-    </android.support.v7.widget.RecyclerView>
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
 
 
 </RelativeLayout>

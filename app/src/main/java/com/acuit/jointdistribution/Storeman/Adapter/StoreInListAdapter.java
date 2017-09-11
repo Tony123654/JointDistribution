@@ -26,6 +26,7 @@ import java.util.List;
  */
 
 public class StoreInListAdapter extends RecyclerView.Adapter {
+//public class StoreInListAdapter extends XRecyclerView.Adapter {
 
     private StoreInListActivity mActivity;
     private List<StoreInListBySupplierBean.DataBean.StoreInListBean> dataList;
@@ -77,7 +78,7 @@ public class StoreInListAdapter extends RecyclerView.Adapter {
         @Override
         public void onClick(View v) {
             RecyclerView parent = (RecyclerView) v.getParent();
-            int itemPosition = parent.getChildAdapterPosition(v);
+            int itemPosition = parent.getChildAdapterPosition(v)-1;
             Intent intent = new Intent(mActivity, StoreInDetilsActivity.class);
             intent.putExtra("StoreInId", dataList.get(itemPosition).getId());
             mActivity.startActivity(intent);

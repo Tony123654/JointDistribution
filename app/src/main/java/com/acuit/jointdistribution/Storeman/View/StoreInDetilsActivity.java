@@ -1,5 +1,6 @@
 package com.acuit.jointdistribution.Storeman.View;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,11 +47,11 @@ import java.util.Map;
 public class StoreInDetilsActivity extends BaseActivity implements View.OnClickListener {
 
 
-    private TextView tvSave;
+    private Button btnSave;
     private ImageView ivBack;
     private ImageView ivMore;
     private String storeInId;
-    private TextView tvChecked;
+    private Button btnChecked;
     private TextView tvOrderId;
     private TextView tvPlanDate;
     private RecyclerView rvGoods;
@@ -77,15 +79,15 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
 
     private void initView() {
 
-        tvSave = (TextView) findViewById(R.id.tv_save);
+        btnSave = (Button) findViewById(R.id.btn_save);
         ivBack = (ImageView) findViewById(R.id.iv_back);
         ivMore = (ImageView) findViewById(R.id.iv_more);
-        tvChecked = (TextView) findViewById(R.id.tv_check);
+        btnChecked = (Button) findViewById(R.id.btn_check);
         tvOrderId = (TextView) findViewById(R.id.tv_orderId);
         tvPlanDate = (TextView) findViewById(R.id.tv_planDate);
         rvGoods = (RecyclerView) findViewById(R.id.rv_goodsList);
         tvStoreInDep = (TextView) findViewById(R.id.tv_storeInDep);
-        tvSupplierName = (TextView) findViewById(R.id.tv_supplierName);
+        tvSupplierName = (TextView) findViewById(R.id.btn_supplierName);
         tvContacterName = (TextView) findViewById(R.id.tv_contacterName);
         tvContacterPhone = (TextView) findViewById(R.id.tv_contacterPhone);
 
@@ -97,8 +99,8 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
         ivBack.setOnClickListener(this);
         ivMore.setOnClickListener(this);
 
-        tvSave.setOnClickListener(this);
-        tvChecked.setOnClickListener(this);
+        btnSave.setOnClickListener(this);
+        btnChecked.setOnClickListener(this);
 
         // TODO: 2017/8/30  下拉刷新，上拉加载
     }
@@ -116,6 +118,18 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
         if (null != storeInGoodsAdapter) {
             storeInGoodsAdapter.notifyDataSetChanged();
         }
+
+//        提示：不是待验收状态的——入库单
+//        if (!storeInDetailBean.getData().get(0).getStatus().equals("2")) {
+//            showDialog();
+//        }
+
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("注意！本订单不是待验收状态！");
+        builder.create().show();
     }
 
     @Override
@@ -128,7 +142,7 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
             case R.id.iv_more:
 //                startActivity(new Intent(StoreInDetilsActivity.this, ScanCodeActivity.class));
                 break;
-            case R.id.tv_check:
+            case R.id.btn_check:
                 checkStoreIn();
                 break;
 
@@ -266,16 +280,16 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
                 for (StoreInDetailBean.DataBean.ListBean goodsBean : goodsList) {
 
                     params.put("back_brief[" + goodsBean.getId() + "]", "");
+                    params.put("img_urls[" + goodsBean.getId() + "]", goodsBean.getPic_url() + "");
                     params.put("in_price[" + goodsBean.getId() + "]", goodsBean.getIn_price() + "");
-                    params.put("standard[" + goodsBean.getId() + "]", goodsBean.getCheck_standard() + "");
                     params.put("buy_price[" + goodsBean.getId() + "]", goodsBean.getBuy_price() + "");
                     params.put("store_in_list_ids[" + goodsBean.getId() + "]", goodsBean.getId() + "");
+                    params.put("standard[" + goodsBean.getId() + "]", goodsBean.getCheck_standard() + "");
                     params.put("price_gap_ratio[" + goodsBean.getId() + "]", goodsBean.getPrice_gap_ratio() + "");
                     params.put("already_in_amount[" + goodsBean.getId() + "]", goodsBean.getAlready_in_amount() + "");
-                    params.put("img_urls[" + goodsBean.getId() + "]", goodsBean.getPic_url() + "");
                 }
 
-                System.out.println("aaa params:" + params);
+//                System.out.println("aaa params:" + params);
                 return params;
             }
         };

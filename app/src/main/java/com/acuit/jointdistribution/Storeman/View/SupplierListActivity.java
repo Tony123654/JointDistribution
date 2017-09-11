@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
@@ -42,17 +42,20 @@ import java.util.Map;
  * 更新描述: <p>
  */
 
-public class SupplierListActivity extends BaseActivity implements View.OnClickListener {
+public class SupplierListActivity extends BaseActivity implements View.OnClickListener, XRecyclerView.LoadingListener {
 
-    private RecyclerView rvSupplierList;
+    private XRecyclerView xrvSupplierList;
     private EditText etSearchBar;
     private Button btnSearchSupplier;
     private ImageView ivBack;
     private ImageView ivScanCode;
+    private int rows = 10;
     private int page = 1;
-    private List<SuppliersListBean.DataBean.StoreInListBean> suppliersList = new ArrayList<SuppliersListBean.DataBean.StoreInListBean>();
+    private int total = -1;
+    private List<SuppliersListBean.DataBean.StoreInListBean> suppliersList = new ArrayList<>();
     private SuppliersListAdapter suppliersAdapter;
     private int requestCode = 1245;
+    private boolean Flag_LoadMore;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,7 +72,7 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         ivScanCode = (ImageView) findViewById(R.id.iv_scanCode);
         btnSearchSupplier = (Button) findViewById(R.id.btn_searchSuppliers);
         etSearchBar = (EditText) findViewById(R.id.et_searchBySupplierName);
-        rvSupplierList = (RecyclerView) findViewById(R.id.rl_suppliersList);
+        xrvSupplierList = (XRecyclerView) findViewById(R.id.xrl_suppliersList);
     }
 
 
@@ -82,7 +85,10 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
                 SuppliersListBean suppliersListBean = gson.fromJson(response, SuppliersListBean.class);
 //                    登录成功
                 if (200 == suppliersListBean.getCode()) {
-                    suppliersList.clear();
+                    if (!Flag_LoadMore) {
+                        suppliersList.clear();
+                    }
+                    Flag_LoadMore = false;
                     suppliersList.addAll(suppliersListBean.getData().getStore_in_list());
                     initAdapter();
                 }
@@ -104,11 +110,10 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
                 params.put("token", BaseApplication.getLoginBean().getData().getToken());
                 params.put("start_date", (new Date(0)).getTime() / 1000 + "");
                 params.put("end_date", System.currentTimeMillis() / 1000 + "");
-                params.put("rows", "20");
+                params.put("rows", rows + "");
                 params.put("page", page + "");
                 params.put("status", "2");
                 params.put("get_supply_list", "1");
-
 
                 return params;
             }
@@ -120,16 +125,28 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
 
     private void initAdapter() {
 
-        rvSupplierList.setHasFixedSize(true);
-        rvSupplierList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        xrvSupplierList.setHasFixedSize(true);
+        xrvSupplierList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         if (0 != suppliersList.size()) {
 
-            suppliersAdapter = new SuppliersListAdapter(suppliersList, SupplierListActivity.this);
-            rvSupplierList.setAdapter(suppliersAdapter);
+            if (null != suppliersAdapter) {
+
+                xrvSupplierList.refreshComplete();
+                xrvSupplierList.loadMoreComplete();
+                suppliersAdapter.notifyDataSetChanged();
+            } else {
+
+                suppliersAdapter = new SuppliersListAdapter(suppliersList, SupplierListActivity.this);
+                xrvSupplierList.setAdapter(suppliersAdapter);
+            }
 
         } else {
             Toast.makeText(SupplierListActivity.this, "没有数据", Toast.LENGTH_SHORT).show();
+        }
+
+        if (total == suppliersList.size()) {
+            xrvSupplierList.setLoadingMoreEnabled(false);
         }
     }
 
@@ -139,7 +156,7 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         ivScanCode.setOnClickListener(this);
         btnSearchSupplier.setOnClickListener(this);
 
-        // TODO: 2017/8/29  下拉刷新，上拉加载
+        xrvSupplierList.setLoadingListener(this);
 
     }
 
@@ -152,7 +169,6 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
             case R.id.iv_scanCode:
 //                startActivity(new Intent(SupplierListActivity.this, ScanCodeActivity.class));
                 startActivityForResult(new Intent(SupplierListActivity.this, CaptureActivity.class), requestCode);
-
                 break;
             case R.id.btn_searchSuppliers:
 
@@ -182,4 +198,19 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
     }
 
 
+    @Override
+    public void onRefresh() {
+
+        page = 1;
+        initData();
+        xrvSupplierList.setLoadingMoreEnabled(true);
+    }
+
+    @Override
+    public void onLoadMore() {
+
+        page++;
+        Flag_LoadMore = true;
+        initData();
+    }
 }

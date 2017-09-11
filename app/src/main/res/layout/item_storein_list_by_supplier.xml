@@ -17,14 +17,19 @@
             android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="订单编号:" />
+            android:text="订单编号:"
+            android:textColor="#999999"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_orderId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_toEndOf="@id/tv1"
-            android:text="888888888888" />
+            android:text="888888888888"
+            android:textColor="#999999"
+            android:textSize="12sp" />
 
     </RelativeLayout>
 
@@ -41,15 +46,20 @@
             android:id="@+id/tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/icon_rkd_quantiy"
+            android:drawablePadding="10dp"
             android:text="总数量:"
+            android:textColor="#333333"
             android:textSize="17sp" />
 
         <TextView
             android:id="@+id/tv_total_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_toEndOf="@id/tv2"
             android:text="8888"
+            android:textColor="#333333"
             android:textSize="17sp" />
 
     </RelativeLayout>
@@ -60,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/relativeLayout1"
         android:layout_below="@id/relativeLayout2"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
@@ -68,29 +78,35 @@
             android:id="@+id/tv3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/icon_rkd_time"
+            android:drawablePadding="10dp"
             android:text="计划送达日期:"
+            android:textColor="#333333"
             android:textSize="17sp" />
 
         <TextView
             android:id="@+id/tv_planDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_toEndOf="@id/tv3"
             android:text="2088年8月88日 09:00"
+            android:textColor="#333333"
             android:textSize="17sp" />
 
     </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_storeIn"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
+        android:layout_width="72dp"
+        android:layout_height="36dp"
+        android:layout_alignBottom="@id/relativeLayout3"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="18dp"
-        android:background="#33b688"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_button_check"
         android:gravity="center"
-        android:text="入库" />
+        android:text="验收"
+        android:textColor="#ffffff" />
 
 
 </RelativeLayout>

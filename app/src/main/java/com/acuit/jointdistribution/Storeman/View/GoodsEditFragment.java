@@ -135,7 +135,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         etRejectAmount = (EditText) fragmentView.findViewById(R.id.et_rejectAmount);
         etReciverAmount = (EditText) fragmentView.findViewById(R.id.et_reciverAmount);
 
-        tvSave = (TextView) fragmentView.findViewById(R.id.tv_save);
+        tvSave = (TextView) fragmentView.findViewById(R.id.btn_save);
         ivAddPic1 = (ImageView) fragmentView.findViewById(R.id.iv_addPic1);
         ivAddPic2 = (ImageView) fragmentView.findViewById(R.id.iv_addPic2);
         ivAddPic3 = (ImageView) fragmentView.findViewById(R.id.iv_addPic3);
@@ -152,7 +152,12 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         tvGoodsAmount.setText(goodsBean.getOrder_amount());
 
         etReciverAmount.setText(goodsBean.getIn_amount());
-        etRejectAmount.setText(goodsBean.getBack_amount());
+        String back_amount = goodsBean.getBack_amount();
+        if (null == back_amount || back_amount.equals("")) {
+            etRejectAmount.setText("0.00");
+        } else {
+            etRejectAmount.setText(back_amount);
+        }
 
 
         rejectAmount = Float.valueOf(goodsBean.getIn_amount());
@@ -315,7 +320,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                 addPic();
                 break;
 
-            case R.id.tv_save:
+            case R.id.btn_save:
                 uploadImage();
 //                saveGoodsEdition();
                 break;
@@ -494,14 +499,14 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
         System.out.println("aaa spinner.onItemSelected:" + goodsBean.getStock_name());
 
-        if (isInit && !goodsBean.getCheck_standard().equals("")) {
+        if (isInit && null != goodsBean.getCheck_standard() && !goodsBean.getCheck_standard().equals("")) {
 //            初始化view，且选过理由；恢复选项：
             spinnerRejectResion.setSelection(Integer.parseInt(goodsBean.getCheck_standard()) + 1, true);
-            System.out.println("aaa init.standard:" + goodsBean.getCheck_standard());
+//            System.out.println("aaa init.standard:" + goodsBean.getCheck_standard());
         } else {
             //        保存拒收原因
             goodsBean.setCheck_standard(position - 1 + "");
-            System.out.println("aaa notinit.standard:" + goodsBean.getCheck_standard());
+//            System.out.println("aaa notinit.standard:" + goodsBean.getCheck_standard());
         }
         isInit = false;
     }
