@@ -5,15 +5,15 @@
     android:layout_height="115dp"
     android:layout_alignParentStart="true"
     android:layout_below="@id/relativeLayout8"
+    android:layout_marginBottom="15dp"
     android:orientation="horizontal">
 
     <LinearLayout
         android:id="@+id/rl_orderData"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
         android:layout_weight="1"
-        android:background="#339866"
+        android:background="#4FC39A"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -23,6 +23,7 @@
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:text="订单数据"
+            android:textColor="#ffffff"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -39,7 +40,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/tv_haventDistribution"
@@ -49,7 +51,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/tv_particalDistribution"
@@ -59,7 +62,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
@@ -77,6 +81,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="待配送"
+                android:textColor="#ffffff"
                 android:textSize="12sp" />
 
             <TextView
@@ -87,6 +92,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="未配送"
+                android:textColor="#ffffff"
                 android:textSize="12sp" />
 
             <TextView
@@ -97,6 +103,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="部分配送"
+                android:textColor="#ffffff"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -107,9 +114,8 @@
         android:id="@+id/rl_supplierData"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
         android:layout_weight="1"
-        android:background="#339866"
+        android:background="#4FC39A"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -119,6 +125,7 @@
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:text="供应商数据"
+            android:textColor="#ffffff"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -135,7 +142,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/tv_haventDeliver"
@@ -145,7 +153,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/tv_particalDeliver"
@@ -155,7 +164,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
@@ -173,6 +183,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="送货中"
+                android:textColor="#ffffff"
                 android:textSize="12sp" />
 
             <TextView
@@ -183,6 +194,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="未送货"
+                android:textColor="#ffffff"
                 android:textSize="12sp" />
 
             <TextView
@@ -193,6 +205,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="部分送货"
+                android:textColor="#ffffff"
                 android:textSize="12sp" />
 
         </LinearLayout>

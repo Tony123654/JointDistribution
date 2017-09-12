@@ -13,7 +13,7 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="#23b587">
+        android:background="#33B688">
 
         <TextView
             android:id="@+id/tv_title"

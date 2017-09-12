@@ -117,9 +117,14 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
             case R.id.btn_submitVerifyCode:
                 if (verifyCode.isEmpty()) {
                     Toast.makeText(mActivity, "请输入验证码", Toast.LENGTH_SHORT).show();
-                } else if ((System.currentTimeMillis() / 1000) > mVerifyCodeBean.getTime() + 60) {
+                } else
+                if ((System.currentTimeMillis() / 1000) > mVerifyCodeBean.getTime() + 60) {
+//                    System.out.println("aaa currentTime:" + (System.currentTimeMillis() / 1000) + "  verifyTime:" + mVerifyCodeBean.getTime() + 60);
                     Toast.makeText(mActivity, "验证码已过期，请重新获取", Toast.LENGTH_SHORT).show();
-                } else if (!verifyCode.equals(mVerifyCodeBean.getVerify_code() + "")) {
+                } else
+                    if (!verifyCode.equals(mVerifyCodeBean.getVerify_code() + "")) {
+//                    System.out.println("aaa verifyCode:" + verifyCode + "  mVerifyCodeBean.getVerify_code():" + mVerifyCodeBean.getVerify_code());
+
                     Toast.makeText(mActivity, "验证码错误", Toast.LENGTH_SHORT).show();
                     etVerifyCode.setText("");
                 } else {

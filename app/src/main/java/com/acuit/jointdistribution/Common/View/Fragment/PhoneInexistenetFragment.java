@@ -136,16 +136,17 @@ public class PhoneInexistenetFragment extends Fragment implements View.OnClickLi
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_SEND_VERIFY_TO_USER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+//                System.out.println("aaa json:" + response);
                 Gson gson = new Gson();
                 SendVerifyCodeBean sendVerifyCodeBean = gson.fromJson(response, SendVerifyCodeBean.class);
 
-                if (1 == sendVerifyCodeBean.getStatus()){
+                if (1 == sendVerifyCodeBean.getStatus()) {
                     Toast.makeText(mActivity, "发送成功", Toast.LENGTH_SHORT).show();
                     FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneVerifyFragment(mActivity, sendVerifyCodeBean));
                     fragmentTransaction.commit();
-                }else{
+                } else {
                     Toast.makeText(mActivity, sendVerifyCodeBean.getCode(), Toast.LENGTH_SHORT).show();
                 }
 

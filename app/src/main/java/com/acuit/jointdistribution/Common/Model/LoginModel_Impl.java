@@ -146,15 +146,16 @@ public class LoginModel_Impl implements LoginModel_Interface {
             public void onResponse(String response) {
                 Gson gson = new Gson();
                 LoginBean loginBean = gson.fromJson(response, LoginBean.class);
-                BaseApplication.setLoginBean(loginBean);
 
-                Message msg = Message.obtain();
 //                    登录成功
                 if (200 == loginBean.getCode()) {
 
-                    msg.what = TAG_HOME;
+                    BaseApplication.setLoginBean(loginBean);
 
+                    Message msg = Message.obtain();
+                    msg.what = TAG_HOME;
                     handler.sendMessageDelayed(msg, 1000);
+
                     saveUserInfo();
 
                 } else {

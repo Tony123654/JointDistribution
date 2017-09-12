@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#339866">
+        android:background="#33B688">
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,13 +24,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="230dp">
+        android:layout_height="200dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            app:srcCompat="@mipmap/logo" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            app:srcCompat="@mipmap/logo_login" />
 
 
     </RelativeLayout>
@@ -41,11 +42,12 @@
 
         <LinearLayout
             android:id="@+id/ll_username"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="51dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -53,7 +55,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/icon_account" />
+                app:srcCompat="@mipmap/icon_login_user" />
 
             <EditText
                 android:id="@+id/et_zh"
@@ -61,18 +63,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:layout_toEndOf="@id/imageView2"
+                android:layout_weight="1"
+                android:background="@drawable/shape_no_border"
                 android:ems="10"
-                android:hint="请输入您的账号"
-                android:inputType="textPersonName" />
+                android:hint="请输入您的用户名/手机号"
+                android:inputType="textPersonName"
+                android:textColorHint="#999999" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignEnd="@id/ll_username"
+            android:layout_alignStart="@id/ll_username"
+            android:layout_below="@id/ll_username"
+            android:layout_marginTop="5dp"
+            android:background="#33B688" />
 
         <LinearLayout
             android:id="@+id/ll_pwd"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/ll_username"
+            android:layout_alignStart="@id/ll_username"
             android:layout_below="@id/ll_username"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -80,7 +96,7 @@
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/icon_pwd" />
+                app:srcCompat="@mipmap/icon_login_code" />
 
             <EditText
                 android:id="@+id/et_mm"
@@ -88,36 +104,50 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:layout_toEndOf="@id/imageView3"
+                android:layout_weight="1"
+                android:background="@drawable/shape_no_border"
                 android:ems="10"
                 android:hint="请输入您的密码"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColorHint="#999999" />
         </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignEnd="@id/ll_pwd"
+            android:layout_alignStart="@id/ll_pwd"
+            android:layout_below="@id/ll_pwd"
+            android:layout_marginTop="5dp"
+            android:background="#33B688" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignEnd="@+id/tv_forgetPwd"
+            android:layout_alignStart="@+id/view"
+            android:layout_below="@+id/view"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/shape_button_check"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
 
         <TextView
             android:id="@+id/tv_forgetPwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@id/ll_pwd"
-            android:layout_below="@id/ll_pwd"
+            android:layout_below="@id/btn_login"
             android:layout_marginTop="10dp"
             android:clickable="true"
             android:text="忘记密码?"
+            android:textColor="#33B688"
             android:textSize="12sp" />
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/ll_pwd"
-            android:layout_alignStart="@id/ll_pwd"
-            android:layout_below="@+id/ll_pwd"
-            android:layout_marginTop="56dp"
-            android:background="#23b587"
-            android:gravity="center"
-            android:text="登     录"
-            android:textColor="#ffffff"
-            android:textSize="18sp" />
-
 
     </RelativeLayout>
 
