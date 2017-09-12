@@ -25,7 +25,7 @@ public class SendVerifyCodeBean {
     private String code;
     private int verify_code;
     private int time;
-    private Object phone_number;
+    private String phone_number;
 
     @Override
     public String toString() {
@@ -70,11 +70,11 @@ public class SendVerifyCodeBean {
         this.time = time;
     }
 
-    public Object getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(Object phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 }

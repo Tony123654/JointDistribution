@@ -13,6 +13,8 @@ import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.View.Page.SettingPager;
 import com.acuit.jointdistribution.Common.Widget.NoScrollViewPager;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Storeman.View.BusinessPager;
+import com.acuit.jointdistribution.Storeman.View.ReportPager;
 import com.acuit.jointdistribution.Storeman.View.StoremanHomePage;
 import com.acuit.jointdistribution.Supplier.Bean.impl.BussinessOrderPager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.HomePager;
@@ -72,30 +74,20 @@ public class ContentFragment extends BaseFragment {
 //        String[] roleIDs = BaseApplication.getLoginBean().getData().getUser_info().getRoleid().split(",");
 //            System.out.println("aaa loginBean:" + BaseApplication.getLoginBean().toString());
 
-        int priv_edit = BaseApplication.getLoginBean().getData().getPriv().getStore().getStore_in_list().getPriv_edit();
-        if (1 == priv_edit) {
+        if (BaseApplication.isStoreman()) {
+
             mList.add(new StoremanHomePage(mActivity));
-        } else {
+            mList.add(new BusinessPager(mActivity));
+            mList.add(new ReportPager(mActivity));
+
+        } else if(BaseApplication.isSupplyer()){
+
             mList.add(new HomePager(mActivity));
+            mList.add(new BussinessOrderPager(mActivity));
+            mList.add(new StatisticalAnalysisPager(mActivity));
+
         }
 
-//        mList.add(new HomePager(mActivity));
-//        for (String roleID : roleIDs) {
-//            System.out.println("aaa roleID:" + roleID);
-////            供应商
-//            if ((137 + "").equals(roleID)) {
-//                mList.add(new HomePager(mActivity));
-//            }
-////            保管员
-//            if ((157 + "").equals(roleID)) {
-//                mList.add(new HomePager(mActivity));
-//            }
-//
-//        }
-
-
-        mList.add(new BussinessOrderPager(mActivity));
-        mList.add(new StatisticalAnalysisPager(mActivity));
         mList.add(new SettingPager(mActivity));
 
         mViewPager.setAdapter(new ContentAdapter());

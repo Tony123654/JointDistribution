@@ -142,6 +142,7 @@ public class PhoneInexistenetFragment extends Fragment implements View.OnClickLi
 
                 if (1 == sendVerifyCodeBean.getStatus()) {
                     Toast.makeText(mActivity, "发送成功", Toast.LENGTH_SHORT).show();
+                    sendVerifyCodeBean.setPhone_number(phone);
                     FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fl_contentBindPhone, new PhoneVerifyFragment(mActivity, sendVerifyCodeBean));

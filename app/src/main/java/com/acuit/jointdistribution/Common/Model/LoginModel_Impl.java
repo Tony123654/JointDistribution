@@ -10,6 +10,7 @@ import com.acuit.jointdistribution.Common.Bean.LoginBean;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.Model.Interface.LoginModel_Interface;
 import com.acuit.jointdistribution.Common.Presenter.LoginPresenter;
+import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.Storeman.Utils.SharedPreference_Utils;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -73,6 +74,8 @@ public class LoginModel_Impl implements LoginModel_Interface {
         userInfo.put(SharedPreference_Utils.KEY_PHONE, phone);
         userInfo.put(SharedPreference_Utils.KEY_PWD, pwd);
         SharedPreference_Utils.setValues(userInfo);
+
+        Tools.judgeRole();
     }
 
     @Override

@@ -105,6 +105,7 @@ public class LoginBean {
             private String roleid;
             private String mobile_phone;
             private String rolename;
+            private String realname;
             private MobileInterfaceBean mobile_interface;
             private DepInfoBean dep_info;
             private List<Integer> my_dep_list;
@@ -149,6 +150,14 @@ public class LoginBean {
 
             public void setRolename(String rolename) {
                 this.rolename = rolename;
+            }
+
+            public String getRealname() {
+                return realname;
+            }
+
+            public void setRealname(String realname) {
+                this.realname = realname;
             }
 
             public MobileInterfaceBean getMobile_interface() {
@@ -217,17 +226,17 @@ public class LoginBean {
                  * com_name : 浙大饮食中心
                  */
 
-                private Object supply_id;
+                private String supply_id;
                 private String dep_id;
                 private String dep_name;
                 private String com_id;
                 private String com_name;
 
-                public Object getSupply_id() {
+                public String getSupply_id() {
                     return supply_id;
                 }
 
-                public void setSupply_id(Object supply_id) {
+                public void setSupply_id(String supply_id) {
                     this.supply_id = supply_id;
                 }
 

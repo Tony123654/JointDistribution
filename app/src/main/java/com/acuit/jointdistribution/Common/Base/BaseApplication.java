@@ -117,6 +117,8 @@ public class BaseApplication extends LitePalApplication {
 
     //---------------------全局变量区----------------------------------------------
     private static LoginBean loginBean;
+    private static boolean isStoreman = false;
+    private static boolean isSupplyer = false;
 
     public static LoginBean getLoginBean() {
         return loginBean;
@@ -124,5 +126,21 @@ public class BaseApplication extends LitePalApplication {
 
     public static void setLoginBean(LoginBean loginBean) {
         BaseApplication.loginBean = loginBean;
+    }
+
+    public static boolean isStoreman() {
+        return isStoreman;
+    }
+
+    public static void setIsStoreman(boolean isStoreman) {
+        BaseApplication.isStoreman = isStoreman;
+    }
+
+    public static boolean isSupplyer() {
+        return isSupplyer;
+    }
+
+    public static void setIsSupplyer(boolean isSupplyer) {
+        BaseApplication.isSupplyer = isSupplyer;
     }
 }

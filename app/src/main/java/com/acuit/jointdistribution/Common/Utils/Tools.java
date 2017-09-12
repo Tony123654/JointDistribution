@@ -1,6 +1,9 @@
 package com.acuit.jointdistribution.Common.Utils;
 
 import android.text.TextUtils;
+import android.util.Log;
+
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -57,6 +60,7 @@ public class Tools {
     /**
      * 获取固定格式的时间字符串
      * ("yyyy-MM-dd HH:mm:ss")
+     *
      * @param seconds
      * @return
      */
@@ -74,6 +78,7 @@ public class Tools {
     /**
      * 获取固定格式的时间字符串
      * (yyyy-MM-dd)
+     *
      * @param seconds
      * @return
      */
@@ -86,5 +91,23 @@ public class Tools {
 
     public static String getSimpleFormatedTime(String seconds) {
         return getSimpleFormatedTime(Long.parseLong(seconds));
+    }
+
+    public static void judgeRole() {
+        String supply_id = BaseApplication.getLoginBean().getData().getUser_info().getDep_info().getSupply_id();
+        if (null != supply_id && !supply_id.equals("null")) {
+            if (Integer.valueOf(supply_id) > 0) {
+                BaseApplication.setIsSupplyer(true);
+            }
+        }
+
+        int priv_edit = BaseApplication.getLoginBean().getData().getPriv().getStore().getStore_in_list().getPriv_edit();
+        if (1 == priv_edit) {
+            BaseApplication.setIsStoreman(true);
+        }
+
+        if (BaseApplication.isStoreman() && BaseApplication.isSupplyer()) {
+            Log.e("aaa", "Tools.judgeRole(): ");
+        }
     }
 }
