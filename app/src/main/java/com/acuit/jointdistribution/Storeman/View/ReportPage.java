@@ -11,9 +11,16 @@ import com.acuit.jointdistribution.R;
 
 
 /**
- * 设置
+ * 类名: StoremanHomePage <p>
+ * 创建人: YanJ <p>
+ * 创建时间: 2017/9/12 at 14:10 <p>
+ * 描述: 智能报表
+ * <p>
+ * 更新人: <p>
+ * 更新时间: <p>
+ * 更新描述: <p>
  */
-public class ReportPager extends BasePager implements View.OnClickListener {
+public class ReportPage extends BasePager implements View.OnClickListener {
 
     private View view;
     private TextView tvDepName;
@@ -30,7 +37,7 @@ public class ReportPager extends BasePager implements View.OnClickListener {
     private static final int FLAG_QUIT_ACCOUNT = 0;
 
 
-    public ReportPager(Activity activity) {
+    public ReportPage(Activity activity) {
         super(activity);
     }
 

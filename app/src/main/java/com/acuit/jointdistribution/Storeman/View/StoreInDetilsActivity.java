@@ -162,7 +162,12 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
                 Gson gson = new Gson();
                 storeInDetailBean = gson.fromJson(response, StoreInDetailBean.class);
                 if (200 == storeInDetailBean.getCode()) {
-                    initData();
+                    if (null != storeInDetailBean.getData().get(0).getStatus() && storeInDetailBean.getData().get(0).getStatus().equals(2 + "")) {
+                        initData();
+                    } else {
+                        Toast.makeText(StoreInDetilsActivity.this, "该入库单不是待验收状态！", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 }
             }
 

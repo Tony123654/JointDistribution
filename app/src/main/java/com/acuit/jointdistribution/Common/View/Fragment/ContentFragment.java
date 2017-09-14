@@ -13,8 +13,8 @@ import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.View.Page.SettingPager;
 import com.acuit.jointdistribution.Common.Widget.NoScrollViewPager;
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Storeman.View.BusinessPager;
-import com.acuit.jointdistribution.Storeman.View.ReportPager;
+import com.acuit.jointdistribution.Storeman.View.BusinessPage;
+import com.acuit.jointdistribution.Storeman.View.ReportPage;
 import com.acuit.jointdistribution.Storeman.View.StoremanHomePage;
 import com.acuit.jointdistribution.Supplier.Bean.impl.BussinessOrderPager;
 import com.acuit.jointdistribution.Supplier.Bean.impl.HomePager;
@@ -77,8 +77,8 @@ public class ContentFragment extends BaseFragment {
         if (BaseApplication.isStoreman()) {
 
             mList.add(new StoremanHomePage(mActivity));
-            mList.add(new BusinessPager(mActivity));
-            mList.add(new ReportPager(mActivity));
+            mList.add(new BusinessPage(mActivity));
+            mList.add(new ReportPage(mActivity));
 
         } else if(BaseApplication.isSupplyer()){
 

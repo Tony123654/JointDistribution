@@ -46,7 +46,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
 
     private SuppliersListBean.DataBean.StoreInListBean supplier;
     private ImageView ivBack;
-    private ImageView ivScanCode;
+    private TextView tvScanCode;
     private TextView tvSupplierName;
     private XRecyclerView xrvStoreList;
     private int rows = 10;
@@ -74,7 +74,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
     private void initView() {
 
         ivBack = (ImageView) findViewById(R.id.iv_back);
-        ivScanCode = (ImageView) findViewById(R.id.iv_scanCode);
+        tvScanCode = (TextView) findViewById(R.id.tv_scanCode);
         tvSupplierName = (TextView) findViewById(R.id.btn_supplierName);
         xrvStoreList = (XRecyclerView) findViewById(R.id.xrv_storeInList);
         TextView emptyText = new TextView(StoreInListActivity.this);
@@ -85,7 +85,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
 
     private void initEvent() {
         ivBack.setOnClickListener(this);
-        ivScanCode.setOnClickListener(this);
+        tvScanCode.setOnClickListener(this);
 
         xrvStoreList.setLoadingListener(this);
 
@@ -97,7 +97,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
             case R.id.iv_back:
                 finish();
                 break;
-            case R.id.iv_scanCode:
+            case R.id.tv_scanCode:
 //                startActivity(new Intent(StoreInListActivity.this, ScanCodeActivity.class));
                 startActivityForResult(new Intent(StoreInListActivity.this, CaptureActivity.class), requestCode);
                 break;

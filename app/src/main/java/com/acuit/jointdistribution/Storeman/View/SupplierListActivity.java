@@ -6,9 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
@@ -49,15 +49,15 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
 
     private XRecyclerView xrvSupplierList;
     private EditText etSearchBar;
-    private Button btnSearchSupplier;
+    private TextView tvSearchSupplier;
     private ImageView ivBack;
-    private ImageView ivScanCode;
+    private TextView tvScanCode;
     private int rows = 10;
     private int page = 1;
     private int total = -1;
     private List<SuppliersListBean.DataBean.StoreInListBean> suppliersList = new ArrayList<>();
     private SuppliersListAdapter suppliersAdapter;
-    private int requestCode = 1245;
+    private final int requestCode = 1245;
     private boolean Flag_LoadMore;
 
     @Override
@@ -72,9 +72,9 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
 
     private void initView() {
         ivBack = (ImageView) findViewById(R.id.iv_back);
-        ivScanCode = (ImageView) findViewById(R.id.iv_scanCode);
+        tvScanCode = (TextView) findViewById(R.id.tv_scanCode);
         etSearchBar = (EditText) findViewById(R.id.et_searchBySupplierName);
-        btnSearchSupplier = (Button) findViewById(R.id.btn_searchSuppliers);
+        tvSearchSupplier = (TextView) findViewById(R.id.tv_searchSuppliers);
         xrvSupplierList = (XRecyclerView) findViewById(R.id.xrl_suppliersList);
     }
 
@@ -156,8 +156,8 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
 
     private void initEvent() {
         ivBack.setOnClickListener(this);
-        ivScanCode.setOnClickListener(this);
-        btnSearchSupplier.setOnClickListener(this);
+        tvScanCode.setOnClickListener(this);
+        tvSearchSupplier.setOnClickListener(this);
 
         xrvSupplierList.setLoadingListener(this);
 
@@ -169,11 +169,11 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
             case R.id.iv_back:
                 finish();
                 break;
-            case R.id.iv_scanCode:
+            case R.id.tv_scanCode:
 //                startActivity(new Intent(SupplierListActivity.this, ScanCodeActivity.class));
                 startActivityForResult(new Intent(SupplierListActivity.this, CaptureActivity.class), requestCode);
                 break;
-            case R.id.btn_searchSuppliers:
+            case R.id.tv_searchSuppliers:
                 search();
                 break;
         }
@@ -185,10 +185,13 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         boolean storein = true;
         boolean suppliy = false;
 
-        String str = etSearchBar.getText().toString();
         String url;
-
+        String str = etSearchBar.getText().toString();
         ArrayMap<String, String> params = new ArrayMap<>();
+
+        if (str.isEmpty()) {
+            return;
+        }
 
         if (Tools.isStoreInID(str)) {
 //            查询入库单
@@ -196,16 +199,14 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
             url = GlobalContants.URL_STORE_IN_LIST;
 
             params.put("key_words", str);
-
         } else {
 //            查询供应商
             flag = suppliy;
             url = GlobalContants.URL_SEARCH_SUPPLY;
 
-//            params.put("token", BaseApplication.getLoginBean().getData().getToken());
             params.put("kw_code", str);
-
         }
+
         params.put("token", BaseApplication.getLoginBean().getData().getToken());
         doSearch(params, url, flag);
 

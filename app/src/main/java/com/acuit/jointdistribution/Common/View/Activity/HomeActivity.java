@@ -1,5 +1,6 @@
 package com.acuit.jointdistribution.Common.View.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -8,6 +9,8 @@ import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Common.View.Fragment.ContentFragment;
+import com.acuit.jointdistribution.Storeman.View.StoreInDetilsActivity;
+import com.acuit.jointdistribution.Storeman.View.StoremanHomePage;
 
 /**
  * 类名: HomeActivity <p>
@@ -51,5 +54,18 @@ public class HomeActivity extends BaseActivity {
     public void onDestroy() {
         super.onDestroy();
         BaseApplication.getRequestQueue().cancelAll("HomeActivity");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == StoremanHomePage.requestCode && resultCode == RESULT_OK && null != data) {
+            String resultString = data.getStringExtra("result");
+            String storeInId = resultString.substring(resultString.indexOf("=") + 1);
+            Intent intent = new Intent(this, StoreInDetilsActivity.class);
+            intent.putExtra("StoreInId", storeInId);
+            startActivity(intent);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

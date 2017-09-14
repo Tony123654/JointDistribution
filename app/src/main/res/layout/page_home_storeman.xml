@@ -20,16 +20,41 @@
             android:layout_centerVertical="true"
             android:text="首页"
             android:textColor="#ffffff"
-            android:textSize="24sp" />
+            android:textSize="22sp" />
 
-        <ImageView
-            android:id="@+id/iv_messageCenter"
+        <TextView
+            android:id="@+id/tv_scan_code"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:clickable="true"
+            android:drawablePadding="1dp"
+            android:drawableTop="@mipmap/icon_nav_scan"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="扫码验收"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_messageCenter"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:padding="10dp"
-            android:src="@mipmap/icon_dbox_msg_n" />
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:drawablePadding="1dp"
+            android:drawableTop="@mipmap/icon_nav_msg"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="消息"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
 
     </RelativeLayout>
 
@@ -38,10 +63,11 @@
     <RelativeLayout
         android:id="@+id/relativeLayout10"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout9"
         android:background="#ffffff"
-        android:layout_below="@+id/relativeLayout9">
+        android:paddingBottom="20dp">
 
         <TextView
             android:id="@+id/textView13"
@@ -50,7 +76,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
-            android:text="采购入库" />
+            android:text="采购入库"
+            android:textColor="#666666" />
 
         <Button
             android:id="@+id/btn_checkOrder"
@@ -59,25 +86,31 @@
             android:layout_alignStart="@id/textView13"
             android:layout_below="@id/textView13"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
+            android:background="#00000000"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/icon_home_ys"
             android:gravity="center"
             android:onClick="OrderForm"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
-            android:text="验    收" />
+            android:text="验收入库"
+            android:textColor="#333333" />
 
         <Button
             android:id="@+id/btn_evaluateOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/btn_checkOrder"
-            android:layout_below="@+id/btn_checkOrder"
+            android:layout_alignBaseline="@id/btn_checkOrder"
             android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/btn_checkOrder"
+            android:background="#00000000"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/icon_home_pjdd"
             android:gravity="center"
             android:onClick="OrderForm"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
-            android:text="评    价" />
+            android:text="评价订单"
+            android:textColor="#333333"
+            android:visibility="visible" />
+        <!--*************************不可见👆***********************-->
 
     </RelativeLayout>
 
