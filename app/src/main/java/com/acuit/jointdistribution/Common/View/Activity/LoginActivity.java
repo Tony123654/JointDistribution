@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Presenter.LoginPresenter;
+import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.R;
 
 import static com.acuit.jointdistribution.R.id.et_mm;
@@ -59,7 +60,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
         tvForgetPwd = (TextView) findViewById(R.id.tv_forgetPwd);
     }
 
-    // TODO: 2017/8/22 若存在帐号，填充（登录状态记录logined）
     public void initData(String account) {
         if (null != account && !account.isEmpty()) {
             etAccount.setText(account);
@@ -99,7 +99,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
 
         {
 //        合法性校验（11位纯数字则赋值给phone）
-
+            if (account.matches(Tools.REGEX_PHONE)) {
+                phone = account;
+                account = "";
+            }
         }
 
         loginPresenter.login(account, phone, pwd);

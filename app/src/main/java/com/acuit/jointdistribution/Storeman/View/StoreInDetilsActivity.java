@@ -20,6 +20,7 @@ import com.acuit.jointdistribution.Common.Base.BaseArrayList;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Storeman.Adapter.DividerGridItemDecoration;
 import com.acuit.jointdistribution.Storeman.Adapter.StoreInGoodsAdapter;
 import com.acuit.jointdistribution.Storeman.Bean.CodeMsgDataBean;
 import com.acuit.jointdistribution.Storeman.Bean.StoreInDetailBean;
@@ -102,7 +103,7 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
         btnSave.setOnClickListener(this);
         btnChecked.setOnClickListener(this);
 
-        // TODO: 2017/8/30  下拉刷新，上拉加载
+        // TODO: 2017/8/30  下拉刷新，上拉加载 (支持在线修改订单的情况下)
     }
 
 //    @Override
@@ -212,7 +213,7 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
 
         rvGoods.setHasFixedSize(true);
         rvGoods.setLayoutManager(new GridLayoutManager(this, 3));
-        // TODO: 2017/8/30 RecyclerView添加分隔线 rvGoods.addItemDecoration();
+        rvGoods.addItemDecoration(new DividerGridItemDecoration(this, 1, R.color.dividerDecoration));
 
         if (0 != goodsList.size()) {
 

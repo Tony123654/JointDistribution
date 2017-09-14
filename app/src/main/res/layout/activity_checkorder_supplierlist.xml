@@ -68,6 +68,7 @@
             android:layout_weight="1"
             android:background="@drawable/shape_edittext_radius_border"
             android:hint="输入供应商名称搜索"
+            android:singleLine="true"
             android:padding="5dp" />
 
         <Button

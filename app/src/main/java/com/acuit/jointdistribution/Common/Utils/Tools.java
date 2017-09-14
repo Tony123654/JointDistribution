@@ -23,10 +23,14 @@ import java.util.Date;
 
 public class Tools {
 
-
-    public static final String REGEX_PHONE = "1(3[0-9]|47|5((?!4)[0-9])|7(0|1|[6-8])|8[0-9])\\d{8,8}";
-
+    //    中文
+    public static final String REGEX_STOREIN_ID = "(RDK|rkd)d{9}";
+    public static final String REGEX_CHINESE = "^[\\u4e00-\\u9fa5]+$";
+    public static final String REGEX_INT = "^\\d{n}$";
+    //    密码规则
     public static final String REGEX_PWD = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$";
+    //    手机号匹配
+    public static final String REGEX_PHONE = "1(3[0-9]|47|5((?!4)[0-9])|7(0|1|[6-8])|8[0-9])\\d{8,8}";
 
     /**
      * 字符串md5加密
@@ -109,5 +113,23 @@ public class Tools {
         if (BaseApplication.isStoreman() && BaseApplication.isSupplyer()) {
             Log.e("aaa", "Tools.judgeRole(): ");
         }
+    }
+
+    public static boolean isStoreInID(String id) {
+        System.out.println("aaa String:" + id);
+        if (15 == id.length()) {
+
+            String pre = id.substring(0, 3);
+            String suf = id.substring(3, 15);
+            System.out.println("aaa pre:" + pre);
+            System.out.println("aaa suf:" + suf);
+            if (pre.equals("RKD") || pre.equals("rkd")) {
+//                if (suf.matches(REGEX_INT)) {
+                    return true;
+//                }
+            }
+        }
+
+        return false;
     }
 }

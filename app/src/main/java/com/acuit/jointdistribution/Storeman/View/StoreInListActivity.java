@@ -77,6 +77,9 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
         ivScanCode = (ImageView) findViewById(R.id.iv_scanCode);
         tvSupplierName = (TextView) findViewById(R.id.btn_supplierName);
         xrvStoreList = (XRecyclerView) findViewById(R.id.xrv_storeInList);
+        TextView emptyText = new TextView(StoreInListActivity.this);
+        emptyText.setText("没有待验收入库单");
+        xrvStoreList.setEmptyView(emptyText);
     }
 
 
@@ -130,8 +133,10 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
                         storeInList.clear();
                     }
                     Flag_LoadMore = false;
-                    storeInList.addAll(storeInListBySupplierBean.getData().getStore_in_list());
-
+                    List<StoreInListBySupplierBean.DataBean.StoreInListBean> store_in_list = storeInListBySupplierBean.getData().getStore_in_list();
+                    if (null != store_in_list) {
+                        storeInList.addAll(store_in_list);
+                    }
                     initAdapter();
                 }
             }

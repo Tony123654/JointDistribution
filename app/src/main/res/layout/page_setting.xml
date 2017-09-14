@@ -46,6 +46,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginTop="50dp"
             android:text="账户："
+            android:textSize="16sp"
             android:textColor="#666666"
 
             />
@@ -86,7 +87,7 @@
                 style="@style/TextViewStyle_SettingsModel"
                 android:layout_weight="1"
                 android:drawableLeft="@mipmap/icon_set_changecode"
-                android:drawablePadding="90px"
+                android:drawablePadding="20dp"
                 android:text="修改密码"
                 android:textSize="16sp" />
 
@@ -99,8 +100,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#eeeeee"
-            />
+            android:background="#eeeeee" />
 
         <LinearLayout
             android:id="@+id/ll_bindPhone"
@@ -117,7 +117,7 @@
                 style="@style/TextViewStyle_SettingsModel"
                 android:layout_weight="1"
                 android:drawableLeft="@mipmap/icon_set_phone"
-                android:drawablePadding="90px"
+                android:drawablePadding="20dp"
                 android:text="手机绑定"
                 android:textSize="16sp" />
 
@@ -130,8 +130,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#eeeeee"
-            />
+            android:background="#eeeeee" />
 
         <LinearLayout
             android:id="@+id/ll_suggestionFeedback"
@@ -148,7 +147,7 @@
                 style="@style/TextViewStyle_SettingsModel"
                 android:layout_weight="1"
                 android:drawableLeft="@mipmap/icon_set_feedback"
-                android:drawablePadding="80px"
+                android:drawablePadding="20dp"
                 android:text="意见反馈"
                 android:textSize="16sp" />
 
@@ -161,8 +160,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#eeeeee"
-            />
+            android:background="#eeeeee" />
 
         <LinearLayout
             android:id="@+id/ll_aboutUs"
@@ -199,7 +197,8 @@
             android:clickable="true"
             android:gravity="center"
             android:text="退出登录"
-            android:textColor="#333333" />
+            android:textColor="#333333"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

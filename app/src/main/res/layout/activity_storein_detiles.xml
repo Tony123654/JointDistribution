@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="#eeeeee"
+    android:orientation="vertical"
     tools:context=".Storeman.View.SupplierListActivity">
 
     <RelativeLayout
@@ -50,171 +51,13 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_supplierName"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/relativeLayout"
-        android:background="#ffffff"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_weight="1">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="5dp"
-            android:text="采购入库单"
-            android:textColor="#333333"
-            android:textSize="16sp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:padding="1dp"
-                android:text="编号："
-                android:textColor="#999999" />
-
-            <TextView
-                android:id="@+id/tv_orderId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:padding="1dp"
-                android:text="CGBG010217060080"
-                android:textColor="#999999" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/border"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_below="@id/ll_supplierName"
-        android:background="#888888" />
-
-
-    <LinearLayout
-        android:id="@+id/ll_amountEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/border"
-        android:background="#ffffff"
-        android:orientation="vertical"
-        android:paddingLeft="10dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="供应商" />
-
-            <TextView
-                android:id="@+id/btn_supplierName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="杭州市西湖区双桥蔬菜种植场" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="入库部门" />
-
-            <TextView
-                android:id="@+id/tv_storeInDep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="东区食堂" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="计划送达日期" />
-
-            <TextView
-                android:id="@+id/tv_planDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="2017-08-23" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_goodsList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ll_amountEdit"
-        android:layout_marginTop="10dp" />
-
-
-    <LinearLayout
-        android:id="@+id/ll_contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rv_goodsList"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="联系人："
-
-            />
-
-        <TextView
-            android:id="@+id/tv_contacterName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="江映川" />
-
-        <TextView
-            android:id="@+id/tv_contacterPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="【15626666666】"
-            android:textColor="#33b688" />
-
-    </LinearLayout>
-
+        <include layout="@layout/fragment_storein_detail" />
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -249,4 +92,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

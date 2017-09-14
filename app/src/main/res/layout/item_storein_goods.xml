@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="73dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="1px"
     android:layout_weight="1"
-    android:background="@drawable/shape_goodsitem"
+    android:background="#ffffff"
     android:gravity="center"
-    android:orientation="vertical">
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp">
 
     <TextView
         android:id="@+id/tv_goodsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:text="西红柿"
         android:textColor="#33b688" />
 
@@ -18,7 +21,10 @@
         android:id="@+id/tv_goodsWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tv_goodsName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"
         android:text="596.00kg" />
 
-</LinearLayout>
+</RelativeLayout>
 

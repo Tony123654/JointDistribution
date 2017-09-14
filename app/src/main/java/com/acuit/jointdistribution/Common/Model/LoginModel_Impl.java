@@ -141,6 +141,7 @@ public class LoginModel_Impl implements LoginModel_Interface {
         } else {
             // TODO: 2017/8/19 手机号码登陆
 //            login_url = GlobalContants.URL_LOGIN_BY_PHONE;
+            presenter.showToast("暂未开放手机号码登录，敬请期待");
         }
 
 

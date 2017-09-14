@@ -14,8 +14,11 @@ import android.widget.Toast;
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
+import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Adapter.SuppliersListAdapter;
+import com.acuit.jointdistribution.Storeman.Bean.SeachSupplyByKeyBean;
+import com.acuit.jointdistribution.Storeman.Bean.StoreInListBySupplierBean;
 import com.acuit.jointdistribution.Storeman.Bean.SuppliersListBean;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -70,8 +73,8 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
     private void initView() {
         ivBack = (ImageView) findViewById(R.id.iv_back);
         ivScanCode = (ImageView) findViewById(R.id.iv_scanCode);
-        btnSearchSupplier = (Button) findViewById(R.id.btn_searchSuppliers);
         etSearchBar = (EditText) findViewById(R.id.et_searchBySupplierName);
+        btnSearchSupplier = (Button) findViewById(R.id.btn_searchSuppliers);
         xrvSupplierList = (XRecyclerView) findViewById(R.id.xrl_suppliersList);
     }
 
@@ -171,9 +174,105 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
                 startActivityForResult(new Intent(SupplierListActivity.this, CaptureActivity.class), requestCode);
                 break;
             case R.id.btn_searchSuppliers:
-
+                search();
                 break;
         }
+    }
+
+    private void search() {
+
+        boolean flag;
+        boolean storein = true;
+        boolean suppliy = false;
+
+        String str = etSearchBar.getText().toString();
+        String url;
+
+        ArrayMap<String, String> params = new ArrayMap<>();
+
+        if (Tools.isStoreInID(str)) {
+//            查询入库单
+            flag = storein;
+            url = GlobalContants.URL_STORE_IN_LIST;
+
+            params.put("key_words", str);
+
+        } else {
+//            查询供应商
+            flag = suppliy;
+            url = GlobalContants.URL_SEARCH_SUPPLY;
+
+//            params.put("token", BaseApplication.getLoginBean().getData().getToken());
+            params.put("kw_code", str);
+
+        }
+        params.put("token", BaseApplication.getLoginBean().getData().getToken());
+        doSearch(params, url, flag);
+
+
+    }
+
+    private void doSearch(final ArrayMap<String, String> params, final String url, final boolean flag) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                System.out.println("aaa url:" + url);
+                System.out.println("aaa json:" + response);
+                Gson gson = new Gson();
+                if (flag) {
+                    StoreInListBySupplierBean storeInListBySupplierBean = gson.fromJson(response, StoreInListBySupplierBean.class);
+                    if (200 == storeInListBySupplierBean.getCode()) {
+                        if (storeInListBySupplierBean.getData().getStore_in_list().get(0).getStatus().equals(2 + "")) {
+                            Intent intent = new Intent(SupplierListActivity.this, StoreInDetilsActivity.class);
+                            intent.putExtra("StoreInId", storeInListBySupplierBean.getData().getStore_in_list().get(0).getId());
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(SupplierListActivity.this, "该入库单不是待验收状态！", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(SupplierListActivity.this, storeInListBySupplierBean.getMsg(), Toast.LENGTH_SHORT).show();
+                    }
+
+                } else {
+                    SeachSupplyByKeyBean seachSupplyByKeyBean = gson.fromJson(response, SeachSupplyByKeyBean.class);
+                    if (200 == seachSupplyByKeyBean.getCode()) {
+                        suppliersList.clear();
+
+                        List<SeachSupplyByKeyBean.DataBean> data = seachSupplyByKeyBean.getData();
+                        for (SeachSupplyByKeyBean.DataBean dataBean : data) {
+                            SuppliersListBean.DataBean.StoreInListBean storeInListBean = new SuppliersListBean.DataBean.StoreInListBean();
+                            storeInListBean.setSupply_id(dataBean.getId());
+                            storeInListBean.setSupply_name(dataBean.getName());
+                            storeInListBean.setCount(-1);
+                            storeInListBean.setSupply_code("");
+                            suppliersList.add(storeInListBean);
+                        }
+                        suppliersAdapter.notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(SupplierListActivity.this, seachSupplyByKeyBean.getMsg(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (null == error.getMessage()) {
+                    Toast.makeText(SupplierListActivity.this, "无法获取信息，请检查网络环境", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SupplierListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                System.out.println("aaa params:" + params);
+                return params;
+            }
+        };
+
+        BaseApplication.getRequestQueue().add(stringRequest);
     }
 
     @Override

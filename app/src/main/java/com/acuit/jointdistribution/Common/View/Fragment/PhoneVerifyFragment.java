@@ -127,7 +127,9 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
     private void checkVerify(final String verifyCode) {
         if (verifyCode.isEmpty()) {
             Toast.makeText(mActivity, "请输入验证码", Toast.LENGTH_SHORT).show();
-        } else {
+            return;
+        }
+
 //                if ((System.currentTimeMillis() / 1000) > mVerifyCodeBean.getTime() + 60) {
 ////                    System.out.println("aaa currentTime:" + (System.currentTimeMillis() / 1000) + "  verifyTime:" + mVerifyCodeBean.getTime() + 60);
 //                    Toast.makeText(mActivity, "验证码已过期，请重新获取", Toast.LENGTH_SHORT).show();
@@ -151,55 +153,55 @@ public class PhoneVerifyFragment extends Fragment implements View.OnClickListene
 //                    }
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_CHECK_VERIFY, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    System.out.println("aaa json:" + response);
-                    Gson gson = new Gson();
-                    CodeAndMsg codeAndMsg = gson.fromJson(response, CodeAndMsg.class);
-                    if (200 == codeAndMsg.getCode()) {
-                        mVerifyCodeBean.setVerify_code(Integer.parseInt(verifyCode));
-                        if (isBindPhone) {
-                            changePhone();
-                        } else {
-                            FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                            fragmentTransaction.replace(R.id.fl_contentBindPhone, new PwdUpdateFragment(mActivity, mVerifyCodeBean));
-                            fragmentTransaction.commit();
-                        }
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_CHECK_VERIFY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                System.out.println("aaa json:" + response);
+                Gson gson = new Gson();
+                CodeAndMsg codeAndMsg = gson.fromJson(response, CodeAndMsg.class);
+                if (200 == codeAndMsg.getCode()) {
+                    mVerifyCodeBean.setVerify_code(Integer.parseInt(verifyCode));
+                    if (isBindPhone) {
+                        changePhone();
                     } else {
+                        FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                        Toast.makeText(mActivity, codeAndMsg.getMsg(), Toast.LENGTH_SHORT).show();
-                        etVerifyCode.setText("");
+                        fragmentTransaction.replace(R.id.fl_contentBindPhone, new PwdUpdateFragment(mActivity, mVerifyCodeBean));
+                        fragmentTransaction.commit();
                     }
+                } else {
 
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                    Toast.makeText(mActivity, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mActivity, codeAndMsg.getMsg(), Toast.LENGTH_SHORT).show();
                     etVerifyCode.setText("");
                 }
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
 
-                    ArrayMap<String, String> params = new ArrayMap<>();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
-//                    params.put("token", BaseApplication.getLoginBean().getData().getToken());
-                    params.put("phone", mVerifyCodeBean.getPhone_number());
-                    params.put("verify_code", verifyCode);
-                    System.out.println("aaa params:" + params.toString());
-                    return params;
-                }
-            };
+                Toast.makeText(mActivity, error.getMessage(), Toast.LENGTH_SHORT).show();
+                etVerifyCode.setText("");
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
 
-            BaseApplication.getRequestQueue().add(stringRequest);
+                ArrayMap<String, String> params = new ArrayMap<>();
 
-        }
+//                 params.put("token", BaseApplication.getLoginBean().getData().getToken());
+                params.put("phone", mVerifyCodeBean.getPhone_number());
+                params.put("verify_code", verifyCode);
+                System.out.println("aaa params:" + params.toString());
+                return params;
+            }
+        };
+
+        BaseApplication.getRequestQueue().add(stringRequest);
+
     }
+
 
     /**
      * 修改绑定的手机号

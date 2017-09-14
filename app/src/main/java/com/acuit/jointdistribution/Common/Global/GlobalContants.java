@@ -55,6 +55,8 @@ public class GlobalContants {
     public static final String URL_SUPPLIERS_DATA = AJAXREPORT_URL + "supply_order";//&dep_id=8
     //    送货(供应商)数据
     public static final String URL_DELIVER_DATA = AJAXREPORT_URL + "storekeeper_order";//&dep_id=8
+    //    查询供应商
+    public static final String URL_SEARCH_SUPPLY = AJAX_URL + "search_com_supply";
     //    获取入库单列表
     public static final String URL_STORE_IN_LIST = SERVER_URL + "store_in_list";
     //    获取入库单详情信息
@@ -67,7 +69,7 @@ public class GlobalContants {
     public static final String URL_ADD_PIC_BASE64 = SERVER_URL + "add_pic_base64";
     //    上传图片
     public static final String URL_ADD_PIC_BASE64_APP = SERVER_URL + "add_pic_base64_app";
-    //    上传图片
+    //    验收入库单
     public static final String URL_SAVE_STOREIN = SERVER_URL + "save_confirm_store_in";
 
 

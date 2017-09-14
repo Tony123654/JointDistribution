@@ -3,4 +3,7 @@
     <color name="colorPrimary">#339866</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    <color name="dividerDecoration">#d2d2d2</color>
 </resources>
