@@ -2,17 +2,17 @@ package com.acuit.jointdistribution.Supplier.Acitivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 
 /**
  *发送信息
  */
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends BaseActivity {
 
     private ImageButton ib_back;
 

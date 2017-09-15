@@ -6,5 +6,9 @@
 
     <color name="colorTitle">#33B688</color>
 
+    <color name="colorDialog">#BAD0DA</color>
+
+
+
     <color name="dividerDecoration">#d2d2d2</color>
 </resources>

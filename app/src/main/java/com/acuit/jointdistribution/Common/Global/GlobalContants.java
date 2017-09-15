@@ -23,7 +23,7 @@ public class GlobalContants {
     public static final String ADMIN_URL = BASE_URL + File.separator + "admin.php?c=Admin_manage&a=";
     public static final String AJAXREPORT_URL = BASE_URL + File.separator + "admin.php?c=ajaxreport&a=";
 
-
+    //    GlobalContants.URL_STORE_IN_LIST
     //    登录
     public static final String URL_LOGIN_BY_USERNAME = SERVER_URL + "login";
 
@@ -74,6 +74,21 @@ public class GlobalContants {
     //    验收入库单
     public static final String URL_SAVE_STOREIN = SERVER_URL + "save_confirm_store_in";
 
+
+
+
+
+
+//  -------------------------  供应商----------------------------------------
+
+    //    采购订单详情
+    public static final String URL_BUY_ORDER_DETAIL = SERVER_URL + "view_buy_order";
+    //    采购订单列表
+    public static final String URL_BUY_ORDER_LIST = SERVER_URL + "buy_order_list";
+    //    统计分析
+    public static final String URL_COUNT_ORDER_MONEY_NUMBER = SERVER_URL + "count_order_money_number";
+    //    //    订单详情
+    public static final String URL_VIEW_BUY = SERVER_URL + "get_com_list";
 
 
 

@@ -53,7 +53,7 @@
         >
 
         <ListView
-            android:id="@+id/lv"
+            android:id="@+id/lv_receive_view"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
@@ -67,13 +67,13 @@
         android:background="#6BFFF7"
         android:layout_width="match_parent"
         android:layout_height="158px"
-        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout13"
         android:layout_alignParentBottom="true"
-        android:id="@+id/relativeLayout13">
+        android:layout_alignParentStart="true">
 
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/tv_receive_total_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -93,7 +93,7 @@
      android:layout_alignTop="@+id/relativeLayout13" />
     <RadioButton
         android:layout_centerHorizontal="true"
-        android:id="@+id/radioButton"
+        android:id="@+id/rb_receive_select_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -102,23 +102,14 @@
         android:text="全选" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_receive_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:background="#23b587"
-        android:text="接单" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:textColor="#535353"
-        android:layout_height="wrap_content"
-        android:text="订单数"
-        android:layout_alignBottom="@+id/radioButton"
-        android:layout_toStartOf="@+id/textView6"
-        android:layout_marginEnd="23dp" />
+        android:text="接单"
+        />
 
     <TextView
         android:id="@+id/textView6"
@@ -126,9 +117,19 @@
         android:layout_height="wrap_content"
 
         android:text="总量数"
-        android:layout_alignBaseline="@+id/textView4"
-        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignBaseline="@id/textView4"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:textColor="#535353"
+        android:layout_height="wrap_content"
+        android:text="订单数"
+        android:layout_alignBottom="@id/rb_receive_select_all"
+        android:layout_toStartOf="@id/textView6"
+        android:layout_marginEnd="23dp" />
+
 
     <TextView
         android:id="@+id/textView8"
@@ -137,22 +138,23 @@
         android:layout_marginEnd="20dp"
         android:text="总额数"
 
-        android:layout_alignBaseline="@+id/textView6"
-        android:layout_alignBottom="@+id/textView6"
-        android:layout_toStartOf="@+id/button" />
+        android:layout_alignBaseline="@id/textView6"
+        android:layout_alignBottom="@id/textView6"
+        android:layout_toStartOf="@id/btn_receive_button" />
 
     <TextView
-        android:id="@+id/dingdanshu"
+        android:id="@+id/tv_receive_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView4"
-        android:layout_alignTop="@+id/button"
+        android:layout_alignStart="@id/textView4"
+        android:layout_alignTop="@id/btn_receive_button"
         android:text="11111" />
     <TextView
+        android:id="@+id/tv_receive_total_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/textView8"
-        android:layout_alignTop="@id/button"
+        android:layout_alignTop="@id/btn_receive_button"
         />
 
 

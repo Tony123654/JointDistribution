@@ -2,17 +2,17 @@ package com.acuit.jointdistribution.Supplier.Acitivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 
 /**
  *配送
  */
-public class DistributionActivity extends AppCompatActivity {
+public class DistributionActivity extends BaseActivity {
 
     private ImageButton ib_back_dis;
 

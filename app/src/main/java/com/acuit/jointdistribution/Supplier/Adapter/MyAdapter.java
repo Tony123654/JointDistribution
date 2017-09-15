@@ -7,7 +7,9 @@ import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
 import com.acuit.jointdistribution.Supplier.Domain.BuyOrderBean;
+import com.acuit.jointdistribution.Supplier.Domain.OrderListBean;
 
 import java.util.ArrayList;
 
@@ -24,10 +26,13 @@ import java.util.ArrayList;
 
 public class MyAdapter extends BaseAdapter {
 
-    private ArrayList<BuyOrderBean.DataBean.RowsBean> mList;
 
-    public MyAdapter(ArrayList<BuyOrderBean.DataBean.RowsBean> mList) {
+    private final ArrayList<OrderListBean.DataBean.RowsBean> mList;
+    private final ReceivedActivity mActivity;
+
+    public MyAdapter(ArrayList<OrderListBean.DataBean.RowsBean> mList, ReceivedActivity mActivity) {
         this.mList = mList;
+        this.mActivity = mActivity;
     }
 
     @Override
@@ -51,7 +56,7 @@ public class MyAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = View.inflate(BaseApplication.getContext(), R.layout.listitem, null);
             holder = new ViewHolder();
-            holder.create_date = (TextView) convertView.findViewById(R.id.tv_create_date);
+            holder.create_date = (TextView) convertView.findViewById(R.id.tv_receive_create_date);
             holder.total_amount = (TextView) convertView.findViewById(R.id.tv_total_amount);
             holder.total_money = (TextView) convertView.findViewById(R.id.tv_total_money);
             holder.plan_date = (TextView) convertView.findViewById(R.id.tv_plan_date);

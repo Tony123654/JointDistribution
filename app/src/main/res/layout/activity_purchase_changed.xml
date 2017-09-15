@@ -2,39 +2,107 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.acuit.jointdistribution.Supplier.Acitivity.PurchaseChangedActivity">
 
     <RelativeLayout
-        android:id="@+id/relativeLayout8"
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#4FC39A">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/icon_nav_back"/>
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#23b587">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textColor="#FFF"
-            android:text="菜单变更单"
+            android:layout_marginBottom="12dp"
+            android:text="采购变更单"
+            android:textColor="#DCF0E8"
             android:textSize="24sp" />
+
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
+            android:id="@+id/ib_back_receive_menu"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
+            android:background="#00000000"
+            android:src="@mipmap/icon_nav_back" />
+
+        <ImageView
+            android:id="@+id/ib_icon_choose"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="9dp"
-            android:layout_centerVertical="true"
-            app:srcCompat="@mipmap/icon_nav_scree" />
+            android:layout_margin="10dp"
+            android:background="#00000000"
+            android:src="@mipmap/icon_nav_scree"
+            />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_purchaseInfoList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout13"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#23B587"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <RadioButton
+            android:id="@+id/ra_rb_selectAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="9dp"
+            android:text="全选" />
+
+        <Button
+            android:id="@+id/receive_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="确认" />
+
+        <TextView
+            android:id="@+id/tv_pa_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00.00"
+            android:layout_marginStart="112dp"
+            android:layout_alignTop="@id/ra_rb_selectAll"
+            android:layout_toEndOf="@id/ra_rb_selectAll" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="订单数"
+            android:textColor="#535353"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@id/tv_pa_count" />
+
+
+
+
 
     </RelativeLayout>
 

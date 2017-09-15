@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/icon_dbox_fback_h"
+        android:drawablePadding="10dp"
+        android:paddingBottom="20dp"
+        android:text="消息"
+        android:textSize="20sp"
+        android:textColor="#617079" />
+
+    <TextView
+        android:id="@+id/tv_back_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:drawableLeft="@mipmap/icon_dbox_home_h"
+        android:drawablePadding="10dp"
+        android:paddingBottom="20dp"
+        android:text="返回首页"
+        android:textColor="#617079" />
+
+    <TextView
+        android:id="@+id/tv_retrospect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:drawableLeft="@mipmap/icon_dbox_msg_h"
+        android:drawablePadding="10dp"
+        android:text="意见反馈"
+        android:textColor="#617079" />
+
+
+</LinearLayout>

@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--android:roundIcon="@mipmap/ic_launcher_round"-->
+        <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
         <!-- 公共模块 -->
         <activity android:name=".Common.View.Activity.FirstActivity">
             <intent-filter>
@@ -43,26 +43,25 @@
         <activity android:name=".Supplier.Acitivity.SendActivity" />
         <activity android:name=".Supplier.Acitivity.CommandActivity" />
         <activity android:name=".Supplier.Acitivity.ReceivedActivity" />
-        <activity android:name=".Supplier.Acitivity.MenuInfoActivity" />
         <activity android:name=".Supplier.Acitivity.SendInfoActivity" />
         <activity android:name=".Supplier.Acitivity.DistributionActivity" />
+        <activity android:name=".Supplier.Acitivity.ReceivedMenuInfoActivity" />
 
         <!-- 保管员 -->
-        <activity
-            android:name=".Storeman.View.GoodsEditActivity"
-            android:launchMode="singleInstance" />
         <activity android:name=".Storeman.View.ScanCodeActivity" />
+        <activity android:name=".Storeman.View.GoodsEditActivity" />
         <activity android:name=".Storeman.View.StoreInListActivity" />
         <activity android:name=".Storeman.View.SupplierListActivity" />
         <activity android:name=".Storeman.View.StoreInDetilsActivity" />
         <activity android:name=".Supplier.Acitivity.PurchaseChangedActivity" />
 
-
-        <!--添加图片 第三方-->
+        <!-- 添加图片 第三方 -->
         <activity
             android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="false" />
+        <activity android:name=".Supplier.Acitivity.PickingActivity" />
+        <activity android:name=".Supplier.Acitivity.PurchaseChangedInfoActivity"></activity>
     </application>
 
 </manifest>
