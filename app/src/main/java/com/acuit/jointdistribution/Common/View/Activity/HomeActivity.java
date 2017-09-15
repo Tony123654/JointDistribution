@@ -2,13 +2,16 @@ package com.acuit.jointdistribution.Common.View.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
-import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Common.View.Fragment.ContentFragment;
+import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.View.StoreInDetilsActivity;
 import com.acuit.jointdistribution.Storeman.View.StoremanHomePage;
 
@@ -27,6 +30,7 @@ public class HomeActivity extends BaseActivity {
 
     private static final String FRAG_CONTENT = "frag_content";
     private FragmentManager fragmentManager;
+    private boolean backPressed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,4 +72,28 @@ public class HomeActivity extends BaseActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    @Override
+    public void onBackPressed() {
+
+        if (backPressed) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(HomeActivity.this, "再次点击返回将退出程序", Toast.LENGTH_SHORT).show();
+            backPressed = true;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    handler.sendMessageDelayed(Message.obtain(), 3000);
+                }
+            }).start();
+        }
+    }
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            backPressed = false;
+        }
+    };
 }
