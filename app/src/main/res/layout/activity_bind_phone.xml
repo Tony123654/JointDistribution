@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#339866">
+        android:background="@color/colorTitle">
 
         <TextView
             android:id="@+id/tv_title"
@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="手机绑定"
+            android:textColor="#ffffff"
             android:textSize="22sp" />
 
         <ImageView

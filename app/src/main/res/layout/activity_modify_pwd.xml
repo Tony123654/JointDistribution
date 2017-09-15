@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#339866">
+        android:background="@color/colorTitle">
 
         <TextView
             android:id="@+id/tv_title"
@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="修改密码"
+            android:textColor="#ffffff"
             android:textSize="22sp" />
 
         <ImageView
@@ -43,27 +44,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_edittext_green_radius_border"
             android:orientation="horizontal"
+            android:padding="5dp"
             android:paddingRight="5dp">
 
             <TextView
-                android:layout_width="1dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="原密码：" />
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@mipmap/icon_import"
+                android:gravity="center" />
 
             <EditText
                 android:id="@+id/et_pwd"
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
                 android:layout_weight="2.5"
-                android:background="@drawable/shape_edittext_radius_border"
+                android:background="@drawable/shape_no_border"
                 android:gravity="top"
+                android:hint="请输入旧密码"
                 android:inputType="textPassword"
                 android:maxLength="20"
                 android:padding="5dp"
+                android:textColorHint="#999999"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -72,28 +77,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_edittext_green_radius_border"
             android:orientation="horizontal"
+            android:padding="5dp"
             android:paddingRight="5dp">
 
             <TextView
-                android:layout_width="1dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="新密码：" />
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@mipmap/icon_login_code"
+                android:gravity="center" />
 
             <EditText
                 android:id="@+id/et_newPwd"
-                android:layout_width="1dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
                 android:layout_weight="2.5"
-                android:background="@drawable/shape_edittext_radius_border"
+                android:background="@drawable/shape_no_border"
                 android:gravity="top"
                 android:hint="新密码需为6~20位的数字字母混合"
                 android:inputType="textPassword"
                 android:maxLength="20"
                 android:padding="5dp"
+                android:textColorHint="#999999"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -101,28 +109,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/shape_edittext_green_radius_border"
             android:orientation="horizontal"
+            android:padding="5dp"
             android:paddingRight="5dp">
 
             <TextView
-                android:layout_width="1dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="确认新密码：" />
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@mipmap/icon_login_code"
+                android:gravity="center" />
 
             <EditText
                 android:id="@+id/et_ensurePwd"
-                android:layout_width="1dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
                 android:layout_weight="2.5"
-                android:background="@drawable/shape_edittext_radius_border"
+                android:background="@drawable/shape_no_border"
                 android:gravity="top"
                 android:hint="两次新密码需一致"
                 android:inputType="textPassword"
                 android:maxLength="20"
                 android:padding="5dp"
+                android:textColorHint="#999999"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -134,8 +145,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/et_pwd"
             android:layout_marginTop="20dp"
+            android:background="@drawable/shape_button_check"
             android:gravity="center"
-            android:text="提      交" />
+            android:text="提   交"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
 
 
     </LinearLayout>

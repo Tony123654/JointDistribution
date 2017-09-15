@@ -2,213 +2,273 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativeLayout9"
     android:layout_width="match_parent"
-    android:layout_height="115dp"
+    android:layout_height="wrap_content"
     android:layout_alignParentStart="true"
     android:layout_below="@id/relativeLayout8"
     android:layout_marginBottom="15dp"
     android:background="#4FC39A"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp">
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/rl_orderData"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center_horizontal"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="订单数据"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="16sp" />-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_waitDistribution"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="0"-->
+    <!--android:textColor="#ffffff" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_haventDistribution"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="0"-->
+    <!--android:textColor="#ffffff" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_particalDistribution"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="0"-->
+    <!--android:textColor="#ffffff" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="待配送"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="12sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="未配送"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="12sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="部分配送"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="12sp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/rl_supplierData"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="#4FC39A"-->
+    <!--android:gravity="center_horizontal"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="供应商数据"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="16sp" />-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_delivering"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="0"-->
+    <!--android:textColor="#ffffff" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_haventDeliver"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="0"-->
+    <!--android:textColor="#ffffff" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_particalDeliver"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="0"-->
+    <!--android:textColor="#ffffff" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="送货中"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="12sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="未送货"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="12sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center"-->
+    <!--android:text="部分送货"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:textSize="12sp" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/rl_orderData"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_unaccept_orders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ffffff"
+            android:textSize="26sp" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:text="订单数据"
+            android:text="未接订单数"
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_waitDistribution"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="#ffffff" />
-
-            <TextView
-                android:id="@+id/tv_haventDistribution"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="#ffffff" />
-
-            <TextView
-                android:id="@+id/tv_particalDistribution"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="#ffffff" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="待配送"
-                android:textColor="#ffffff"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="未配送"
-                android:textColor="#ffffff"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="部分配送"
-                android:textColor="#ffffff"
-                android:textSize="12sp" />
-
-        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/rl_supplierData"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="#4FC39A"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_unaccept_supplers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ffffff"
+            android:textSize="26sp" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:text="供应商数据"
+            android:text="未接单供应商数"
             android:textColor="#ffffff"
             android:textSize="16sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_delivering"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="#ffffff" />
-
-            <TextView
-                android:id="@+id/tv_haventDeliver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="#ffffff" />
-
-            <TextView
-                android:id="@+id/tv_particalDeliver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="#ffffff" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="送货中"
-                android:textColor="#ffffff"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="未送货"
-                android:textColor="#ffffff"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="部分送货"
-                android:textColor="#ffffff"
-                android:textSize="12sp" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

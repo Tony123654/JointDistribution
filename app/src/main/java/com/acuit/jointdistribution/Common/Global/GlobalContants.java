@@ -55,6 +55,8 @@ public class GlobalContants {
     public static final String URL_SUPPLIERS_DATA = AJAXREPORT_URL + "supply_order";//&dep_id=8
     //    送货(供应商)数据
     public static final String URL_DELIVER_DATA = AJAXREPORT_URL + "storekeeper_order";//&dep_id=8
+    //    获取未接单订单数和供应商数。
+    public static final String URL_UNACCEPT_ORDERS_SUPPLY = AJAXREPORT_URL + "buy_order_count";
     //    查询供应商
     public static final String URL_SEARCH_SUPPLY = AJAX_URL + "search_com_supply";
     //    获取入库单列表

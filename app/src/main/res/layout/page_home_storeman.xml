@@ -10,7 +10,7 @@
         android:id="@+id/relativeLayout8"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#33B688">
+        android:background="@color/colorTitle">
 
         <TextView
             android:id="@+id/tv_title"
@@ -34,7 +34,7 @@
             android:drawableTop="@mipmap/icon_nav_scan"
             android:gravity="center"
             android:paddingBottom="5dp"
-            android:paddingTop="5dp"
+            android:paddingTop="7dp"
             android:text="扫码验收"
             android:textColor="#ffffff"
             android:textSize="12sp" />
@@ -51,7 +51,7 @@
             android:drawableTop="@mipmap/icon_nav_msg"
             android:gravity="center"
             android:paddingBottom="5dp"
-            android:paddingTop="5dp"
+            android:paddingTop="7dp"
             android:text="消息"
             android:textColor="#ffffff"
             android:textSize="12sp" />

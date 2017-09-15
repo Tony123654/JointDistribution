@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#339866">
+        android:background="@color/colorTitle">
 
         <TextView
             android:id="@+id/tv_title"
@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="意见反馈"
+            android:textColor="#ffffff"
             android:textSize="22sp" />
 
         <ImageView
@@ -42,13 +43,14 @@
         <EditText
             android:id="@+id/et_suggestion"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/shape_edittext_radius_border"
             android:gravity="top"
             android:hint="@string/seggestionFeedback_hint"
             android:maxLength="100"
-            android:padding="5dp"
+            android:padding="10dp"
+            android:textColorHint="#999999"
             android:textSize="14sp" />
 
         <Button
@@ -57,8 +59,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/et_suggestion"
             android:layout_marginTop="20dp"
+            android:background="@drawable/shape_button_check"
             android:gravity="center"
-            android:text="提      交" />
+            android:text="提  交"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"

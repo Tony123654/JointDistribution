@@ -10,9 +10,10 @@
         android:id="@+id/tv_msg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         android:gravity="center"
-        android:text="请注意查收短信，并输入短信中的6位验证码" />
+        android:text="请注意查收短信，并输入短信中的6位验证码"
+        android:textColor="#999999" />
 
 
     <LinearLayout
@@ -21,8 +22,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingRight="5dp">
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/et_verifyCode"
@@ -41,23 +41,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_getVerifyCode"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
+            android:background="@drawable/shape_edittext_green_radius_border"
             android:gravity="center"
-            android:text="重新获取（60s）" />
+            android:text="重新获取验证码(60s)"
+            android:textColor="#33b688"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btn_submitVerifyCode"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
+            android:background="@drawable/shape_button_check"
             android:gravity="center"
-            android:text="完    成" />
+            android:text="继续"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
 
 
     </LinearLayout>
