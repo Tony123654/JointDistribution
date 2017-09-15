@@ -103,7 +103,6 @@ public class Tools {
             if (Integer.valueOf(supply_id) > 0) {
                 BaseApplication.setIsSupplyer(true);
                 BaseApplication.setIsStoreman(false);
-                System.out.println("aaa is supplyer");
             }
         }
 
@@ -111,7 +110,6 @@ public class Tools {
         if (1 == priv_edit) {
             BaseApplication.setIsStoreman(true);
             BaseApplication.setIsSupplyer(false);
-            System.out.println("aaa Is Storeman");
         }
 
         if (BaseApplication.isStoreman() && BaseApplication.isSupplyer()) {

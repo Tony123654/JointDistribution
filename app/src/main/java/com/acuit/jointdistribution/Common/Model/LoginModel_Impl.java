@@ -148,8 +148,6 @@ public class LoginModel_Impl implements LoginModel_Interface {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("aaa login_url:" + url);
-                System.out.println("aaa login json:" + response);
                 Gson gson = new Gson();
                 LoginBean loginBean = gson.fromJson(response, LoginBean.class);
 
@@ -194,7 +192,6 @@ public class LoginModel_Impl implements LoginModel_Interface {
                 params.put("username", account);
                 params.put("password", pwd);
 
-                System.out.println("aaa login params:" + params.toString());
                 return params;
             }
         };
