@@ -7,8 +7,12 @@ import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Base.BasePager;
+import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Supplier.Acitivity.CommandActivity;
+import com.acuit.jointdistribution.Supplier.Acitivity.PickingActivity;
 import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
+import com.acuit.jointdistribution.Supplier.Acitivity.SendActivity;
 import com.acuit.jointdistribution.Supplier.Domain.BuyOrderBean;
 import com.acuit.jointdistribution.Supplier.Utils.ToastUtils;
 import com.google.gson.Gson;
@@ -18,6 +22,8 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+
+import java.util.Date;
 
 /**
  * 首页
@@ -29,6 +35,9 @@ public class HomePager extends BasePager {
     private TextView tv_order;
     private TextView count;
     private TextView total_money;
+    private TextView picking;
+    private TextView send;
+    private TextView command;
 
     public HomePager(Activity activity) {
         super(activity);
@@ -49,16 +58,46 @@ public class HomePager extends BasePager {
 //		tvTitle.setText("首页");
 
         view = View.inflate(mActivity, R.layout.pager_home, null);
+        picking = (TextView) view.findViewById(R.id.tv_picking);
+        send = (TextView) view.findViewById(R.id.tv_send);
+        tv_order = (TextView) view.findViewById(R.id.tv_order);
+        command = (TextView) view.findViewById(R.id.tv_command);
+        //配货
+       picking.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               mActivity.startActivity(new Intent(BaseApplication.getContext(), PickingActivity.class));
+           }
+       });
+        //发货
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivity.startActivity(new Intent(BaseApplication.getContext(), SendActivity.class));
+            }
+        });
+        //评价
+        command.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivity.startActivity(new Intent(BaseApplication.getContext(), CommandActivity.class));
+            }
+        });
+
+
         flContainer.addView(view);
 
         count = (TextView) view.findViewById(R.id.day_count);
         total_money = (TextView) view.findViewById(R.id.day_money);
         HttpUtils utils = new HttpUtils();
         RequestParams params = new RequestParams();
-        params.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
-        params.addBodyParameter("count",count+"");
-        params.addBodyParameter("total_money",total_money+"");
-        utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=buy_order_list",
+        params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
+        params.addBodyParameter("start_date", (new Date(0)).getTime() / 1000 + "");
+        params.addBodyParameter("end_date", System.currentTimeMillis() / 1000 + "");
+        params.addBodyParameter("page", "1");
+        params.addBodyParameter("rows", "40");
+        params.addBodyParameter("status", "2");
+        utils.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_BUY_ORDER_LIST,
                 params, new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> responseInfo) {
@@ -75,8 +114,8 @@ public class HomePager extends BasePager {
                     }
                 });
 
+// 接单
 
-        tv_order = (TextView) view.findViewById(R.id.tv_order);
 
 
 

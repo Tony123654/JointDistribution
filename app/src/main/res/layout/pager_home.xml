@@ -75,8 +75,8 @@
         android:id="@+id/relativeLayout10"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/relativeLayout9">
+        android:layout_below="@+id/relativeLayout9"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:id="@+id/textView13"
@@ -98,23 +98,7 @@
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_jd"
             android:gravity="center"
-            android:onClick="OrderForm"
-            android:text="订单" />
-
-        <TextView
-            android:id="@+id/tv_send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:drawablePadding="3dp"
-            android:drawableTop="@mipmap/icon_home_fh"
-            android:gravity="center"
-            android:onClick="Send"
-            android:text="发货单"
-            android:layout_alignBaseline="@+id/tv_peihuo"
-            android:layout_alignBottom="@+id/tv_peihuo"
-            android:layout_toEndOf="@+id/tv_peihuo"
-            android:layout_marginStart="51dp" />
+            android:text="接单" />
 
         <TextView
             android:id="@+id/textView17"
@@ -127,7 +111,7 @@
             android:text="常用功能" />
 
         <TextView
-            android:id="@+id/tv_peihuo"
+            android:id="@+id/tv_picking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/textView17"
@@ -137,8 +121,22 @@
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_phd"
             android:gravity="center"
-            android:onClick="FaHuo"
             android:text="配货单" />
+
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:drawablePadding="3dp"
+            android:drawableTop="@mipmap/icon_home_fh"
+            android:gravity="center"
+            android:text="发货单"
+            android:layout_alignBaseline="@id/tv_picking"
+            android:layout_alignBottom="@id/tv_picking"
+            android:layout_toEndOf="@id/tv_picking"
+            android:layout_marginStart="51dp" />
+
 
         <TextView
             android:id="@+id/tv_command"
@@ -148,16 +146,15 @@
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_pj"
             android:gravity="center"
-            android:onClick="Command"
             android:text="收到评价"
             android:layout_marginStart="68dp"
-            android:layout_alignBaseline="@+id/tv_send"
-            android:layout_alignBottom="@+id/tv_send"
-            android:layout_toEndOf="@+id/tv_send" />
+            android:layout_alignBaseline="@id/tv_send"
+            android:layout_alignBottom="@id/tv_send"
+            android:layout_toEndOf="@id/tv_send" />
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/lv"
+        android:id="@+id/lv_conment_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"

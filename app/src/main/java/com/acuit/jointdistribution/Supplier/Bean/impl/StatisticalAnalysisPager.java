@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Base.BasePager;
+import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Domain.Count_Money;
 import com.acuit.jointdistribution.Supplier.Utils.ToastUtils;
@@ -33,8 +34,6 @@ public class StatisticalAnalysisPager extends BasePager {
     private TextView week_total_count;
     private TextView month_total_money;
     private TextView month_total_count;
-    private int money=1;
-    private int count=0;
 
 
     public StatisticalAnalysisPager(Activity activity) {
@@ -62,12 +61,8 @@ public class StatisticalAnalysisPager extends BasePager {
         HttpUtils http = new HttpUtils();
         RequestParams params = new RequestParams();
         params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
-        params.addBodyParameter("money",money+"");
-        params.addBodyParameter("count",count+"");
 
-
-
-        http.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=count_order_money_number",params,
+        http.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_COUNT_ORDER_MONEY_NUMBER,params,
                 new RequestCallBack<String>() {
             @Override
             public void onSuccess(ResponseInfo<String> responseInfo) {
@@ -76,11 +71,9 @@ public class StatisticalAnalysisPager extends BasePager {
                 System.out.println("json:" + result);
                 Count_Money count_money = gson.fromJson(result, Count_Money.class);
 
-//                int money = count_money.getData().getDay().getMoney();
-//                String count = count_money.getData().getDay().getCount();
-//                day_total_money.setText(money);
-     //数据可以获取到就是不能显示到界面（数据类型的问题）
-                day_total_money.setText(count_money.getData().getDay().getMoney()+"");
+                //数据可以获取到就是不能显示到界面（数据类型的问题）
+
+                day_total_money.setText(count_money.getData().getDay().getMoney());
                 day_total_count.setText(count_money.getData().getDay().getCount()+"");
 
                 week_total_money.setText(count_money.getData().getWeek().getMoney()+"");
