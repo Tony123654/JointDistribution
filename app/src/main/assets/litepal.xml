@@ -3,12 +3,12 @@
 
     <dbname value = "DB_JointDistribution"/>
 
-    <version value ="1"/>
+    <version value ="2"/>
 
     <list>
 
-        <!--<mapping class="com.acuit.yanj.padtest.Bean.Dish"/>-->
-        <mapping class="" />
+        <mapping class="com.acuit.jointdistribution.Storeman.Bean.StoreInDetailBean"/>
+        <!--<mapping class="" />-->
 
     </list>
 

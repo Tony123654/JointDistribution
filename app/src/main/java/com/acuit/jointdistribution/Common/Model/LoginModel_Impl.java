@@ -75,7 +75,6 @@ public class LoginModel_Impl implements LoginModel_Interface {
         userInfo.put(SharedPreference_Utils.KEY_PWD, pwd);
         SharedPreference_Utils.setValues(userInfo);
 
-        Tools.judgeRole();
     }
 
     @Override
@@ -145,9 +144,12 @@ public class LoginModel_Impl implements LoginModel_Interface {
         }
 
 
+        final String url = login_url;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                System.out.println("aaa login_url:" + url);
+                System.out.println("aaa login json:" + response);
                 Gson gson = new Gson();
                 LoginBean loginBean = gson.fromJson(response, LoginBean.class);
 
@@ -155,6 +157,8 @@ public class LoginModel_Impl implements LoginModel_Interface {
                 if (200 == loginBean.getCode()) {
 
                     BaseApplication.setLoginBean(loginBean);
+
+                    Tools.judgeRole();
 
                     Message msg = Message.obtain();
                     msg.what = TAG_HOME;
@@ -190,6 +194,7 @@ public class LoginModel_Impl implements LoginModel_Interface {
                 params.put("username", account);
                 params.put("password", pwd);
 
+                System.out.println("aaa login params:" + params.toString());
                 return params;
             }
         };

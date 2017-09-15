@@ -102,12 +102,16 @@ public class Tools {
         if (null != supply_id && !supply_id.equals("null")) {
             if (Integer.valueOf(supply_id) > 0) {
                 BaseApplication.setIsSupplyer(true);
+                BaseApplication.setIsStoreman(false);
+                System.out.println("aaa is supplyer");
             }
         }
 
         int priv_edit = BaseApplication.getLoginBean().getData().getPriv().getStore().getStore_in_list().getPriv_edit();
         if (1 == priv_edit) {
             BaseApplication.setIsStoreman(true);
+            BaseApplication.setIsSupplyer(false);
+            System.out.println("aaa Is Storeman");
         }
 
         if (BaseApplication.isStoreman() && BaseApplication.isSupplyer()) {
@@ -125,7 +129,7 @@ public class Tools {
             System.out.println("aaa suf:" + suf);
             if (pre.equals("RKD") || pre.equals("rkd")) {
 //                if (suf.matches(REGEX_INT)) {
-                    return true;
+                return true;
 //                }
             }
         }

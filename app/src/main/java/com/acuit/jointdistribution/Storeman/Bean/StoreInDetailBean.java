@@ -1,5 +1,7 @@
 package com.acuit.jointdistribution.Storeman.Bean;
 
+import org.litepal.crud.DataSupport;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
  * 更新描述: <p>
  */
 
-public class StoreInDetailBean {
+public class StoreInDetailBean extends DataSupport{
 
     /**
      * code : 200

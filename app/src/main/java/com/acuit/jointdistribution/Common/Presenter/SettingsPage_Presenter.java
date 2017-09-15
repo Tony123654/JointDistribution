@@ -38,7 +38,8 @@ public class SettingsPage_Presenter {
 //        data.put(SharedPreference_Utils.KEY_PWD, "");
         SharedPreference_Utils.setValues(data);
         BaseApplication.setLoginBean(null);
-        settingPager.mActivity.startActivity(new Intent(settingPager.mActivity, LoginActivity.class));
+        Intent intent = new Intent(settingPager.mActivity, LoginActivity.class);
+        settingPager.mActivity.startActivity(intent);
         settingPager.mActivity.finish();
     }
 
