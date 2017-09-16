@@ -126,7 +126,6 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
             public void onResponse(String response) {
                 Gson gson = new Gson();
                 StoreInListBySupplierBean storeInListBySupplierBean = gson.fromJson(response, StoreInListBySupplierBean.class);
-//                    登录成功
                 if (200 == storeInListBySupplierBean.getCode()) {
                     total = Integer.parseInt(storeInListBySupplierBean.getData().getTotal());
                     if (!Flag_LoadMore) {
@@ -196,6 +195,12 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
         if (total == storeInList.size()) {
             xrvStoreList.setLoadingMoreEnabled(false);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        xrvStoreList.refresh();
     }
 
     @Override

@@ -218,8 +218,8 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("aaa url:" + url);
-                System.out.println("aaa json:" + response);
+//                System.out.println("aaa url:" + url);
+//                System.out.println("aaa json:" + response);
                 Gson gson = new Gson();
                 if (flag) {
                     StoreInListBySupplierBean storeInListBySupplierBean = gson.fromJson(response, StoreInListBySupplierBean.class);
@@ -268,7 +268,7 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                System.out.println("aaa params:" + params);
+//                System.out.println("aaa params:" + params);
                 return params;
             }
         };
@@ -289,6 +289,12 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         }
 
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        xrvSupplierList.refresh();
     }
 
     @Override
