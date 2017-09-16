@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
-import com.acuit.jointdistribution.Supplier.Domain.BuyOrderBean;
 import com.acuit.jointdistribution.Supplier.Domain.OrderListBean;
 
 import java.util.ArrayList;
@@ -67,7 +66,7 @@ public class MyAdapter extends BaseAdapter {
 
 
 
-        BuyOrderBean.DataBean.RowsBean item = (BuyOrderBean.DataBean.RowsBean) getItem(position);
+       OrderListBean.DataBean.RowsBean item = (OrderListBean.DataBean.RowsBean) getItem(position);
 //        System.out.println("item:"+item);
 
         holder.create_date.setText(item.getCreate_date());

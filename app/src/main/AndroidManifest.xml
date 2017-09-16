@@ -40,12 +40,10 @@
         <activity android:name=".Common.View.Activity.ForgetPwdActivity" />
 
         <!-- 供应商 -->
-        <activity android:name=".Supplier.Acitivity.MenuActivity" />
         <activity android:name=".Supplier.Acitivity.SendActivity" />
         <activity android:name=".Supplier.Acitivity.CommandActivity" />
         <activity android:name=".Supplier.Acitivity.ReceivedActivity" />
         <activity android:name=".Supplier.Acitivity.SendInfoActivity" />
-        <activity android:name=".Supplier.Acitivity.DistributionActivity" />
         <activity android:name=".Supplier.Acitivity.ReceivedMenuInfoActivity" />
 
         <!-- 保管员 -->

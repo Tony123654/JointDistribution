@@ -36,6 +36,7 @@ import com.lidroid.xutils.http.client.HttpRequest;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 /**
  * 接单界面
  */
@@ -43,8 +44,7 @@ public class ReceivedActivity extends BaseActivity {
 
     private ArrayList<OrderListBean.DataBean.RowsBean> mList;
 
-    private ImageView ib_back_menu;
-    private ImageView ib_icon_choose;
+
     private ListView listView;
     private OrderListBean order;
     private MyAdapter mAdapter;
@@ -52,19 +52,19 @@ public class ReceivedActivity extends BaseActivity {
     private TextView count;
     private TextView tvTotalMoney;
     private TextView tvTotalAmount;
-    private RadioButton rb;
     private TextView receiveButtom;
     private TextView reset;
 
     private AlertDialog.Builder builder;
 
-
-    private RadioButton radioButtom;
     private ArrayList<String> selectedOrders = new ArrayList<>();
     private ArrayList<Integer> selectAll = new ArrayList<>();
     private ListView lv_list;
     private ArrayList<GetSchoolCountBean.DataBean.RowsBean> chooseList;
     private AlertDialog dialog;
+    private RadioButton selectAllButton;
+    private ImageView ib_back_home;
+    private ImageView ib_receive_choose;
 
 
     @Override
@@ -74,11 +74,12 @@ public class ReceivedActivity extends BaseActivity {
         count = (TextView) findViewById(R.id.tv_receive_count);
         tvTotalMoney = (TextView) findViewById(R.id.tv_receive_total_money);
         tvTotalAmount = (TextView) findViewById(R.id.tv_receive_total_amount);
-        radioButtom = (RadioButton) findViewById(R.id.ra_rb_selectAll);
-        receiveButtom = (TextView) findViewById(R.id.receive_button);
+        selectAllButton = (RadioButton) findViewById(R.id.rb_receive_select_all);
+        receiveButtom = (TextView) findViewById(R.id.btn_receive_button);
 
+        ib_back_home = (ImageView) findViewById(R.id.ib_back_receive_menu);
 
-        ib_icon_choose = (ImageView) findViewById(R.id.ib_icon_choose);
+        ib_receive_choose = (ImageView) findViewById(R.id.ib_receive_choose);
 
         //底部接单按钮
         receiveButtom.setOnClickListener(new View.OnClickListener() {
@@ -114,16 +115,16 @@ public class ReceivedActivity extends BaseActivity {
 
 
         final GlobalValue globalValue = new GlobalValue();
-        radioButtom.setOnClickListener(new View.OnClickListener() {
+        selectAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean isCheck = globalValue.isCheck();
                 if (isCheck) {
-                    if (v == radioButtom) radioButtom.setChecked(false);
+                    if (v == selectAllButton) selectAllButton.setChecked(false);
                     selectAll.clear();
 //                    selectedOrders.clear();
                 } else {
-                    if (v == radioButtom) radioButtom.setChecked(true);
+                    if (v == selectAllButton) selectAllButton.setChecked(true);
                     selectAll.add(mList.size());
                     selectedOrders.clear();
                     for (int i = 0; i < mList.size(); i++) {
@@ -135,14 +136,11 @@ public class ReceivedActivity extends BaseActivity {
 
                 globalValue.setCheck(!isCheck);
                 calculate();
-
-
             }
-
         });
 
         //筛选
-        ib_icon_choose.setOnClickListener(new View.OnClickListener() {
+        ib_receive_choose.setOnClickListener(new View.OnClickListener() {
 
             private AlertDialog.Builder builder;
 
@@ -202,7 +200,7 @@ public class ReceivedActivity extends BaseActivity {
                         if (chooseList.size() == 0) {
                             //暂无订单
                         } else {
-                            ChooseAdapter chooseAdapter = new ChooseAdapter(chooseList,ReceivedActivity.this);
+                            ChooseAdapter chooseAdapter = new ChooseAdapter(chooseList, ReceivedActivity.this);
                             lv_list.setAdapter(chooseAdapter);
                         }
 
@@ -240,10 +238,9 @@ public class ReceivedActivity extends BaseActivity {
 
         });
 
-        ib_back_menu = (ImageView) findViewById(R.id.ib_back_receive_menu);
 
         //返回
-        ib_back_menu.setOnClickListener(new View.OnClickListener() {
+        ib_back_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ReceivedActivity.this, HomeActivity.class));
@@ -285,7 +282,7 @@ public class ReceivedActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(HttpException error, String msg) {
-                        Toast.makeText(BaseApplication.getContext(),"网络访问失败",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BaseApplication.getContext(), "网络访问失败", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -306,7 +303,7 @@ public class ReceivedActivity extends BaseActivity {
                         if (mList.size() == 0) {
                             //暂无订单
                         } else {
-                        MyAdapter  mAdapter = new MyAdapter(mList, ReceivedActivity.this);
+                            MyAdapter mAdapter = new MyAdapter(mList, ReceivedActivity.this);
                             listView.setAdapter(mAdapter);
                         }
 
@@ -350,7 +347,7 @@ public class ReceivedActivity extends BaseActivity {
         selectedOrders.add(position + "");
         calculate();
         if (selectedOrders.size() == mList.size()) {
-            radioButtom.setChecked(true);
+            selectAllButton.setChecked(true);
         }
     }
 
@@ -358,7 +355,7 @@ public class ReceivedActivity extends BaseActivity {
         System.out.println("aaa unselected:" + position + "  seletctedOrders.size():" + selectedOrders.size());
         selectedOrders.remove(selectedOrders.indexOf(position + ""));
         calculate();
-        radioButtom.setChecked(false);
+        selectAllButton.setChecked(false);
     }
 
     private void calculate() {
