@@ -86,6 +86,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
 
     private void login() {
         account = etAccount.getText().toString();
+        phone = "";
         pwd = etPsw.getText().toString();
 
         if (account.isEmpty()) {
@@ -114,8 +115,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView_Interf
     }
 
     @Override
-    public void startHomePage() {
-        startActivity(new Intent(this, HomeActivity.class));
+    public void startHomePage(String pwd) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra("pwd", pwd);
+        startActivity(intent);
     }
 
     @Override

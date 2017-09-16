@@ -64,8 +64,8 @@ public class LoginPresenter {
         }
     }
 
-    public void startHomepage() {
-        mView.startHomePage();
+    public void startHomepage(String pwd) {
+        mView.startHomePage(pwd);
         mView.finish();
     }
 

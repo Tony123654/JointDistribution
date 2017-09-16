@@ -54,7 +54,8 @@ public class LoginModel_Impl implements LoginModel_Interface {
                     presenter.startLoginActivity(account);
                     break;
                 case TAG_HOME:
-                    presenter.startHomepage();
+                    final String password = pwd;
+                    presenter.startHomepage(password);
                     break;
             }
 
@@ -141,6 +142,7 @@ public class LoginModel_Impl implements LoginModel_Interface {
             // TODO: 2017/8/19 手机号码登陆
 //            login_url = GlobalContants.URL_LOGIN_BY_PHONE;
             presenter.showToast("暂未开放手机号码登录，敬请期待");
+            return;
         }
 
 

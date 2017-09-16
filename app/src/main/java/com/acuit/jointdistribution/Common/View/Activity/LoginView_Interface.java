@@ -16,7 +16,7 @@ public interface LoginView_Interface {
 
     void startLoginActivity();
 
-    void startHomePage();
+    void startHomePage(String pwd);
 
     void finish();
 

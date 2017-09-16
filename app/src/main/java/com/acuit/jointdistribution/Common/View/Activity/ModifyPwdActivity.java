@@ -88,7 +88,8 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().matches(Tools.REGEX_PWD)) {
+                if (!Tools.tooSimple(s.toString())) {
+//                if (s.toString().matches(Tools.REGEX_PWD)) {
                     etNewPwd.setTextColor(0xff000000);
                     etEnsurePwd.setFocusable(true);
                     etEnsurePwd.setFocusableInTouchMode(true);
@@ -98,7 +99,8 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
                     etNewPwd.setTextColor(0xffff0000);
                     etEnsurePwd.setFocusable(false);
                     etEnsurePwd.setFocusableInTouchMode(false);
-                    etEnsurePwd.setHint("新密码需为6~20位的数字字母混合");
+                    etEnsurePwd.setHint("请输入新密码");
+//                    etEnsurePwd.setHint("新密码需为6~20位的数字字母混合");
                     btnSubmitPwd.setClickable(false);
                 }
             }
@@ -198,7 +200,7 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_UPDATE_PWD, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("aaa updatePwdJson:" + response);
+//                System.out.println("aaa updatePwdJson:" + response);
                 Gson gson = new Gson();
                 CodeAndMsg codeAndMsg = gson.fromJson(response, CodeAndMsg.class);
 

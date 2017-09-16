@@ -48,8 +48,10 @@ public class FirstActivity extends Activity implements LoginView_Interface {
     }
 
     @Override
-    public void startHomePage() {
-        startActivity(new Intent(this,HomeActivity.class));
+    public void startHomePage(String pwd) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra("pwd", pwd);
+        startActivity(intent);
     }
 
     @Override

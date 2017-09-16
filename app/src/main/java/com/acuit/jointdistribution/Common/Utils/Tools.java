@@ -134,4 +134,30 @@ public class Tools {
 
         return false;
     }
+
+    public static boolean tooSimple(String pwd) {
+
+        if (null != pwd) {
+
+            if (pwd.length()<6) {
+                return true;
+            }
+
+            if (pwd.equals("123456")) {
+                return true;
+            }
+
+            String key = pwd.substring(0, 1);
+            char[] chars = pwd.toCharArray();
+
+            for (char aChar : chars) {
+                String str = String.valueOf(aChar);
+                if (!str.equals(key)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 }

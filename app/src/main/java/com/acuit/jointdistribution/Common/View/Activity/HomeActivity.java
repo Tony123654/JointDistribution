@@ -1,5 +1,6 @@
 package com.acuit.jointdistribution.Common.View.Activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
+import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.Common.View.Fragment.ContentFragment;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.View.StoreInDetilsActivity;
@@ -47,6 +49,7 @@ public class HomeActivity extends BaseActivity {
         ft.replace(R.id.fl_main, new ContentFragment(HomeActivity.this));
         ft.commit();
 
+        judgePwd(getIntent().getStringExtra("pwd"));
     }
 
     public ContentFragment getContentFragment() {
@@ -72,6 +75,24 @@ public class HomeActivity extends BaseActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    /**
+     * 根据登录密码 显示提示
+     *
+     * @param pwd
+     */
+    private void judgePwd(String pwd) {
+
+        if (Tools.tooSimple(pwd)) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("密码太过简单，请修改密码");
+            builder.create().show();
+
+        }
+
+    }
+
 
     @Override
     public void onBackPressed() {
