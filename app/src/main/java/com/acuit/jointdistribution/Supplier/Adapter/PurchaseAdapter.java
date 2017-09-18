@@ -3,6 +3,8 @@ package com.acuit.jointdistribution.Supplier.Adapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
@@ -53,7 +55,7 @@ public class PurchaseAdapter extends BaseAdapter {
 
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
 
@@ -61,10 +63,23 @@ public class PurchaseAdapter extends BaseAdapter {
             convertView = View.inflate(BaseApplication.getContext(), R.layout.purchase_item, null);
             holder.createDate = (TextView) convertView.findViewById(R.id.tv_purchase_create_date);
             holder.planDate = (TextView) convertView.findViewById(R.id.tv_plan_date);
-//            holder.comNmae=(TextView) convertView.findViewById(R.id.tv_purchase_com_name);
             holder.depRootName = (TextView) convertView.findViewById(R.id.tv_purchase_dep_root_name);
-//            holder.s_amount=(TextView) convertView.findViewById(R.id.tv_s_amount);
-//            holder.e_amount=(TextView) convertView.findViewById(R.id.tv_e_amount);
+            holder.purchaseItem=(RadioButton)convertView.findViewById(R.id.rb_purchase_item);
+            holder.purchaseItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        mActivity.selectedOrder(position);
+                    } else {
+                        mActivity.unselectedOrder(position);
+                    }
+                }
+            });
+
+
+
+
+
             convertView.setTag(holder);
         } else {
 
@@ -91,5 +106,6 @@ public class PurchaseAdapter extends BaseAdapter {
         public TextView depRootName;
         public TextView s_amount;
         public TextView e_amount;
+        public RadioButton purchaseItem;
     }
 }
