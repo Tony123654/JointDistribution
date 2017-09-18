@@ -87,10 +87,12 @@ public class GlobalContants {
     public static final String URL_BUY_ORDER_LIST = SERVER_URL + "buy_order_list";
     //    统计分析
     public static final String URL_COUNT_ORDER_MONEY_NUMBER = SERVER_URL + "count_order_money_number";
-    //    //    订单详情
+    //    订单详情
     public static final String URL_VIEW_BUY = SERVER_URL + "get_com_list";
-
-
+    //     采购变更单
+    public static final String URL_BUY_ORDER_ALTER = SERVER_URL + "buy_order_alter";
+    //采购单详情
+    public static final String URL_VIEW_BUY_ORDER_ALTER = SERVER_URL + "view_buy_order_alter";
 
 }
 

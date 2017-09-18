@@ -146,7 +146,7 @@ public class ReceivedMenuInfoActivity extends BaseActivity {
         tv_com_brief_name = (TextView) findViewById(R.id.tv_receive_info_com_brief_name);
         tv_dep_brief_name = (TextView) findViewById(R.id.tv_receive_info_dep_brief_name);
 
-        final Intent intent = getIntent();
+         Intent intent = getIntent();
         id = intent.getStringExtra("listId");
         HttpUtils http = new HttpUtils();
         RequestParams params = new RequestParams();

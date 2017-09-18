@@ -73,7 +73,7 @@ public class StatisticalAnalysisPager extends BasePager {
 
                 //数据可以获取到就是不能显示到界面（数据类型的问题）
 
-                day_total_money.setText(count_money.getData().getDay().getMoney());
+                day_total_money.setText(count_money.getData().getDay().getMoney()+"");
                 day_total_count.setText(count_money.getData().getDay().getCount()+"");
 
                 week_total_money.setText(count_money.getData().getWeek().getMoney()+"");

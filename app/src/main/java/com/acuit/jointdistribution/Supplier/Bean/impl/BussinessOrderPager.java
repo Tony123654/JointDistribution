@@ -1,11 +1,15 @@
 package com.acuit.jointdistribution.Supplier.Bean.impl;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
+import android.widget.TextView;
 
-import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Supplier.Bean.BaseMenuDetailPager;
+import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Base.BasePager;
+import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Supplier.Acitivity.PurchaseChangedActivity;
+import com.acuit.jointdistribution.Supplier.Bean.BaseMenuDetailPager;
 
 import java.util.ArrayList;
 
@@ -35,7 +39,16 @@ public class BussinessOrderPager extends BasePager {
 
 				flContainer.addView(view);//给帧布局添加对象
 
+        TextView purchase = (TextView) view.findViewById(R.id.tv_purchase);
+
 //		       tvTitle.setText("业务订单");
+
+        purchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivity.startActivity(new Intent(BaseApplication.getContext(), PurchaseChangedActivity.class));
+            }
+        });
 
 
 	}

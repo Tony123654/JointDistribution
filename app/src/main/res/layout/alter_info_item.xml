@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_alter_stock_name"
+        android:layout_width="0dp"
+       android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#617079"
+        android:layout_weight="1"
+        android:text="商品名" />
+
+    <TextView
+        android:id="@+id/tv_alter_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#617079"
+        android:layout_weight="1"
+        android:text="价格" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:orientation="horizontal">
+
+           <TextView
+               android:id="@+id/textView18"
+               android:textColor="#617079"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="原：" />
+
+           <TextView
+               android:id="@+id/tv_alert_info_s_amount"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="#617079"
+               android:text="110"/>
+
+       </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#617079"
+                android:text="现："/>
+            <TextView
+                android:id="@+id/tv_alert_info_e_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#617079"
+                android:text="120"/>
+
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>

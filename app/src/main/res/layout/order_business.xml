@@ -35,7 +35,7 @@
             android:textColor="#737373"
             android:text="订单管理" />
         <TextView
-            android:id="@+id/tv_change"
+            android:id="@+id/tv_purchase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="19dp"

@@ -9,7 +9,7 @@
         android:id="@+id/relativeLayout8"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#4FC39A">
+        android:background="@color/colorTitle">
 
         <TextView
             android:layout_width="wrap_content"
@@ -17,6 +17,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="首页"
+            android:textColor="#ffffff"
             android:textSize="24sp" />
     </RelativeLayout>
 
@@ -25,17 +26,19 @@
         android:id="@+id/relativeLayout9"
         android:layout_width="match_parent"
         android:layout_height="110dp"
-        android:background="#339966"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/relativeLayout8"
-        android:layout_alignParentStart="true">
+        android:background="#339966">
+
         <TextView
             android:id="@+id/day_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="50dp"
             android:layout_marginStart="85dp"
-            android:text="3333" />
+            android:layout_marginTop="50dp"
+            android:text="3333"
+            android:textColor="#ffffff" />
 
         <TextView
             android:id="@+id/textView10"
@@ -48,13 +51,15 @@
             android:text="今日订单量(个)"
             android:textColor="#ffffff"
             android:textSize="16sp" />
+
         <TextView
             android:id="@+id/day_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="230dp"
             android:layout_marginTop="50dp"
-            android:text="6666" />
+            android:text="6666"
+            android:textColor="#ffffff" />
 
         <TextView
             android:id="@+id/textView12"
@@ -75,8 +80,8 @@
         android:id="@+id/relativeLayout10"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:layout_below="@+id/relativeLayout9"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout9">
 
         <TextView
             android:id="@+id/textView13"
@@ -127,30 +132,31 @@
             android:id="@+id/tv_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_picking"
+            android:layout_alignBottom="@id/tv_picking"
             android:layout_marginLeft="35dp"
+            android:layout_marginStart="51dp"
+            android:layout_toEndOf="@id/tv_picking"
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_fh"
             android:gravity="center"
-            android:text="发货单"
-            android:layout_alignBaseline="@id/tv_picking"
-            android:layout_alignBottom="@id/tv_picking"
-            android:layout_toEndOf="@id/tv_picking"
-            android:layout_marginStart="51dp" />
+            android:text="发货单" />
 
 
         <TextView
             android:id="@+id/tv_command"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_send"
+            android:layout_alignBottom="@id/tv_send"
             android:layout_marginLeft="30dp"
+            android:layout_marginStart="68dp"
+            android:layout_toEndOf="@id/tv_send"
             android:drawablePadding="3dp"
             android:drawableTop="@mipmap/icon_home_pj"
             android:gravity="center"
             android:text="收到评价"
-            android:layout_marginStart="68dp"
-            android:layout_alignBaseline="@id/tv_send"
-            android:layout_alignBottom="@id/tv_send"
-            android:layout_toEndOf="@id/tv_send" />
+            android:visibility="gone" />
     </RelativeLayout>
 
     <ListView
@@ -159,10 +165,6 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_below="@id/relativeLayout10" />
-
-
-
-
 
 
 </RelativeLayout>

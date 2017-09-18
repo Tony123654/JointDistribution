@@ -94,7 +94,7 @@ public class ReceivedActivity extends BaseActivity {
         });
 
         //全选
-//        radioButtom.setOnCheckedChangeListener(new RadioButton.OnCheckedChangeListener() {
+//        selectAllButton.setOnCheckedChangeListener(new RadioButton.OnCheckedChangeListener() {
 //
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -112,7 +112,6 @@ public class ReceivedActivity extends BaseActivity {
 //
 //            }
 //        });
-
 
         final GlobalValue globalValue = new GlobalValue();
         selectAllButton.setOnClickListener(new View.OnClickListener() {
@@ -303,7 +302,7 @@ public class ReceivedActivity extends BaseActivity {
                         if (mList.size() == 0) {
                             //暂无订单
                         } else {
-                            MyAdapter mAdapter = new MyAdapter(mList, ReceivedActivity.this);
+                            MyAdapter mAdapter = new MyAdapter(mList, ReceivedActivity.this, selectAll);
                             listView.setAdapter(mAdapter);
                         }
 
@@ -353,9 +352,12 @@ public class ReceivedActivity extends BaseActivity {
 
     public void unselectedOrder(int position) {
         System.out.println("aaa unselected:" + position + "  seletctedOrders.size():" + selectedOrders.size());
-        selectedOrders.remove(selectedOrders.indexOf(position + ""));
-        calculate();
-        selectAllButton.setChecked(false);
+        if (selectedOrders.size()!=0) {
+            selectedOrders.remove(selectedOrders.indexOf(position + ""));
+            calculate();
+            selectAllButton.setChecked(false);
+        }
+
     }
 
     private void calculate() {
