@@ -80,7 +80,7 @@ public class ContentFragment extends BaseFragment {
             mList.add(new BusinessPage(mActivity));
             mList.add(new ReportPage(mActivity));
 
-        } else if(BaseApplication.isSupplyer()){
+        } else if (BaseApplication.isSupplyer()) {
 
             mList.add(new HomePager(mActivity));
             mList.add(new BussinessOrderPager(mActivity));
@@ -177,5 +177,15 @@ public class ContentFragment extends BaseFragment {
      */
     public BussinessOrderPager getBussinessOrderPager() {
         return (BussinessOrderPager) mList.get(1);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (mList.get(mViewPager.getCurrentItem())instanceof StoremanHomePage) {
+            StoremanHomePage storemanHomePage = (StoremanHomePage) mList.get(mViewPager.getCurrentItem());
+            storemanHomePage.getCount();
+        }
     }
 }

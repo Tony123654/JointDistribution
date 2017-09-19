@@ -4,14 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.ArrayMap;
 import android.view.View;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
+import com.acuit.jointdistribution.Common.Widget.MessageImageView;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Storeman.Bean.SuppliersListBean;
 import com.acuit.jointdistribution.Storeman.Bean.UnaccpetOrdersAndSuppliersBean;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,6 +23,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.zxing.activity.CaptureActivity;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -36,9 +39,9 @@ import java.util.Map;
 
 public class StoremanHomePage extends BasePager implements View.OnClickListener {
 
-    private TextView tvMessageCenter;
-    private Button btnCheckOrder;
-    private Button btnEvaluateOrder;
+    private LinearLayout llMessageCenter;
+    private LinearLayout llCheckOrder;
+    private LinearLayout llEvaluateOrder;
     private TextView tvUnacceptOrderes;
     private TextView tvHaventDistribution;
     private TextView tvParticalDistribution;
@@ -47,6 +50,9 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
     private TextView tvUnacceptSupplers;
     private TextView tvScanCode;
     public final static int requestCode = 4564;
+    private MessageImageView mivCheckOrder;
+    private MessageImageView mivInvaluateOrder;
+    private MessageImageView mivMessageCenter;
 
     public StoremanHomePage(Activity activity) {
         super(activity);
@@ -60,9 +66,14 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
         flContainer.addView(view);
 
         tvScanCode = (TextView) view.findViewById(R.id.tv_scan_code);
-        btnCheckOrder = (Button) view.findViewById(R.id.btn_checkOrder);
-        btnEvaluateOrder = (Button) view.findViewById(R.id.btn_evaluateOrder);
-        tvMessageCenter = (TextView) view.findViewById(R.id.tv_messageCenter);
+        llCheckOrder = (LinearLayout) view.findViewById(R.id.ll_checkOrder);
+        llEvaluateOrder = (LinearLayout) view.findViewById(R.id.ll_evaluateOrder);
+        llMessageCenter = (LinearLayout) view.findViewById(R.id.tv_messageCenter);
+
+        mivCheckOrder = (MessageImageView) view.findViewById(R.id.miv_checkOrder);
+        mivMessageCenter = (MessageImageView) view.findViewById(R.id.miv_messageCenter);
+        mivInvaluateOrder = (MessageImageView) view.findViewById(R.id.miv_evaluateOrder);
+
 
         tvUnacceptSupplers = (TextView) view.findViewById(R.id.tv_unaccept_supplers);
 //        tvHaventDeliver = (TextView) view.findViewById(R.id.tv_haventDeliver);
@@ -73,12 +84,24 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
 //        tvParticalDistribution = (TextView) view.findViewById(R.id.tv_particalDistribution);
 
         tvScanCode.setOnClickListener(this);
-        btnCheckOrder.setOnClickListener(this);
-        tvMessageCenter.setOnClickListener(this);
-        btnEvaluateOrder.setOnClickListener(this);
+        llCheckOrder.setOnClickListener(this);
+        llMessageCenter.setOnClickListener(this);
+        llEvaluateOrder.setOnClickListener(this);
 
-//        setText();
+
         getData();
+
+        getCount();
+
+    }
+
+    private void setRedPoint() {
+
+        mivMessageCenter.setCurrentMode(2);
+        mivMessageCenter.setIsHaveNew(true);
+
+        mivInvaluateOrder.setCurrentMode(3);
+        mivInvaluateOrder.setMessageNumber(999);
     }
 
 
@@ -88,13 +111,13 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
             case R.id.tv_scan_code:
                 mActivity.startActivityForResult(new Intent(mActivity, CaptureActivity.class), requestCode);
                 break;
-            case R.id.btn_checkOrder:
+            case R.id.ll_checkOrder:
                 mActivity.startActivity(new Intent(mActivity, SupplierListActivity.class));
                 break;
             case R.id.tv_messageCenter:
                 // TODO: 2017/8/28 消息中心
                 break;
-            case R.id.btn_evaluateOrder:
+            case R.id.ll_evaluateOrder:
 //                评价订单
                 break;
         }
@@ -185,4 +208,46 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
         BaseApplication.getRequestQueue().add(stringRequest);
     }
 
+
+    public void getCount() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STORE_IN_LIST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+                SuppliersListBean suppliersListBean = gson.fromJson(response, SuppliersListBean.class);
+//                    登录成功
+                if (200 == suppliersListBean.getCode()) {
+                    mivCheckOrder.setCurrentMode(3);
+                    mivCheckOrder.setMessageNumber(Integer.parseInt(suppliersListBean.getData().getTotal()));
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (null == error.getMessage()) {
+                    Toast.makeText(mActivity, "无法获取信息，请检查网络环境", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mActivity, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                ArrayMap<String, String> params = new ArrayMap<String, String>();
+
+                params.put("token", BaseApplication.getLoginBean().getData().getToken());
+                params.put("start_date", (new Date(0)).getTime() / 1000 + "");
+                params.put("end_date", System.currentTimeMillis() / 1000 + "");
+                params.put("status", "2");
+                params.put("get_supply_list", "1");
+
+                return params;
+            }
+        };
+
+        stringRequest.setTag("HomeActivity");
+        BaseApplication.getRequestQueue().add(stringRequest);
+    }
 }

@@ -150,7 +150,7 @@ public class SuggestionFeedbackActivity extends BaseActivity implements View.OnC
 //                brief	String	意见内容
 //                name	String	意见标题
 
-                params.put("passwtokenord", BaseApplication.getLoginBean().getData().getToken());
+                params.put("token", BaseApplication.getLoginBean().getData().getToken());
                 params.put("brief", etSuggestion.getText().toString());
                 params.put("name", "");
 

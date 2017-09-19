@@ -273,6 +273,7 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
             }
         };
 
+        stringRequest.setTag("SupplierListActivity");
         BaseApplication.getRequestQueue().add(stringRequest);
     }
 

@@ -39,22 +39,54 @@
             android:textColor="#ffffff"
             android:textSize="12sp" />
 
-        <TextView
+        <!--<TextView-->
+        <!--android:id="@+id/tv_messageCenter"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:clickable="true"-->
+        <!--android:drawablePadding="1dp"-->
+        <!--android:drawableTop="@mipmap/icon_nav_msg"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="5dp"-->
+        <!--android:paddingTop="7dp"-->
+        <!--android:text="消息"-->
+        <!--android:textColor="#ffffff"-->
+        <!--android:textSize="12sp" />-->
+
+        <LinearLayout
             android:id="@+id/tv_messageCenter"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:clickable="true"
-            android:drawablePadding="1dp"
-            android:drawableTop="@mipmap/icon_nav_msg"
             android:gravity="center"
+            android:onClick="OrderForm"
+            android:orientation="vertical"
             android:paddingBottom="5dp"
-            android:paddingTop="7dp"
-            android:text="消息"
-            android:textColor="#ffffff"
-            android:textSize="12sp" />
+            android:paddingTop="2dp">
+
+
+            <com.acuit.jointdistribution.Common.Widget.MessageImageView
+                android:id="@+id/miv_messageCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:src="@mipmap/icon_nav_msg" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="消息"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -79,38 +111,105 @@
             android:text="采购入库"
             android:textColor="#666666" />
 
-        <Button
-            android:id="@+id/btn_checkOrder"
+        <!--<Button-->
+        <!--android:id="@+id/btn_checkOrder"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignStart="@id/textView13"-->
+        <!--android:layout_below="@id/textView13"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:background="#00000000"-->
+        <!--android:drawablePadding="5dp"-->
+        <!--android:drawableTop="@mipmap/icon_home_ys"-->
+        <!--android:gravity="center"-->
+        <!--android:onClick="OrderForm"-->
+        <!--android:text="验收入库"-->
+        <!--android:textColor="#333333" />-->
+        <LinearLayout
+            android:id="@+id/ll_checkOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/textView13"
             android:layout_below="@id/textView13"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:background="#00000000"
-            android:drawablePadding="5dp"
-            android:drawableTop="@mipmap/icon_home_ys"
             android:gravity="center"
             android:onClick="OrderForm"
-            android:text="验收入库"
-            android:textColor="#333333" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_evaluateOrder"
+
+            <com.acuit.jointdistribution.Common.Widget.MessageImageView
+                android:id="@+id/miv_checkOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:src="@mipmap/icon_home_ys" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="验收入库"
+                android:textColor="#333333"
+
+                />
+
+        </LinearLayout>
+
+        <!--<Button-->
+        <!--android:id="@+id/btn_evaluateOrder"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/textView13"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:layout_toEndOf="@id/btn_checkOrder"-->
+        <!--android:background="#00000000"-->
+        <!--android:drawablePadding="10dp"-->
+        <!--android:drawableTop="@mipmap/icon_home_pjdd"-->
+        <!--android:gravity="center"-->
+        <!--android:onClick="OrderForm"-->
+        <!--android:text="评价订单"-->
+        <!--android:textColor="#333333"-->
+        <!--android:visibility="visible" />-->
+        <!--&lt;!&ndash;*************************不可见👆***********************&ndash;&gt;-->
+
+        <LinearLayout
+            android:id="@+id/ll_evaluateOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/btn_checkOrder"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/btn_checkOrder"
-            android:background="#00000000"
-            android:drawablePadding="5dp"
-            android:drawableTop="@mipmap/icon_home_pjdd"
+            android:layout_below="@id/textView13"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/ll_checkOrder"
             android:gravity="center"
             android:onClick="OrderForm"
-            android:text="评价订单"
-            android:textColor="#333333"
-            android:visibility="visible" />
-        <!--*************************不可见👆***********************-->
+            android:orientation="vertical"
+            android:visibility="gone">
+
+
+            <com.acuit.jointdistribution.Common.Widget.MessageImageView
+                android:id="@+id/miv_evaluateOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:src="@mipmap/icon_home_pjdd" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="评价订单"
+                android:textColor="#333333"
+
+                />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

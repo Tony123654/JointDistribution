@@ -47,7 +47,8 @@
             android:background="#00000000"
             android:clickable="true"
             android:padding="15dp"
-            android:src="@mipmap/icon_more" />
+            android:src="@mipmap/icon_more"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
