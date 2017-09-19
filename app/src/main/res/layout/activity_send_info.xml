@@ -21,23 +21,23 @@
             android:textColor="#FFF"
             android:textSize="24sp" />
 
-        <ImageButton
-            android:id="@+id/ib_back_receive"
+        <ImageView
+            android:id="@+id/ib_back_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00000000"
             android:padding="10dp"
-            app:srcCompat="@mipmap/icon_nav_back" />
+            android:src="@mipmap/icon_nav_back" />
 
-        <ImageButton
-            android:id="@+id/ib_more"
+        <ImageView
+            android:id="@+id/ib_send_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:background="#00000000"
             android:padding="20dp"
-            app:srcCompat="@mipmap/icon_nav_more" />
+            android:src="@mipmap/icon_nav_more" />
     </RelativeLayout>
 
 

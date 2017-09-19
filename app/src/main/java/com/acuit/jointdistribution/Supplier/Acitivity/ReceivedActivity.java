@@ -2,11 +2,12 @@ package com.acuit.jointdistribution.Supplier.Acitivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -18,13 +19,13 @@ import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Supplier.Adapter.ChooseAdapter;
 import com.acuit.jointdistribution.Supplier.Adapter.MyAdapter;
+import com.acuit.jointdistribution.Supplier.Adapter.ReceiveRightAdapter;
 import com.acuit.jointdistribution.Supplier.Domain.GetSchoolCountBean;
+import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
 import com.acuit.jointdistribution.Supplier.Domain.OrderListBean;
 import com.acuit.jointdistribution.Supplier.GlobalInfo.GlobalValue;
 import com.acuit.jointdistribution.Supplier.Utils.PrefUtils;
-import com.acuit.jointdistribution.Supplier.Utils.ToastUtils;
 import com.google.gson.Gson;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -65,6 +66,9 @@ public class ReceivedActivity extends BaseActivity {
     private RadioButton selectAllButton;
     private ImageView ib_back_home;
     private ImageView ib_receive_choose;
+    private DrawerLayout drawerLayout;
+    private GridView rightMenuView;
+    private ArrayList<OnlySchoolBean.DataBean> gv_list;
 
 
     @Override
@@ -80,7 +84,13 @@ public class ReceivedActivity extends BaseActivity {
         ib_back_home = (ImageView) findViewById(R.id.ib_back_receive_menu);
 
         ib_receive_choose = (ImageView) findViewById(R.id.ib_receive_choose);
+         lv_list = (ListView) findViewById(R.id.lv_receive_view);
 
+
+
+
+
+        initData();
         //底部接单按钮
         receiveButtom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,25 +103,16 @@ public class ReceivedActivity extends BaseActivity {
             }
         });
 
-        //全选
-//        selectAllButton.setOnCheckedChangeListener(new RadioButton.OnCheckedChangeListener() {
-//
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//
-//                calculate();
-//
-//                System.out.println("aaa activity.flag_selectAll:" + isChecked);
-//                if (isChecked) {
-//                    selectAll.add(mList.size());
-//                } else {
-//                    selectAll.clear();
-//                }
-//                mAdapter.notifyDataSetChanged();
-//
-//
-//            }
-//        });
+        ib_back_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                startActivity(new Intent(ReceivedActivity.this, HomeActivity.class));
+            }
+        });
+
+         mList = new ArrayList<>();
 
         final GlobalValue globalValue = new GlobalValue();
         selectAllButton.setOnClickListener(new View.OnClickListener() {
@@ -141,66 +142,40 @@ public class ReceivedActivity extends BaseActivity {
         //筛选
         ib_receive_choose.setOnClickListener(new View.OnClickListener() {
 
-            private AlertDialog.Builder builder;
-
             @Override
             public void onClick(View v) {
-                showDialog();
+                initDrawerLayout();
+                toggleRightSliding();
             }
 
-            private void showDialog() {
 
-                builder = new AlertDialog.Builder(ReceivedActivity.this);
+        });
+        initSchoolData();
 
+        rightMenuView = (GridView) findViewById(R.id.gv_rightMenuView);
+        gv_list = new ArrayList<>();
+    }
 
-                View inflate = View.inflate(BaseApplication.getContext(), R.layout.grid_school_list, null);
+    private void initSchoolData() {
+        HttpUtils utils = new HttpUtils();
+        RequestParams params = new RequestParams();
+        params.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
 
-                TextView finish = (TextView) inflate.findViewById(R.id.tv_finish);
-                TextView reset = (TextView) inflate.findViewById(R.id.tv_reset);
-
-                lv_list = (ListView) inflate.findViewById(R.id.lv_list);
-
-
-                builder.setView(inflate);
-
-                dialog = builder.create();
-
-                //设置大小
-                WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
-                layoutParams.width = 600;
-                layoutParams.height = 1000;
-                dialog.getWindow().setAttributes(layoutParams);
-
-
-                //设置位置
-
-                layoutParams.x = -320;//设置x坐标
-                layoutParams.y = -480;//设置y坐标
-                Window window = dialog.getWindow();
-                window.setAttributes(layoutParams);
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.show();
-
-                chooseList = new ArrayList<>();
-
-//                lv_list.setAdapter(new ChooseAdapter());
-
-                HttpUtils utils = new HttpUtils();
-                utils.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_VIEW_BUY, new RequestCallBack<String>() {
-
-
+        utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=com_list", params,
+                new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> responseInfo) {
                         String result = responseInfo.result;
                         Gson gson = new Gson();
-                        GetSchoolCountBean countBean = gson.fromJson(result, GetSchoolCountBean.class);
-                        chooseList.clear();
-                        chooseList.addAll(countBean.getData().getRows());
-                        if (chooseList.size() == 0) {
-                            //暂无订单
-                        } else {
-                            ChooseAdapter chooseAdapter = new ChooseAdapter(chooseList, ReceivedActivity.this);
-                            lv_list.setAdapter(chooseAdapter);
+                        OnlySchoolBean onlySchoolInfo= gson.fromJson(result, OnlySchoolBean.class);
+
+                        System.out.println("hhh:"+result);
+                        gv_list.clear();
+                        gv_list.addAll(onlySchoolInfo.getData());
+
+                        if (gv_list!=null&rightMenuView!=null){
+
+                            rightMenuView.setAdapter(new ReceiveRightAdapter(gv_list,ReceivedActivity.this));
                         }
 
 
@@ -208,51 +183,27 @@ public class ReceivedActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(HttpException error, String msg) {
-                        ToastUtils.showToast(BaseApplication.getContext(), msg);
+                        Toast.makeText(BaseApplication.getContext(),"获取数据失败",Toast.LENGTH_SHORT).show();
+
                     }
                 });
-//重置
+    }
 
+    private void initDrawerLayout() {
 
-//                reset.setOnClickListener(new View.OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(View v) {
-//
-//                    }
-//                });
-                //完成
-
-//                complate.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Toast.makeText(BaseApplication.getContext(),"接单成功",Toast.LENGTH_SHORT).show();
-//                       dialog.dismiss();
-//                    }
-//                });
-
-                //访问网络获取学校数据
-
-            }
-
-        });
-
-
-        //返回
-        ib_back_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ReceivedActivity.this, HomeActivity.class));
-            }
-        });
-
-        listView = (ListView) findViewById(R.id.lv_receive_view);
-        mList = new ArrayList<>();
-
-        initData();
-
+        drawerLayout = (DrawerLayout) super.findViewById(R.id.drawer_layout);
 
     }
+
+    private void toggleRightSliding() {
+        if (drawerLayout.isDrawerOpen(Gravity.END)) {
+            drawerLayout.closeDrawer(Gravity.END);
+        } else {
+            drawerLayout.openDrawer(Gravity.END);
+        }
+    }
+
+
 
 
     private void initData() {
@@ -303,7 +254,7 @@ public class ReceivedActivity extends BaseActivity {
                             //暂无订单
                         } else {
                             MyAdapter mAdapter = new MyAdapter(mList, ReceivedActivity.this, selectAll);
-                            listView.setAdapter(mAdapter);
+                            lv_list.setAdapter(mAdapter);
                         }
 
 
@@ -315,7 +266,7 @@ public class ReceivedActivity extends BaseActivity {
 
                 });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lv_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 
             @Override

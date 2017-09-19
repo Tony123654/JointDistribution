@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,7 +20,9 @@ import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Adapter.PurchaseAdapter;
+import com.acuit.jointdistribution.Supplier.Adapter.RightAdapter;
 import com.acuit.jointdistribution.Supplier.Domain.AlterOrderBean;
+import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
 import com.acuit.jointdistribution.Supplier.GlobalInfo.GlobalValue;
 import com.google.gson.Gson;
 import com.lidroid.xutils.HttpUtils;
@@ -53,7 +54,11 @@ public class PurchaseChangedActivity extends BaseActivity {
     private ArrayList<AlterOrderBean.DataBean.AlterBean> purchaseList;
     private ArrayList<String> selectedOrders = new ArrayList<>();
     private ArrayList<Integer> selectAll = new ArrayList<>();
-    private DrawerLayout mDrawerLayout = null;
+    private DrawerLayout drawerLayout;
+    private ArrayList<Object> rightMenuList;
+    private ListView rightMenu;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +71,6 @@ public class PurchaseChangedActivity extends BaseActivity {
         purchaseCount = (TextView) findViewById(R.id.tv_purchase_total);
         purchaseInfoList = (ListView) findViewById(R.id.lv_purchaseInfoList);
 
-
         backPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,58 +82,22 @@ public class PurchaseChangedActivity extends BaseActivity {
 
         //筛选————侧边栏
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 //        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+
+        rightMenu = (ListView) findViewById(R.id.lv_right_menu);
+
+
 
         purchaseChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO  使用SlidingMenu来实现，弹出一个弹窗
-                mDrawerLayout.openDrawer(Gravity.RIGHT);
 
+                initDrawerLayout();
+                toggleRightSliding();
             }
         });
-        mDrawerLayout.setDrawerListener(new DrawerLayout.DrawerListener() {
 
-            @Override
-            public void onDrawerStateChanged(int arg0) {
-                Log.i("drawer", "drawer的状态：" + arg0);
-            }
-
-
-            @Override
-            public void onDrawerSlide(View arg0, float arg1) {
-                Log.i("drawer", arg1 + "");
-            }
-
-
-            @Override
-            public void onDrawerOpened(View arg0) {
-                Log.i("drawer", "抽屉被完全打开了！");
-            }
-
-
-            @Override
-            public void onDrawerClosed(View arg0) {
-                Log.i("drawer", "抽屉被完全关闭了！");
-            }
-        });
-//解决穿透问题
-        mDrawerLayout.setDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-            }
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                drawerView.setClickable(true);
-            }
-            @Override
-            public void onDrawerClosed(View drawerView) {
-            }
-            @Override
-            public void onDrawerStateChanged(int newState) {
-            }
-        });
 
 
 
@@ -152,16 +120,70 @@ public class PurchaseChangedActivity extends BaseActivity {
 
         // 订单数  purchaseCount 由选择的变更单来决定
 
-
+         initDataSchool();
         initData();
-        initView();
+        rightMenu = (ListView) findViewById(R.id.lv_right_menu);
+        rightMenuList = new ArrayList<>();
 
 
     }
+    //学校数据
+    private void initDataSchool() {
+        HttpUtils utils = new HttpUtils();
+        RequestParams params = new RequestParams();
+        params.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
+
+        utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=com_list", params,
+                new RequestCallBack<String>() {
+                    @Override
+                    public void onSuccess(ResponseInfo<String> responseInfo) {
+                        String result = responseInfo.result;
+                        Gson gson = new Gson();
+                        OnlySchoolBean onlySchoolInfo= gson.fromJson(result, OnlySchoolBean.class);
+
+                        System.out.println("hhh:"+result);
+                        rightMenuList.clear();
+                        rightMenuList.addAll(onlySchoolInfo.getData());
+
+                        if (rightMenuList!=null){
+                            rightMenu.setAdapter(new RightAdapter(rightMenuList,PurchaseChangedActivity.this));
+                        }
 
 
-    private void initView() {
+                    }
+
+                    @Override
+                    public void onFailure(HttpException error, String msg) {
+                        Toast.makeText(BaseApplication.getContext(),"获取数据失败",Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
     }
+
+    private void initDrawerLayout() {
+
+        drawerLayout=(DrawerLayout)super.findViewById(R.id.drawer_layout);
+
+        }
+    private void toggleRightSliding(){
+        if(drawerLayout.isDrawerOpen(Gravity.END)){
+            drawerLayout.closeDrawer(Gravity.END);
+        }else{
+            drawerLayout.openDrawer(Gravity.END);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     private void initData() {
 

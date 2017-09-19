@@ -93,6 +93,7 @@ public class PurchaseChangedInfoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         startActivity(new Intent(PurchaseChangedInfoActivity.this,HomeActivity.class));
+                        finish();
                     }
                 });
 
@@ -122,8 +123,8 @@ public class PurchaseChangedInfoActivity extends AppCompatActivity {
                 layoutParams.y = -200;//设置y坐标
                 Window window =dialog.getWindow();
                 window.setAttributes( layoutParams);
-               dialog.setCanceledOnTouchOutside(true);
-               dialog.show();
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
             }
         });
 

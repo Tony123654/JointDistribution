@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#23b587">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="12dp"
+            android:text="采购变更单"
+            android:textColor="#DCF0E8"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/ib_back_purchase"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
+            android:background="#00000000"
+            android:src="@mipmap/icon_nav_back" />
+
+        <ImageView
+            android:id="@+id/ib_purchase_choose"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:background="#00000000"
+            android:src="@mipmap/icon_nav_scree" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_purchaseInfoList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">>
+
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout13"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="#23B587">
+
+        <RadioButton
+            android:id="@+id/rb_purchase_select_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="全选" />
+
+        <Button
+            android:id="@+id/btn_purchase_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="确认" />
+
+        <TextView
+            android:id="@+id/tv_purchase_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/rb_purchase_select_all"
+            android:layout_marginStart="112dp"
+            android:layout_toEndOf="@id/rb_purchase_select_all"
+            android:text="00.00" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@id/tv_purchase_total"
+            android:gravity="center"
+            android:text="订单数"
+            android:textColor="#535353" />
+
+    </RelativeLayout>
+</LinearLayout>

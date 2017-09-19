@@ -1,6 +1,11 @@
 package com.acuit.jointdistribution.Supplier.Acitivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -8,6 +13,7 @@ import android.widget.Toast;
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
+import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Domain.PickingOrderInfoBean;
 import com.google.gson.Gson;
@@ -29,6 +35,9 @@ public class PickingActivity extends BaseActivity {
     private PickingOrderInfoBean pickingInfo;
     private ArrayList<PickingOrderInfoBean.DataBean.StockListBean> pickingList;
     private ListView picking_List;
+    private ImageView ib_picking_back;
+    private ImageView picking_choose;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +49,44 @@ public class PickingActivity extends BaseActivity {
         picking_total_amount = (TextView) findViewById(R.id.tv_picking_total_amount);
         picking_List = (ListView) findViewById(R.id.lv_pickingList);
 
+        ib_picking_back = (ImageView) findViewById(R.id.ib_back_picking_menu);
+        ib_picking_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PickingActivity.this, HomeActivity.class));
+                finish();
+            }
+        });
 
+        picking_choose = (ImageView) findViewById(R.id.ib_icon_picking_choose);
+
+        picking_choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDrawerLayout();
+                toggleRightSliding();
+            }
+        });
         inntData();
+
     }
+        private void initDrawerLayout() {
+
+            drawerLayout = (DrawerLayout) super.findViewById(R.id.drawer_layout);
+
+        }
+
+        private void toggleRightSliding() {
+            if (drawerLayout.isDrawerOpen(Gravity.END)) {
+                drawerLayout.closeDrawer(Gravity.END);
+            } else {
+                drawerLayout.openDrawer(Gravity.END);
+            }
+        }
+
+
+
+
 
     private void inntData() {
         getDataFromServer();

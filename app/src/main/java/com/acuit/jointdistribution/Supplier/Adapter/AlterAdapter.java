@@ -70,9 +70,9 @@ public class AlterAdapter extends BaseAdapter {
         alterItem = (AlterOrderInfoBean.DataBean.ListBean) getItem(position);
 
         holder.stockName.setText(alterItem.getStock_name());
-        holder.price.setText(alterItem.getPrice());
-        holder.s_amount.setText(alterItem.getS_amount());
-        holder.e_amount.setText(alterItem.getE_amount());
+        holder.price.setText("¥"+alterItem.getPrice());
+        holder.s_amount.setText(alterItem.getS_amount()+"kg");
+        holder.e_amount.setText(alterItem.getE_amount()+"kg");
 
         return convertView;
     }

@@ -53,7 +53,7 @@
 
 
     <RadioButton
-        android:id="@+id/rb_item"
+        android:id="@+id/rb_purchase_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#617079"

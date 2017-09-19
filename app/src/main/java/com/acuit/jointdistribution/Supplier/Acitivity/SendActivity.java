@@ -3,6 +3,8 @@ package com.acuit.jointdistribution.Supplier.Acitivity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -50,14 +52,15 @@ public class SendActivity extends BaseActivity {
     private ArrayList<Integer> selectAlls = new ArrayList<>();
     private RadioButton sendSelectAll;
     private SendAdapter sendAdapter;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
 
-        ib_back_menu = (ImageView) findViewById(R.id.ib_back_receive_menu);
-        ib_choose = (ImageView) findViewById(R.id.ib_choose);
+        ib_back_menu = (ImageView) findViewById(R.id.ib_back_send_menu);
+        ib_choose = (ImageView) findViewById(R.id.ib_send_choose);
         btn_send = (Button) findViewById(R.id.btn_send);
         singleCount = (TextView) findViewById(R.id.tv_single_count);
         totalAmount = (TextView) findViewById(R.id.tv_total_amount);
@@ -70,10 +73,6 @@ public class SendActivity extends BaseActivity {
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(SendActivity.this);
-//                builder.setMessage("你有N条订单处理完成");
-//                builder.create();
-//                builder.show();
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(SendActivity.this);
                 builder.setMessage("您有N(订单数)条订单发货成功！");
@@ -83,35 +82,17 @@ public class SendActivity extends BaseActivity {
 
             }
         });
-        //全选
-//        final GlobalValue globalValue = new GlobalValue();
-//        sendSelectAll.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                boolean isCheck = globalValue.isCheck();
-//                if (isCheck) {
-//                    if (v == sendSelectAll) sendSelectAll.setChecked(false);
-//                    selectAlls.clear();
-////                    selectedOrders.clear();
-//                } else {
-//                    if (v == sendSelectAll) sendSelectAll.setChecked(true);
-//                    selectAlls.add(selectAlls.size());
-//                    selectedItemOrders.clear();
-//                    for (int i = 0; i < selectAlls.size(); i++) {
-//                        selectedItemOrders.add(i + "");
-//                    }
-//
-//                }
-//
-//                sendAdapter.notifyDataSetChanged();
-//
-//                globalValue.setCheck(!isCheck);
-//                calculate();
-//
-//
-//            }
-//
-//        });
+        //筛选
+        ib_choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDrawerLayout();
+                toggleRightSliding();
+            }
+        });
+
+
+
 
 
 
@@ -132,6 +113,7 @@ public class SendActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SendActivity.this, HomeActivity.class));
+                finish();
             }
         });
 
@@ -168,8 +150,6 @@ public class SendActivity extends BaseActivity {
                         sendAdapter = new SendAdapter(sendList,SendActivity.this,selectAlls);
                         listView.setAdapter(sendAdapter);
 
-//                        singleCount.setText(listInfo.getData().getCount());
-//                        totalAmount.setText(listInfo.getData().getTotal_amount());
 
                     }
 
@@ -178,41 +158,18 @@ public class SendActivity extends BaseActivity {
 
 
     }
-//    public void selectedOrder(int position) {
-//        selectedItemOrders.add(position + "");
-//        calculate();
-//
-//        if (selectedItemOrders.size() == sendList.size()) {
-//            sendSelectAll.setChecked(true);
-//        }
-//    }
-//
-//    public void unselectedOrder(int position) {
-//        System.out.println("aaa unselected:" + position + "  seletctedOrders.size():" + selectedItemOrders.size());
-//        selectedItemOrders.remove(selectedItemOrders.indexOf(position + ""));
-//        calculate();
-//        sendSelectAll.setChecked(false);
-//    }
-//
-//    private void calculate() {
-//
-//        float singleCount = 0;
-//        float  totalAmount = 0;
-//
-//        if (selectedItemOrders.size() == 0) {
-//            for (int i = 0; i < selectAlls.size(); i++) {
-//                singleCount = singleCount + Float.valueOf(sendList.get(i).getTotal_money());
-//                totalAmount = totalAmount + Float.valueOf(sendList.get(i).getTotal_amount());
-//            }
-//        } else {
-//            for (String position : selectedItemOrders) {
-//                totalAmount = totalAmount + Float.valueOf(sendList.get(Integer.parseInt(position)).getTotal_amount());
-//                singleCount = singleCount + Float.valueOf(sendList.get(Integer.parseInt(position)).getTotal_money());
-//            }
-//        }
-////
-////        singleCount.setText(singleCount + "");
-////        totalAmount.setText(totalAmount + "");
-//    }
+    private void initDrawerLayout() {
+
+        drawerLayout = (DrawerLayout) super.findViewById(R.id.drawer_layout);
+
+    }
+
+    private void toggleRightSliding() {
+        if (drawerLayout.isDrawerOpen(Gravity.END)) {
+            drawerLayout.closeDrawer(Gravity.END);
+        } else {
+            drawerLayout.openDrawer(Gravity.END);
+        }
+    }
 
 }
