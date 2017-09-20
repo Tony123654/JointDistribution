@@ -21,7 +21,6 @@ import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Adapter.MyAdapter;
 import com.acuit.jointdistribution.Supplier.Adapter.ReceiveRightAdapter;
-import com.acuit.jointdistribution.Supplier.Domain.GetSchoolCountBean;
 import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
 import com.acuit.jointdistribution.Supplier.Domain.OrderListBean;
 import com.acuit.jointdistribution.Supplier.GlobalInfo.GlobalValue;
@@ -61,7 +60,7 @@ public class ReceivedActivity extends BaseActivity {
     private ArrayList<String> selectedOrders = new ArrayList<>();
     private ArrayList<Integer> selectAll = new ArrayList<>();
     private ListView lv_list;
-    private ArrayList<GetSchoolCountBean.DataBean.RowsBean> chooseList;
+    private ArrayList<OnlySchoolBean.DataBean> chooseList;
     private AlertDialog dialog;
     private RadioButton selectAllButton;
     private ImageView ib_back_home;
@@ -69,6 +68,7 @@ public class ReceivedActivity extends BaseActivity {
     private DrawerLayout drawerLayout;
     private GridView rightMenuView;
     private ArrayList<OnlySchoolBean.DataBean> gv_list;
+    private ReceiveRightAdapter receiveRightAdapter;
 
 
     @Override
@@ -86,9 +86,27 @@ public class ReceivedActivity extends BaseActivity {
         ib_receive_choose = (ImageView) findViewById(R.id.ib_receive_choose);
          lv_list = (ListView) findViewById(R.id.lv_receive_view);
 
+        TextView receiveComplate = (TextView) findViewById(R.id.tv_complate);
+        TextView receiveReset = (TextView) findViewById(R.id.tv_reset);
 
 
+        receiveReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ReceivedActivity.this);
+                builder.setMessage("请重新选择条件");
+                builder.create().show();
+            }
+        });
+        receiveComplate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ReceivedActivity.this);
+                builder.setMessage("完成订单");
+                builder.create().show();
 
+            }
+        });
 
         initData();
         //底部接单按钮
@@ -113,7 +131,7 @@ public class ReceivedActivity extends BaseActivity {
         });
 
          mList = new ArrayList<>();
-
+//全选
         final GlobalValue globalValue = new GlobalValue();
         selectAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +140,7 @@ public class ReceivedActivity extends BaseActivity {
                 if (isCheck) {
                     if (v == selectAllButton) selectAllButton.setChecked(false);
                     selectAll.clear();
-//                    selectedOrders.clear();
+                    selectedOrders.clear();
                 } else {
                     if (v == selectAllButton) selectAllButton.setChecked(true);
                     selectAll.add(mList.size());
@@ -150,9 +168,10 @@ public class ReceivedActivity extends BaseActivity {
 
 
         });
+
         initSchoolData();
 
-        rightMenuView = (GridView) findViewById(R.id.gv_rightMenuView);
+        rightMenuView = (GridView) findViewById(R.id.gv_right_menu);
         gv_list = new ArrayList<>();
     }
 
@@ -173,11 +192,10 @@ public class ReceivedActivity extends BaseActivity {
                         gv_list.clear();
                         gv_list.addAll(onlySchoolInfo.getData());
 
-                        if (gv_list!=null&rightMenuView!=null){
+                        if (gv_list!=null)
 
-                            rightMenuView.setAdapter(new ReceiveRightAdapter(gv_list,ReceivedActivity.this));
-                        }
-
+                            receiveRightAdapter = new ReceiveRightAdapter(gv_list,ReceivedActivity.this);
+                        rightMenuView.setAdapter(receiveRightAdapter);
 
                     }
 
@@ -253,7 +271,7 @@ public class ReceivedActivity extends BaseActivity {
                         if (mList.size() == 0) {
                             //暂无订单
                         } else {
-                            MyAdapter mAdapter = new MyAdapter(mList, ReceivedActivity.this, selectAll);
+                             mAdapter = new MyAdapter(mList, ReceivedActivity.this, selectAll);
                             lv_list.setAdapter(mAdapter);
                         }
 

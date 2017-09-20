@@ -70,7 +70,6 @@ public class MyAdapter extends BaseAdapter {
             holder.plan_date = (TextView) convertView.findViewById(R.id.tv_plan_date);
 
             holder.rb_item = (RadioButton) convertView.findViewById(rb_item);
-//            holder.dep_name = (TextView) convertView.findViewById(R.id.tv_dep_name);
             holder.com_brief_name = (TextView) convertView.findViewById(R.id.tv_combrief_name);
             holder.brief_name = (TextView) convertView.findViewById(R.id.tv_brief_name);
 
@@ -94,20 +93,14 @@ public class MyAdapter extends BaseAdapter {
 
 
         OrderListBean.DataBean.RowsBean item = (OrderListBean.DataBean.RowsBean) getItem(position);
-//        System.out.println("item:"+item);
 
         holder.receive_create_date.setText(item.getCreate_date());
-//        holder.total_money.setText(item.getTotal_money());
-//        holder.total_amount.setText(item.getTotal_amount());
         holder.plan_date.setText(item.getPlan_date());
 
-//        System.out.println("aaa selectAll" + position + ":" + selectAll);
         if (selectAll.size() > 0) {
-//            System.out.println("aaa selectAll:true");
             holder.rb_item.setChecked(true);
 
         } else {
-//            System.out.println("aaa selectAll:false");
             holder.rb_item.setChecked(false);
         }
 

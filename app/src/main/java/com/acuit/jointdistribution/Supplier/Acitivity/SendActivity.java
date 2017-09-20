@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -20,6 +21,8 @@ import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Adapter.SendAdapter;
+import com.acuit.jointdistribution.Supplier.Adapter.SendRightAdapter;
+import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
 import com.acuit.jointdistribution.Supplier.Domain.SendOrderBean;
 import com.google.gson.Gson;
 import com.lidroid.xutils.HttpUtils;
@@ -53,6 +56,8 @@ public class SendActivity extends BaseActivity {
     private RadioButton sendSelectAll;
     private SendAdapter sendAdapter;
     private DrawerLayout drawerLayout;
+    private GridView rightMenuView;
+    private ArrayList<OnlySchoolBean.DataBean> gv_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +72,26 @@ public class SendActivity extends BaseActivity {
         listView = (ListView) findViewById(R.id.list_view);
         sendSelectAll = (RadioButton) findViewById(R.id.sa_sb_selectAll);
 
+        TextView reset = (TextView) findViewById(R.id.tv_reset);
+        TextView complate = (TextView) findViewById(R.id.tv_complate);
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SendActivity.this);
+                builder.setMessage("请重新选择");
+                builder.create().show();
+            }
+        });
+
+        complate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SendActivity.this);
+                builder.setMessage("筛选完成");
+                builder.create().show();
+            }
+        });
 
 
         //底部接单按钮
@@ -90,6 +115,43 @@ public class SendActivity extends BaseActivity {
                 toggleRightSliding();
             }
         });
+        initSchoolData();
+
+        rightMenuView = (GridView) findViewById(R.id.gv_right_menu);
+        gv_list = new ArrayList<>();
+    }
+
+        private void initSchoolData() {
+            HttpUtils utils = new HttpUtils();
+            RequestParams params = new RequestParams();
+            params.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
+
+            utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=com_list", params,
+                    new RequestCallBack<String>() {
+                        @Override
+                        public void onSuccess(ResponseInfo<String> responseInfo) {
+                            String result = responseInfo.result;
+                            Gson gson = new Gson();
+                            OnlySchoolBean onlySchoolInfo= gson.fromJson(result, OnlySchoolBean.class);
+
+                            System.out.println("hhh:"+result);
+                            gv_list.clear();
+                            gv_list.addAll(onlySchoolInfo.getData());
+
+                            if (gv_list!=null){
+
+                                rightMenuView.setAdapter(new SendRightAdapter(gv_list,SendActivity.this));
+                            }
+
+
+                        }
+
+                        @Override
+                        public void onFailure(HttpException error, String msg) {
+                            Toast.makeText(BaseApplication.getContext(),"获取数据失败",Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
 
 
 
@@ -109,6 +171,7 @@ public class SendActivity extends BaseActivity {
             }
         });
 
+
         ib_back_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,9 +180,9 @@ public class SendActivity extends BaseActivity {
             }
         });
 
-        HttpUtils utils = getHttpUtils();
+            utils = getHttpUtils();
 
-        RequestParams params = new RequestParams();
+            params = new RequestParams();
         params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
         params.addBodyParameter("from_app","1");
         params.addBodyParameter("start_date", (new Date(0)).getTime() / 1000 + "");

@@ -25,10 +25,10 @@ import java.util.ArrayList;
 
 public class PickingAdapter extends BaseAdapter {
 
-    private  ArrayList<PickingOrderInfoBean.DataBean.StockListBean> pickingList;
+    private  ArrayList<PickingOrderInfoBean.DataBean.StockListAppBean> pickingList;
     private  PickingActivity mActivity;
 
-    public PickingAdapter(ArrayList<PickingOrderInfoBean.DataBean.StockListBean> pickingList, PickingActivity mActivity) {
+    public PickingAdapter(ArrayList<PickingOrderInfoBean.DataBean.StockListAppBean> pickingList, PickingActivity mActivity) {
         this.pickingList = pickingList;
         this.mActivity = mActivity;
 
@@ -72,15 +72,13 @@ public class PickingAdapter extends BaseAdapter {
 
         }
 
-        PickingOrderInfoBean.DataBean.StockListBean picking_item = (PickingOrderInfoBean.DataBean.StockListBean) getItem(position);
+        PickingOrderInfoBean.DataBean.StockListAppBean picking_item = (PickingOrderInfoBean.DataBean.StockListAppBean) getItem(position);
 
-//        holder.stock_name.setText(picking_item.getStock_name());
-//        holder.price.setText(picking_item.getPrice());
-//        holder.unit_name.setText(picking_item.getUnit_name());
 
-        holder.stock_name.setText(picking_item.get_$30().getStock_name());
-        holder.unit_name.setText(picking_item.get_$30().getUnit_name());
-        holder.price.setText(picking_item.get_$30().getPrice());
+       holder.stock_name.setText(picking_item.getStock_name());
+
+        holder.unit_name.setText(picking_item.getUnit_name());
+        holder.price.setText(picking_item.getPrice());
 
 
         return convertView;

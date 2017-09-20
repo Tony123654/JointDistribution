@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
+import com.acuit.jointdistribution.Supplier.Acitivity.SendActivity;
 import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
 
 import java.util.ArrayList;
@@ -23,19 +23,20 @@ import java.util.ArrayList;
  * 更新描述: <p>
  */
 
-public class ReceiveRightAdapter extends BaseAdapter{
+public class SendRightAdapter extends BaseAdapter{
 
 
-    private final ArrayList<OnlySchoolBean.DataBean> gv_list;
-    private final ReceivedActivity mActivity;
     private OnlySchoolBean.DataBean receiveRightMenuItem;
+    private final ArrayList<OnlySchoolBean.DataBean> gv_list;
+    private final SendActivity mActivity;
 
-
-    public ReceiveRightAdapter(ArrayList<OnlySchoolBean.DataBean> gv_list, ReceivedActivity mActivity) {
+    public SendRightAdapter(ArrayList<OnlySchoolBean.DataBean> gv_list, SendActivity mActivity) {
         this.gv_list = gv_list;
         this.mActivity = mActivity;
 
     }
+
+
 
 
     @Override

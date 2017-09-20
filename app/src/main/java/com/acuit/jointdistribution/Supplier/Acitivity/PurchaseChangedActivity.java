@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -20,7 +21,7 @@ import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Adapter.PurchaseAdapter;
-import com.acuit.jointdistribution.Supplier.Adapter.RightAdapter;
+import com.acuit.jointdistribution.Supplier.Adapter.PurchaseRightAdapter;
 import com.acuit.jointdistribution.Supplier.Domain.AlterOrderBean;
 import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
 import com.acuit.jointdistribution.Supplier.GlobalInfo.GlobalValue;
@@ -34,8 +35,6 @@ import com.lidroid.xutils.http.client.HttpRequest;
 
 import java.util.ArrayList;
 import java.util.Date;
-
-import static java.lang.String.valueOf;
 
 public class PurchaseChangedActivity extends BaseActivity {
 
@@ -55,8 +54,8 @@ public class PurchaseChangedActivity extends BaseActivity {
     private ArrayList<String> selectedOrders = new ArrayList<>();
     private ArrayList<Integer> selectAll = new ArrayList<>();
     private DrawerLayout drawerLayout;
-    private ArrayList<Object> rightMenuList;
-    private ListView rightMenu;
+    private ArrayList<OnlySchoolBean.DataBean> gv_list;
+    private GridView rightMenu;
 
 
     @Override
@@ -80,13 +79,31 @@ public class PurchaseChangedActivity extends BaseActivity {
         });
 
 
+        TextView complate = (TextView) findViewById(R.id.tv_complate);
+        TextView reset = (TextView) findViewById(R.id.tv_reset);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PurchaseChangedActivity.this);
+                builder.setMessage("请重新筛选");
+                builder.create().show();
+            }
+        });
+        complate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PurchaseChangedActivity.this);
+                builder.setMessage("筛选完成");
+                builder.create().show();
+
+            }
+        });
+
+
         //筛选————侧边栏
 
 //        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 //        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-
-        rightMenu = (ListView) findViewById(R.id.lv_right_menu);
-
 
 
         purchaseChoose.setOnClickListener(new View.OnClickListener() {
@@ -97,8 +114,6 @@ public class PurchaseChangedActivity extends BaseActivity {
                 toggleRightSliding();
             }
         });
-
-
 
 
         purchaseConfirm.setOnClickListener(new View.OnClickListener() {
@@ -120,18 +135,19 @@ public class PurchaseChangedActivity extends BaseActivity {
 
         // 订单数  purchaseCount 由选择的变更单来决定
 
-         initDataSchool();
+        initDataSchool();
         initData();
-        rightMenu = (ListView) findViewById(R.id.lv_right_menu);
-        rightMenuList = new ArrayList<>();
+        rightMenu = (GridView) findViewById(R.id.gv_right_menu);
+        gv_list = new ArrayList<>();
 
 
     }
+
     //学校数据
     private void initDataSchool() {
         HttpUtils utils = new HttpUtils();
         RequestParams params = new RequestParams();
-        params.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
+        params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
 
         utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=com_list", params,
                 new RequestCallBack<String>() {
@@ -139,14 +155,14 @@ public class PurchaseChangedActivity extends BaseActivity {
                     public void onSuccess(ResponseInfo<String> responseInfo) {
                         String result = responseInfo.result;
                         Gson gson = new Gson();
-                        OnlySchoolBean onlySchoolInfo= gson.fromJson(result, OnlySchoolBean.class);
+                        OnlySchoolBean onlySchoolInfo = gson.fromJson(result, OnlySchoolBean.class);
 
-                        System.out.println("hhh:"+result);
-                        rightMenuList.clear();
-                        rightMenuList.addAll(onlySchoolInfo.getData());
+                        System.out.println("hhh:" + result);
+                        gv_list.clear();
+                        gv_list.addAll(onlySchoolInfo.getData());
 
-                        if (rightMenuList!=null){
-                            rightMenu.setAdapter(new RightAdapter(rightMenuList,PurchaseChangedActivity.this));
+                        if (gv_list != null) {
+                            rightMenu.setAdapter(new PurchaseRightAdapter(gv_list, PurchaseChangedActivity.this));
                         }
 
 
@@ -154,7 +170,7 @@ public class PurchaseChangedActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(HttpException error, String msg) {
-                        Toast.makeText(BaseApplication.getContext(),"获取数据失败",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BaseApplication.getContext(), "获取数据失败", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -163,26 +179,17 @@ public class PurchaseChangedActivity extends BaseActivity {
 
     private void initDrawerLayout() {
 
-        drawerLayout=(DrawerLayout)super.findViewById(R.id.drawer_layout);
+        drawerLayout = (DrawerLayout) super.findViewById(R.id.drawer_layout);
 
-        }
-    private void toggleRightSliding(){
-        if(drawerLayout.isDrawerOpen(Gravity.END)){
+    }
+
+    private void toggleRightSliding() {
+        if (drawerLayout.isDrawerOpen(Gravity.END)) {
             drawerLayout.closeDrawer(Gravity.END);
-        }else{
+        } else {
             drawerLayout.openDrawer(Gravity.END);
         }
     }
-
-
-
-
-
-
-
-
-
-
 
 
     private void initData() {
@@ -247,7 +254,7 @@ public class PurchaseChangedActivity extends BaseActivity {
                 if (isCheck) {
                     if (v == purchaseSelectAll) purchaseSelectAll.setChecked(false);
                     selectAll.clear();
-//                    selectedOrders.clear();
+                    selectedOrders.clear();
                 } else {
                     if (v == purchaseSelectAll) purchaseSelectAll.setChecked(true);
                     selectAll.add(purchaseList.size());
@@ -260,7 +267,7 @@ public class PurchaseChangedActivity extends BaseActivity {
                 purchaseAdapter.notifyDataSetChanged();
 
                 globalValue.setCheck(!isCheck);
-                calculate();
+//                calculate();
             }
         });
     }
@@ -268,7 +275,7 @@ public class PurchaseChangedActivity extends BaseActivity {
 
     public void selectedOrder(int position) {
         selectedOrders.add(position + "");
-        calculate();
+//        calculate();
         if (selectedOrders.size() == purchaseList.size()) {
             purchaseSelectAll.setChecked(true);
         }
@@ -278,31 +285,31 @@ public class PurchaseChangedActivity extends BaseActivity {
         System.out.println("aaa unselected:" + position + "  seletctedOrders.size():" + selectedOrders.size());
         if (selectedOrders.size() != 0) {
             selectedOrders.remove(selectedOrders.indexOf(position + ""));
-            calculate();
+//            calculate();
             purchaseSelectAll.setChecked(false);
         }
 
     }
 
-    private void calculate() {
-
-       float purchase_Count = 0;
-
-        if (selectedOrders.size() == 0) {
-            for (int i = 0; i < purchaseList.size(); i++) {
-                purchase_Count = purchase_Count +Float.valueOf(valueOf(purchaseList.get(i)));
-            }
-        } else {
-            for (String position : selectedOrders) {
-                purchase_Count = purchase_Count +Float.valueOf(String.valueOf(purchaseList.get(Integer.parseInt(position))));
-//                totalMoney = totalMoney + Float.valueOf(purchaseList.get(Integer.parseInt(position)).getTotal_money());
-            }
-        }
-
-//        purchaseCount.setText(purchaseCount);
-
-        purchaseCount.setText((int) purchase_Count);
-//        tvTotalAmount.setText(totalAmount + "");
-
-    }
+//    private void calculate() {
+//
+//        float purchase_Count = 0;
+//
+//        if (selectedOrders.size() == 0) {
+//            for (int i = 0; i < purchaseList.size(); i++) {
+////                purchase_Count = purchase_Count + Float.valueOf(valueOf(purchaseList.get(i)));
+//            }
+//        } else {
+//            for (String position : selectedOrders) {
+////                purchase_Count = purchase_Count + Float.valueOf(String.valueOf(purchaseList.get(Integer.parseInt(position))));
+////                totalMoney = totalMoney + Float.valueOf(purchaseList.get(Integer.parseInt(position)).getTotal_money());
+//            }
+//        }
+//
+////        purchaseCount.setText(purchaseCount);
+//
+////        purchaseCount.setText((int) purchase_Count);
+////        tvTotalAmount.setText(totalAmount + "");
+//
+//    }
 }

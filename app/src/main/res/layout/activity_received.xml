@@ -13,13 +13,12 @@
             layout="@layout/receive_content_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="start" />
+            android:layout_gravity="start"/>
     </LinearLayout>
     <include
         android:id="@+id/right_sliding"
-        android:layout_width="240dp"
-        android:layout_height="580dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         layout="@layout/right_layout"
-        android:layout_gravity="right"
-        />
+        android:layout_gravity="right"/>
 </android.support.v4.widget.DrawerLayout>

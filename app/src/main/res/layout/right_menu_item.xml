@@ -1,97 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:padding="10dp"
+    android:orientation="vertical">
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:textSize="15sp"
-        android:layout_margin="15dp"
+        android:background="#F5F5F5"
+        android:text="exiaomingcheng"
+        android:id="@+id/tv_name"
+        android:textSize="12sp"
         android:textColor="#617079"
-        android:text="学校"/>
-    <LinearLayout
-
-        android:layout_height="50dp"
-        android:layout_width="fill_parent"
-        >
-
-        <TextView
-            android:id="@+id/FirstText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="First"
-            android:textColor="#617079"
-            android:gravity="center"
-            android:layout_weight="1">
-        </TextView>
-
-        <TextView
-            android:id="@+id/SecondText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Third"
-            android:textColor="#617079"
-            android:gravity="center"
-
-            android:layout_weight="1">
-        </TextView>
-
-        <TextView
-            android:id="@+id/ThirdText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Third"
-            android:textColor="#617079"
-            android:gravity="center"
-            android:layout_weight="1">
-        </TextView>
-    </LinearLayout>
-    <LinearLayout
-
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"
-        >
-
-        <TextView
-            android:id="@+id/FourText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="four"
-            android:textColor="#617079"
-            android:gravity="center"
-            android:layout_weight="1">
-        </TextView>
-
-        <TextView
-            android:id="@+id/FiveText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Five"
-            android:textColor="#617079"
-            android:gravity="center"
-
-            android:layout_weight="1">
-        </TextView>
-
-        <TextView
-            android:id="@+id/SixText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="six"
-            android:textColor="#617079"
-            android:gravity="center"
-            android:layout_weight="1">
-        </TextView>
-    </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textColor="#617079"
-        android:text="配送区域"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
-
-

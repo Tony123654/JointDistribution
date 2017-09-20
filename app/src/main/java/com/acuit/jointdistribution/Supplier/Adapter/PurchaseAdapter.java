@@ -11,6 +11,7 @@ import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Acitivity.PurchaseChangedActivity;
 import com.acuit.jointdistribution.Supplier.Domain.AlterOrderBean;
+import com.acuit.jointdistribution.Supplier.GlobalInfo.GlobalValue;
 
 import java.util.ArrayList;
 
@@ -65,6 +66,7 @@ public class PurchaseAdapter extends BaseAdapter {
             holder.planDate = (TextView) convertView.findViewById(R.id.tv_plan_date);
             holder.depRootName = (TextView) convertView.findViewById(R.id.tv_purchase_dep_root_name);
             holder.purchaseItem=(RadioButton)convertView.findViewById(R.id.rb_purchase_item);
+
             holder.purchaseItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -76,6 +78,22 @@ public class PurchaseAdapter extends BaseAdapter {
                 }
             });
 
+            final GlobalValue globalValue = new GlobalValue();
+            final ViewHolder finalHolder = holder;
+            holder.purchaseItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean isCheck = globalValue.isCheck();
+                    if (isCheck) {
+                        if (v == finalHolder.purchaseItem) finalHolder.purchaseItem.setChecked(false);
+//                        mActivty.unselectedOrder(position);
+                        mActivity.unselectedOrder(position);
+                    } else {
+                        if (v == finalHolder.purchaseItem) finalHolder.purchaseItem.setChecked(true);
+                    }
+                    globalValue.setCheck(!isCheck);
+                }
+            });
 
 
 

@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
-import com.acuit.jointdistribution.Supplier.Domain.GetSchoolCountBean;
+import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
 
 import java.util.ArrayList;
 
@@ -23,9 +23,9 @@ import java.util.ArrayList;
 public class ChooseAdapter extends BaseAdapter {
 
     private final ReceivedActivity mActivity;
-    private final ArrayList<GetSchoolCountBean.DataBean.RowsBean> chooseList;
+    private final ArrayList<OnlySchoolBean.DataBean> chooseList;
 
-    public ChooseAdapter(ArrayList<GetSchoolCountBean.DataBean.RowsBean> chooseList, ReceivedActivity mActivity) {
+    public ChooseAdapter(ArrayList<OnlySchoolBean.DataBean> chooseList, ReceivedActivity mActivity) {
 
         this.mActivity = mActivity;
         this.chooseList = chooseList;

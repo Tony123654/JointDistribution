@@ -20,7 +20,7 @@ public class PickingOrderInfoBean {
 
     /**
      * code : 200
-     * data : {"dep_list":{"19":"临湖"},"department_list":{"临湖":{"stock_info":[{"amount":"2.94","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"9","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"36.75","price":"12.50","region_id":"1","request_stock_id":"348567","status":"1","stock_code":"1020100009","stock_id":"30","stock_name":"红椒","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"15.99","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"10","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"47.97","price":"3.00","region_id":"1","request_stock_id":"348580","status":"1","stock_code":"1020100010","stock_id":"31","stock_name":"黄瓜（袋装）","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"38.95","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"11","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"124.64","price":"3.20","region_id":"1","request_stock_id":"348569","status":"1","stock_code":"1020100023","stock_id":"52","stock_name":"西南瓜","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"6.88","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"12","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"33.71","price":"4.90","region_id":"1","request_stock_id":"348592","status":"1","stock_code":"1020100027","stock_id":"56","stock_name":"杂椒","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"1.55","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"13","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"9.77","price":"6.30","region_id":"1","request_stock_id":"348560","status":"1","stock_code":"1020200002","stock_id":"58","stock_name":"本地葱","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"14.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"14","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"49.00","price":"3.50","region_id":"1","request_stock_id":"348573","status":"1","stock_code":"1020200011","stock_id":"72","stock_name":"津葱","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"37.50","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"15","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"93.75","price":"2.50","region_id":"1","request_stock_id":"348582","status":"1","stock_code":"1020200016","stock_id":"77","stock_name":"毛毛菜","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"13.33","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"16","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"59.99","price":"4.50","region_id":"1","request_stock_id":"348593","status":"1","stock_code":"1020200023","stock_id":"84","stock_name":"生菜","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"13.33","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"17","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"110.64","price":"8.30","region_id":"1","request_stock_id":"348594","status":"1","stock_code":"1020300001","stock_id":"99","stock_name":"草茭白","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"1.07","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"18","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"16.59","price":"15.50","region_id":"1","request_stock_id":"348578","status":"1","stock_code":"1020300004","stock_id":"102","stock_name":"大蒜子","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"54.55","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"19","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"136.38","price":"2.50","region_id":"1","request_stock_id":"348587","status":"1","stock_code":"1020300005","stock_id":"103","stock_name":"大土豆（袋装）","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"15.31","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"20","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"41.34","price":"2.70","region_id":"1","request_stock_id":"348570","status":"1","stock_code":"1020300006","stock_id":"104","stock_name":"丁香萝卜","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"21.89","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"21","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"157.61","price":"7.20","region_id":"1","request_stock_id":"348565","status":"1","stock_code":"1020300010","stock_id":"108","stock_name":"光莴笋","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"30.14","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"22","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"105.49","price":"3.50","region_id":"1","request_stock_id":"348595","status":"1","stock_code":"1020300018","stock_id":"116","stock_name":"藕","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"0.92","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"23","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"7.08","price":"7.70","region_id":"1","request_stock_id":"348583","status":"1","stock_code":"1020300020","stock_id":"118","stock_name":"生姜","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"37.65","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"24","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"169.43","price":"4.50","region_id":"1","request_stock_id":"348590","status":"1","stock_code":"1020500003","stock_id":"138","stock_name":"花菜(白)","sub_cat_code":"201","sub_cat_id":"45","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"}],"total_amount":306,"total_money":1200.14}},"order_info":{"cat_code":"","cat_id":"38","cat_name":"果蔬类","code":"CGDD16110810","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","contact_number":"","contact_person":"","create_date":"2016-11-25 14:28:40","create_user":"1","create_user_phone":"15973143041","dep_brief_name":"紫金","dep_ids":"","dep_root_id":"1","dep_root_name":"紫金港餐饮中心","end_date":"0","id":"5","is_del":"1","is_used":"0","memo":"","order_date":"0","order_id":"1647","plan_date":"2016-11-26 09:00:00","request_dep_strs":"","status":"4","supply_id":"53","supply_name":"杭州蔬菜物流有限公司","supply_phone":"13666666666","total_amount":"306.00","total_money":"1200.12","update_date":"0000-00-00 00:00:00"},"stock_list":{"102":{"amount_all":1.07,"count":"16.59","dep_info":{"19":{"amount":"1.07","dep_name":"临湖","id":"18"}},"price":"15.50","stock_breif":"DSZ","stock_name":"大蒜子","type_id":"43","unit_name":"千克"},"103":{"amount_all":54.55,"count":"136.38","dep_info":{"19":{"amount":"54.55","dep_name":"临湖","id":"19"}},"price":"2.50","stock_breif":"DTD","stock_name":"大土豆（袋装）","type_id":"43","unit_name":"千克"},"104":{"amount_all":15.31,"count":"41.34","dep_info":{"19":{"amount":"15.31","dep_name":"临湖","id":"20"}},"price":"2.70","stock_breif":"HDXLB","stock_name":"胡（丁香）萝卜","type_id":"43","unit_name":"千克"},"108":{"amount_all":21.89,"count":"157.61","dep_info":{"19":{"amount":"21.89","dep_name":"临湖","id":"21"}},"price":"7.20","stock_breif":"GWS","stock_name":"光莴笋","type_id":"43","unit_name":"千克"},"116":{"amount_all":30.14,"count":"105.49","dep_info":{"19":{"amount":"30.14","dep_name":"临湖","id":"22"}},"price":"3.50","stock_breif":"O","stock_name":"藕","type_id":"43","unit_name":"千克"},"118":{"amount_all":0.92,"count":"7.08","dep_info":{"19":{"amount":"0.92","dep_name":"临湖","id":"23"}},"price":"7.70","stock_breif":"SJ","stock_name":"生姜","type_id":"43","unit_name":"千克"},"138":{"amount_all":37.65,"count":"169.42","dep_info":{"19":{"amount":"37.65","dep_name":"临湖","id":"24"}},"price":"4.50","stock_breif":"HC","stock_name":"花菜(白)","type_id":"45","unit_name":"千克"},"30":{"amount_all":2.94,"count":"36.75","dep_info":{"19":{"amount":"2.94","dep_name":"临湖","id":"9"}},"price":"12.50","stock_breif":"HJ","stock_name":"红椒","type_id":"41","unit_name":"千克"},"31":{"amount_all":15.99,"count":"47.97","dep_info":{"19":{"amount":"15.99","dep_name":"临湖","id":"10"}},"price":"3.00","stock_breif":"HG","stock_name":"黄瓜（袋装）","type_id":"41","unit_name":"千克"},"52":{"amount_all":38.95,"count":"124.64","dep_info":{"19":{"amount":"38.95","dep_name":"临湖","id":"11"}},"price":"3.20","stock_breif":"XNG","stock_name":"西南瓜","type_id":"41","unit_name":"千克"},"56":{"amount_all":6.88,"count":"33.71","dep_info":{"19":{"amount":"6.88","dep_name":"临湖","id":"12"}},"price":"4.90","stock_breif":"ZJ","stock_name":"杂椒","type_id":"41","unit_name":"千克"},"58":{"amount_all":1.55,"count":"9.77","dep_info":{"19":{"amount":"1.55","dep_name":"临湖","id":"13"}},"price":"6.30","stock_breif":"BDC","stock_name":"本地葱","type_id":"42","unit_name":"千克"},"72":{"amount_all":14,"count":"49.00","dep_info":{"19":{"amount":"14.00","dep_name":"临湖","id":"14"}},"price":"3.50","stock_breif":"JC","stock_name":"津葱","type_id":"42","unit_name":"千克"},"77":{"amount_all":37.5,"count":"93.75","dep_info":{"19":{"amount":"37.50","dep_name":"临湖","id":"15"}},"price":"2.50","stock_breif":"MMC","stock_name":"毛毛菜","type_id":"42","unit_name":"千克"},"84":{"amount_all":13.33,"count":"59.98","dep_info":{"19":{"amount":"13.33","dep_name":"临湖","id":"16"}},"price":"4.50","stock_breif":"SC","stock_name":"生菜","type_id":"42","unit_name":"千克"},"99":{"amount_all":13.33,"count":"110.64","dep_info":{"19":{"amount":"13.33","dep_name":"临湖","id":"17"}},"price":"8.30","stock_breif":"CJB","stock_name":"草茭白","type_id":"43","unit_name":"千克"}}}
+     * data : {"dep_list":{"8":"三楼餐厅"},"department_list":{"三楼餐厅":{"stock_info":[{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"3","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200002","stock_id":"1257","stock_name":"中筋特一粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","wait_store_in":"0"},{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"4","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200007","stock_id":"3106","stock_name":"金法高面包粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"5","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200012","stock_id":"3111","stock_name":"苏三零特精粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"}],"total_amount":2997,"total_money":26973}},"order_info":{"cat_code":"","cat_id":"36","cat_name":"粮油类","code":"CGDD16090950","com_id":"0","contact_number":"","contact_person":"","create_date":"2016-09-28 13:49:49","create_user":"1","create_user_phone":"15973143041","dep_brief_name":"紫金","dep_ids":"","dep_root_id":"1","dep_root_name":"紫金港餐饮中心","end_date":"0","id":"2","is_del":"1","is_used":"0","memo":"","order_date":"0","order_id":"1424","plan_date":"2016-09-29 09:00:00","request_dep_strs":"","status":"5","supply_id":"46","supply_name":"福新面粉（宜兴）有限","supply_phone":"","total_amount":"2997.00","total_money":"26973.00","update_date":"0000-00-00 00:00:00"},"stock_list_app":[{"amount_all":999,"count":"8991.00","dep_info":{"8":{"amount":"999.00","dep_name":"三楼餐厅","id":"4"}},"price":"9.00","stock_breif":"JFGMBF","stock_id":3106,"stock_name":"金法高面包粉","type_id":"56","unit_name":"千克"},{"amount_all":999,"count":"8991.00","dep_info":{"8":{"amount":"999.00","dep_name":"三楼餐厅","id":"5"}},"price":"9.00","stock_breif":"SSLTJF","stock_id":3111,"stock_name":"苏三零特精粉","type_id":"56","unit_name":"千克"},{"amount_all":999,"count":"8991.00","dep_info":{"8":{"amount":"999.00","dep_name":"三楼餐厅","id":"3"}},"price":"9.00","stock_breif":"ZJTYF","stock_id":1257,"stock_name":"中筋特一粉","type_id":"56"}]}
      * msg : 执行成功！
      */
 
@@ -54,16 +54,16 @@ public class PickingOrderInfoBean {
 
     public static class DataBean {
         /**
-         * dep_list : {"19":"临湖"}
-         * department_list : {"临湖":{"stock_info":[{"amount":"2.94","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"9","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"36.75","price":"12.50","region_id":"1","request_stock_id":"348567","status":"1","stock_code":"1020100009","stock_id":"30","stock_name":"红椒","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"15.99","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"10","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"47.97","price":"3.00","region_id":"1","request_stock_id":"348580","status":"1","stock_code":"1020100010","stock_id":"31","stock_name":"黄瓜（袋装）","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"38.95","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"11","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"124.64","price":"3.20","region_id":"1","request_stock_id":"348569","status":"1","stock_code":"1020100023","stock_id":"52","stock_name":"西南瓜","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"6.88","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"12","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"33.71","price":"4.90","region_id":"1","request_stock_id":"348592","status":"1","stock_code":"1020100027","stock_id":"56","stock_name":"杂椒","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"1.55","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"13","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"9.77","price":"6.30","region_id":"1","request_stock_id":"348560","status":"1","stock_code":"1020200002","stock_id":"58","stock_name":"本地葱","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"14.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"14","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"49.00","price":"3.50","region_id":"1","request_stock_id":"348573","status":"1","stock_code":"1020200011","stock_id":"72","stock_name":"津葱","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"37.50","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"15","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"93.75","price":"2.50","region_id":"1","request_stock_id":"348582","status":"1","stock_code":"1020200016","stock_id":"77","stock_name":"毛毛菜","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"13.33","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"16","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"59.99","price":"4.50","region_id":"1","request_stock_id":"348593","status":"1","stock_code":"1020200023","stock_id":"84","stock_name":"生菜","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"13.33","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"17","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"110.64","price":"8.30","region_id":"1","request_stock_id":"348594","status":"1","stock_code":"1020300001","stock_id":"99","stock_name":"草茭白","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"1.07","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"18","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"16.59","price":"15.50","region_id":"1","request_stock_id":"348578","status":"1","stock_code":"1020300004","stock_id":"102","stock_name":"大蒜子","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"54.55","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"19","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"136.38","price":"2.50","region_id":"1","request_stock_id":"348587","status":"1","stock_code":"1020300005","stock_id":"103","stock_name":"大土豆（袋装）","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"15.31","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"20","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"41.34","price":"2.70","region_id":"1","request_stock_id":"348570","status":"1","stock_code":"1020300006","stock_id":"104","stock_name":"丁香萝卜","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"21.89","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"21","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"157.61","price":"7.20","region_id":"1","request_stock_id":"348565","status":"1","stock_code":"1020300010","stock_id":"108","stock_name":"光莴笋","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"30.14","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"22","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"105.49","price":"3.50","region_id":"1","request_stock_id":"348595","status":"1","stock_code":"1020300018","stock_id":"116","stock_name":"藕","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"0.92","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"23","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"7.08","price":"7.70","region_id":"1","request_stock_id":"348583","status":"1","stock_code":"1020300020","stock_id":"118","stock_name":"生姜","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"37.65","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"24","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"169.43","price":"4.50","region_id":"1","request_stock_id":"348590","status":"1","stock_code":"1020500003","stock_id":"138","stock_name":"花菜(白)","sub_cat_code":"201","sub_cat_id":"45","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"}],"total_amount":306,"total_money":1200.14}}
-         * order_info : {"cat_code":"","cat_id":"38","cat_name":"果蔬类","code":"CGDD16110810","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","contact_number":"","contact_person":"","create_date":"2016-11-25 14:28:40","create_user":"1","create_user_phone":"15973143041","dep_brief_name":"紫金","dep_ids":"","dep_root_id":"1","dep_root_name":"紫金港餐饮中心","end_date":"0","id":"5","is_del":"1","is_used":"0","memo":"","order_date":"0","order_id":"1647","plan_date":"2016-11-26 09:00:00","request_dep_strs":"","status":"4","supply_id":"53","supply_name":"杭州蔬菜物流有限公司","supply_phone":"13666666666","total_amount":"306.00","total_money":"1200.12","update_date":"0000-00-00 00:00:00"}
-         * stock_list : {"102":{"amount_all":1.07,"count":"16.59","dep_info":{"19":{"amount":"1.07","dep_name":"临湖","id":"18"}},"price":"15.50","stock_breif":"DSZ","stock_name":"大蒜子","type_id":"43","unit_name":"千克"},"103":{"amount_all":54.55,"count":"136.38","dep_info":{"19":{"amount":"54.55","dep_name":"临湖","id":"19"}},"price":"2.50","stock_breif":"DTD","stock_name":"大土豆（袋装）","type_id":"43","unit_name":"千克"},"104":{"amount_all":15.31,"count":"41.34","dep_info":{"19":{"amount":"15.31","dep_name":"临湖","id":"20"}},"price":"2.70","stock_breif":"HDXLB","stock_name":"胡（丁香）萝卜","type_id":"43","unit_name":"千克"},"108":{"amount_all":21.89,"count":"157.61","dep_info":{"19":{"amount":"21.89","dep_name":"临湖","id":"21"}},"price":"7.20","stock_breif":"GWS","stock_name":"光莴笋","type_id":"43","unit_name":"千克"},"116":{"amount_all":30.14,"count":"105.49","dep_info":{"19":{"amount":"30.14","dep_name":"临湖","id":"22"}},"price":"3.50","stock_breif":"O","stock_name":"藕","type_id":"43","unit_name":"千克"},"118":{"amount_all":0.92,"count":"7.08","dep_info":{"19":{"amount":"0.92","dep_name":"临湖","id":"23"}},"price":"7.70","stock_breif":"SJ","stock_name":"生姜","type_id":"43","unit_name":"千克"},"138":{"amount_all":37.65,"count":"169.42","dep_info":{"19":{"amount":"37.65","dep_name":"临湖","id":"24"}},"price":"4.50","stock_breif":"HC","stock_name":"花菜(白)","type_id":"45","unit_name":"千克"},"30":{"amount_all":2.94,"count":"36.75","dep_info":{"19":{"amount":"2.94","dep_name":"临湖","id":"9"}},"price":"12.50","stock_breif":"HJ","stock_name":"红椒","type_id":"41","unit_name":"千克"},"31":{"amount_all":15.99,"count":"47.97","dep_info":{"19":{"amount":"15.99","dep_name":"临湖","id":"10"}},"price":"3.00","stock_breif":"HG","stock_name":"黄瓜（袋装）","type_id":"41","unit_name":"千克"},"52":{"amount_all":38.95,"count":"124.64","dep_info":{"19":{"amount":"38.95","dep_name":"临湖","id":"11"}},"price":"3.20","stock_breif":"XNG","stock_name":"西南瓜","type_id":"41","unit_name":"千克"},"56":{"amount_all":6.88,"count":"33.71","dep_info":{"19":{"amount":"6.88","dep_name":"临湖","id":"12"}},"price":"4.90","stock_breif":"ZJ","stock_name":"杂椒","type_id":"41","unit_name":"千克"},"58":{"amount_all":1.55,"count":"9.77","dep_info":{"19":{"amount":"1.55","dep_name":"临湖","id":"13"}},"price":"6.30","stock_breif":"BDC","stock_name":"本地葱","type_id":"42","unit_name":"千克"},"72":{"amount_all":14,"count":"49.00","dep_info":{"19":{"amount":"14.00","dep_name":"临湖","id":"14"}},"price":"3.50","stock_breif":"JC","stock_name":"津葱","type_id":"42","unit_name":"千克"},"77":{"amount_all":37.5,"count":"93.75","dep_info":{"19":{"amount":"37.50","dep_name":"临湖","id":"15"}},"price":"2.50","stock_breif":"MMC","stock_name":"毛毛菜","type_id":"42","unit_name":"千克"},"84":{"amount_all":13.33,"count":"59.98","dep_info":{"19":{"amount":"13.33","dep_name":"临湖","id":"16"}},"price":"4.50","stock_breif":"SC","stock_name":"生菜","type_id":"42","unit_name":"千克"},"99":{"amount_all":13.33,"count":"110.64","dep_info":{"19":{"amount":"13.33","dep_name":"临湖","id":"17"}},"price":"8.30","stock_breif":"CJB","stock_name":"草茭白","type_id":"43","unit_name":"千克"}}
+         * dep_list : {"8":"三楼餐厅"}
+         * department_list : {"三楼餐厅":{"stock_info":[{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"3","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200002","stock_id":"1257","stock_name":"中筋特一粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","wait_store_in":"0"},{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"4","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200007","stock_id":"3106","stock_name":"金法高面包粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"5","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200012","stock_id":"3111","stock_name":"苏三零特精粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"}],"total_amount":2997,"total_money":26973}}
+         * order_info : {"cat_code":"","cat_id":"36","cat_name":"粮油类","code":"CGDD16090950","com_id":"0","contact_number":"","contact_person":"","create_date":"2016-09-28 13:49:49","create_user":"1","create_user_phone":"15973143041","dep_brief_name":"紫金","dep_ids":"","dep_root_id":"1","dep_root_name":"紫金港餐饮中心","end_date":"0","id":"2","is_del":"1","is_used":"0","memo":"","order_date":"0","order_id":"1424","plan_date":"2016-09-29 09:00:00","request_dep_strs":"","status":"5","supply_id":"46","supply_name":"福新面粉（宜兴）有限","supply_phone":"","total_amount":"2997.00","total_money":"26973.00","update_date":"0000-00-00 00:00:00"}
+         * stock_list_app : [{"amount_all":999,"count":"8991.00","dep_info":{"8":{"amount":"999.00","dep_name":"三楼餐厅","id":"4"}},"price":"9.00","stock_breif":"JFGMBF","stock_id":3106,"stock_name":"金法高面包粉","type_id":"56","unit_name":"千克"},{"amount_all":999,"count":"8991.00","dep_info":{"8":{"amount":"999.00","dep_name":"三楼餐厅","id":"5"}},"price":"9.00","stock_breif":"SSLTJF","stock_id":3111,"stock_name":"苏三零特精粉","type_id":"56","unit_name":"千克"},{"amount_all":999,"count":"8991.00","dep_info":{"8":{"amount":"999.00","dep_name":"三楼餐厅","id":"3"}},"price":"9.00","stock_breif":"ZJTYF","stock_id":1257,"stock_name":"中筋特一粉","type_id":"56"}]
          */
 
         private DepListBean dep_list;
         private DepartmentListBean department_list;
         private OrderInfoBean order_info;
-        private StockListBean stock_list;
+        private List<StockListAppBean> stock_list_app;
 
         public DepListBean getDep_list() {
             return dep_list;
@@ -89,55 +89,55 @@ public class PickingOrderInfoBean {
             this.order_info = order_info;
         }
 
-        public StockListBean getStock_list() {
-            return stock_list;
+        public List<StockListAppBean> getStock_list_app() {
+            return stock_list_app;
         }
 
-        public void setStock_list(StockListBean stock_list) {
-            this.stock_list = stock_list;
+        public void setStock_list_app(List<StockListAppBean> stock_list_app) {
+            this.stock_list_app = stock_list_app;
         }
 
         public static class DepListBean {
             /**
-             * 19 : 临湖
+             * 8 : 三楼餐厅
              */
 
-            @SerializedName("19")
-            private String _$19;
+            @SerializedName("8")
+            private String _$8;
 
-            public String get_$19() {
-                return _$19;
+            public String get_$8() {
+                return _$8;
             }
 
-            public void set_$19(String _$19) {
-                this._$19 = _$19;
+            public void set_$8(String _$8) {
+                this._$8 = _$8;
             }
         }
 
         public static class DepartmentListBean {
             /**
-             * 临湖 : {"stock_info":[{"amount":"2.94","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"9","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"36.75","price":"12.50","region_id":"1","request_stock_id":"348567","status":"1","stock_code":"1020100009","stock_id":"30","stock_name":"红椒","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"15.99","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"10","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"47.97","price":"3.00","region_id":"1","request_stock_id":"348580","status":"1","stock_code":"1020100010","stock_id":"31","stock_name":"黄瓜（袋装）","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"38.95","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"11","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"124.64","price":"3.20","region_id":"1","request_stock_id":"348569","status":"1","stock_code":"1020100023","stock_id":"52","stock_name":"西南瓜","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"6.88","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"12","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"33.71","price":"4.90","region_id":"1","request_stock_id":"348592","status":"1","stock_code":"1020100027","stock_id":"56","stock_name":"杂椒","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"1.55","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"13","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"9.77","price":"6.30","region_id":"1","request_stock_id":"348560","status":"1","stock_code":"1020200002","stock_id":"58","stock_name":"本地葱","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"14.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"14","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"49.00","price":"3.50","region_id":"1","request_stock_id":"348573","status":"1","stock_code":"1020200011","stock_id":"72","stock_name":"津葱","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"37.50","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"15","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"93.75","price":"2.50","region_id":"1","request_stock_id":"348582","status":"1","stock_code":"1020200016","stock_id":"77","stock_name":"毛毛菜","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"13.33","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"16","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"59.99","price":"4.50","region_id":"1","request_stock_id":"348593","status":"1","stock_code":"1020200023","stock_id":"84","stock_name":"生菜","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"13.33","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"17","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"110.64","price":"8.30","region_id":"1","request_stock_id":"348594","status":"1","stock_code":"1020300001","stock_id":"99","stock_name":"草茭白","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"1.07","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"18","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"16.59","price":"15.50","region_id":"1","request_stock_id":"348578","status":"1","stock_code":"1020300004","stock_id":"102","stock_name":"大蒜子","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"54.55","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"19","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"136.38","price":"2.50","region_id":"1","request_stock_id":"348587","status":"1","stock_code":"1020300005","stock_id":"103","stock_name":"大土豆（袋装）","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"15.31","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"20","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"41.34","price":"2.70","region_id":"1","request_stock_id":"348570","status":"1","stock_code":"1020300006","stock_id":"104","stock_name":"丁香萝卜","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"21.89","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"21","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"157.61","price":"7.20","region_id":"1","request_stock_id":"348565","status":"1","stock_code":"1020300010","stock_id":"108","stock_name":"光莴笋","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"30.14","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"22","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"105.49","price":"3.50","region_id":"1","request_stock_id":"348595","status":"1","stock_code":"1020300018","stock_id":"116","stock_name":"藕","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"0.92","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"23","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"7.08","price":"7.70","region_id":"1","request_stock_id":"348583","status":"1","stock_code":"1020300020","stock_id":"118","stock_name":"生姜","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"37.65","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"24","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"169.43","price":"4.50","region_id":"1","request_stock_id":"348590","status":"1","stock_code":"1020500003","stock_id":"138","stock_name":"花菜(白)","sub_cat_code":"201","sub_cat_id":"45","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"}],"total_amount":306,"total_money":1200.14}
+             * 三楼餐厅 : {"stock_info":[{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"3","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200002","stock_id":"1257","stock_name":"中筋特一粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","wait_store_in":"0","unit_id":"6","unit_name":"千克"},{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"4","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200007","stock_id":"3106","stock_name":"金法高面包粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"5","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200012","stock_id":"3111","stock_name":"苏三零特精粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"}],"total_amount":2997,"total_money":26973}
              */
 
-            private 临湖Bean 临湖;
+            private 三楼餐厅Bean 三楼餐厅;
 
-            public 临湖Bean get临湖() {
-                return 临湖;
+            public 三楼餐厅Bean get三楼餐厅() {
+                return 三楼餐厅;
             }
 
-            public void set临湖(临湖Bean 临湖) {
-                this.临湖 = 临湖;
+            public void set三楼餐厅(三楼餐厅Bean 三楼餐厅) {
+                this.三楼餐厅 = 三楼餐厅;
             }
 
-            public static class 临湖Bean {
+            public static class 三楼餐厅Bean {
                 /**
-                 * stock_info : [{"amount":"2.94","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"9","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"36.75","price":"12.50","region_id":"1","request_stock_id":"348567","status":"1","stock_code":"1020100009","stock_id":"30","stock_name":"红椒","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"15.99","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"10","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"47.97","price":"3.00","region_id":"1","request_stock_id":"348580","status":"1","stock_code":"1020100010","stock_id":"31","stock_name":"黄瓜（袋装）","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"38.95","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"11","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"124.64","price":"3.20","region_id":"1","request_stock_id":"348569","status":"1","stock_code":"1020100023","stock_id":"52","stock_name":"西南瓜","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"6.88","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"12","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"33.71","price":"4.90","region_id":"1","request_stock_id":"348592","status":"1","stock_code":"1020100027","stock_id":"56","stock_name":"杂椒","sub_cat_code":"201","sub_cat_id":"41","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"1.55","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"13","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"9.77","price":"6.30","region_id":"1","request_stock_id":"348560","status":"1","stock_code":"1020200002","stock_id":"58","stock_name":"本地葱","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"14.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"14","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"49.00","price":"3.50","region_id":"1","request_stock_id":"348573","status":"1","stock_code":"1020200011","stock_id":"72","stock_name":"津葱","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"37.50","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"15","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"93.75","price":"2.50","region_id":"1","request_stock_id":"348582","status":"1","stock_code":"1020200016","stock_id":"77","stock_name":"毛毛菜","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"13.33","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"16","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"59.99","price":"4.50","region_id":"1","request_stock_id":"348593","status":"1","stock_code":"1020200023","stock_id":"84","stock_name":"生菜","sub_cat_code":"201","sub_cat_id":"42","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"13.33","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"17","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"110.64","price":"8.30","region_id":"1","request_stock_id":"348594","status":"1","stock_code":"1020300001","stock_id":"99","stock_name":"草茭白","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"1.07","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"18","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"16.59","price":"15.50","region_id":"1","request_stock_id":"348578","status":"1","stock_code":"1020300004","stock_id":"102","stock_name":"大蒜子","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"54.55","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"19","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"136.38","price":"2.50","region_id":"1","request_stock_id":"348587","status":"1","stock_code":"1020300005","stock_id":"103","stock_name":"大土豆（袋装）","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"15.31","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"20","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"41.34","price":"2.70","region_id":"1","request_stock_id":"348570","status":"1","stock_code":"1020300006","stock_id":"104","stock_name":"丁香萝卜","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"21.89","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"21","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"157.61","price":"7.20","region_id":"1","request_stock_id":"348565","status":"1","stock_code":"1020300010","stock_id":"108","stock_name":"光莴笋","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"30.14","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"22","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"105.49","price":"3.50","region_id":"1","request_stock_id":"348595","status":"1","stock_code":"1020300018","stock_id":"116","stock_name":"藕","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"0.92","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"23","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"7.08","price":"7.70","region_id":"1","request_stock_id":"348583","status":"1","stock_code":"1020300020","stock_id":"118","stock_name":"生姜","sub_cat_code":"201","sub_cat_id":"43","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"37.65","big_region_id":"15","busy_amount":"0.00","buy_order_id":"5","code":"","create_date":"1480055320","dep_code":"","dep_id":"19","direct_in_out":"0","id":"24","in_amount":"0.00","in_money":"0.00","is_del":"0","is_used":"0","lot_control":"0","money":"169.43","price":"4.50","region_id":"1","request_stock_id":"348590","status":"1","stock_code":"1020500003","stock_id":"138","stock_name":"花菜(白)","sub_cat_code":"201","sub_cat_id":"45","sub_cat_name":"大众食品","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"}]
-                 * total_amount : 306
-                 * total_money : 1200.14
+                 * stock_info : [{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"3","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200002","stock_id":"1257","stock_name":"中筋特一粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","wait_store_in":"0"},{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"4","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200007","stock_id":"3106","stock_name":"金法高面包粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"},{"amount":"999.00","big_region_id":"15","busy_amount":"0.00","buy_order_id":"2","code":"","create_date":"1475041789","dep_code":"","dep_id":"8","direct_in_out":"0","id":"5","in_amount":"999.00","in_money":"8991.00","is_del":"0","is_used":"0","lot_control":"0","money":"8991.00","price":"9.00","region_id":"1","status":"1","stock_code":"1010200012","stock_id":"3111","stock_name":"苏三零特精粉","sub_cat_code":"201","sub_cat_id":"56","sub_cat_name":"大众类","unit_conv":"0.00","unit_id":"6","unit_name":"千克","wait_store_in":"0"}]
+                 * total_amount : 2997
+                 * total_money : 26973
                  */
 
                 private int total_amount;
-                private double total_money;
+                private int total_money;
                 private List<StockInfoBean> stock_info;
 
                 public int getTotal_amount() {
@@ -148,11 +148,11 @@ public class PickingOrderInfoBean {
                     this.total_amount = total_amount;
                 }
 
-                public double getTotal_money() {
+                public int getTotal_money() {
                     return total_money;
                 }
 
-                public void setTotal_money(double total_money) {
+                public void setTotal_money(int total_money) {
                     this.total_money = total_money;
                 }
 
@@ -166,36 +166,35 @@ public class PickingOrderInfoBean {
 
                 public static class StockInfoBean {
                     /**
-                     * amount : 2.94
+                     * amount : 999.00
                      * big_region_id : 15
                      * busy_amount : 0.00
-                     * buy_order_id : 5
+                     * buy_order_id : 2
                      * code :
-                     * create_date : 1480055320
+                     * create_date : 1475041789
                      * dep_code :
-                     * dep_id : 19
+                     * dep_id : 8
                      * direct_in_out : 0
-                     * id : 9
-                     * in_amount : 0.00
-                     * in_money : 0.00
+                     * id : 3
+                     * in_amount : 999.00
+                     * in_money : 8991.00
                      * is_del : 0
                      * is_used : 0
                      * lot_control : 0
-                     * money : 36.75
-                     * price : 12.50
+                     * money : 8991.00
+                     * price : 9.00
                      * region_id : 1
-                     * request_stock_id : 348567
                      * status : 1
-                     * stock_code : 1020100009
-                     * stock_id : 30
-                     * stock_name : 红椒
+                     * stock_code : 1010200002
+                     * stock_id : 1257
+                     * stock_name : 中筋特一粉
                      * sub_cat_code : 201
-                     * sub_cat_id : 41
-                     * sub_cat_name : 大众食品
+                     * sub_cat_id : 56
+                     * sub_cat_name : 大众类
                      * unit_conv : 0.00
+                     * wait_store_in : 0
                      * unit_id : 6
                      * unit_name : 千克
-                     * wait_store_in : 0
                      */
 
                     private String amount;
@@ -216,7 +215,6 @@ public class PickingOrderInfoBean {
                     private String money;
                     private String price;
                     private String region_id;
-                    private String request_stock_id;
                     private String status;
                     private String stock_code;
                     private String stock_id;
@@ -225,9 +223,9 @@ public class PickingOrderInfoBean {
                     private String sub_cat_id;
                     private String sub_cat_name;
                     private String unit_conv;
+                    private String wait_store_in;
                     private String unit_id;
                     private String unit_name;
-                    private String wait_store_in;
 
                     public String getAmount() {
                         return amount;
@@ -373,14 +371,6 @@ public class PickingOrderInfoBean {
                         this.region_id = region_id;
                     }
 
-                    public String getRequest_stock_id() {
-                        return request_stock_id;
-                    }
-
-                    public void setRequest_stock_id(String request_stock_id) {
-                        this.request_stock_id = request_stock_id;
-                    }
-
                     public String getStatus() {
                         return status;
                     }
@@ -445,6 +435,14 @@ public class PickingOrderInfoBean {
                         this.unit_conv = unit_conv;
                     }
 
+                    public String getWait_store_in() {
+                        return wait_store_in;
+                    }
+
+                    public void setWait_store_in(String wait_store_in) {
+                        this.wait_store_in = wait_store_in;
+                    }
+
                     public String getUnit_id() {
                         return unit_id;
                     }
@@ -460,14 +458,6 @@ public class PickingOrderInfoBean {
                     public void setUnit_name(String unit_name) {
                         this.unit_name = unit_name;
                     }
-
-                    public String getWait_store_in() {
-                        return wait_store_in;
-                    }
-
-                    public void setWait_store_in(String wait_store_in) {
-                        this.wait_store_in = wait_store_in;
-                    }
                 }
             }
         }
@@ -475,15 +465,13 @@ public class PickingOrderInfoBean {
         public static class OrderInfoBean {
             /**
              * cat_code :
-             * cat_id : 38
-             * cat_name : 果蔬类
-             * code : CGDD16110810
-             * com_brief_name : 浙大
-             * com_id : 1
-             * com_name : 浙大饮食中心
+             * cat_id : 36
+             * cat_name : 粮油类
+             * code : CGDD16090950
+             * com_id : 0
              * contact_number :
              * contact_person :
-             * create_date : 2016-11-25 14:28:40
+             * create_date : 2016-09-28 13:49:49
              * create_user : 1
              * create_user_phone : 15973143041
              * dep_brief_name : 紫金
@@ -491,20 +479,20 @@ public class PickingOrderInfoBean {
              * dep_root_id : 1
              * dep_root_name : 紫金港餐饮中心
              * end_date : 0
-             * id : 5
+             * id : 2
              * is_del : 1
              * is_used : 0
              * memo :
              * order_date : 0
-             * order_id : 1647
-             * plan_date : 2016-11-26 09:00:00
+             * order_id : 1424
+             * plan_date : 2016-09-29 09:00:00
              * request_dep_strs :
-             * status : 4
-             * supply_id : 53
-             * supply_name : 杭州蔬菜物流有限公司
-             * supply_phone : 13666666666
-             * total_amount : 306.00
-             * total_money : 1200.12
+             * status : 5
+             * supply_id : 46
+             * supply_name : 福新面粉（宜兴）有限
+             * supply_phone :
+             * total_amount : 2997.00
+             * total_money : 26973.00
              * update_date : 0000-00-00 00:00:00
              */
 
@@ -512,9 +500,7 @@ public class PickingOrderInfoBean {
             private String cat_id;
             private String cat_name;
             private String code;
-            private String com_brief_name;
             private String com_id;
-            private String com_name;
             private String contact_number;
             private String contact_person;
             private String create_date;
@@ -573,28 +559,12 @@ public class PickingOrderInfoBean {
                 this.code = code;
             }
 
-            public String getCom_brief_name() {
-                return com_brief_name;
-            }
-
-            public void setCom_brief_name(String com_brief_name) {
-                this.com_brief_name = com_brief_name;
-            }
-
             public String getCom_id() {
                 return com_id;
             }
 
             public void setCom_id(String com_id) {
                 this.com_id = com_id;
-            }
-
-            public String getCom_name() {
-                return com_name;
-            }
-
-            public void setCom_name(String com_name) {
-                this.com_name = com_name;
             }
 
             public String getContact_number() {
@@ -798,2407 +768,150 @@ public class PickingOrderInfoBean {
             }
         }
 
-        public static class StockListBean {
+        public static class StockListAppBean {
             /**
-             * 102 : {"amount_all":1.07,"count":"16.59","dep_info":{"19":{"amount":"1.07","dep_name":"临湖","id":"18"}},"price":"15.50","stock_breif":"DSZ","stock_name":"大蒜子","type_id":"43","unit_name":"千克"}
-             * 103 : {"amount_all":54.55,"count":"136.38","dep_info":{"19":{"amount":"54.55","dep_name":"临湖","id":"19"}},"price":"2.50","stock_breif":"DTD","stock_name":"大土豆（袋装）","type_id":"43","unit_name":"千克"}
-             * 104 : {"amount_all":15.31,"count":"41.34","dep_info":{"19":{"amount":"15.31","dep_name":"临湖","id":"20"}},"price":"2.70","stock_breif":"HDXLB","stock_name":"胡（丁香）萝卜","type_id":"43","unit_name":"千克"}
-             * 108 : {"amount_all":21.89,"count":"157.61","dep_info":{"19":{"amount":"21.89","dep_name":"临湖","id":"21"}},"price":"7.20","stock_breif":"GWS","stock_name":"光莴笋","type_id":"43","unit_name":"千克"}
-             * 116 : {"amount_all":30.14,"count":"105.49","dep_info":{"19":{"amount":"30.14","dep_name":"临湖","id":"22"}},"price":"3.50","stock_breif":"O","stock_name":"藕","type_id":"43","unit_name":"千克"}
-             * 118 : {"amount_all":0.92,"count":"7.08","dep_info":{"19":{"amount":"0.92","dep_name":"临湖","id":"23"}},"price":"7.70","stock_breif":"SJ","stock_name":"生姜","type_id":"43","unit_name":"千克"}
-             * 138 : {"amount_all":37.65,"count":"169.42","dep_info":{"19":{"amount":"37.65","dep_name":"临湖","id":"24"}},"price":"4.50","stock_breif":"HC","stock_name":"花菜(白)","type_id":"45","unit_name":"千克"}
-             * 30 : {"amount_all":2.94,"count":"36.75","dep_info":{"19":{"amount":"2.94","dep_name":"临湖","id":"9"}},"price":"12.50","stock_breif":"HJ","stock_name":"红椒","type_id":"41","unit_name":"千克"}
-             * 31 : {"amount_all":15.99,"count":"47.97","dep_info":{"19":{"amount":"15.99","dep_name":"临湖","id":"10"}},"price":"3.00","stock_breif":"HG","stock_name":"黄瓜（袋装）","type_id":"41","unit_name":"千克"}
-             * 52 : {"amount_all":38.95,"count":"124.64","dep_info":{"19":{"amount":"38.95","dep_name":"临湖","id":"11"}},"price":"3.20","stock_breif":"XNG","stock_name":"西南瓜","type_id":"41","unit_name":"千克"}
-             * 56 : {"amount_all":6.88,"count":"33.71","dep_info":{"19":{"amount":"6.88","dep_name":"临湖","id":"12"}},"price":"4.90","stock_breif":"ZJ","stock_name":"杂椒","type_id":"41","unit_name":"千克"}
-             * 58 : {"amount_all":1.55,"count":"9.77","dep_info":{"19":{"amount":"1.55","dep_name":"临湖","id":"13"}},"price":"6.30","stock_breif":"BDC","stock_name":"本地葱","type_id":"42","unit_name":"千克"}
-             * 72 : {"amount_all":14,"count":"49.00","dep_info":{"19":{"amount":"14.00","dep_name":"临湖","id":"14"}},"price":"3.50","stock_breif":"JC","stock_name":"津葱","type_id":"42","unit_name":"千克"}
-             * 77 : {"amount_all":37.5,"count":"93.75","dep_info":{"19":{"amount":"37.50","dep_name":"临湖","id":"15"}},"price":"2.50","stock_breif":"MMC","stock_name":"毛毛菜","type_id":"42","unit_name":"千克"}
-             * 84 : {"amount_all":13.33,"count":"59.98","dep_info":{"19":{"amount":"13.33","dep_name":"临湖","id":"16"}},"price":"4.50","stock_breif":"SC","stock_name":"生菜","type_id":"42","unit_name":"千克"}
-             * 99 : {"amount_all":13.33,"count":"110.64","dep_info":{"19":{"amount":"13.33","dep_name":"临湖","id":"17"}},"price":"8.30","stock_breif":"CJB","stock_name":"草茭白","type_id":"43","unit_name":"千克"}
+             * amount_all : 999
+             * count : 8991.00
+             * dep_info : {"8":{"amount":"999.00","dep_name":"三楼餐厅","id":"4"}}
+             * price : 9.00
+             * stock_breif : JFGMBF
+             * stock_id : 3106
+             * stock_name : 金法高面包粉
+             * type_id : 56
+             * unit_name : 千克
              */
 
-            @SerializedName("102")
-            private _$102Bean _$102;
-            @SerializedName("103")
-            private _$103Bean _$103;
-            @SerializedName("104")
-            private _$104Bean _$104;
-            @SerializedName("108")
-            private _$108Bean _$108;
-            @SerializedName("116")
-            private _$116Bean _$116;
-            @SerializedName("118")
-            private _$118Bean _$118;
-            @SerializedName("138")
-            private _$138Bean _$138;
-            @SerializedName("30")
-            private _$30Bean _$30;
-            @SerializedName("31")
-            private _$31Bean _$31;
-            @SerializedName("52")
-            private _$52Bean _$52;
-            @SerializedName("56")
-            private _$56Bean _$56;
-            @SerializedName("58")
-            private _$58Bean _$58;
-            @SerializedName("72")
-            private _$72Bean _$72;
-            @SerializedName("77")
-            private _$77Bean _$77;
-            @SerializedName("84")
-            private _$84Bean _$84;
-            @SerializedName("99")
-            private _$99Bean _$99;
+            private int amount_all;
+            private String count;
+            private DepInfoBean dep_info;
+            private String price;
+            private String stock_breif;
+            private int stock_id;
+            private String stock_name;
+            private String type_id;
+            private String unit_name;
 
-            public _$102Bean get_$102() {
-                return _$102;
+            public int getAmount_all() {
+                return amount_all;
             }
 
-            public void set_$102(_$102Bean _$102) {
-                this._$102 = _$102;
+            public void setAmount_all(int amount_all) {
+                this.amount_all = amount_all;
             }
 
-            public _$103Bean get_$103() {
-                return _$103;
+            public String getCount() {
+                return count;
             }
 
-            public void set_$103(_$103Bean _$103) {
-                this._$103 = _$103;
+            public void setCount(String count) {
+                this.count = count;
             }
 
-            public _$104Bean get_$104() {
-                return _$104;
+            public DepInfoBean getDep_info() {
+                return dep_info;
             }
 
-            public void set_$104(_$104Bean _$104) {
-                this._$104 = _$104;
+            public void setDep_info(DepInfoBean dep_info) {
+                this.dep_info = dep_info;
             }
 
-            public _$108Bean get_$108() {
-                return _$108;
+            public String getPrice() {
+                return price;
             }
 
-            public void set_$108(_$108Bean _$108) {
-                this._$108 = _$108;
+            public void setPrice(String price) {
+                this.price = price;
             }
 
-            public _$116Bean get_$116() {
-                return _$116;
+            public String getStock_breif() {
+                return stock_breif;
             }
 
-            public void set_$116(_$116Bean _$116) {
-                this._$116 = _$116;
+            public void setStock_breif(String stock_breif) {
+                this.stock_breif = stock_breif;
             }
 
-            public _$118Bean get_$118() {
-                return _$118;
+            public int getStock_id() {
+                return stock_id;
             }
 
-            public void set_$118(_$118Bean _$118) {
-                this._$118 = _$118;
+            public void setStock_id(int stock_id) {
+                this.stock_id = stock_id;
             }
 
-            public _$138Bean get_$138() {
-                return _$138;
+            public String getStock_name() {
+                return stock_name;
             }
 
-            public void set_$138(_$138Bean _$138) {
-                this._$138 = _$138;
+            public void setStock_name(String stock_name) {
+                this.stock_name = stock_name;
             }
 
-            public _$30Bean get_$30() {
-                return _$30;
+            public String getType_id() {
+                return type_id;
             }
 
-            public void set_$30(_$30Bean _$30) {
-                this._$30 = _$30;
+            public void setType_id(String type_id) {
+                this.type_id = type_id;
             }
 
-            public _$31Bean get_$31() {
-                return _$31;
+            public String getUnit_name() {
+                return unit_name;
             }
 
-            public void set_$31(_$31Bean _$31) {
-                this._$31 = _$31;
+            public void setUnit_name(String unit_name) {
+                this.unit_name = unit_name;
             }
 
-            public _$52Bean get_$52() {
-                return _$52;
-            }
-
-            public void set_$52(_$52Bean _$52) {
-                this._$52 = _$52;
-            }
-
-            public _$56Bean get_$56() {
-                return _$56;
-            }
-
-            public void set_$56(_$56Bean _$56) {
-                this._$56 = _$56;
-            }
-
-            public _$58Bean get_$58() {
-                return _$58;
-            }
-
-            public void set_$58(_$58Bean _$58) {
-                this._$58 = _$58;
-            }
-
-            public _$72Bean get_$72() {
-                return _$72;
-            }
-
-            public void set_$72(_$72Bean _$72) {
-                this._$72 = _$72;
-            }
-
-            public _$77Bean get_$77() {
-                return _$77;
-            }
-
-            public void set_$77(_$77Bean _$77) {
-                this._$77 = _$77;
-            }
-
-            public _$84Bean get_$84() {
-                return _$84;
-            }
-
-            public void set_$84(_$84Bean _$84) {
-                this._$84 = _$84;
-            }
-
-            public _$99Bean get_$99() {
-                return _$99;
-            }
-
-            public void set_$99(_$99Bean _$99) {
-                this._$99 = _$99;
-            }
-
-            public static class _$102Bean {
+            public static class DepInfoBean {
                 /**
-                 * amount_all : 1.07
-                 * count : 16.59
-                 * dep_info : {"19":{"amount":"1.07","dep_name":"临湖","id":"18"}}
-                 * price : 15.50
-                 * stock_breif : DSZ
-                 * stock_name : 大蒜子
-                 * type_id : 43
-                 * unit_name : 千克
+                 * 8 : {"amount":"999.00","dep_name":"三楼餐厅","id":"4"}
                  */
 
-                private double amount_all;
-                private String count;
-                private DepInfoBean dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
+                @SerializedName("8")
+                private _$8Bean _$8;
 
-                public double getAmount_all() {
-                    return amount_all;
+                public _$8Bean get_$8() {
+                    return _$8;
                 }
 
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
+                public void set_$8(_$8Bean _$8) {
+                    this._$8 = _$8;
                 }
 
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBean getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBean dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBean {
+                public static class _$8Bean {
                     /**
-                     * 19 : {"amount":"1.07","dep_name":"临湖","id":"18"}
+                     * amount : 999.00
+                     * dep_name : 三楼餐厅
+                     * id : 4
                      */
 
-                    @SerializedName("19")
-                    private _$19Bean _$19;
+                    private String amount;
+                    private String dep_name;
+                    private String id;
 
-                    public _$19Bean get_$19() {
-                        return _$19;
+                    public String getAmount() {
+                        return amount;
                     }
 
-                    public void set_$19(_$19Bean _$19) {
-                        this._$19 = _$19;
+                    public void setAmount(String amount) {
+                        this.amount = amount;
                     }
 
-                    public static class _$19Bean {
-                        /**
-                         * amount : 1.07
-                         * dep_name : 临湖
-                         * id : 18
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$103Bean {
-                /**
-                 * amount_all : 54.55
-                 * count : 136.38
-                 * dep_info : {"19":{"amount":"54.55","dep_name":"临湖","id":"19"}}
-                 * price : 2.50
-                 * stock_breif : DTD
-                 * stock_name : 大土豆（袋装）
-                 * type_id : 43
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanX {
-                    /**
-                     * 19 : {"amount":"54.55","dep_name":"临湖","id":"19"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanX _$19;
-
-                    public _$19BeanX get_$19() {
-                        return _$19;
+                    public String getDep_name() {
+                        return dep_name;
                     }
 
-                    public void set_$19(_$19BeanX _$19) {
-                        this._$19 = _$19;
+                    public void setDep_name(String dep_name) {
+                        this.dep_name = dep_name;
                     }
 
-                    public static class _$19BeanX {
-                        /**
-                         * amount : 54.55
-                         * dep_name : 临湖
-                         * id : 19
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$104Bean {
-                /**
-                 * amount_all : 15.31
-                 * count : 41.34
-                 * dep_info : {"19":{"amount":"15.31","dep_name":"临湖","id":"20"}}
-                 * price : 2.70
-                 * stock_breif : HDXLB
-                 * stock_name : 胡（丁香）萝卜
-                 * type_id : 43
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXX {
-                    /**
-                     * 19 : {"amount":"15.31","dep_name":"临湖","id":"20"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXX _$19;
-
-                    public _$19BeanXX get_$19() {
-                        return _$19;
+                    public String getId() {
+                        return id;
                     }
 
-                    public void set_$19(_$19BeanXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXX {
-                        /**
-                         * amount : 15.31
-                         * dep_name : 临湖
-                         * id : 20
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$108Bean {
-                /**
-                 * amount_all : 21.89
-                 * count : 157.61
-                 * dep_info : {"19":{"amount":"21.89","dep_name":"临湖","id":"21"}}
-                 * price : 7.20
-                 * stock_breif : GWS
-                 * stock_name : 光莴笋
-                 * type_id : 43
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXX {
-                    /**
-                     * 19 : {"amount":"21.89","dep_name":"临湖","id":"21"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXX _$19;
-
-                    public _$19BeanXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXX {
-                        /**
-                         * amount : 21.89
-                         * dep_name : 临湖
-                         * id : 21
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$116Bean {
-                /**
-                 * amount_all : 30.14
-                 * count : 105.49
-                 * dep_info : {"19":{"amount":"30.14","dep_name":"临湖","id":"22"}}
-                 * price : 3.50
-                 * stock_breif : O
-                 * stock_name : 藕
-                 * type_id : 43
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXX {
-                    /**
-                     * 19 : {"amount":"30.14","dep_name":"临湖","id":"22"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXX _$19;
-
-                    public _$19BeanXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXX {
-                        /**
-                         * amount : 30.14
-                         * dep_name : 临湖
-                         * id : 22
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$118Bean {
-                /**
-                 * amount_all : 0.92
-                 * count : 7.08
-                 * dep_info : {"19":{"amount":"0.92","dep_name":"临湖","id":"23"}}
-                 * price : 7.70
-                 * stock_breif : SJ
-                 * stock_name : 生姜
-                 * type_id : 43
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXXX {
-                    /**
-                     * 19 : {"amount":"0.92","dep_name":"临湖","id":"23"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXXX _$19;
-
-                    public _$19BeanXXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXXX {
-                        /**
-                         * amount : 0.92
-                         * dep_name : 临湖
-                         * id : 23
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$138Bean {
-                /**
-                 * amount_all : 37.65
-                 * count : 169.42
-                 * dep_info : {"19":{"amount":"37.65","dep_name":"临湖","id":"24"}}
-                 * price : 4.50
-                 * stock_breif : HC
-                 * stock_name : 花菜(白)
-                 * type_id : 45
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXXXX {
-                    /**
-                     * 19 : {"amount":"37.65","dep_name":"临湖","id":"24"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXXXX _$19;
-
-                    public _$19BeanXXXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXXXX {
-                        /**
-                         * amount : 37.65
-                         * dep_name : 临湖
-                         * id : 24
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$30Bean {
-                /**
-                 * amount_all : 2.94
-                 * count : 36.75
-                 * dep_info : {"19":{"amount":"2.94","dep_name":"临湖","id":"9"}}
-                 * price : 12.50
-                 * stock_breif : HJ
-                 * stock_name : 红椒
-                 * type_id : 41
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXXXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXXXXX {
-                    /**
-                     * 19 : {"amount":"2.94","dep_name":"临湖","id":"9"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXXXXX _$19;
-
-                    public _$19BeanXXXXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXXXXX {
-                        /**
-                         * amount : 2.94
-                         * dep_name : 临湖
-                         * id : 9
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$31Bean {
-                /**
-                 * amount_all : 15.99
-                 * count : 47.97
-                 * dep_info : {"19":{"amount":"15.99","dep_name":"临湖","id":"10"}}
-                 * price : 3.00
-                 * stock_breif : HG
-                 * stock_name : 黄瓜（袋装）
-                 * type_id : 41
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXXXXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXXXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXXXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXXXXXX {
-                    /**
-                     * 19 : {"amount":"15.99","dep_name":"临湖","id":"10"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXXXXXX _$19;
-
-                    public _$19BeanXXXXXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXXXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXXXXXX {
-                        /**
-                         * amount : 15.99
-                         * dep_name : 临湖
-                         * id : 10
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$52Bean {
-                /**
-                 * amount_all : 38.95
-                 * count : 124.64
-                 * dep_info : {"19":{"amount":"38.95","dep_name":"临湖","id":"11"}}
-                 * price : 3.20
-                 * stock_breif : XNG
-                 * stock_name : 西南瓜
-                 * type_id : 41
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXXXXXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXXXXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXXXXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXXXXXXX {
-                    /**
-                     * 19 : {"amount":"38.95","dep_name":"临湖","id":"11"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXXXXXXX _$19;
-
-                    public _$19BeanXXXXXXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXXXXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXXXXXXX {
-                        /**
-                         * amount : 38.95
-                         * dep_name : 临湖
-                         * id : 11
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$56Bean {
-                /**
-                 * amount_all : 6.88
-                 * count : 33.71
-                 * dep_info : {"19":{"amount":"6.88","dep_name":"临湖","id":"12"}}
-                 * price : 4.90
-                 * stock_breif : ZJ
-                 * stock_name : 杂椒
-                 * type_id : 41
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXXXXXXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXXXXXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXXXXXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXXXXXXXX {
-                    /**
-                     * 19 : {"amount":"6.88","dep_name":"临湖","id":"12"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXXXXXXXX _$19;
-
-                    public _$19BeanXXXXXXXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXXXXXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXXXXXXXX {
-                        /**
-                         * amount : 6.88
-                         * dep_name : 临湖
-                         * id : 12
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$58Bean {
-                /**
-                 * amount_all : 1.55
-                 * count : 9.77
-                 * dep_info : {"19":{"amount":"1.55","dep_name":"临湖","id":"13"}}
-                 * price : 6.30
-                 * stock_breif : BDC
-                 * stock_name : 本地葱
-                 * type_id : 42
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXXXXXXXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXXXXXXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXXXXXXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXXXXXXXXX {
-                    /**
-                     * 19 : {"amount":"1.55","dep_name":"临湖","id":"13"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXXXXXXXXX _$19;
-
-                    public _$19BeanXXXXXXXXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXXXXXXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXXXXXXXXX {
-                        /**
-                         * amount : 1.55
-                         * dep_name : 临湖
-                         * id : 13
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$72Bean {
-                /**
-                 * amount_all : 14
-                 * count : 49.00
-                 * dep_info : {"19":{"amount":"14.00","dep_name":"临湖","id":"14"}}
-                 * price : 3.50
-                 * stock_breif : JC
-                 * stock_name : 津葱
-                 * type_id : 42
-                 * unit_name : 千克
-                 */
-
-                private int amount_all;
-                private String count;
-                private DepInfoBeanXXXXXXXXXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public int getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(int amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXXXXXXXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXXXXXXXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXXXXXXXXXX {
-                    /**
-                     * 19 : {"amount":"14.00","dep_name":"临湖","id":"14"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXXXXXXXXXX _$19;
-
-                    public _$19BeanXXXXXXXXXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXXXXXXXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXXXXXXXXXX {
-                        /**
-                         * amount : 14.00
-                         * dep_name : 临湖
-                         * id : 14
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$77Bean {
-                /**
-                 * amount_all : 37.5
-                 * count : 93.75
-                 * dep_info : {"19":{"amount":"37.50","dep_name":"临湖","id":"15"}}
-                 * price : 2.50
-                 * stock_breif : MMC
-                 * stock_name : 毛毛菜
-                 * type_id : 42
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXXXXXXXXXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXXXXXXXXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXXXXXXXXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXXXXXXXXXXX {
-                    /**
-                     * 19 : {"amount":"37.50","dep_name":"临湖","id":"15"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXXXXXXXXXXX _$19;
-
-                    public _$19BeanXXXXXXXXXXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXXXXXXXXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXXXXXXXXXXX {
-                        /**
-                         * amount : 37.50
-                         * dep_name : 临湖
-                         * id : 15
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$84Bean {
-                /**
-                 * amount_all : 13.33
-                 * count : 59.98
-                 * dep_info : {"19":{"amount":"13.33","dep_name":"临湖","id":"16"}}
-                 * price : 4.50
-                 * stock_breif : SC
-                 * stock_name : 生菜
-                 * type_id : 42
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXXXXXXXXXXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXXXXXXXXXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXXXXXXXXXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXXXXXXXXXXXX {
-                    /**
-                     * 19 : {"amount":"13.33","dep_name":"临湖","id":"16"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXXXXXXXXXXXX _$19;
-
-                    public _$19BeanXXXXXXXXXXXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXXXXXXXXXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXXXXXXXXXXXX {
-                        /**
-                         * amount : 13.33
-                         * dep_name : 临湖
-                         * id : 16
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
-                    }
-                }
-            }
-
-            public static class _$99Bean {
-                /**
-                 * amount_all : 13.33
-                 * count : 110.64
-                 * dep_info : {"19":{"amount":"13.33","dep_name":"临湖","id":"17"}}
-                 * price : 8.30
-                 * stock_breif : CJB
-                 * stock_name : 草茭白
-                 * type_id : 43
-                 * unit_name : 千克
-                 */
-
-                private double amount_all;
-                private String count;
-                private DepInfoBeanXXXXXXXXXXXXXXX dep_info;
-                private String price;
-                private String stock_breif;
-                private String stock_name;
-                private String type_id;
-                private String unit_name;
-
-                public double getAmount_all() {
-                    return amount_all;
-                }
-
-                public void setAmount_all(double amount_all) {
-                    this.amount_all = amount_all;
-                }
-
-                public String getCount() {
-                    return count;
-                }
-
-                public void setCount(String count) {
-                    this.count = count;
-                }
-
-                public DepInfoBeanXXXXXXXXXXXXXXX getDep_info() {
-                    return dep_info;
-                }
-
-                public void setDep_info(DepInfoBeanXXXXXXXXXXXXXXX dep_info) {
-                    this.dep_info = dep_info;
-                }
-
-                public String getPrice() {
-                    return price;
-                }
-
-                public void setPrice(String price) {
-                    this.price = price;
-                }
-
-                public String getStock_breif() {
-                    return stock_breif;
-                }
-
-                public void setStock_breif(String stock_breif) {
-                    this.stock_breif = stock_breif;
-                }
-
-                public String getStock_name() {
-                    return stock_name;
-                }
-
-                public void setStock_name(String stock_name) {
-                    this.stock_name = stock_name;
-                }
-
-                public String getType_id() {
-                    return type_id;
-                }
-
-                public void setType_id(String type_id) {
-                    this.type_id = type_id;
-                }
-
-                public String getUnit_name() {
-                    return unit_name;
-                }
-
-                public void setUnit_name(String unit_name) {
-                    this.unit_name = unit_name;
-                }
-
-                public static class DepInfoBeanXXXXXXXXXXXXXXX {
-                    /**
-                     * 19 : {"amount":"13.33","dep_name":"临湖","id":"17"}
-                     */
-
-                    @SerializedName("19")
-                    private _$19BeanXXXXXXXXXXXXXXX _$19;
-
-                    public _$19BeanXXXXXXXXXXXXXXX get_$19() {
-                        return _$19;
-                    }
-
-                    public void set_$19(_$19BeanXXXXXXXXXXXXXXX _$19) {
-                        this._$19 = _$19;
-                    }
-
-                    public static class _$19BeanXXXXXXXXXXXXXXX {
-                        /**
-                         * amount : 13.33
-                         * dep_name : 临湖
-                         * id : 17
-                         */
-
-                        private String amount;
-                        private String dep_name;
-                        private String id;
-
-                        public String getAmount() {
-                            return amount;
-                        }
-
-                        public void setAmount(String amount) {
-                            this.amount = amount;
-                        }
-
-                        public String getDep_name() {
-                            return dep_name;
-                        }
-
-                        public void setDep_name(String dep_name) {
-                            this.dep_name = dep_name;
-                        }
-
-                        public String getId() {
-                            return id;
-                        }
-
-                        public void setId(String id) {
-                            this.id = id;
-                        }
+                    public void setId(String id) {
+                        this.id = id;
                     }
                 }
             }
