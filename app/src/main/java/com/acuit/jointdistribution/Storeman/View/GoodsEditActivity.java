@@ -203,7 +203,8 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
             String tempPicPath = tempPicsDir + File.separator + picName;
 
             try {
-                ImageFactory.compressAndGenImage(mResult, tempPicPath, 100, false);
+                ImageFactory.ratioAndGenThumb(mResult, tempPicPath, 240, 400, false);
+//                ImageFactory.compressAndGenImage(mResult, tempPicPath, 100, false);
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("aaa IOException:" + e.getMessage());

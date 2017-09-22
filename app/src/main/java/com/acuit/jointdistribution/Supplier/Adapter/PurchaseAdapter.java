@@ -64,7 +64,7 @@ public class PurchaseAdapter extends BaseAdapter {
             holder.createDate = (TextView) convertView.findViewById(R.id.tv_purchase_create_date);
             holder.planDate = (TextView) convertView.findViewById(R.id.tv_plan_date);
             holder.depRootName = (TextView) convertView.findViewById(R.id.tv_purchase_dep_root_name);
-            holder.purchaseItem=(RadioButton)convertView.findViewById(R.id.rb_purchase_item);
+            holder.purchaseItem=(RadioButton)convertView.findViewById(R.id.rb_item);
             holder.purchaseItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

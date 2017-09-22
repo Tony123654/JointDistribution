@@ -27,7 +27,6 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -66,7 +65,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
 
         supplier = (SuppliersListBean.DataBean.StoreInListBean) getIntent().getSerializableExtra("SupplierBean");
         tvSupplierName.setText(supplier.getSupply_name());
-        initData();
+//        initData();
         initEvent();
 
     }
@@ -154,8 +153,8 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
                 ArrayMap<String, String> params = new ArrayMap<String, String>();
 
                 params.put("token", BaseApplication.getLoginBean().getData().getToken());
-                params.put("start_date", (new Date(0)).getTime() / 1000 + "");
-                params.put("end_date", System.currentTimeMillis() / 1000 + "");
+//                params.put("start_date", (new Date(0)).getTime() / 1000 + "");
+//                params.put("end_date", System.currentTimeMillis() / 1000 + "");
                 params.put("rows", rows + "");
                 params.put("page", page + "");
                 params.put("status", "2");
@@ -184,6 +183,8 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
 
             } else {
 
+                xrvStoreList.refreshComplete();
+                xrvStoreList.loadMoreComplete();
                 storeInListAdapter = new StoreInListAdapter(storeInList, StoreInListActivity.this);
                 xrvStoreList.setAdapter(storeInListAdapter);
             }

@@ -63,7 +63,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#333333" />
+        android:background="#888888" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#339866"
+            android:background="@color/colorTitle"
             android:clickable="true"
             android:gravity="center"
             android:text="验收"

@@ -14,8 +14,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--android:roundIcon="@mipmap/ic_launcher_round"-->
 
-        <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
         <!-- 公共模块 -->
         <activity android:name=".Common.View.Activity.FirstActivity">
             <intent-filter>

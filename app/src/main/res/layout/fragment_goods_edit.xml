@@ -333,7 +333,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_weight="1"
-        android:background="#339866"
+        android:background="@color/colorTitle"
         android:clickable="true"
         android:gravity="center"
         android:text="保存"
