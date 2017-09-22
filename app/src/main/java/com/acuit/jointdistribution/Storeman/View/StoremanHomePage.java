@@ -13,6 +13,7 @@ import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.Widget.MessageImageView;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Storeman.Bean.CountStoreInBean;
 import com.acuit.jointdistribution.Storeman.Bean.SuppliersListBean;
 import com.acuit.jointdistribution.Storeman.Bean.UnaccpetOrdersAndSuppliersBean;
 import com.android.volley.AuthFailureError;
@@ -23,7 +24,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.zxing.activity.CaptureActivity;
 
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -211,16 +211,26 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
 
     public void getCount() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STORE_IN_LIST, new Response.Listener<String>() {
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_STORE_IN_LIST, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_UNACCEPT_ORDER_AMOUNT, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+                System.out.println("aaa json:" + response);
+                System.out.println("aaa url:" + GlobalContants.URL_UNACCEPT_ORDER_AMOUNT);
                 Gson gson = new Gson();
                 SuppliersListBean suppliersListBean = gson.fromJson(response, SuppliersListBean.class);
-//                    登录成功
-                if (200 == suppliersListBean.getCode()) {
-                    mivCheckOrder.setCurrentMode(3);
-                    mivCheckOrder.setMessageNumber(Integer.parseInt(suppliersListBean.getData().getTotal()));
+//                if (200 == suppliersListBean.getCode()) {
+//
+//                    mivCheckOrder.setCurrentMode(3);
+//                    mivCheckOrder.setMessageNumber(Integer.parseInt(suppliersListBean.getData().getTotal()));
+//
+//                }
+                CountStoreInBean countStoreInBean = gson.fromJson(response, CountStoreInBean.class);
+                if (null != countStoreInBean) {
 
+                    mivCheckOrder.setCurrentMode(3);
+                    mivCheckOrder.setMessageNumber(Integer.parseInt(countStoreInBean.getCount()));
                 }
             }
         }, new Response.ErrorListener() {
@@ -238,10 +248,14 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
                 ArrayMap<String, String> params = new ArrayMap<String, String>();
 
                 params.put("token", BaseApplication.getLoginBean().getData().getToken());
-                params.put("start_date", (new Date(0)).getTime() / 1000 + "");
-                params.put("end_date", System.currentTimeMillis() / 1000 + "");
+
+//                params.put("start_date", (new Date(0)).getTime() / 1000 + "");
+//                params.put("end_date", System.currentTimeMillis() / 1000 + "");
+//                params.put("status", "2");
+//                params.put("get_supply_list", "1");
+
                 params.put("status", "2");
-                params.put("get_supply_list", "1");
+                params.put("api_get_count", "1");
 
                 return params;
             }

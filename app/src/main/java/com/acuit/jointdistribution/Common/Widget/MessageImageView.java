@@ -72,7 +72,7 @@ public class MessageImageView extends AppCompatImageView {
         //画文本的画笔
         textPaint = new TextPaint();
         textPaint.setColor(0xffffffff);
-        textPaint.setTextSize(40);
+        textPaint.setTextSize(30);
         textPaint.setAntiAlias(true);
     }
 

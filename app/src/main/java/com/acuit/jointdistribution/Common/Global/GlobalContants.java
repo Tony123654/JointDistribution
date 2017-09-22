@@ -23,6 +23,8 @@ public class GlobalContants {
     public static final String ADMIN_URL = BASE_URL + File.separator + "admin.php?c=Admin_manage&a=";
     public static final String AJAXREPORT_URL = BASE_URL + File.separator + "admin.php?c=ajaxreport&a=";
 
+    public static final String STORE_URL = BASE_URL + File.separator + "admin.php?c=Store&a=";
+
     //    GlobalContants.URL_STORE_IN_LIST
     //    登录
     public static final String URL_LOGIN_BY_USERNAME = SERVER_URL + "login";
@@ -53,10 +55,19 @@ public class GlobalContants {
     //****************保管员首页展示信息(订单数据、供应商数据)获取链接：
     //    订单数据
     public static final String URL_SUPPLIERS_DATA = AJAXREPORT_URL + "supply_order";//&dep_id=8
+
     //    送货(供应商)数据
     public static final String URL_DELIVER_DATA = AJAXREPORT_URL + "storekeeper_order";//&dep_id=8
-    //    获取未接单订单数和供应商数。
+
+    //    获取未接单订单数和供应商数
     public static final String URL_UNACCEPT_ORDERS_SUPPLY = AJAXREPORT_URL + "buy_order_count";
+
+
+    //    获取待验收订单数
+//    http://192.168.2.241/admin.php?c=Store&a=store_in_list&status=2&api_get_count=1
+//    public static final String URL_UNACCEPT_ORDER_AMOUNT = STORE_URL + "store_in_list&status=2&api_get_count=1";
+    public static final String URL_UNACCEPT_ORDER_AMOUNT = SERVER_URL + "store_in_list";
+
     //    查询供应商
     public static final String URL_SEARCH_SUPPLY = AJAX_URL + "search_com_supply";
     //    获取入库单列表

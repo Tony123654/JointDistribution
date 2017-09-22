@@ -62,6 +62,41 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        goodsViewPagerAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        BaseApplication.getRequestQueue().cancelAll("GoodsEditActivity");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_back:
+//                GoodsEditActivity.this.finish();
+                onBackPressed();
+                break;
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+//        moveTaskToBack(true);
+
+        Intent data = new Intent();
+        data.putExtra(GOODSLIST_RESULT, goodsList);
+        setResult(RESULT_CODE, data);
+
+        GoodsEditActivity.this.finish();
+    }
+
     private void initView() {
         ivBack = (ImageView) findViewById(R.id.iv_back);
         tvTitle = (TextView) findViewById(R.id.tv_title);
@@ -78,6 +113,7 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
         goodsList = new BaseArrayList<StoreInDetailBean.DataBean.ListBean>();
         goodsList.addAll((Collection<? extends StoreInDetailBean.DataBean.ListBean>) getIntent().getSerializableExtra("GoodsList"));
 
+        System.out.println("aaa GoodsEditActivity goodslist:" + goodsList.toString());
 
         setTitle(goodsList.get(position).getStock_name());
 
@@ -130,36 +166,6 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
 //    }
 
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        BaseApplication.getRequestQueue().cancelAll("GoodsEditActivity");
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.iv_back:
-//                GoodsEditActivity.this.finish();
-                onBackPressed();
-                break;
-        }
-    }
-
-
-    @Override
-    public void onBackPressed() {
-//        super.onBackPressed();
-//        moveTaskToBack(true);
-
-        Intent data = new Intent();
-        data.putExtra(GOODSLIST_RESULT, goodsList);
-        setResult(RESULT_CODE, data);
-
-        GoodsEditActivity.this.finish();
-    }
-
-
     // class variables
     private static final int REQUEST_CODE = 123;
     private ArrayList<String> mResults = new ArrayList<>();
@@ -203,7 +209,8 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
             String tempPicPath = tempPicsDir + File.separator + picName;
 
             try {
-                ImageFactory.compressAndGenImage(mResult, tempPicPath, 100, false);
+                ImageFactory.ratioAndGenThumb(mResult, tempPicPath, 240, 400, false);
+//                ImageFactory.compressAndGenImage(mResult, tempPicPath, 100, false);
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("aaa IOException:" + e.getMessage());

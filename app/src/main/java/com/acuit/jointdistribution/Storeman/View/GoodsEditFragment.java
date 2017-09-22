@@ -52,7 +52,7 @@ import java.util.Map;
  * 更新描述: <p>
  */
 
-public class GoodsEditFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class GoodsEditFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener, View.OnLongClickListener {
 
     private int position;
     private GoodsEditActivity mActivity;
@@ -113,9 +113,28 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
         initEvent();
 
+//        initSpinner();
+//        spinnerRejectResion.setOnItemSelectedListener(this);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+//        initData();
+
         initSpinner();
         spinnerRejectResion.setOnItemSelectedListener(this);
 
+        if (null != tempPics && 0 < tempPics.size()) {
+            showPics();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 
     private void initView(View fragmentView) {
@@ -155,18 +174,19 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         String back_amount = goodsBean.getBack_amount();
         if (null == back_amount || back_amount.equals("")) {
             etRejectAmount.setText("0.00");
+            reciverAmount = Float.valueOf(goodsBean.getOrder_amount());
+            rejectAmount = Float.valueOf("0.00");
         } else {
             etRejectAmount.setText(back_amount);
+            reciverAmount = Float.valueOf(goodsBean.getIn_amount());
+            rejectAmount = Float.valueOf(goodsBean.getBack_amount());
         }
 
 
-        rejectAmount = Float.valueOf(goodsBean.getIn_amount());
-        reciverAmount = Float.valueOf(goodsBean.getOrder_amount());
-
-//        if (null != spinnerAdapter && !goodsBean.getCheck_standard().equals("")) {
-//            spinnerRejectResion.setSelection(Integer.parseInt(goodsBean.getCheck_standard()) + 1, true);
-//            System.out.println("aaa onresume().standard:" + goodsBean.getCheck_standard());
-//        }
+        if (null != spinnerAdapter && !goodsBean.getCheck_standard().equals("")) {
+            spinnerRejectResion.setSelection(Integer.parseInt(goodsBean.getCheck_standard()) + 1, true);
+            System.out.println("aaa onresume().standard:" + goodsBean.getCheck_standard());
+        }
     }
 
     private void initEvent() {
@@ -174,6 +194,13 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         ivAddPic1.setOnClickListener(this);
         ivAddPic2.setOnClickListener(this);
         ivAddPic3.setOnClickListener(this);
+        ivAddPic1.setLongClickable(true);
+        ivAddPic1.setOnLongClickListener(this);
+        ivAddPic2.setLongClickable(true);
+        ivAddPic2.setOnLongClickListener(this);
+        ivAddPic3.setLongClickable(true);
+        ivAddPic3.setOnLongClickListener(this);
+        ivAddPic2.setOnClickListener(this);
         ivReciverPlus.setOnClickListener(this);
         ivReciverMinus.setOnClickListener(this);
         ivSubtractPlus.setOnClickListener(this);
@@ -357,12 +384,6 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 //    }
 
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
-
     public void setPic(ArrayList<String> pics, ArrayList<String> tempPics) {
 
         if (null == pics || null == tempPics) {
@@ -376,39 +397,33 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     }
 
     private void showPics() {
-        String pic1 = this.tempPics.get(0);
 
-        if (!pic1.isEmpty()) {
-//            一张图片
-            ivAddPic1.setImageURI(Uri.parse(pic1));
-            ivAddPic2.setImageResource(R.mipmap.icon_addpic);
-            ivAddPic2.setVisibility(View.VISIBLE);
-        } else {
-//            没有图片
+        if (0 == tempPics.size()) {
+//        没有图片
             ivAddPic1.setImageResource(R.mipmap.icon_addpic);
             ivAddPic2.setVisibility(View.INVISIBLE);
-        }
-        ivAddPic3.setVisibility(View.INVISIBLE);
+            ivAddPic3.setVisibility(View.INVISIBLE);
+        } else if (1 == tempPics.size()) {
+//        一张图片
+            ivAddPic1.setImageURI(Uri.parse(tempPics.get(0)));
+            ivAddPic2.setImageResource(R.mipmap.icon_addpic);
+            ivAddPic2.setVisibility(View.VISIBLE);
+            ivAddPic3.setVisibility(View.INVISIBLE);
+        } else if (2 == tempPics.size()) {
 //        两张图片
-        if (this.tempPics.size() > 1) {
-            ivAddPic2.setImageURI(Uri.parse(this.tempPics.get(1)));
+            ivAddPic1.setImageURI(Uri.parse(tempPics.get(0)));
+            ivAddPic2.setImageURI(Uri.parse(tempPics.get(1)));
             ivAddPic3.setImageResource(R.mipmap.icon_addpic);
+            ivAddPic2.setVisibility(View.VISIBLE);
             ivAddPic3.setVisibility(View.VISIBLE);
-        }
+        } else if (3 == tempPics.size()) {
 //        三张图片
-        if (this.tempPics.size() > 2) {
-            ivAddPic3.setImageURI(Uri.parse(this.tempPics.get(2)));
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        initData();
-
-        if (null != tempPics && 0 < tempPics.size()) {
-            showPics();
+            ivAddPic1.setVisibility(View.VISIBLE);
+            ivAddPic2.setVisibility(View.VISIBLE);
+            ivAddPic3.setVisibility(View.VISIBLE);
+            ivAddPic1.setImageURI(Uri.parse(tempPics.get(0)));
+            ivAddPic2.setImageURI(Uri.parse(tempPics.get(1)));
+            ivAddPic3.setImageURI(Uri.parse(tempPics.get(2)));
         }
     }
 
@@ -433,6 +448,10 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                     spinnerAdapter = new ArrayAdapter(mActivity, android.R.layout.simple_selectable_list_item, spinnerSelectData);
                     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerRejectResion.setAdapter(spinnerAdapter);
+
+                    if (goodsBean.isEdited()) {
+                        initData();
+                    }
                 }
             }
 
@@ -490,7 +509,9 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         Toast.makeText(mActivity, "保存成功", Toast.LENGTH_SHORT).show();
 
         goodsBean.setEdited(true);
+        System.out.println("aaa save goods:" + goodsBean);
 
+        mActivity.onBackPressed();
     }
 
 
@@ -539,6 +560,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                 public void onResponse(String response) {
                     Gson gson = new Gson();
                     saveGoodsEdition(gson.fromJson(response, UploadImageBean.class));
+
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -567,4 +589,26 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     }
 
 
+    @Override
+    public boolean onLongClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_addPic1:
+                mResults.remove(0);
+                tempPics.remove(0);
+                showPics();
+                break;
+            case R.id.iv_addPic2:
+                mResults.remove(1);
+                tempPics.remove(1);
+                showPics();
+                break;
+            case R.id.iv_addPic3:
+                mResults.remove(2);
+                tempPics.remove(2);
+                showPics();
+                break;
+        }
+
+        return true;
+    }
 }

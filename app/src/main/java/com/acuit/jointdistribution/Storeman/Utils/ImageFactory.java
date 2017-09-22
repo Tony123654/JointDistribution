@@ -3,6 +3,7 @@ package com.acuit.jointdistribution.Storeman.Utils;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
+import android.support.annotation.Nullable;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -10,8 +11,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-;
 
 
 /**
@@ -53,6 +52,7 @@ public class ImageFactory {
      * @throws FileNotFoundException
      */
     public static void storeImage(Bitmap bitmap, String outPath) throws FileNotFoundException {
+        checkFileExist(outPath);
         FileOutputStream os = new FileOutputStream(outPath);
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
     }
@@ -149,26 +149,10 @@ public class ImageFactory {
      * @throws IOException
      */
     public static void compressAndGenImage(Bitmap image, String outPath, int maxSize) throws IOException {
-
-//        System.out.println("aaa compressAndGenImage outpath:" + outPath);
-        String nameFromPath = CacheUtils.getNameFromPath(outPath);
-
-        String dirPath = outPath.replace(File.separator + nameFromPath, "");
-        File file = new File(dirPath, nameFromPath);
+        File file = checkFileExist(outPath);
+        if (file == null) return;
 
 
-//        System.out.println("aaa test1");
-        if (!file.getParentFile().exists()) {
-//            System.out.println("aaa test if1");
-            file.getParentFile().mkdirs();
-        } else if (!file.getParentFile().isDirectory() && file.getParentFile().canWrite()) {
-//            System.out.println("aaa test if2");
-            file.getParentFile().delete();
-            file.getParentFile().mkdirs();
-        } else if (file.exists()) {//已存在不再写入
-//            System.out.println("aaa test if3");
-            return;
-        }
 //        else {
 //            System.out.println("aaa no permission to write file");
 //            //you can't access there with write permission.
@@ -195,6 +179,30 @@ public class ImageFactory {
         fos.flush();
         fos.close();
 
+    }
+
+    @Nullable
+    private static File checkFileExist(String outPath) {
+//        System.out.println("aaa outpath:" + outPath);
+        String nameFromPath = CacheUtils.getNameFromPath(outPath);
+
+        String dirPath = outPath.replace(File.separator + nameFromPath, "");
+        File file = new File(dirPath, nameFromPath);
+
+
+//        System.out.println("aaa test1");
+        if (!file.getParentFile().exists()) {
+//            System.out.println("aaa test if1");
+            file.getParentFile().mkdirs();
+        } else if (!file.getParentFile().isDirectory() && file.getParentFile().canWrite()) {
+//            System.out.println("aaa test if2");
+            file.getParentFile().delete();
+            file.getParentFile().mkdirs();
+        } else if (file.exists()) {//已存在不再写入
+//            System.out.println("aaa test if3");
+            return null;
+        }
+        return file;
     }
 
     /**

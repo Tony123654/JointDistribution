@@ -30,7 +30,6 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -66,7 +65,7 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_checkorder_supplierlist);
 
         initView();
-        initData();
+//        initData();
         initEvent();
     }
 
@@ -111,8 +110,8 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
                 ArrayMap<String, String> params = new ArrayMap<String, String>();
 
                 params.put("token", BaseApplication.getLoginBean().getData().getToken());
-                params.put("start_date", (new Date(0)).getTime() / 1000 + "");
-                params.put("end_date", System.currentTimeMillis() / 1000 + "");
+//                params.put("start_date", (new Date(0)).getTime() / 1000 + "");
+//                params.put("end_date", System.currentTimeMillis() / 1000 + "");
                 params.put("rows", rows + "");
                 params.put("page", page + "");
                 params.put("status", "2");
@@ -140,6 +139,8 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
                 suppliersAdapter.notifyDataSetChanged();
             } else {
 
+                xrvSupplierList.refreshComplete();
+                xrvSupplierList.loadMoreComplete();
                 suppliersAdapter = new SuppliersListAdapter(suppliersList, SupplierListActivity.this);
                 xrvSupplierList.setAdapter(suppliersAdapter);
             }
