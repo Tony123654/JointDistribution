@@ -65,7 +65,6 @@ public class SendAdapter extends BaseAdapter {
             holder.plan_date = (TextView) convertView.findViewById(R.id.tv_plan_date);
             holder.total_amount = (TextView) convertView.findViewById(R.id.tv_total_amount);
             holder.contact_person = (TextView) convertView.findViewById(R.id.tv_contact_person);
-            holder.rb_send=(RadioButton)convertView.findViewById(R.id.rb_send);
             holder.contact_number = (TextView) convertView.findViewById(R.id.tv_contact_number);
             holder.request_dep_str = (TextView) convertView.findViewById(R.id.tv_request_dep_strs);
             holder.com_brief_name = (TextView) convertView.findViewById(R.id.tv_com_brief_name);

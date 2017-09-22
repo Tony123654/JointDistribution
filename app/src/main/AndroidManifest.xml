@@ -60,7 +60,11 @@
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="false" />
         <activity android:name=".Supplier.Acitivity.PickingActivity" />
-        <activity android:name=".Supplier.Acitivity.PurchaseChangedInfoActivity"></activity>
+        <activity android:name=".Supplier.Acitivity.PurchaseChangedInfoActivity" />
+        <activity android:name=".Supplier.Acitivity.MessageActivity" />
+        <activity android:name=".Supplier.Acitivity.PurchaseMessageActivity" />
+        <activity android:name=".Supplier.Acitivity.BiddingMessageActivity" />
+        <activity android:name=".Supplier.Acitivity.NewConmandMessageActivity"></activity>
     </application>
 
 </manifest>

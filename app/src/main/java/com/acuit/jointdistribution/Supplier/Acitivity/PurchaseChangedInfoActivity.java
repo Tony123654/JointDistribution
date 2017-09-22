@@ -65,6 +65,7 @@ public class PurchaseChangedInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PurchaseChangedInfoActivity.this,PurchaseChangedActivity.class));
+                finish();
             }
         });
         //更多信息

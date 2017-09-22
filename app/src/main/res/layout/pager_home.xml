@@ -9,7 +9,9 @@
         android:id="@+id/relativeLayout8"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/colorTitle">
+        android:background="@color/colorTitle"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -19,62 +21,84 @@
             android:text="首页"
             android:textColor="#ffffff"
             android:textSize="24sp" />
+        <ImageView
+            android:id="@+id/iv_home_message"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="#00000000"
+            android:src="@mipmap/icon_nav_msg" />
+
+
     </RelativeLayout>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/relativeLayout9"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="70dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/relativeLayout8"
-        android:background="#339966">
+        android:layout_below="@id/relativeLayout8"
+        android:background="#339966"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/day_count"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="85dp"
-            android:layout_marginTop="50dp"
-            android:text="3333"
-            android:textColor="#ffffff" />
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/day_count"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="3333"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/day_money"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="6666"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="9dp"
-            android:layout_marginStart="57dp"
-            android:text="今日订单量(个)"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/day_money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="230dp"
-            android:layout_marginTop="50dp"
-            android:text="6666"
-            android:textColor="#ffffff" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="今日订单量(个)"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/textView10"
-            android:layout_alignBottom="@id/textView10"
-            android:layout_marginStart="54dp"
-            android:layout_toEndOf="@id/textView10"
-            android:text="今日总金额（元）"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="今日总金额（元）"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/relativeLayout10"
@@ -156,7 +180,7 @@
             android:drawableTop="@mipmap/icon_home_pj"
             android:gravity="center"
             android:text="收到评价"
-            android:visibility="gone" />
+            android:visibility="visible" />
     </RelativeLayout>
 
     <ListView

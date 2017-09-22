@@ -66,11 +66,8 @@ public class SendActivity extends BaseActivity {
 
         ib_back_menu = (ImageView) findViewById(R.id.ib_back_send_menu);
         ib_choose = (ImageView) findViewById(R.id.ib_send_choose);
-        btn_send = (Button) findViewById(R.id.btn_send);
-        singleCount = (TextView) findViewById(R.id.tv_single_count);
         totalAmount = (TextView) findViewById(R.id.tv_total_amount);
         listView = (ListView) findViewById(R.id.list_view);
-        sendSelectAll = (RadioButton) findViewById(R.id.sa_sb_selectAll);
 
         TextView reset = (TextView) findViewById(R.id.tv_reset);
         TextView complate = (TextView) findViewById(R.id.tv_complate);
@@ -94,19 +91,7 @@ public class SendActivity extends BaseActivity {
         });
 
 
-        //底部接单按钮
-        btn_send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(SendActivity.this);
-                builder.setMessage("您有N(订单数)条订单发货成功！");
-                builder.create();
-                builder.show();
-
-
-            }
-        });
         //筛选
         ib_choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,42 +106,37 @@ public class SendActivity extends BaseActivity {
         gv_list = new ArrayList<>();
     }
 
-        private void initSchoolData() {
-            HttpUtils utils = new HttpUtils();
-            RequestParams params = new RequestParams();
-            params.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
+    private void initSchoolData() {
+        HttpUtils utils = new HttpUtils();
+        RequestParams params = new RequestParams();
+        params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
 
-            utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=com_list", params,
-                    new RequestCallBack<String>() {
-                        @Override
-                        public void onSuccess(ResponseInfo<String> responseInfo) {
-                            String result = responseInfo.result;
-                            Gson gson = new Gson();
-                            OnlySchoolBean onlySchoolInfo= gson.fromJson(result, OnlySchoolBean.class);
+        utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=com_list", params,
+                new RequestCallBack<String>() {
+                    @Override
+                    public void onSuccess(ResponseInfo<String> responseInfo) {
+                        String result = responseInfo.result;
+                        Gson gson = new Gson();
+                        OnlySchoolBean onlySchoolInfo = gson.fromJson(result, OnlySchoolBean.class);
 
-                            System.out.println("hhh:"+result);
-                            gv_list.clear();
-                            gv_list.addAll(onlySchoolInfo.getData());
+                        System.out.println("hhh:" + result);
+                        gv_list.clear();
+                        gv_list.addAll(onlySchoolInfo.getData());
 
-                            if (gv_list!=null){
+                        if (gv_list != null) {
 
-                                rightMenuView.setAdapter(new SendRightAdapter(gv_list,SendActivity.this));
-                            }
-
-
+                            rightMenuView.setAdapter(new SendRightAdapter(gv_list, SendActivity.this));
                         }
 
-                        @Override
-                        public void onFailure(HttpException error, String msg) {
-                            Toast.makeText(BaseApplication.getContext(),"获取数据失败",Toast.LENGTH_SHORT).show();
 
-                        }
-                    });
+                    }
 
+                    @Override
+                    public void onFailure(HttpException error, String msg) {
+                        Toast.makeText(BaseApplication.getContext(), "获取数据失败", Toast.LENGTH_SHORT).show();
 
-
-
-
+                    }
+                });
 
 
         sendList = new ArrayList<>();
@@ -167,7 +147,7 @@ public class SendActivity extends BaseActivity {
                 Intent intent = new Intent(SendActivity.this, SendInfoActivity.class);
                 intent.putExtra("listId", listId);
                 startActivity(intent);
-
+                finish();
             }
         });
 
@@ -180,25 +160,24 @@ public class SendActivity extends BaseActivity {
             }
         });
 
-            utils = getHttpUtils();
+        utils = getHttpUtils();
 
-            params = new RequestParams();
+        params = new RequestParams();
         params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
-        params.addBodyParameter("from_app","1");
+        params.addBodyParameter("from_app", "1");
         params.addBodyParameter("start_date", (new Date(0)).getTime() / 1000 + "");
         params.addBodyParameter("end_date", System.currentTimeMillis() / 1000 + "");
-        params.addBodyParameter("page",  "1");
+        params.addBodyParameter("page", "1");
         params.addBodyParameter("rows", "40");
-        params.addBodyParameter("status","2");
+        params.addBodyParameter("status", "2");
 
         utils.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_BUY_ORDER_LIST,
                 params, new RequestCallBack<String>() {
 
 
-
                     @Override
                     public void onFailure(HttpException error, String msg) {
-                       Toast.makeText(BaseApplication.getContext(),"访问失败",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BaseApplication.getContext(), "访问失败", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -210,7 +189,7 @@ public class SendActivity extends BaseActivity {
 
                         sendList.clear();
                         sendList.addAll(listInfo.getData().getRows());
-                        sendAdapter = new SendAdapter(sendList,SendActivity.this,selectAlls);
+                        sendAdapter = new SendAdapter(sendList, SendActivity.this, selectAlls);
                         listView.setAdapter(sendAdapter);
 
 
@@ -221,6 +200,7 @@ public class SendActivity extends BaseActivity {
 
 
     }
+
     private void initDrawerLayout() {
 
         drawerLayout = (DrawerLayout) super.findViewById(R.id.drawer_layout);

@@ -93,6 +93,7 @@
             android:layout_alignStart="@id/tv_purchase_total"
             android:gravity="center"
             android:text="订单数"
+            android:layout_marginBottom="8dp"
             android:textColor="#535353" />
 
     </RelativeLayout>

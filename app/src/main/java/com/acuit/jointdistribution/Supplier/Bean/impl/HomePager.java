@@ -3,6 +3,7 @@ package com.acuit.jointdistribution.Supplier.Bean.impl;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
@@ -10,6 +11,7 @@ import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Acitivity.CommandActivity;
+import com.acuit.jointdistribution.Supplier.Acitivity.MessageActivity;
 import com.acuit.jointdistribution.Supplier.Acitivity.PickingActivity;
 import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
 import com.acuit.jointdistribution.Supplier.Acitivity.SendActivity;
@@ -38,6 +40,7 @@ public class HomePager extends BasePager {
     private TextView picking;
     private TextView send;
     private TextView command;
+    private ImageView message;
 
     public HomePager(Activity activity) {
         super(activity);
@@ -62,6 +65,17 @@ public class HomePager extends BasePager {
         send = (TextView) view.findViewById(R.id.tv_send);
         tv_order = (TextView) view.findViewById(R.id.tv_order);
         command = (TextView) view.findViewById(R.id.tv_command);
+        message = (ImageView) view.findViewById(R.id.iv_home_message);
+
+
+        //消息
+
+        message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivity.startActivity(new Intent(BaseApplication.getContext(), MessageActivity.class));
+            }
+        });
         //配货
        picking.setOnClickListener(new View.OnClickListener() {
            @Override

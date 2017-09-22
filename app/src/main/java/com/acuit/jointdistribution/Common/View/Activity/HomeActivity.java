@@ -82,17 +82,17 @@ public class HomeActivity extends BaseActivity {
      *
      * @param pwd
      */
-//    private void judgePwd(String pwd) {
-//
-//        if (Tools.tooSimple(pwd)) {
-//
-//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//            builder.setMessage("密码太过简单，请修改密码");
-//            builder.create().show();
-//
-//        }
-//
-//    }
+    private void judgePwd(String pwd) {
+
+        if (Tools.tooSimple(pwd)) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("密码太过简单，请修改密码");
+            builder.create().show();
+
+        }
+
+    }
 
 
     @Override

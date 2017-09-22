@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -31,6 +30,8 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_margin="10dp"
             android:background="#00000000"
             android:src="@mipmap/icon_nav_back" />
@@ -40,6 +41,8 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_margin="10dp"
             android:background="#00000000"
             android:src="@mipmap/icon_nav_scree" />
@@ -48,72 +51,107 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@mipmap/icon_home_phd" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:text="配货单"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:paddingLeft="10dp">
+        android:padding="15dp">
 
         <TextView
             android:id="@+id/tv_area"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+
+            android:layout_weight="1"
             android:text="配送区域:" />
 
         <TextView
             android:id="@+id/tv_picking_dep_brief_name"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="right"
             android:text="紫金港" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:paddingLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="15dp">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="计划送达日期："/>
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="计划送达日期：" />
+
         <TextView
             android:id="@+id/tv_picking_create_date"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:text="shijian"
-            android:gravity="center"/>
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="shijian" />
 
     </LinearLayout>
+
     <LinearLayout
-        android:paddingLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="15dp">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="制单日期："/>
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="制单日期：" />
+
         <TextView
             android:id="@+id/tv_picking_make_date"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:text="time"/>
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="time" />
 
 
     </LinearLayout>
+
     <ListView
         android:id="@+id/lv_pickingList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
     </ListView>
-
-
 
 
 </LinearLayout>

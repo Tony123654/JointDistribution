@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="采购变更单详情"
+            android:text="订单详情"
             android:textColor="#FFF"
             android:textSize="24sp" />
 
@@ -60,157 +60,181 @@
             android:textSize="24sp" />
 
     </RelativeLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:id="@+id/linearLayout"
-    android:layout_below="@+id/relativeLayout3"
-    android:layout_alignParentStart="true">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="20dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:src="@mipmap/icon" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout3"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:padding="20dp">
 
-            <TextView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="采购变更单" />
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:src="@mipmap/icon" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="编号:" />
+                    android:gravity="center"
+                    android:text="采购变更单"
+                    android:textColor="#757575" />
 
-                <TextView
-                    android:id="@+id/tv_alter_code"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="code" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="编号:"
+                        android:textColor="#B6B6B6" />
+
+                    <TextView
+                        android:id="@+id/tv_alter_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="code"
+                        android:textColor="#B6B6B6" />
+
+                </LinearLayout>
 
             </LinearLayout>
-
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:text="部门"
+                android:textColor="#B6B6B6" />
+
+            <TextView
+                android:id="@+id/tv_alter_dep_root_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="浙大（紫金港）" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:text="计划送达日期"
+                android:textColor="#B6B6B6" />
+
+            <TextView
+                android:id="@+id/tv_alter_plan_date"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="2017" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:text="制单日期"
+                android:textColor="#B6B6B6" />
+
+            <TextView
+                android:id="@+id/tv_alter_create_date"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="2018" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="#F5F5F5"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+           android:paddingTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+               android:layout_marginLeft="80dp"
+                android:text="原总数量：" />
+
+            <TextView
+
+                android:id="@+id/tv_alter_total_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00.00" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="现总数量：" />
+
+            <TextView
+                android:id="@+id/tv_alter_e_amount"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00.00" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_alter_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
     </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:text="校区"/>
-    <TextView
-        android:id="@+id/tv_alter_dep_root_name"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-
-        android:layout_height="wrap_content"
-        android:text="浙大（紫金港）"/>
-</LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="计划送达日期" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-
-            android:id="@+id/tv_alter_plan_date"
-            android:layout_height="wrap_content"
-            android:text="2017"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:text="制单日期"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-
-            android:id="@+id/tv_alter_create_date"
-            android:layout_height="wrap_content"
-            android:text="2018"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:text="原总数量："/>
-        <TextView
-
-            android:layout_width="0dp"
-            android:layout_weight="1"
-
-            android:id="@+id/tv_alter_total_amount"
-            android:layout_height="wrap_content"
-            android:text="00.00"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:text="现总数量："/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-
-            android:id="@+id/tv_alter_e_amount"
-            android:layout_height="wrap_content"
-            android:text="00.00"/>
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/lv_alter_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </ListView>
-
-</LinearLayout>
-
 
 
 </RelativeLayout>

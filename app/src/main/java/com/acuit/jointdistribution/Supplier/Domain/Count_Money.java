@@ -16,7 +16,7 @@ public class Count_Money {
 
     /**
      * code : 200
-     * data : {"day":{"count":"0","money":0},"mon":{"count":"39","money":2.00007356973E9},"week":{"count":"3","money":12327.5}}
+     * data : {"day":{"count":"18","money":6569.7},"mon":{"count":"58","money":77297.41},"week":{"count":"22","money":7108.8}}
      * msg : 获取数据成功
      */
 
@@ -50,9 +50,9 @@ public class Count_Money {
 
     public static class DataBean {
         /**
-         * day : {"count":"0","money":0}
-         * mon : {"count":"39","money":2.00007356973E9}
-         * week : {"count":"3","money":12327.5}
+         * day : {"count":"18","money":6569.7}
+         * mon : {"count":"58","money":77297.41}
+         * week : {"count":"22","money":7108.8}
          */
 
         private DayBean day;
@@ -85,12 +85,12 @@ public class Count_Money {
 
         public static class DayBean {
             /**
-             * count : 0
-             * money : 0
+             * count : 18
+             * money : 6569.7
              */
 
             private String count;
-            private int money;
+            private double money;
 
             public String getCount() {
                 return count;
@@ -100,19 +100,19 @@ public class Count_Money {
                 this.count = count;
             }
 
-            public int getMoney() {
+            public double getMoney() {
                 return money;
             }
 
-            public void setMoney(int money) {
+            public void setMoney(double money) {
                 this.money = money;
             }
         }
 
         public static class MonBean {
             /**
-             * count : 39
-             * money : 2.00007356973E9
+             * count : 58
+             * money : 77297.41
              */
 
             private String count;
@@ -137,8 +137,8 @@ public class Count_Money {
 
         public static class WeekBean {
             /**
-             * count : 3
-             * money : 12327.5
+             * count : 22
+             * money : 7108.8
              */
 
             private String count;

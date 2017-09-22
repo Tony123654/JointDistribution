@@ -34,9 +34,7 @@ public class MyAdapter extends BaseAdapter {
     private ArrayList<Integer> selectAll;
     private ArrayList<OrderListBean.DataBean.RowsBean> mList;
 
-    public
-
-    MyAdapter(ArrayList<OrderListBean.DataBean.RowsBean> mList, ReceivedActivity mActivty, ArrayList<Integer> selectAll) {
+    public MyAdapter(ArrayList<OrderListBean.DataBean.RowsBean> mList, ReceivedActivity mActivty, ArrayList<Integer> selectAll) {
         this.mList = mList;
         this.mActivty = mActivty;
         this.selectAll = selectAll;
@@ -103,6 +101,9 @@ public class MyAdapter extends BaseAdapter {
         } else {
             holder.rb_item.setChecked(false);
         }
+        holder.total_amount.setText(item.getTotal_amount());
+        holder.total_money.setText(item.getTotal_money());
+
 
         final GlobalValue globalValue = new GlobalValue();
         final ViewHolder finalHolder = holder;

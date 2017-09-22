@@ -240,6 +240,7 @@ public class PurchaseChangedActivity extends BaseActivity {
                 Intent intent = new Intent(PurchaseChangedActivity.this, PurchaseChangedInfoActivity.class);
                 intent.putExtra("alter_id", alter_id);
                 startActivity(intent);
+                finish();
 
 
             }

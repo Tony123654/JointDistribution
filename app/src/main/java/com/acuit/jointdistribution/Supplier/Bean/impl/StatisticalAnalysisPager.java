@@ -51,11 +51,11 @@ public class StatisticalAnalysisPager extends BasePager {
         flContainer.addView(view);
 
         day_total_money = (TextView) view.findViewById(R.id.day_total_money);
-        day_total_count = (TextView) view.findViewById(R.id.day_total_count);
+        day_total_count = (TextView) view.findViewById(R.id.day_total_amount);
         week_total_money = (TextView) view.findViewById(R.id.week_total_money);
-        week_total_count = (TextView) view.findViewById(R.id.week_total_count);
+        week_total_count = (TextView) view.findViewById(R.id.week_total_amount);
         month_total_money = (TextView) view.findViewById(R.id.month_total_money);
-        month_total_count = (TextView) view.findViewById(R.id.month_total_count);
+        month_total_count = (TextView) view.findViewById(R.id.month_total_amount);
 
 
         HttpUtils http = new HttpUtils();
@@ -71,7 +71,6 @@ public class StatisticalAnalysisPager extends BasePager {
                 System.out.println("json:" + result);
                 Count_Money count_money = gson.fromJson(result, Count_Money.class);
 
-                //数据可以获取到就是不能显示到界面（数据类型的问题）
 
                 day_total_money.setText(count_money.getData().getDay().getMoney()+"");
                 day_total_count.setText(count_money.getData().getDay().getCount()+"");

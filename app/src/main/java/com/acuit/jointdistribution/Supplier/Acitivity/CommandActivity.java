@@ -22,6 +22,7 @@ public class CommandActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(CommandActivity.this,HomeActivity.class));
+                finish();
             }
         });
 

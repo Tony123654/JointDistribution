@@ -84,7 +84,7 @@ public class ReceivedActivity extends BaseActivity {
         ib_back_home = (ImageView) findViewById(R.id.ib_back_receive_menu);
 
         ib_receive_choose = (ImageView) findViewById(R.id.ib_receive_choose);
-         lv_list = (ListView) findViewById(R.id.lv_receive_view);
+        lv_list = (ListView) findViewById(R.id.lv_receive_view);
 
         TextView receiveComplate = (TextView) findViewById(R.id.tv_complate);
         TextView receiveReset = (TextView) findViewById(R.id.tv_reset);
@@ -127,10 +127,11 @@ public class ReceivedActivity extends BaseActivity {
 
 
                 startActivity(new Intent(ReceivedActivity.this, HomeActivity.class));
+                finish();
             }
         });
 
-         mList = new ArrayList<>();
+        mList = new ArrayList<>();
 //全选
         final GlobalValue globalValue = new GlobalValue();
         selectAllButton.setOnClickListener(new View.OnClickListener() {
@@ -178,7 +179,7 @@ public class ReceivedActivity extends BaseActivity {
     private void initSchoolData() {
         HttpUtils utils = new HttpUtils();
         RequestParams params = new RequestParams();
-        params.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
+        params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
 
         utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=com_list", params,
                 new RequestCallBack<String>() {
@@ -186,22 +187,22 @@ public class ReceivedActivity extends BaseActivity {
                     public void onSuccess(ResponseInfo<String> responseInfo) {
                         String result = responseInfo.result;
                         Gson gson = new Gson();
-                        OnlySchoolBean onlySchoolInfo= gson.fromJson(result, OnlySchoolBean.class);
+                        OnlySchoolBean onlySchoolInfo = gson.fromJson(result, OnlySchoolBean.class);
 
-                        System.out.println("hhh:"+result);
+                        System.out.println("hhh:" + result);
                         gv_list.clear();
                         gv_list.addAll(onlySchoolInfo.getData());
 
-                        if (gv_list!=null)
+                        if (gv_list != null)
 
-                            receiveRightAdapter = new ReceiveRightAdapter(gv_list,ReceivedActivity.this);
+                            receiveRightAdapter = new ReceiveRightAdapter(gv_list, ReceivedActivity.this);
                         rightMenuView.setAdapter(receiveRightAdapter);
 
                     }
 
                     @Override
                     public void onFailure(HttpException error, String msg) {
-                        Toast.makeText(BaseApplication.getContext(),"获取数据失败",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BaseApplication.getContext(), "获取数据失败", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -220,8 +221,6 @@ public class ReceivedActivity extends BaseActivity {
             drawerLayout.openDrawer(Gravity.END);
         }
     }
-
-
 
 
     private void initData() {
@@ -271,7 +270,7 @@ public class ReceivedActivity extends BaseActivity {
                         if (mList.size() == 0) {
                             //暂无订单
                         } else {
-                             mAdapter = new MyAdapter(mList, ReceivedActivity.this, selectAll);
+                            mAdapter = new MyAdapter(mList, ReceivedActivity.this, selectAll);
                             lv_list.setAdapter(mAdapter);
                         }
 
@@ -296,6 +295,7 @@ public class ReceivedActivity extends BaseActivity {
                 Intent intent = new Intent(ReceivedActivity.this, ReceivedMenuInfoActivity.class);
                 intent.putExtra("listId", listId);
                 ReceivedActivity.this.startActivity(intent);
+                finish();
 
             }
         });
@@ -321,7 +321,8 @@ public class ReceivedActivity extends BaseActivity {
 
     public void unselectedOrder(int position) {
         System.out.println("aaa unselected:" + position + "  seletctedOrders.size():" + selectedOrders.size());
-        if (selectedOrders.size()!=0) {
+        if (selectedOrders.size() != 0) {
+            //
             selectedOrders.remove(selectedOrders.indexOf(position + ""));
             calculate();
             selectAllButton.setChecked(false);

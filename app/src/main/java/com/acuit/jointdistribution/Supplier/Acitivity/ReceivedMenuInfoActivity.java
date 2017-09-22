@@ -81,6 +81,7 @@ public class ReceivedMenuInfoActivity extends BaseActivity {
                     @Override
                     public void onClick(View v) {
                         startActivity(new Intent(ReceivedMenuInfoActivity.this,ReceivedActivity.class));
+                        finish();
                     }
                 });
 
@@ -129,6 +130,7 @@ public class ReceivedMenuInfoActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ReceivedMenuInfoActivity.this, ReceivedActivity.class);
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -193,7 +195,7 @@ public class ReceivedMenuInfoActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(HttpException error, String msg) {
-                        ToastUtils.showToast(BaseApplication.getContext(), msg);
+                        Toast.makeText(BaseApplication.getContext(),"获取数据异常，请稍后再试",Toast.LENGTH_SHORT).show();
                     }
                 });
 

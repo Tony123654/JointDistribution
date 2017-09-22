@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.acuit.jointdistribution.Supplier.Acitivity.BiddingMessageActivity">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#23b587">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="招标项目"
+            android:textColor="#FFF"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/bidding_message_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:padding="13dp"
+            android:src="@mipmap/icon_nav_back" />
+
+
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/lv_bidding_message_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </ListView>
+</LinearLayout>
