@@ -183,7 +183,7 @@ public class ImageFactory {
 
     @Nullable
     private static File checkFileExist(String outPath) {
-        System.out.println("aaa outpath:" + outPath);
+//        System.out.println("aaa outpath:" + outPath);
         String nameFromPath = CacheUtils.getNameFromPath(outPath);
 
         String dirPath = outPath.replace(File.separator + nameFromPath, "");
