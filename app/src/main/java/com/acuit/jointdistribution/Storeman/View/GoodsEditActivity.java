@@ -47,6 +47,7 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
     private int position;
     //    private BaseArrayList<Integer> savedGoodsPosition;
     private BaseArrayList<StoreInDetailBean.DataBean.ListBean> goodsList;
+    private BaseArrayList<StoreInDetailBean.DataBean.ListBean> savedGoodslist;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,11 +91,18 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
 //        super.onBackPressed();
 //        moveTaskToBack(true);
 
+        savedGoodslist = new BaseArrayList<>();
+        savedGoodslist.clear();
+        for (StoreInDetailBean.DataBean.ListBean goodsBean : goodsList) {
+            if (goodsBean.isSaved() && !goodsBean.isEdited()) {
+                savedGoodslist.add(goodsBean);
+            }
+        }
         Intent data = new Intent();
-        data.putExtra(GOODSLIST_RESULT, goodsList);
+        data.putExtra(GOODSLIST_RESULT, savedGoodslist);
         setResult(RESULT_CODE, data);
 
-        GoodsEditActivity.this.finish();
+        finish();
     }
 
     private void initView() {
@@ -110,7 +118,7 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
 //        savedGoodsPosition = new BaseArrayList<Integer>();
 
         position = getIntent().getIntExtra("position", -1);
-        goodsList = new BaseArrayList<StoreInDetailBean.DataBean.ListBean>();
+        goodsList = new BaseArrayList<>();
         goodsList.addAll((Collection<? extends StoreInDetailBean.DataBean.ListBean>) getIntent().getSerializableExtra("GoodsList"));
 
 //        System.out.println("aaa GoodsEditActivity goodslist:" + goodsList.toString());

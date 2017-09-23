@@ -122,7 +122,6 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     public void onResume() {
         super.onResume();
 
-
         if (null == spinnerAdapter) {
             initSpinner();
         } else {
@@ -190,7 +189,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 //            System.out.println("aaa onresume().standard:" + goodsBean.getCheck_standard());
         }
 
-        if (goodsBean.isSavedEdition()) {
+        if (goodsBean.isSaved() && !goodsBean.isEdited()) {
             mResults.clear();
             for (String path : goodsBean.getImagePath().split(",")) {
                 mResults.add(path);
@@ -211,17 +210,17 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
 
     private void initEvent() {
+
         tvSave.setOnClickListener(this);
+        ivAddPic1.setLongClickable(true);
+        ivAddPic2.setLongClickable(true);
+        ivAddPic3.setLongClickable(true);
         ivAddPic1.setOnClickListener(this);
         ivAddPic2.setOnClickListener(this);
         ivAddPic3.setOnClickListener(this);
-        ivAddPic1.setLongClickable(true);
         ivAddPic1.setOnLongClickListener(this);
-        ivAddPic2.setLongClickable(true);
         ivAddPic2.setOnLongClickListener(this);
-        ivAddPic3.setLongClickable(true);
         ivAddPic3.setOnLongClickListener(this);
-        ivAddPic2.setOnClickListener(this);
         ivReciverPlus.setOnClickListener(this);
         ivReciverMinus.setOnClickListener(this);
         ivSubtractPlus.setOnClickListener(this);
@@ -253,6 +252,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
             @Override
             public void afterTextChanged(Editable s) {
+                goodsBean.setEdited(true);
                 String str = String.valueOf(s);
                 if (null != str && !str.equals("")) {
                     reciverAmount = Float.valueOf(str);
@@ -290,6 +290,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
             @Override
             public void afterTextChanged(Editable s) {
+                goodsBean.setEdited(true);
                 String str = String.valueOf(s);
                 if (null != str && !str.equals("")) {
                     rejectAmount = Float.valueOf(str);
@@ -303,6 +304,8 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     }
 
     private void reviewAmount(EditText view, String str) {
+
+        goodsBean.setEdited(true);
         String amount = view.getText().toString();
 
         if (view.getId() == R.id.et_reciverAmount) {
@@ -409,18 +412,20 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
      * 由goodsEditActivity调用，传入选择后的图片(以及压缩图片)路径
      *
      * @param pics
-     * @param tempPics
+     * @param temp
      */
-    public void setPic(ArrayList<String> pics, ArrayList<String> tempPics) {
-//        System.out.println("aaa setPic is run!");
+    public void setPic(ArrayList<String> pics, ArrayList<String> temp) {
+
         if (null == pics || null == tempPics) {
             return;
         }
 
-        mResults = pics;
-        this.tempPics = tempPics;
+        goodsBean.setEdited(true);
 
-        showTempPics();
+        mResults = pics;
+        tempPics = temp;
+
+//        showTempPics();
     }
 
     private void showTempPics() {
@@ -476,7 +481,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerRejectResion.setAdapter(spinnerAdapter);
 
-                    if (goodsBean.isSavedEdition()) {
+                    if (goodsBean.isSaved() && !goodsBean.isEdited()) {
                         initData();
                     }
                 }
@@ -550,7 +555,8 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         goodsBean.setTempImagePath(tempImages.toString());
 
 
-        goodsBean.setSavedEdition(true);
+        goodsBean.setSaved(true);
+        goodsBean.setEdited(false);
 
         Toast.makeText(mActivity, "保存成功", Toast.LENGTH_SHORT).show();
 //        System.out.println("aaa save goods:" + goodsBean);
@@ -651,7 +657,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         }
 
         showTempPics();
-        goodsBean.setSavedEdition(false);
+        goodsBean.setEdited(true);
         return true;
     }
 }

@@ -817,17 +817,10 @@ public class StoreInDetailBean extends DataSupport {
             private String buy_price;
             private String unit;
 
-            private boolean savedEdition = false;
+            private boolean isSaved = false;
+            private boolean isEdited = false;
             private String imagePath = "";
             private String tempImagePath = "";
-
-            public boolean isSavedEdition() {
-                return savedEdition;
-            }
-
-            public void setSavedEdition(boolean savedEdition) {
-                this.savedEdition = savedEdition;
-            }
 
             @Override
             public String toString() {
@@ -869,10 +862,27 @@ public class StoreInDetailBean extends DataSupport {
                         ", price_unit='" + price_unit + '\'' +
                         ", buy_price='" + buy_price + '\'' +
                         ", unit='" + unit + '\'' +
-                        ", savedEdition=" + savedEdition +
+                        ", isSaved=" + isSaved +
+                        ", isEdited=" + isEdited +
                         ", imagePath='" + imagePath + '\'' +
                         ", tempImagePath='" + tempImagePath + '\'' +
                         '}';
+            }
+
+            public boolean isEdited() {
+                return isEdited;
+            }
+
+            public void setEdited(boolean edited) {
+                isEdited = edited;
+            }
+
+            public boolean isSaved() {
+                return isSaved;
+            }
+
+            public void setSaved(boolean saved) {
+                this.isSaved = saved;
             }
 
             public String getImagePath() {

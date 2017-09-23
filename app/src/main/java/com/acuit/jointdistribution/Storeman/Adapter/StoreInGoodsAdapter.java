@@ -51,7 +51,7 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
 
         viewHolder.getTvGoodsName().setText(itemBean.getStock_name());
         viewHolder.getTvGoodsWeight().setText(itemBean.getOrder_amount() + itemBean.getUnit());
-        viewHolder.setEdited(itemBean.isSavedEdition());
+        viewHolder.setEdited(itemBean.isSaved());
 
     }
 
@@ -99,7 +99,7 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
 
         public void setEdited(boolean edited) {
             if (edited) {
-                itemView.setBackgroundColor(0xffE2EFEA);
+                itemView.setBackgroundColor(0xffCCEFD2);
             } else {
                 itemView.setBackgroundColor(0xffFFFFFF);
             }

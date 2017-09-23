@@ -31,7 +31,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -234,9 +234,19 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == StoreInGoodsAdapter.REQUEST_CODE) {
             if (resultCode == GoodsEditActivity.RESULT_CODE) {
-                goodsList.clear();
-                goodsList.addAll((Collection<? extends StoreInDetailBean.DataBean.ListBean>) data.getSerializableExtra(GoodsEditActivity.GOODSLIST_RESULT));
-                assert goodsList != null;
+//                goodsList.clear();
+//                goodsList.addAll((Collection<? extends StoreInDetailBean.DataBean.ListBean>) data.getSerializableExtra(GoodsEditActivity.GOODSLIST_RESULT));
+
+                List<StoreInDetailBean.DataBean.ListBean> dataList = (List<StoreInDetailBean.DataBean.ListBean>) data.getSerializableExtra(GoodsEditActivity.GOODSLIST_RESULT);
+                for (int i = 0; i < goodsList.size(); i++) {
+                    StoreInDetailBean.DataBean.ListBean goodsBean = goodsList.get(i);
+                    for (int j = 0; j < dataList.size(); j++) {
+                        StoreInDetailBean.DataBean.ListBean listBean = dataList.get(j);
+                        if (goodsBean.getId().equals(listBean.getId())) {
+                            goodsList.set(i, listBean);
+                        }
+                    }
+                }
 
                 storeInGoodsAdapter.notifyDataSetChanged();
             }
