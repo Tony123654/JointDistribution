@@ -122,14 +122,16 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     public void onResume() {
         super.onResume();
 
-//        initData();
 
-        initSpinner();
+        if (null == spinnerAdapter) {
+            initSpinner();
+        } else {
+            spinnerRejectResion.setAdapter(spinnerAdapter);
+            initData();
+        }
         spinnerRejectResion.setOnItemSelectedListener(this);
 
-        if (null != tempPics && 0 < tempPics.size()) {
-            showPics();
-        }
+
     }
 
     @Override
@@ -185,9 +187,28 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
         if (null != spinnerAdapter && !goodsBean.getCheck_standard().equals("")) {
             spinnerRejectResion.setSelection(Integer.parseInt(goodsBean.getCheck_standard()) + 1, true);
-            System.out.println("aaa onresume().standard:" + goodsBean.getCheck_standard());
+//            System.out.println("aaa onresume().standard:" + goodsBean.getCheck_standard());
         }
+
+        if (goodsBean.isSavedEdition()) {
+            mResults.clear();
+            for (String path : goodsBean.getImagePath().split(",")) {
+                mResults.add(path);
+            }
+
+            tempPics.clear();
+            for (String tempPic : goodsBean.getTempImagePath().split(",")) {
+                tempPics.add(tempPic);
+            }
+            showTempPics();
+        } else {
+            if (null != tempPics && 0 < tempPics.size()) {
+                showTempPics();
+            }
+        }
+
     }
+
 
     private void initEvent() {
         tvSave.setOnClickListener(this);
@@ -384,8 +405,14 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 //    }
 
 
+    /**
+     * 由goodsEditActivity调用，传入选择后的图片(以及压缩图片)路径
+     *
+     * @param pics
+     * @param tempPics
+     */
     public void setPic(ArrayList<String> pics, ArrayList<String> tempPics) {
-
+//        System.out.println("aaa setPic is run!");
         if (null == pics || null == tempPics) {
             return;
         }
@@ -393,10 +420,10 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         mResults = pics;
         this.tempPics = tempPics;
 
-        showPics();
+        showTempPics();
     }
 
-    private void showPics() {
+    private void showTempPics() {
 
         if (0 == tempPics.size()) {
 //        没有图片
@@ -449,7 +476,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerRejectResion.setAdapter(spinnerAdapter);
 
-                    if (goodsBean.isEdited()) {
+                    if (goodsBean.isSavedEdition()) {
                         initData();
                     }
                 }
@@ -491,7 +518,6 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
 
 //        保存图片url
         StringBuilder picUrls = new StringBuilder();
-
         if (null == uploadImageBean) {
             picUrls.replace(0, picUrls.length(), "");
         } else {
@@ -505,11 +531,29 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         }
         goodsBean.setPic_url(picUrls.toString());
 
+        StringBuilder imagePaths = new StringBuilder();
+        for (int i = 0; i < mResults.size(); i++) {
+            imagePaths.append(mResults.get(i));
+            if (i != mResults.size()) {
+                imagePaths.append(",");
+            }
+        }
+        goodsBean.setImagePath(imagePaths.toString());
+
+        StringBuilder tempImages = new StringBuilder();
+        for (int i = 0; i < tempPics.size(); i++) {
+            tempImages.append(tempPics.get(i));
+            if (i != tempPics.size()) {
+                tempImages.append(",");
+            }
+        }
+        goodsBean.setTempImagePath(tempImages.toString());
+
+
+        goodsBean.setSavedEdition(true);
 
         Toast.makeText(mActivity, "保存成功", Toast.LENGTH_SHORT).show();
-
-        goodsBean.setEdited(true);
-        System.out.println("aaa save goods:" + goodsBean);
+//        System.out.println("aaa save goods:" + goodsBean);
 
         mActivity.onBackPressed();
     }
@@ -518,7 +562,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        System.out.println("aaa spinner.onItemSelected:" + goodsBean.getStock_name());
+//        System.out.println("aaa spinner.onItemSelected:" + goodsBean.getStock_name());
 
         if (isInit && null != goodsBean.getCheck_standard() && !goodsBean.getCheck_standard().equals("")) {
 //            初始化view，且选过理由；恢复选项：
@@ -595,20 +639,19 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
             case R.id.iv_addPic1:
                 mResults.remove(0);
                 tempPics.remove(0);
-                showPics();
                 break;
             case R.id.iv_addPic2:
                 mResults.remove(1);
                 tempPics.remove(1);
-                showPics();
                 break;
             case R.id.iv_addPic3:
                 mResults.remove(2);
                 tempPics.remove(2);
-                showPics();
                 break;
         }
 
+        showTempPics();
+        goodsBean.setSavedEdition(false);
         return true;
     }
 }

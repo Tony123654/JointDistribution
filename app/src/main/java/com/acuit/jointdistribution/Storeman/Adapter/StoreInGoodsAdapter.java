@@ -51,7 +51,7 @@ public class StoreInGoodsAdapter extends RecyclerView.Adapter {
 
         viewHolder.getTvGoodsName().setText(itemBean.getStock_name());
         viewHolder.getTvGoodsWeight().setText(itemBean.getOrder_amount() + itemBean.getUnit());
-        viewHolder.setEdited(itemBean.isEdited());
+        viewHolder.setEdited(itemBean.isSavedEdition());
 
     }
 

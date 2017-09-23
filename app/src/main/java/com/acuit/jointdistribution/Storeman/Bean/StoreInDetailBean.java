@@ -16,7 +16,7 @@ import java.util.List;
  * 更新描述: <p>
  */
 
-public class StoreInDetailBean extends DataSupport{
+public class StoreInDetailBean extends DataSupport {
 
     /**
      * code : 200
@@ -817,16 +817,17 @@ public class StoreInDetailBean extends DataSupport{
             private String buy_price;
             private String unit;
 
-            private boolean isEdited = false;
+            private boolean savedEdition = false;
+            private String imagePath = "";
+            private String tempImagePath = "";
 
-            public boolean isEdited() {
-                return isEdited;
+            public boolean isSavedEdition() {
+                return savedEdition;
             }
 
-            public void setEdited(boolean edited) {
-                isEdited = edited;
+            public void setSavedEdition(boolean savedEdition) {
+                this.savedEdition = savedEdition;
             }
-
 
             @Override
             public String toString() {
@@ -868,10 +869,27 @@ public class StoreInDetailBean extends DataSupport{
                         ", price_unit='" + price_unit + '\'' +
                         ", buy_price='" + buy_price + '\'' +
                         ", unit='" + unit + '\'' +
-                        ", isEdited=" + isEdited +
+                        ", savedEdition=" + savedEdition +
+                        ", imagePath='" + imagePath + '\'' +
+                        ", tempImagePath='" + tempImagePath + '\'' +
                         '}';
             }
 
+            public String getImagePath() {
+                return imagePath;
+            }
+
+            public void setImagePath(String imagePath) {
+                this.imagePath = imagePath;
+            }
+
+            public String getTempImagePath() {
+                return tempImagePath;
+            }
+
+            public void setTempImagePath(String tempImagePath) {
+                this.tempImagePath = tempImagePath;
+            }
 
             public String getCheck_standard() {
                 return check_standard;

@@ -113,7 +113,7 @@ public class GoodsEditActivity extends BaseActivity implements View.OnClickListe
         goodsList = new BaseArrayList<StoreInDetailBean.DataBean.ListBean>();
         goodsList.addAll((Collection<? extends StoreInDetailBean.DataBean.ListBean>) getIntent().getSerializableExtra("GoodsList"));
 
-        System.out.println("aaa GoodsEditActivity goodslist:" + goodsList.toString());
+//        System.out.println("aaa GoodsEditActivity goodslist:" + goodsList.toString());
 
         setTitle(goodsList.get(position).getStock_name());
 
