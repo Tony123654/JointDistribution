@@ -3,7 +3,7 @@ package com.acuit.jointdistribution.Storeman.Bean;
 import java.util.List;
 
 /**
- * 类名: StoreInListBean <p>
+ * 类名: StoreInfoListBean <p>
  * 创建人: YanJ <p>
  * 创建时间: 2017/8/29 14:09 <p>
  * 描述:  入库单列表(某供应商)

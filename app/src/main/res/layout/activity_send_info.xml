@@ -42,18 +42,15 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="20dp"
         android:orientation="horizontal"
         android:weightSum="1">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:src="@mipmap/icon_fhd" />
 
         <LinearLayout
@@ -96,42 +93,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
 
         <TextView
             android:id="@+id/t1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="地址:"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/tv_send_request_dep_strs"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_send_address"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-           android:paddingLeft="100dp"
-            android:textSize="16sp"
-            android:text="采购单位" />
-
-        <TextView
-            android:id="@+id/tv_send_dep_brief_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="校区" />
-
-        <TextView
-            android:id="@+id/tv_send_dep_root_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textSize="16sp"
-            android:text="紫金港" />
-
+            android:text="采购地址"
+            android:gravity="center"
+            android:textSize="16sp" />
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -141,7 +123,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginLeft="15dp"
             android:text="计划送达日期："
             android:textSize="15sp" />
 
@@ -149,12 +131,12 @@
             android:id="@+id/tv_send_plan_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:paddingLeft="100dp"
 
             android:text="1212212122" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -164,7 +146,7 @@
             android:id="@+id/tv3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginLeft="15dp"
             android:text="联系人："
             android:textSize="15sp" />
 
@@ -172,18 +154,17 @@
             android:id="@+id/tv_send_contact_person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-android:layout_marginTop="15dp"
             android:layout_marginLeft="100dp"
-            android:text="联系人" />
+            android:text="姓名" />
 
         <TextView
             android:id="@+id/tv_send_contact_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="(1111111)" />
+            android:text="(手机好)" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -193,7 +174,7 @@ android:layout_marginTop="15dp"
             android:id="@+id/tv4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+           android:layout_marginLeft="15dp"
             android:text="制单日期："
             android:textSize="15sp" />
 
@@ -201,48 +182,43 @@ android:layout_marginTop="15dp"
             android:id="@+id/tv_send_create_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="1212112"
-            />
+
+            android:text="1212112" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
- <TextView
+        <TextView
             android:id="@+id/tv_send_stock_name"
             android:layout_width="0dp"
-     android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
+            android:layout_weight="1"
             android:text="商品名"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_send_price"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_width="0dp"
             android:layout_weight="1"
             android:text="价格" />
 
         <TextView
             android:id="@+id/tv_send_unit_name"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:layout_weight="1"
             android:text="单位" />
 
 
     </LinearLayout>
-
-
-
-
-
 
 
     <RelativeLayout
@@ -263,10 +239,11 @@ android:layout_marginTop="15dp"
             android:id="@+id/tv_send_total_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@id/textView30"
-            android:layout_marginEnd="32dp"
-            android:text="5555" />
+            android:layout_marginEnd="31dp"
+            android:text="5555"
+            android:layout_alignBaseline="@+id/textView30"
+            android:layout_alignBottom="@+id/textView30"
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
 </LinearLayout>

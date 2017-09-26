@@ -3,7 +3,6 @@ package com.acuit.jointdistribution.Supplier.Adapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -31,23 +30,34 @@ import static com.acuit.jointdistribution.R.id.rb_item;
 public class MyAdapter extends BaseAdapter {
 
     private ReceivedActivity mActivty;
-    private ArrayList<Integer> selectAll;
-    private ArrayList<OrderListBean.DataBean.RowsBean> mList;
+//    private ArrayList<Integer> selectAll;
+    private ArrayList<Integer> selectedPosition;
+    private ArrayList<OrderListBean.DataBean.RowsBean> dataList;
+    private boolean selectAll = false;
 
-    public MyAdapter(ArrayList<OrderListBean.DataBean.RowsBean> mList, ReceivedActivity mActivty, ArrayList<Integer> selectAll) {
-        this.mList = mList;
+    public MyAdapter(ArrayList<OrderListBean.DataBean.RowsBean> dataList, ReceivedActivity mActivty, ArrayList<Integer> selectAll) {
+        this.dataList = dataList;
         this.mActivty = mActivty;
-        this.selectAll = selectAll;
+//        this.selectAll = selectAll;
+        selectedPosition = new ArrayList<>();
     }
+
+//    @Override
+//    public void notifyDataSetChanged() {
+//        if (dataList.size()>0) {
+//            selectedPosition.clear();
+//        }
+//        super.notifyDataSetChanged();
+//    }
 
     @Override
     public int getCount() {
-        return mList.size();
+        return dataList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mList.get(position);
+        return dataList.get(position);
     }
 
     @Override
@@ -58,6 +68,7 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
+        final GlobalValue globalValue = new GlobalValue();
 
         if (convertView == null) {
             convertView = View.inflate(BaseApplication.getContext(), R.layout.listitem, null);
@@ -72,17 +83,19 @@ public class MyAdapter extends BaseAdapter {
             holder.brief_name = (TextView) convertView.findViewById(R.id.tv_brief_name);
 
 
-            holder.rb_item.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                    if (isChecked) {
-                        mActivty.selectedOrder(position);
-                    } else {
-                        mActivty.unselectedOrder(position);
-                    }
-                }
-            });
+//            holder.rb_item.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                @Override
+//                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//
+//                    System.out.println("aaa setOnCheckedChangeListener is run");
+//                    if (isChecked) {
+//                        mActivty.selectedOrder(position);
+//                    } else {
+//                        mActivty.unselectedOrder(position);
+//                    }
+//                    globalValue.setCheck(isChecked);
+//                }
+//            });
 
             convertView.setTag(holder);
         } else {
@@ -94,32 +107,47 @@ public class MyAdapter extends BaseAdapter {
 
         holder.receive_create_date.setText(item.getCreate_date());
         holder.plan_date.setText(item.getPlan_date());
-
-        if (selectAll.size() > 0) {
-            holder.rb_item.setChecked(true);
-
-        } else {
+//
+//        if (selectAll.size() > 0) {
+//            holder.rb_item.setChecked(true);
+//        } else {
+        if (!selectedPosition.contains(position)) {
             holder.rb_item.setChecked(false);
+        } else {
+            holder.rb_item.setChecked(true);
         }
+//        }
         holder.total_amount.setText(item.getTotal_amount());
         holder.total_money.setText(item.getTotal_money());
 
 
-        final GlobalValue globalValue = new GlobalValue();
         final ViewHolder finalHolder = holder;
         holder.rb_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isCheck = globalValue.isCheck();
-                if (isCheck) {
-                    if (v == finalHolder.rb_item) finalHolder.rb_item.setChecked(false);
-                    mActivty.unselectedOrder(position);
-                } else {
-                    if (v == finalHolder.rb_item) finalHolder.rb_item.setChecked(true);
+                if (selectAll) {
+                    globalValue.setCheck(true);
                 }
+                boolean isCheck = globalValue.isCheck();
+
+                if (isCheck) {
+                    if (v.getId() == finalHolder.rb_item.getId()) {
+                        finalHolder.rb_item.setChecked(false);
+                        selectedPosition.remove(new Integer(position));
+                        mActivty.unselectedOrder(position);
+                    }
+                } else {
+                    if (v.getId() == finalHolder.rb_item.getId()) {
+                        finalHolder.rb_item.setChecked(true);
+                        selectedPosition.add(new Integer(position));
+                        mActivty.selectedOrder(position);
+                    }
+                }
+
                 globalValue.setCheck(!isCheck);
             }
         });
+
 
 //        holder.dep_name.setText(item.getDep_name);
         holder.com_brief_name.setText("(" + item.getCom_brief_name());
@@ -128,6 +156,21 @@ public class MyAdapter extends BaseAdapter {
 
         return convertView;
 
+    }
+
+    public void selectAll() {
+        selectAll = true;
+        selectedPosition.clear();
+        for (int i = 0; i < dataList.size(); i++) {
+            selectedPosition.add(new Integer(i));
+        }
+        notifyDataSetChanged();
+    }
+
+    public void disSelectAll() {
+        selectAll = false;
+        selectedPosition.clear();
+        notifyDataSetChanged();
     }
 
     static class ViewHolder {

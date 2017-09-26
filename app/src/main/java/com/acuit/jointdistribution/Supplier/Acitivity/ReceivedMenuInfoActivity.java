@@ -128,8 +128,8 @@ public class ReceivedMenuInfoActivity extends BaseActivity {
         ib_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ReceivedMenuInfoActivity.this, ReceivedActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(ReceivedMenuInfoActivity.this, ReceivedActivity.class);
+//                startActivity(intent);
                 finish();
 
             }

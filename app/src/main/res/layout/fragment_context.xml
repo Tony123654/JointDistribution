@@ -15,6 +15,7 @@
         android:layout_height="1px"
         android:background="#d6d6d6"
         />
+
     <RadioGroup
         android:id="@+id/rg_group"
         android:layout_width="match_parent"

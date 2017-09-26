@@ -17,13 +17,13 @@ import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
-import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Storeman.Bean.StoreInListBySupplierBean;
 import com.acuit.jointdistribution.Supplier.Adapter.SendAdapter;
 import com.acuit.jointdistribution.Supplier.Adapter.SendRightAdapter;
 import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
-import com.acuit.jointdistribution.Supplier.Domain.SendOrderBean;
+import com.acuit.jointdistribution.Supplier.Domain.StoreInfoListBean;
 import com.google.gson.Gson;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -35,6 +35,7 @@ import com.lidroid.xutils.http.client.HttpRequest;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static com.acuit.jointdistribution.Common.Global.GlobalContants.URL_STORE_IN_LIST;
 import static com.acuit.jointdistribution.Supplier.Utils.MyHttpUtils.getHttpUtils;
 
 /**
@@ -48,9 +49,8 @@ public class SendActivity extends BaseActivity {
     private TextView singleCount;
     private TextView totalAmount;
     private ListView listView;
-    private SendOrderBean listInfo;
     private int page;
-    private ArrayList<SendOrderBean.DataBean.RowsBean> sendList;
+    private ArrayList<StoreInfoListBean.DataBean.StoreInListBean> sendList;
     private ArrayList<String> selectedItemOrders = new ArrayList<>();
     private ArrayList<Integer> selectAlls = new ArrayList<>();
     private RadioButton sendSelectAll;
@@ -58,6 +58,8 @@ public class SendActivity extends BaseActivity {
     private DrawerLayout drawerLayout;
     private GridView rightMenuView;
     private ArrayList<OnlySchoolBean.DataBean> gv_list;
+    private StoreInListBySupplierBean storeInList;
+    private StoreInfoListBean storeInfoListBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +91,6 @@ public class SendActivity extends BaseActivity {
                 builder.create().show();
             }
         });
-
 
 
         //筛选
@@ -171,7 +172,7 @@ public class SendActivity extends BaseActivity {
         params.addBodyParameter("rows", "40");
         params.addBodyParameter("status", "2");
 
-        utils.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_BUY_ORDER_LIST,
+        utils.send(HttpRequest.HttpMethod.POST, URL_STORE_IN_LIST,
                 params, new RequestCallBack<String>() {
 
 
@@ -185,10 +186,12 @@ public class SendActivity extends BaseActivity {
                         String result = responseInfo.result;
                         System.out.println("结果是：" + result);
                         Gson gson = new Gson();
-                        listInfo = gson.fromJson(result, SendOrderBean.class);
+                        storeInfoListBean = gson.fromJson(result, StoreInfoListBean.class);
 
+
+                        System.out.println("ooo:"+storeInList);
                         sendList.clear();
-                        sendList.addAll(listInfo.getData().getRows());
+                        sendList.addAll(storeInfoListBean.getData().getStore_in_list());
                         sendAdapter = new SendAdapter(sendList, SendActivity.this, selectAlls);
                         listView.setAdapter(sendAdapter);
 

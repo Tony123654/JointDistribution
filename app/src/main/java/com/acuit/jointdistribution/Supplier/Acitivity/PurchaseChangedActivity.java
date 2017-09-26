@@ -43,11 +43,11 @@ public class PurchaseChangedActivity extends BaseActivity {
     private TextView paConfirm;
     private ListView paView;
     private ImageView backPurchase;
-    private ImageView purchaseChoose;
-    private Button purchaseConfirm;
-    private RadioButton purchaseSelectAll;
-    private TextView purchaseCount;
-    private ListView purchaseInfoList;
+    private ImageView ivChoose;
+    private Button btnConfirm;
+    private RadioButton rbSelectAll;
+    private TextView tvCount;
+    private ListView lvInfoList;
     private AlterOrderBean alterOrder;
     private PurchaseAdapter purchaseAdapter;
     private ArrayList<AlterOrderBean.DataBean.AlterBean> purchaseList;
@@ -63,12 +63,12 @@ public class PurchaseChangedActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_changed);
 
+        tvCount = (TextView) findViewById(R.id.purchase_tv_total);
+        ivChoose = (ImageView) findViewById(R.id.purchase_ib_choose);
+        btnConfirm = (Button) findViewById(R.id.purchase_btn_confirm);
         backPurchase = (ImageView) findViewById(R.id.ib_back_purchase);
-        purchaseChoose = (ImageView) findViewById(R.id.ib_purchase_choose);
-        purchaseConfirm = (Button) findViewById(R.id.btn_purchase_confirm);
-        purchaseSelectAll = (RadioButton) findViewById(R.id.rb_purchase_select_all);
-        purchaseCount = (TextView) findViewById(R.id.tv_purchase_total);
-        purchaseInfoList = (ListView) findViewById(R.id.lv_purchaseInfoList);
+        lvInfoList = (ListView) findViewById(R.id.purchase_lv_InfoList);
+        rbSelectAll = (RadioButton) findViewById(R.id.purchase_rb_select_all);
 
         backPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +106,7 @@ public class PurchaseChangedActivity extends BaseActivity {
 //        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
 
 
-        purchaseChoose.setOnClickListener(new View.OnClickListener() {
+        ivChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -116,7 +116,7 @@ public class PurchaseChangedActivity extends BaseActivity {
         });
 
 
-        purchaseConfirm.setOnClickListener(new View.OnClickListener() {
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(PurchaseChangedActivity.this);
@@ -125,15 +125,15 @@ public class PurchaseChangedActivity extends BaseActivity {
             }
         });
 
-        purchaseSelectAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO  实现流程同接单雷同
-                Toast.makeText(BaseApplication.getContext(), "全选功能", Toast.LENGTH_LONG).show();
-            }
-        });
+//        rbSelectAll.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //TODO  实现流程同接单雷同
+//                Toast.makeText(PurchaseChangedActivity.this, "全选功能", Toast.LENGTH_LONG).show();
+//            }
+//        });
 
-        // 订单数  purchaseCount 由选择的变更单来决定
+        // 订单数  tvCount 由选择的变更单来决定
 
         initDataSchool();
         initData();
@@ -199,7 +199,7 @@ public class PurchaseChangedActivity extends BaseActivity {
         RequestParams params = new RequestParams();
         params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
         params.addBodyParameter("start_date", (new Date(0)).getTime() / 1000 + "");
-        params.addBodyParameter("end_dat_date", System.currentTimeMillis() / 1000 + "");
+        params.addBodyParameter("end_date", System.currentTimeMillis() / 1000 + "");
         params.addBodyParameter("status", "2");
 
         httpUtils.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_BUY_ORDER_ALTER,
@@ -209,18 +209,20 @@ public class PurchaseChangedActivity extends BaseActivity {
                     @Override
                     public void onSuccess(ResponseInfo<String> responseInfo) {
 
-
                         String result = responseInfo.result;
+                        System.out.println("aaa json:" + result);
                         Gson gson = new Gson();
                         alterOrder = gson.fromJson(result, AlterOrderBean.class);
                         purchaseList = new ArrayList<>();
                         purchaseList.clear();
-                        purchaseList.addAll(alterOrder.getData().getAlter());
+                        if (null != alterOrder.getData().getAlter()) {
+                            purchaseList.addAll(alterOrder.getData().getAlter());
+                        }
                         if (purchaseList.size() == 0) {
                             Toast.makeText(BaseApplication.getContext(), "obtain the data failure", Toast.LENGTH_SHORT).show();
                         } else {
                             purchaseAdapter = new PurchaseAdapter(purchaseList, PurchaseChangedActivity.this);
-                            purchaseInfoList.setAdapter(purchaseAdapter);
+                            lvInfoList.setAdapter(purchaseAdapter);
 
                         }
 
@@ -233,7 +235,7 @@ public class PurchaseChangedActivity extends BaseActivity {
                         Toast.makeText(BaseApplication.getContext(), "获取数据失败", Toast.LENGTH_SHORT).show();
                     }
                 });
-        purchaseInfoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvInfoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String alter_id = purchaseList.get(position).getAlter_id();
@@ -248,16 +250,17 @@ public class PurchaseChangedActivity extends BaseActivity {
 
         //全选
         final GlobalValue globalValue = new GlobalValue();
-        purchaseSelectAll.setOnClickListener(new View.OnClickListener() {
+        rbSelectAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("mm hgjkhjkhj");
                 boolean isCheck = globalValue.isCheck();
                 if (isCheck) {
-                    if (v == purchaseSelectAll) purchaseSelectAll.setChecked(false);
+                    if (v == rbSelectAll) rbSelectAll.setChecked(false);
                     selectAll.clear();
                     selectedOrders.clear();
                 } else {
-                    if (v == purchaseSelectAll) purchaseSelectAll.setChecked(true);
+                    if (v == rbSelectAll) rbSelectAll.setChecked(true);
                     selectAll.add(purchaseList.size());
                     selectedOrders.clear();
                     for (int i = 0; i < purchaseList.size(); i++) {
@@ -278,7 +281,7 @@ public class PurchaseChangedActivity extends BaseActivity {
         selectedOrders.add(position + "");
 //        calculate();
         if (selectedOrders.size() == purchaseList.size()) {
-            purchaseSelectAll.setChecked(true);
+            rbSelectAll.setChecked(true);
         }
     }
 
@@ -287,7 +290,7 @@ public class PurchaseChangedActivity extends BaseActivity {
         if (selectedOrders.size() != 0) {
             selectedOrders.remove(selectedOrders.indexOf(position + ""));
 //            calculate();
-            purchaseSelectAll.setChecked(false);
+            rbSelectAll.setChecked(false);
         }
 
     }
@@ -307,9 +310,9 @@ public class PurchaseChangedActivity extends BaseActivity {
 //            }
 //        }
 //
-////        purchaseCount.setText(purchaseCount);
+////        tvCount.setText(tvCount);
 //
-////        purchaseCount.setText((int) purchase_Count);
+////        tvCount.setText((int) purchase_Count);
 ////        tvTotalAmount.setText(totalAmount + "");
 //
 //    }

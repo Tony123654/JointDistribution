@@ -29,24 +29,26 @@
 
         <ImageView
             android:id="@+id/ib_back_receive_menu"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:background="#00000000"
+            android:scaleType="center"
             android:src="@mipmap/icon_nav_back" />
 
         <ImageView
             android:id="@+id/ib_receive_choose"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
             android:background="#00000000"
+            android:scaleType="center"
             android:src="@mipmap/icon_nav_scree" />
 
     </RelativeLayout>
@@ -56,8 +58,8 @@
         android:id="@+id/lv_receive_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="#cccccc">
 
     </ListView>
 
@@ -79,83 +81,92 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="全选" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:text="全选"
+            android:textSize="14sp" />
 
+        <!--android:background="@drawable/shape_button_choose"-->
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:gravity="right"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_receive_count"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="11111"
-                android:textColor="#FF8502" />
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#FF8502"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="订单数"
-                android:textColor="#333333" />
+                android:textColor="#333333"
+                android:textSize="18sp" />
 
 
         </LinearLayout>
 
+        <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_receive_total_amount"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="0"-->
+        <!--android:textColor="#FF8502" />-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="kg"-->
+        <!--android:textColor="#FF8502" />-->
+        <!--</LinearLayout>-->
+
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="总数量"-->
+        <!--android:textColor="#333333" />-->
+
+
+        <!--</LinearLayout>-->
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_receive_total_amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textColor="#FF8502" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="kg"
-                    android:textColor="#FF8502" />
-            </LinearLayout>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="总数量"
-                android:textColor="#333333" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
@@ -163,7 +174,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="￥"
-                    android:textColor="#FF8502" />
+                    android:textColor="#FF8502"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_receive_total_money"
@@ -171,14 +183,16 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="0.0"
-                    android:textColor="#FF8502" />
+                    android:textColor="#FF8502"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="总金额"
-                android:textColor="#333333" />
+                android:textColor="#333333"
+                android:textSize="18sp" />
 
         </LinearLayout>
 

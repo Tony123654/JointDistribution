@@ -49,9 +49,9 @@ public class ReceivedActivity extends BaseActivity {
     private OrderListBean order;
     private MyAdapter mAdapter;
     private TextView tv;
-    private TextView count;
+    private TextView tvSelectedCount;
     private TextView tvTotalMoney;
-    private TextView tvTotalAmount;
+    //    private TextView tvTotalAmount;
     private TextView receiveButtom;
     private TextView reset;
 
@@ -75,9 +75,9 @@ public class ReceivedActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_received);
-        count = (TextView) findViewById(R.id.tv_receive_count);
+        tvSelectedCount = (TextView) findViewById(R.id.tv_receive_count);
         tvTotalMoney = (TextView) findViewById(R.id.tv_receive_total_money);
-        tvTotalAmount = (TextView) findViewById(R.id.tv_receive_total_amount);
+//        tvTotalAmount = (TextView) findViewById(R.id.tv_receive_total_amount);
         selectAllButton = (RadioButton) findViewById(R.id.rb_receive_select_all);
         receiveButtom = (TextView) findViewById(R.id.btn_receive_button);
 
@@ -137,9 +137,13 @@ public class ReceivedActivity extends BaseActivity {
         selectAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                System.out.println("aaa selectAllButton.setOnClickListener is run");
                 boolean isCheck = globalValue.isCheck();
                 if (isCheck) {
                     if (v == selectAllButton) selectAllButton.setChecked(false);
+                    if (null != mAdapter) {
+                        mAdapter.disSelectAll();
+                    }
                     selectAll.clear();
                     selectedOrders.clear();
                 } else {
@@ -148,6 +152,9 @@ public class ReceivedActivity extends BaseActivity {
                     selectedOrders.clear();
                     for (int i = 0; i < mList.size(); i++) {
                         selectedOrders.add(i + "");
+                    }
+                    if (null != mAdapter) {
+                        mAdapter.selectAll();
                     }
 
                 }
@@ -189,7 +196,7 @@ public class ReceivedActivity extends BaseActivity {
                         Gson gson = new Gson();
                         OnlySchoolBean onlySchoolInfo = gson.fromJson(result, OnlySchoolBean.class);
 
-                        System.out.println("hhh:" + result);
+//                        System.out.println("hhh:" + result);
                         gv_list.clear();
                         gv_list.addAll(onlySchoolInfo.getData());
 
@@ -267,9 +274,11 @@ public class ReceivedActivity extends BaseActivity {
                         order = gson.fromJson(result, OrderListBean.class);
                         mList.clear();
                         mList.addAll(order.getData().getRows());
+//                        mList.addAll(order.getData().getRows());
                         if (mList.size() == 0) {
                             //暂无订单
                         } else {
+//                            lv_list.setDividerHeight(20);
                             mAdapter = new MyAdapter(mList, ReceivedActivity.this, selectAll);
                             lv_list.setAdapter(mAdapter);
                         }
@@ -295,7 +304,7 @@ public class ReceivedActivity extends BaseActivity {
                 Intent intent = new Intent(ReceivedActivity.this, ReceivedMenuInfoActivity.class);
                 intent.putExtra("listId", listId);
                 ReceivedActivity.this.startActivity(intent);
-                finish();
+//                finish();
 
             }
         });
@@ -320,9 +329,8 @@ public class ReceivedActivity extends BaseActivity {
     }
 
     public void unselectedOrder(int position) {
-        System.out.println("aaa unselected:" + position + "  seletctedOrders.size():" + selectedOrders.size());
+//        System.out.println("aaa unselected:" + position + "  seletctedOrders.size():" + selectedOrders.size());
         if (selectedOrders.size() != 0) {
-            //
             selectedOrders.remove(selectedOrders.indexOf(position + ""));
             calculate();
             selectAllButton.setChecked(false);
@@ -332,23 +340,17 @@ public class ReceivedActivity extends BaseActivity {
 
     private void calculate() {
 
-        float totalAmount = 0;
         float totalMoney = 0;
 
-        if (selectedOrders.size() == 0) {
-            for (int i = 0; i < mList.size(); i++) {
-                totalAmount = totalAmount + Float.valueOf(mList.get(i).getTotal_amount());
-                totalMoney = totalMoney + Float.valueOf(mList.get(i).getTotal_money());
-            }
-        } else {
+        if (selectedOrders.size() != 0) {
             for (String position : selectedOrders) {
-                totalAmount = totalAmount + Float.valueOf(mList.get(Integer.parseInt(position)).getTotal_amount());
                 totalMoney = totalMoney + Float.valueOf(mList.get(Integer.parseInt(position)).getTotal_money());
             }
         }
 
-        tvTotalMoney.setText(totalMoney + "");
-        tvTotalAmount.setText(totalAmount + "");
+        tvSelectedCount.setText(selectedOrders.size() + "");
+        tvTotalMoney.setText(String.format("%.2f", Float.valueOf(totalMoney)));
+
     }
 
 }

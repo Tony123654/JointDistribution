@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="15dp"
     android:descendantFocusability="blocksDescendants"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
 
     <LinearLayout
@@ -17,7 +17,6 @@
             android:id="@+id/tv_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="制单日期："
             android:textColor="#7C7C7C" />
 
@@ -34,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="10dp">
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/tv_request_dep_strs"
@@ -43,9 +42,9 @@
 
             android:drawableLeft="@mipmap/dizhi"
             android:drawablePadding="5dp"
-            android:text="88888"
+            android:text="地址"
             android:textColor="#7C7C7C"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_com_brief_name"
@@ -65,37 +64,37 @@
 
     </LinearLayout>
 
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingTop="5dp">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_plan"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:drawableLeft="@mipmap/icon_clock"-->
+    <!--android:drawablePadding="5dp"-->
+    <!--android:text="计划送达日期："-->
+    <!--android:textColor="#7C7C7C"-->
+    <!--android:textSize="16sp" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_plan_date"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="555555"-->
+    <!--android:textColor="#7C7C7C" />-->
+
+
+    <!--</LinearLayout>-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="8dp">
-
-        <TextView
-            android:id="@+id/tv_plan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@mipmap/icon_clock"
-            android:drawablePadding="5dp"
-            android:text="计划送达日期："
-            android:textColor="#7C7C7C"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/tv_plan_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="555555"
-            android:textColor="#7C7C7C" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="8dp">
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/tv_receive_totao_money"
@@ -133,17 +132,21 @@
 
         <TextView
             android:id="@+id/textView23"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="总数量："
             android:textColor="#7C7C7C" />
 
         <TextView
             android:id="@+id/tv_total_amount"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="TextView"
             android:textColor="#7C7C7C" />
 

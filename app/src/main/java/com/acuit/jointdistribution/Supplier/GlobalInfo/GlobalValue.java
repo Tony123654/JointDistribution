@@ -12,6 +12,8 @@ package com.acuit.jointdistribution.Supplier.GlobalInfo;
  */
 
 public class GlobalValue {
+    private boolean isCheck ;
+
     public boolean isCheck() {
         return isCheck;
     }
@@ -20,5 +22,4 @@ public class GlobalValue {
         isCheck = check;
     }
 
-    private boolean isCheck;
 }

@@ -34,7 +34,7 @@
             android:src="@mipmap/icon_nav_back" />
 
         <ImageView
-            android:id="@+id/ib_purchase_choose"
+            android:id="@+id/purchase_ib_choose"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -45,7 +45,7 @@
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/lv_purchaseInfoList"
+        android:id="@+id/purchase_lv_InfoList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">>
@@ -61,7 +61,7 @@
         android:background="#23B587">
 
         <RadioButton
-            android:id="@+id/rb_purchase_select_all"
+            android:id="@+id/purchase_rb_select_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -69,7 +69,7 @@
             android:text="全选" />
 
         <Button
-            android:id="@+id/btn_purchase_confirm"
+            android:id="@+id/purchase_btn_confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -77,12 +77,12 @@
             android:text="确认" />
 
         <TextView
-            android:id="@+id/tv_purchase_total"
+            android:id="@+id/purchase_tv_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/rb_purchase_select_all"
+            android:layout_alignTop="@id/purchase_rb_select_all"
             android:layout_marginStart="112dp"
-            android:layout_toEndOf="@id/rb_purchase_select_all"
+            android:layout_toEndOf="@id/purchase_rb_select_all"
             android:text="00.00" />
 
         <TextView
@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignStart="@id/tv_purchase_total"
+            android:layout_alignStart="@id/purchase_tv_total"
             android:gravity="center"
             android:text="订单数"
             android:layout_marginBottom="8dp"

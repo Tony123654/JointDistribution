@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Acitivity.SendActivity;
-import com.acuit.jointdistribution.Supplier.Domain.SendOrderBean;
+import com.acuit.jointdistribution.Supplier.Domain.StoreInfoListBean;
 
 import java.util.ArrayList;
 
@@ -29,10 +29,11 @@ public class SendAdapter extends BaseAdapter {
     private View convertView;
     public SendActivity mActivity;
 
-    public SendAdapter(ArrayList<SendOrderBean.DataBean.RowsBean> sendList, SendActivity mActivity, ArrayList<Integer> selectAlls) {
+    public SendAdapter(ArrayList<StoreInfoListBean.DataBean.StoreInListBean> sendList, SendActivity mActivity, ArrayList<Integer> selectAlls) {
         this.sendList = sendList;
         this.mActivity=mActivity;
     }
+
 
     @Override
     public int getCount() {
@@ -94,16 +95,19 @@ public class SendAdapter extends BaseAdapter {
 
         }
 
-        SendOrderBean.DataBean.RowsBean item = (SendOrderBean.DataBean.RowsBean) getItem(position);
+//        SendOrderBean.DataBean.RowsBean item = (SendOrderBean.DataBean.RowsBean) getItem(position);
+
+        StoreInfoListBean.DataBean.StoreInListBean item = (StoreInfoListBean.DataBean.StoreInListBean) getItem(position);
 
         holder.create_date.setText(item.getCreate_date());
-        holder.plan_date.setText(item.getPlan_date());
-        holder.request_dep_str.setText(item.getRequest_dep_strs());
+//        holder.plan_date.setText(item.getPlan_date_str());
+        holder.request_dep_str.setText(item.getDep2_address());
         holder.com_brief_name.setText("("+item.getCom_brief_name());
         holder.dep_root_name.setText("-"+item.getDep_brief_name()+")");
-        holder.total_amount.setText(item.getTotal_amount());
-        holder.contact_person.setText(item.getPhone().get(0).getContact_person());
-        holder.contact_number.setText("("+item.getPhone().get(0).getContact_number()+")");
+        holder.total_amount.setText(item.getStatis_num());
+        holder.contact_person.setText(item.getPhone().getContact_person());
+
+        holder.contact_number.setText("("+item.getPhone().getContact_number()+")");
 
         return convertView;
     }
