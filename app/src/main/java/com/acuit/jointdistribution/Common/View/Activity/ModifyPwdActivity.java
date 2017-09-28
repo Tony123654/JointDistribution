@@ -96,10 +96,10 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
                     etEnsurePwd.setHint("两次输入新密码需一致");
 
                 } else {
-                    etNewPwd.setTextColor(0xffff0000);
+                    etNewPwd.setTextColor(0xffFF7F1C);
                     etEnsurePwd.setFocusable(false);
                     etEnsurePwd.setFocusableInTouchMode(false);
-                    etEnsurePwd.setHint("请输入新密码");
+                    etEnsurePwd.setHint("您的密码设置过于简单");
 //                    etEnsurePwd.setHint("新密码需为6~20位的数字字母混合");
                     btnSubmitPwd.setClickable(false);
                 }
@@ -118,12 +118,26 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().equals(etNewPwd.getText().toString())) {
-                    etEnsurePwd.setTextColor(0xff000000);
-                    btnSubmitPwd.setClickable(true);
-                } else {
-                    etEnsurePwd.setTextColor(0xffff0000);
+                String newPwd = etNewPwd.getText().toString();
+                String str = s.toString();
+                if (newPwd.length() < str.length()) {
+                    error();
+                    return;
                 }
+                if (str.length() > 0) {
+                    if (!newPwd.substring(0, str.length()).equals(str)) {
+                        error();
+                        return;
+                    }
+                }
+
+                etEnsurePwd.setTextColor(0xff000000);
+                btnSubmitPwd.setClickable(true);
+            }
+
+            private void error() {
+                etEnsurePwd.setTextColor(0xffFF7F1C);
+                btnSubmitPwd.setClickable(false);
             }
 
             @Override

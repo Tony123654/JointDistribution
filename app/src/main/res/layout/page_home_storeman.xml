@@ -189,6 +189,7 @@
             android:onClick="OrderForm"
             android:orientation="vertical"
             android:visibility="gone">
+            <!--*************************不可见👆***********************-->
 
 
             <com.acuit.jointdistribution.Common.Widget.MessageImageView
@@ -206,7 +207,6 @@
                 android:layout_marginTop="5dp"
                 android:text="评价订单"
                 android:textColor="#333333"
-
                 />
 
         </LinearLayout>

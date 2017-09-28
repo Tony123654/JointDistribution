@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -44,7 +46,7 @@ import java.util.Map;
  * 更新描述: <p>
  */
 
-public class SupplierListActivity extends BaseActivity implements View.OnClickListener, XRecyclerView.LoadingListener {
+public class SupplierListActivity extends BaseActivity implements View.OnClickListener, XRecyclerView.LoadingListener, TextWatcher {
 
     private XRecyclerView xrvSupplierList;
     private EditText etSearchBar;
@@ -58,6 +60,7 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
     private SuppliersListAdapter suppliersAdapter;
     private final int requestCode = 1245;
     private boolean Flag_LoadMore;
+    private ImageView ivClear;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,8 +72,47 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
         initEvent();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        xrvSupplierList.refresh();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        BaseApplication.getRequestQueue().cancelAll("SupplierListActivity");
+    }
+
+    @Override
+    public void onRefresh() {
+
+        String searchStr = etSearchBar.getText().toString();
+        if (0 == searchStr.length()) {
+            page = 1;
+            initData();
+            xrvSupplierList.setLoadingMoreEnabled(true);
+        } else {
+            search(searchStr);
+        }
+
+    }
+
+    @Override
+    public void onLoadMore() {
+
+        if (0 == etSearchBar.getText().toString().length()) {
+            page++;
+            Flag_LoadMore = true;
+            initData();
+        }else {
+            xrvSupplierList.loadMoreComplete();
+        }
+    }
+
     private void initView() {
         ivBack = (ImageView) findViewById(R.id.iv_back);
+        ivClear = (ImageView) findViewById(R.id.iv_clear);
         tvScanCode = (TextView) findViewById(R.id.tv_scanCode);
         etSearchBar = (EditText) findViewById(R.id.et_searchBySupplierName);
         tvSearchSupplier = (TextView) findViewById(R.id.tv_searchSuppliers);
@@ -157,10 +199,11 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
 
     private void initEvent() {
         ivBack.setOnClickListener(this);
+        ivClear.setOnClickListener(this);
         tvScanCode.setOnClickListener(this);
-        tvSearchSupplier.setOnClickListener(this);
-
+        etSearchBar.addTextChangedListener(this);
         xrvSupplierList.setLoadingListener(this);
+        tvSearchSupplier.setOnClickListener(this);
 
     }
 
@@ -170,24 +213,26 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
             case R.id.iv_back:
                 finish();
                 break;
+            case R.id.iv_clear:
+                etSearchBar.setText("");
+                break;
             case R.id.tv_scanCode:
 //                startActivity(new Intent(SupplierListActivity.this, ScanCodeActivity.class));
                 startActivityForResult(new Intent(SupplierListActivity.this, CaptureActivity.class), requestCode);
                 break;
             case R.id.tv_searchSuppliers:
-                search();
+                search(etSearchBar.getText().toString());
                 break;
         }
     }
 
-    private void search() {
+    private void search(String str) {
 
         boolean flag;
         boolean storein = true;
         boolean suppliy = false;
 
         String url;
-        String str = etSearchBar.getText().toString();
         ArrayMap<String, String> params = new ArrayMap<>();
 
         if (str.isEmpty()) {
@@ -220,7 +265,8 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onResponse(String response) {
 //                System.out.println("aaa url:" + url);
-//                System.out.println("aaa json:" + response);
+                System.out.println("aaa json:" + response);
+                xrvSupplierList.refreshComplete();
                 Gson gson = new Gson();
                 if (flag) {
                     StoreInListBySupplierBean storeInListBySupplierBean = gson.fromJson(response, StoreInListBySupplierBean.class);
@@ -294,31 +340,23 @@ public class SupplierListActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        xrvSupplierList.refresh();
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        BaseApplication.getRequestQueue().cancelAll("SupplierListActivity");
-    }
-
-
-    @Override
-    public void onRefresh() {
-
-        page = 1;
-        initData();
-        xrvSupplierList.setLoadingMoreEnabled(true);
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (s.length() == 0) {
+            ivClear.setVisibility(View.GONE);
+            initData();
+        } else {
+            ivClear.setVisibility(View.VISIBLE);
+            search(s.toString());
+        }
     }
 
     @Override
-    public void onLoadMore() {
+    public void afterTextChanged(Editable s) {
 
-        page++;
-        Flag_LoadMore = true;
-        initData();
     }
 }

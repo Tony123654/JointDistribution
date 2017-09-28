@@ -63,28 +63,48 @@
         android:background="#F5F5F5"
         android:focusableInTouchMode="true"
         android:gravity="center"
-        android:padding="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <EditText
-            android:id="@+id/et_searchBySupplierName"
+        <RelativeLayout
+            android:id="@+id/rl_supplierName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/shape_edittext_radius_border"
-            android:hint="输入供应商名称搜索"
-            android:padding="5dp"
-            android:singleLine="true" />
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/et_searchBySupplierName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/shape_edittext_radius_border"
+                android:hint="输入供应商名称搜索"
+                android:padding="8dp"
+                android:singleLine="true"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/iv_clear"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignEnd="@id/et_searchBySupplierName"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:clickable="true"
+                android:scaleType="center"
+                android:src="@mipmap/icon_search_coose"
+                android:visibility="gone" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_searchSuppliers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:layout_marginStart="10dp"
             android:background="#F5F5F5"
             android:clickable="true"
             android:padding="1dp"
-            android:layout_marginStart="10dp"
             android:shadowColor="#00F5F5F5"
             android:text="搜索"
             android:textColor="#33B688"

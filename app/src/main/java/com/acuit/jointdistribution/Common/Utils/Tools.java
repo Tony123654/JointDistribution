@@ -118,13 +118,13 @@ public class Tools {
     }
 
     public static boolean isStoreInID(String id) {
-        System.out.println("aaa String:" + id);
+//        System.out.println("aaa String:" + id);
         if (15 == id.length()) {
 
             String pre = id.substring(0, 3);
             String suf = id.substring(3, 15);
-            System.out.println("aaa pre:" + pre);
-            System.out.println("aaa suf:" + suf);
+//            System.out.println("aaa pre:" + pre);
+//            System.out.println("aaa suf:" + suf);
             if (pre.equals("RKD") || pre.equals("rkd")) {
 //                if (suf.matches(REGEX_INT)) {
                 return true;

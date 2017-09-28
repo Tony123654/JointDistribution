@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Base.BasePager;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
+import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.Common.Widget.MessageImageView;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Bean.CountStoreInBean;
@@ -196,9 +197,10 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
             protected Map<String, String> getParams() throws AuthFailureError {
                 ArrayMap<String, String> params = new ArrayMap<>();
                 params.put("token", BaseApplication.getLoginBean().getData().getToken());
-                params.put("date", 0 + "");
-                params.put("end_date", System.currentTimeMillis() / 1000 + "");
+//                params.put("date", 0 + "");
+                params.put("end_date", Tools.getSimpleFormatedTime(System.currentTimeMillis() / 1000 + ""));
                 params.put("phone", 1 + "");
+//                System.out.println("aaa params:" + params.toString());
 
                 return params;
             }
