@@ -30,7 +30,7 @@ import com.acuit.jointdistribution.Storeman.View.StoremanHomePage;
 
 public class HomeActivity extends BaseActivity {
 
-    private static final String FRAG_CONTENT = "frag_content";
+//    private static final String FRAG_CONTENT = "frag_content";
     private FragmentManager fragmentManager;
     private boolean backPressed = false;
 
@@ -50,13 +50,13 @@ public class HomeActivity extends BaseActivity {
         ft.replace(R.id.fl_main, new ContentFragment(HomeActivity.this));
         ft.commit();
 
-//        judgePwd(getIntent().getStringExtra("pwd"));
+        judgePwd(getIntent().getStringExtra("pwd"));
     }
 
-    public ContentFragment getContentFragment() {
-        ContentFragment fragment = (ContentFragment) fragmentManager.findFragmentByTag(FRAG_CONTENT);
-        return fragment;
-    }
+//    public ContentFragment getContentFragment() {
+//        ContentFragment fragment = (ContentFragment) fragmentManager.findFragmentByTag(FRAG_CONTENT);
+//        return fragment;
+//    }
 
     @Override
     public void onDestroy() {
@@ -85,13 +85,10 @@ public class HomeActivity extends BaseActivity {
     private void judgePwd(String pwd) {
 
         if (Tools.tooSimple(pwd)) {
-
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("密码太过简单，请修改密码");
             builder.create().show();
-
         }
-
     }
 
 

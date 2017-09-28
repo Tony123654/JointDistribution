@@ -481,7 +481,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
                     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinnerRejectResion.setAdapter(spinnerAdapter);
 
-                    if (goodsBean.isSaved() && !goodsBean.isEdited()) {
+                    if (!goodsBean.isEdited()) {
                         initData();
                     }
                 }
@@ -536,6 +536,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         }
         goodsBean.setPic_url(picUrls.toString());
 
+//        暂存本地图片路径
         StringBuilder imagePaths = new StringBuilder();
         for (int i = 0; i < mResults.size(); i++) {
             imagePaths.append(mResults.get(i));
@@ -545,6 +546,7 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
         }
         goodsBean.setImagePath(imagePaths.toString());
 
+//        暂存本地缓存图片路径
         StringBuilder tempImages = new StringBuilder();
         for (int i = 0; i < tempPics.size(); i++) {
             tempImages.append(tempPics.get(i));
