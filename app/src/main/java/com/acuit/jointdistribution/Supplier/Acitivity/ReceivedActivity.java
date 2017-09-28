@@ -2,8 +2,10 @@ package com.acuit.jointdistribution.Supplier.Acitivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.ArrayMap;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,17 +19,24 @@ import android.widget.Toast;
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
+import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Adapter.AreaAdapter;
-import com.acuit.jointdistribution.Supplier.Adapter.MyAdapter;
+//import com.acuit.jointdistribution.Supplier.Adapter.MyAdapter;
 import com.acuit.jointdistribution.Supplier.Adapter.ReceiveRightAdapter;
+import com.acuit.jointdistribution.Supplier.Adapter.ReceivedInListAdapter;
 import com.acuit.jointdistribution.Supplier.Domain.AeraBean;
 import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
 import com.acuit.jointdistribution.Supplier.Domain.OrderListBean;
 import com.acuit.jointdistribution.Supplier.GlobalInfo.GlobalValue;
-import com.acuit.jointdistribution.Supplier.Utils.PrefUtils;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -37,33 +46,37 @@ import com.lidroid.xutils.http.client.HttpRequest;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 
 /**
  * 接单界面
  */
-public class ReceivedActivity extends BaseActivity {
+public class ReceivedActivity extends BaseActivity implements View.OnClickListener, XRecyclerView.LoadingListener {
 
     private ArrayList<OrderListBean.DataBean.RowsBean> mList;
 
 
-    private ArrayList<AeraBean.DataBean> aereList;
+    private ArrayList<AeraBean.DataBean> areaList;
     private ListView listView;
     private OrderListBean order;
-    private MyAdapter mAdapter;
+    //    private MyAdapter mAdapter;
     private TextView tv;
     private TextView tvSelectedCount;
     private TextView tvTotalMoney;
     //    private TextView tvTotalAmount;
     private TextView receiveButtom;
     private TextView reset;
+    private int total = -1;
+    private int page = 1;
+    private ReceivedInListAdapter receivedInListAdapter;
 
     private AlertDialog.Builder builder;
 
     private ArrayList<String> selectedOrders = new ArrayList<>();
     private ArrayList<Integer> selectAll = new ArrayList<>();
-    private ListView lv_list;
-    private ArrayList<OnlySchoolBean.DataBean> chooseList;
+    //    private ArrayList<OnlySchoolBean.DataBean> chooseList;
     private AlertDialog dialog;
     private RadioButton selectAllButton;
     private ImageView ib_back_home;
@@ -75,6 +88,9 @@ public class ReceivedActivity extends BaseActivity {
     private AeraBean areaInfo;
     private TextView pickingArea;
     private GridView area;
+    private boolean Flag_LoadMore = false;
+    private XRecyclerView xrvReceiveList;
+    private List<OrderListBean.DataBean.RowsBean> receiveInList = new ArrayList<OrderListBean.DataBean.RowsBean>();
 
 
     @Override
@@ -90,11 +106,17 @@ public class ReceivedActivity extends BaseActivity {
         ib_back_home = (ImageView) findViewById(R.id.ib_back_receive_menu);
 
         ib_receive_choose = (ImageView) findViewById(R.id.ib_receive_choose);
-        lv_list = (ListView) findViewById(R.id.lv_receive_view);
+//        lv_list = (ListView) findViewById(R.id.lv_receive_view);
 
         TextView receiveComplate = (TextView) findViewById(R.id.tv_complate);
         TextView receiveReset = (TextView) findViewById(R.id.tv_reset);
 
+        xrvReceiveList = (XRecyclerView) findViewById(R.id.xrv_receiveList);
+        TextView emptyText = new TextView(ReceivedActivity.this);
+        emptyText.setText("暂无订单");
+//        xrvReceiveList.setEmptyView(emptyText);
+
+        initListData();
 
         receiveReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,13 +136,21 @@ public class ReceivedActivity extends BaseActivity {
             }
         });
 
-        initData();
+//        initData();
         //底部接单按钮
         receiveButtom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String msg;
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(ReceivedActivity.this);
-                builder.setMessage("你有N条订单处理完成");
+                if (selectedOrders.size() < 1) {
+                    msg = "没有选择需要接单的订单！";
+                } else {
+                    msg = "你有" + selectedOrders.size() + "条订单处理完成";
+                }
+                builder.setMessage(msg);
                 builder.create();
                 builder.show();
 
@@ -147,8 +177,8 @@ public class ReceivedActivity extends BaseActivity {
                 boolean isCheck = globalValue.isCheck();
                 if (isCheck) {
                     if (v == selectAllButton) selectAllButton.setChecked(false);
-                    if (null != mAdapter) {
-                        mAdapter.disSelectAll();
+                    if (null != receivedInListAdapter) {
+//                        receivedInListAdapter.disSelectAll();
                     }
                     selectAll.clear();
                     selectedOrders.clear();
@@ -159,12 +189,12 @@ public class ReceivedActivity extends BaseActivity {
                     for (int i = 0; i < mList.size(); i++) {
                         selectedOrders.add(i + "");
                     }
-                    if (null != mAdapter) {
-                        mAdapter.selectAll();
+                    if (null != receivedInListAdapter) {
+//                        receivedInListAdapter.selectAll();
                     }
 
                 }
-                mAdapter.notifyDataSetChanged();
+                receivedInListAdapter.notifyDataSetChanged();
 
                 globalValue.setCheck(!isCheck);
                 calculate();
@@ -187,7 +217,9 @@ public class ReceivedActivity extends BaseActivity {
 
         rightMenuView = (GridView) findViewById(R.id.gv_right_menu);
         gv_list = new ArrayList<>();
+
     }
+
 
     private void initSchoolData() {
         HttpUtils utils = new HttpUtils();
@@ -237,22 +269,21 @@ public class ReceivedActivity extends BaseActivity {
                                 @Override
                                 public void onSuccess(ResponseInfo<String> responseInfo) {
                                     String result = responseInfo.result;
-                                    System.out.println("hhh:"+result);
+//                                    System.out.println("hhh:" + result);
                                     Gson gson = new Gson();
                                     areaInfo = gson.fromJson(result, AeraBean.class);
 
-                                    aereList = new ArrayList<>();
+                                    areaList = new ArrayList<>();
 
 
-
-                                    aereList.clear();
-                                    aereList.addAll(areaInfo.getData());
+                                    areaList.clear();
+                                    areaList.addAll(areaInfo.getData());
 //                                    pickingArea = (TextView) findViewById(R.id.tv_picking_area);
 
 //                                    pickingArea.setVisibility(View.VISIBLE);
                                     area = (GridView) findViewById(R.id.gv_area);
 
-                                    AreaAdapter areaAdapter = new AreaAdapter(aereList, ReceivedActivity.this);
+                                    AreaAdapter areaAdapter = new AreaAdapter(areaList, ReceivedActivity.this);
 
 
                                     area.setAdapter(areaAdapter);
@@ -270,6 +301,7 @@ public class ReceivedActivity extends BaseActivity {
 
         }
     }
+
     private void initDrawerLayout() {
 
         drawerLayout = (DrawerLayout) super.findViewById(R.id.drawer_layout);
@@ -285,94 +317,205 @@ public class ReceivedActivity extends BaseActivity {
     }
 
 
-    private void initData() {
+    private void initListData() {
 
-        getDataFromServer();
+//        getDataFromServer();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_BUY_ORDER_LIST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                System.out.println("ttt:" + GlobalContants.URL_BUY_ORDER_LIST);
+                System.out.println("ttt:" + response);
+
+                Gson gson = new Gson();
+                OrderListBean orderListBean = gson.fromJson(response, OrderListBean.class);
+                if (200 == orderListBean.getCode()) {
+//                    total = Integer.parseInt(orderListBean.getData().getTotal());
+                    if (!Flag_LoadMore) {
+                        receiveInList.clear();
+                    }
+                    Flag_LoadMore = false;
+                    List<OrderListBean.DataBean.RowsBean> store_in_list = orderListBean.getData().getRows();
+                    if (null != store_in_list) {
+                        receiveInList.addAll(store_in_list);
+                    }
+                    initAdapter();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (null == error.getMessage()) {
+                    Toast.makeText(ReceivedActivity.this, "无法获取信息，请检查网络环境", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ReceivedActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                ArrayMap<String, String> params = new ArrayMap<String, String>();
+
+                params.put("token", BaseApplication.getLoginBean().getData().getToken());
+                params.put("start_date", Tools.getSimpleFormatedTime(new Date(0).getTime()/ 1000 + ""));
+                params.put("end_date", Tools.getSimpleFormatedTime(System.currentTimeMillis() / 1000 + ""));
+                params.put("rows", 10 + "");
+                params.put("page", 1 + "");
+                params.put("status", "2");
+                System.out.println("ttt params:" + params.toString());
+                return params;
+            }
+        };
+
+
+        stringRequest.setTag("ReceivedActivity");
+        BaseApplication.getRequestQueue().add(stringRequest);
 
     }
 
-    private void getDataFromServer() {
 
-        HttpUtils http = new HttpUtils();
-
-
-        RequestParams params = new RequestParams();
-        params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
-        params.addBodyParameter("start_date", (new Date(0)).getTime() / 1000 + "");
-        params.addBodyParameter("end_date", System.currentTimeMillis() / 1000 + "");
-        params.addBodyParameter("page", "1");
-        params.addBodyParameter("rows", "40");
-        params.addBodyParameter("status", "2");
-
-        http.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_BUY_ORDER_LIST, params,
-//        http.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=buy_order_list", params,
-
-                new RequestCallBack<String>() {
-
-                    @Override
-                    public void onFailure(HttpException error, String msg) {
-                        Toast.makeText(BaseApplication.getContext(), "网络访问失败", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onSuccess(ResponseInfo<String> responseInfo) {
-                        String result = responseInfo.result;
-                        //保存数据
-                        PrefUtils.putString(getApplicationContext(), "list", result);
-                        ProcessData(result);
-                    }
-
-                    //解析数据
-                    private void ProcessData(String result) {
-
-                        Gson gson = new Gson();
-                        order = gson.fromJson(result, OrderListBean.class);
-                        mList.clear();
-                        mList.addAll(order.getData().getRows());
+//    private void getDataFromServer() {
+//
+//        HttpUtils http = new HttpUtils();
+//
+//
+//        RequestParams params = new RequestParams();
+//        params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
+//        params.addBodyParameter("start_date", (new Date(0)).getTime() / 1000 + "");
+//        params.addBodyParameter("end_date", System.currentTimeMillis() / 1000 + "");
+//        params.addBodyParameter("page", "1");
+//        params.addBodyParameter("rows", "10");
+//        params.addBodyParameter("status", "2");
+//
+//        http.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_BUY_ORDER_LIST, params,
+////        http.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=buy_order_list", params,
+//
+//                new RequestCallBack<String>() {
+//
+//                    @Override
+//                    public void onFailure(HttpException error, String msg) {
+//                        Toast.makeText(BaseApplication.getContext(), "网络访问失败", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(ResponseInfo<String> responseInfo) {
+//                        String result = responseInfo.result;
+//                        System.out.println("qqq:" + result);
+//                        //保存数据
+//                        PrefUtils.putString(getApplicationContext(), "list", result);
+//                        ProcessData(result);
+//                    }
+//
+//                    //解析数据
+//                    private void ProcessData(String result) {
+//
+//                        Gson gson = new Gson();
+//                        order = gson.fromJson(result, OrderListBean.class);
+//                        mList.clear();
 //                        mList.addAll(order.getData().getRows());
-                        if (mList.size() == 0) {
-                            //暂无订单
-                        } else {
-//                            lv_list.setDividerHeight(20);
-                            mAdapter = new MyAdapter(mList, ReceivedActivity.this, selectAll);
-                            lv_list.setAdapter(mAdapter);
-                        }
-
-
-//                        tvTotalAmount.setText(order.getData().getTotal_amount());
-//                        tvTotalMoney.setText(order.getData().getTotal_money());
-
-                    }
-
-
-                });
-
-        lv_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
-                String listId = mList.get(position).getId();
-                System.out.println("跳转过去了：" + listId);
-                Intent intent = new Intent(ReceivedActivity.this, ReceivedMenuInfoActivity.class);
-                intent.putExtra("listId", listId);
-                ReceivedActivity.this.startActivity(intent);
-//                finish();
-
-            }
-        });
-
-//        receiveButtom.setOnClickListener(new View.OnClickListener() {
+////                        mList.addAll(order.getData().getRows());
+//                        if (mList.size() == 0) {
+//                            //暂无订单
+//                        } else {
+////                            lv_list.setDividerHeight(20);
+//                            mAdapter = new MyAdapter(mList, ReceivedActivity.this, selectAll);
+//                            lv_list.setAdapter(mAdapter);
+//                        }
+//
+//
+////                        tvTotalAmount.setText(order.getData().getTotal_amount());
+////                        tvTotalMoney.setText(order.getData().getTotal_money());
+//
+//                    }
+//
+//
+//                });
+//
+//        lv_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//
 //            @Override
-//            public void onClick(View v) {
-//                rb.isChecked();
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//
+//                String listId = mList.get(position).getId();
+//                System.out.println("跳转过去了：" + listId);
+//                Intent intent = new Intent(ReceivedActivity.this, ReceivedMenuInfoActivity.class);
+//                intent.putExtra("listId", listId);
+//                ReceivedActivity.this.startActivity(intent);
+////                finish();
+//
 //            }
 //        });
+//
+////        receiveButtom.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                rb.isChecked();
+////            }
+////        });
 
 
+    private void initAdapter() {
+
+        xrvReceiveList.setHasFixedSize(true);
+        xrvReceiveList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        if (0 != receiveInList.size()) {
+
+            if (null != receivedInListAdapter) {
+
+                xrvReceiveList.refreshComplete();
+                xrvReceiveList.loadMoreComplete();
+                receivedInListAdapter.notifyDataSetChanged();
+
+            } else {
+
+                xrvReceiveList.refreshComplete();
+                xrvReceiveList.loadMoreComplete();
+                receivedInListAdapter = new ReceivedInListAdapter(receiveInList, ReceivedActivity.this, selectAll);
+                xrvReceiveList.setAdapter(receivedInListAdapter);
+            }
+
+        } else {
+            Toast.makeText(ReceivedActivity.this, "没有数据", Toast.LENGTH_SHORT).show();
+        }
+
+        if (total == receiveInList.size()) {
+            xrvReceiveList.setLoadingMoreEnabled(false);
+        }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        xrvReceiveList.refresh();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        BaseApplication.getRequestQueue().cancelAll("ReceivedActivity");
+    }
+
+    @Override
+    public void onRefresh() {
+
+        page = 1;
+        initListData();
+        xrvReceiveList.setLoadingMoreEnabled(true);
+    }
+
+    @Override
+    public void onLoadMore() {
+
+        page++;
+        Flag_LoadMore = true;
+        initListData();
+    }
+
+
+//    <______________________________________________________________________>
 
 
     public void selectedOrder(int position) {
@@ -408,4 +551,9 @@ public class ReceivedActivity extends BaseActivity {
 
     }
 
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }

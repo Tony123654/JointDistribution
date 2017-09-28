@@ -49,7 +49,7 @@
         <!-- 保管员 -->
         <activity android:name=".Storeman.View.ScanCodeActivity" />
         <activity android:name=".Storeman.View.GoodsEditActivity" />
-        <activity android:name=".Storeman.View.StoreInListActivity" />
+        <activity android:name=".Storeman.View.ReceivedActivity" />
         <activity android:name=".Storeman.View.SupplierListActivity" />
         <activity android:name=".Storeman.View.StoreInDetilsActivity" />
         <activity android:name=".Supplier.Acitivity.PurchaseChangedActivity" />

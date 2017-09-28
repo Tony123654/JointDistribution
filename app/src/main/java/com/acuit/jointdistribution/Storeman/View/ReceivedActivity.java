@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类名: StoreInListActivity <p>
+ * 类名: ReceivedActivity <p>
  * 创建人: YanJ <p>
  * 创建时间: 2017/8/29 12:08 <p>
  * 描述: 保管员验收入库——特定供货商入库单列表
@@ -41,7 +41,7 @@ import java.util.Map;
  * 更新描述: <p>
  */
 
-public class StoreInListActivity extends BaseActivity implements View.OnClickListener, XRecyclerView.LoadingListener {
+public class ReceivedActivity extends BaseActivity implements View.OnClickListener, XRecyclerView.LoadingListener {
 
     private SuppliersListBean.DataBean.StoreInListBean supplier;
     private ImageView ivBack;
@@ -76,7 +76,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
         tvScanCode = (TextView) findViewById(R.id.tv_scanCode);
         tvSupplierName = (TextView) findViewById(R.id.btn_supplierName);
         xrvStoreList = (XRecyclerView) findViewById(R.id.xrv_storeInList);
-        TextView emptyText = new TextView(StoreInListActivity.this);
+        TextView emptyText = new TextView(ReceivedActivity.this);
         emptyText.setText("没有待验收入库单");
         xrvStoreList.setEmptyView(emptyText);
     }
@@ -97,8 +97,8 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.tv_scanCode:
-//                startActivity(new Intent(StoreInListActivity.this, ScanCodeActivity.class));
-                startActivityForResult(new Intent(StoreInListActivity.this, CaptureActivity.class), requestCode);
+//                startActivity(new Intent(ReceivedActivity.this, ScanCodeActivity.class));
+                startActivityForResult(new Intent(ReceivedActivity.this, CaptureActivity.class), requestCode);
                 break;
         }
     }
@@ -109,7 +109,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
         if (requestCode == this.requestCode && resultCode == RESULT_OK && null != data) {
             String resultString = data.getStringExtra("result");
             String storeInId = resultString.substring(resultString.indexOf("=") + 1);
-            Intent intent = new Intent(StoreInListActivity.this, StoreInDetilsActivity.class);
+            Intent intent = new Intent(ReceivedActivity.this, StoreInDetilsActivity.class);
             intent.putExtra("StoreInId", storeInId);
             startActivity(intent);
 
@@ -142,9 +142,9 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (null == error.getMessage()) {
-                    Toast.makeText(StoreInListActivity.this, "无法获取信息，请检查网络环境", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReceivedActivity.this, "无法获取信息，请检查网络环境", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(StoreInListActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReceivedActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         }) {
@@ -164,7 +164,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
             }
         };
 
-        stringRequest.setTag("StoreInListActivity");
+        stringRequest.setTag("ReceivedActivity");
         BaseApplication.getRequestQueue().add(stringRequest);
     }
 
@@ -185,12 +185,12 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
 
                 xrvStoreList.refreshComplete();
                 xrvStoreList.loadMoreComplete();
-                storeInListAdapter = new StoreInListAdapter(storeInList, StoreInListActivity.this);
+                storeInListAdapter = new StoreInListAdapter(storeInList, ReceivedActivity.this);
                 xrvStoreList.setAdapter(storeInListAdapter);
             }
 
         } else {
-            Toast.makeText(StoreInListActivity.this, "没有数据", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ReceivedActivity.this, "没有数据", Toast.LENGTH_SHORT).show();
         }
 
         if (total == storeInList.size()) {
@@ -207,7 +207,7 @@ public class StoreInListActivity extends BaseActivity implements View.OnClickLis
     @Override
     public void onDestroy() {
         super.onDestroy();
-        BaseApplication.getRequestQueue().cancelAll("StoreInListActivity");
+        BaseApplication.getRequestQueue().cancelAll("ReceivedActivity");
     }
 
     @Override

@@ -18,7 +18,7 @@ public class OrderListBean {
 
     /**
      * code : 200
-     * data : {"count":"43","rows":[{"cat_name":"果蔬类","code":"CGDD1708309435","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-30","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3735","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-31 09:00","realname":"采购测试","request_dep_strs":"总仓","status":"2","supply_name":"杭州蔬菜物流有限公司","total_amount":"200.00","total_money":"1270.00"},{"cat_name":"果蔬类","code":"CGDD1708289429","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-29","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3732","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-28 00:00","realname":"测试","request_dep_strs":"总仓","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"4.00","total_money":"27.50"},{"cat_name":"果蔬类","code":"CGDD1708289407","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-28","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3731","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-29 09:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"1","supply_name":"杭州蔬菜物流有限公司","total_amount":"5.00","total_money":"18.10"},{"cat_name":"果蔬类","code":"CGDD1708289403","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-28","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3730","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-29 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"1","supply_name":"杭州蔬菜物流有限公司","total_amount":"38.00","total_money":"149.50"},{"cat_name":"果蔬类","code":"CGDD1708269398","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-26","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3729","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-27 09:00","realname":"同保一","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"600.00","total_money":"2780.00"},{"cat_name":"果蔬类","code":"CGDD1708269395","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-26","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3728","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-27 09:00","realname":"系统管理员","request_dep_strs":"东区食堂,一食堂","status":"2","supply_name":"杭州蔬菜物流有限公司","total_amount":"1500.00","total_money":"9520.00"},{"cat_name":"果蔬类","code":"CGDD1708239388","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3727","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"系统管理员","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"66.00","total_money":"344.30"},{"cat_name":"果蔬类","code":"CGDD1708239365","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3725","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"","request_dep_strs":"同力测试食堂","status":"2","supply_name":"杭州蔬菜物流有限公司","total_amount":"77.00","total_money":"448.80"},{"cat_name":"果蔬类","code":"CGDD1708239362","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3724","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"66.00","total_money":"344.30"},{"cat_name":"果蔬类","code":"CGDD1708219298","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-22","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3720","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-22 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"2.00","total_money":"19.45"}],"total":"43","total_amount":"2000014346.48","total_money":"2000078207.33"}
+     * data : {"count":"107","rows":[{"cat_name":"鲜肉类","code":"CGDD1709289847","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-09-28","dep_brief_name":"紫金","dep_ids":"10","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3843","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"西区食堂"}],"plan_date":"2017-09-29 09:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"242.00","total_money":"2802.36"},{"cat_name":"鲜肉类","code":"CGDD1709289846","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-09-28","dep_brief_name":"紫金","dep_ids":"10","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3842","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"西区食堂"}],"plan_date":"2017-09-29 09:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"12.00","total_money":"138.96"},{"cat_name":"鲜肉类","code":"CGDD1709289845","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-09-28","dep_brief_name":"紫金","dep_ids":"9","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3841","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"668","contact_person":"张三","dep_name":"东区食堂"}],"plan_date":"2017-09-29 09:00","realname":"系统管理员","request_dep_strs":"东区食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"100.00","total_money":"1158.00"},{"cat_name":"鲜肉类","code":"CGDD1709289844","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-09-28","dep_brief_name":"紫金","dep_ids":"10","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3840","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"西区食堂"}],"plan_date":"2017-09-28 00:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"5","supply_name":"杭州杨大妈农副产品配送有限公司","total_amount":"32.00","total_money":"1622.72"},{"cat_name":"半成品类","code":"CGDD1709289843","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-09-28","dep_brief_name":"紫金","dep_ids":"10","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3839","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"西区食堂"}],"plan_date":"2017-09-28 00:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"1","supply_name":"杭州绿萌食品有限公司","total_amount":"2.00","total_money":"8.40"},{"cat_name":"果蔬类","code":"CGDD1709289828","com_brief_name":"交通","com_id":"6","com_name":"浙江交通学院","create_date":"2017-09-28","dep_brief_name":"浙交饮食","dep_ids":"125","dep_root_id":"121","dep_root_name":"浙江交通学院饮食中心","id":"3836","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"乐雅苑"}],"plan_date":"2017-09-28 00:00","realname":"余爽","request_dep_strs":"乐雅苑","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"20.00","total_money":"190.00"},{"cat_name":"水果类","code":"CGDD1709289829","com_brief_name":"交通","com_id":"6","com_name":"浙江交通学院","create_date":"2017-09-28","dep_brief_name":"浙交饮食","dep_ids":"125","dep_root_id":"121","dep_root_name":"浙江交通学院饮食中心","id":"3837","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"乐雅苑"}],"plan_date":"2017-09-28 00:00","realname":"余爽","request_dep_strs":"乐雅苑","status":"5","supply_name":"杭州羊皮卷贸易有限公司","total_amount":"30.00","total_money":"240.00"},{"cat_name":"粮油类","code":"CGDD1709289830","com_brief_name":"交通","com_id":"6","com_name":"浙江交通学院","create_date":"2017-09-28","dep_brief_name":"浙交饮食","dep_ids":"125","dep_root_id":"121","dep_root_name":"浙江交通学院饮食中心","id":"3838","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"乐雅苑"}],"plan_date":"2017-09-28 00:00","realname":"余爽","request_dep_strs":"乐雅苑","status":"2","supply_name":"杭州粮油食品有限公司","total_amount":"40.00","total_money":"320.00"},{"cat_name":"果蔬类","code":"CGDD1709289823","com_brief_name":"交通","com_id":"6","com_name":"浙江交通学院","create_date":"2017-09-28","dep_brief_name":"浙交饮食","dep_ids":"125","dep_root_id":"121","dep_root_name":"浙江交通学院饮食中心","id":"3834","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"乐雅苑"}],"plan_date":"2017-09-29 09:00","realname":"余爽","request_dep_strs":"乐雅苑","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"300.00","total_money":"1380.00"},{"cat_name":"粮油类","code":"CGDD1709289824","com_brief_name":"交通","com_id":"6","com_name":"浙江交通学院","create_date":"2017-09-28","dep_brief_name":"浙交饮食","dep_ids":"125","dep_root_id":"121","dep_root_name":"浙江交通学院饮食中心","id":"3835","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"乐雅苑"}],"plan_date":"2017-09-29 09:00","realname":"余爽","request_dep_strs":"乐雅苑","status":"5","supply_name":"杭州粮油食品有限公司","total_amount":"300.00","total_money":"2400.00"}],"total":"107","total_amount":"33895.00","total_money":"203422.97"}
      * msg : 执行成功！
      */
 
@@ -52,11 +52,11 @@ public class OrderListBean {
 
     public static class DataBean {
         /**
-         * count : 43
-         * rows : [{"cat_name":"果蔬类","code":"CGDD1708309435","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-30","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3735","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-31 09:00","realname":"采购测试","request_dep_strs":"总仓","status":"2","supply_name":"杭州蔬菜物流有限公司","total_amount":"200.00","total_money":"1270.00"},{"cat_name":"果蔬类","code":"CGDD1708289429","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-29","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3732","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-28 00:00","realname":"测试","request_dep_strs":"总仓","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"4.00","total_money":"27.50"},{"cat_name":"果蔬类","code":"CGDD1708289407","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-28","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3731","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-29 09:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"1","supply_name":"杭州蔬菜物流有限公司","total_amount":"5.00","total_money":"18.10"},{"cat_name":"果蔬类","code":"CGDD1708289403","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-28","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3730","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-29 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"1","supply_name":"杭州蔬菜物流有限公司","total_amount":"38.00","total_money":"149.50"},{"cat_name":"果蔬类","code":"CGDD1708269398","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-26","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3729","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-27 09:00","realname":"同保一","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"600.00","total_money":"2780.00"},{"cat_name":"果蔬类","code":"CGDD1708269395","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-26","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3728","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-27 09:00","realname":"系统管理员","request_dep_strs":"东区食堂,一食堂","status":"2","supply_name":"杭州蔬菜物流有限公司","total_amount":"1500.00","total_money":"9520.00"},{"cat_name":"果蔬类","code":"CGDD1708239388","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3727","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"系统管理员","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"66.00","total_money":"344.30"},{"cat_name":"果蔬类","code":"CGDD1708239365","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3725","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"","request_dep_strs":"同力测试食堂","status":"2","supply_name":"杭州蔬菜物流有限公司","total_amount":"77.00","total_money":"448.80"},{"cat_name":"果蔬类","code":"CGDD1708239362","com_brief_name":"同力","com_id":"4","com_name":"浙江同力教育后勤管理有限公司","create_date":"2017-08-23","dep_brief_name":"tlyj","dep_root_id":"163","dep_root_name":"同力一级","id":"3724","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-24 09:00","realname":"","request_dep_strs":"同力测试食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"66.00","total_money":"344.30"},{"cat_name":"果蔬类","code":"CGDD1708219298","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-08-22","dep_brief_name":"紫金","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3720","is_del":"0","is_new":0,"is_used":"0","plan_date":"2017-08-22 09:00","realname":"系统管理员","request_dep_strs":"总仓","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"2.00","total_money":"19.45"}]
-         * total : 43
-         * total_amount : 2000014346.48
-         * total_money : 2000078207.33
+         * count : 107
+         * rows : [{"cat_name":"鲜肉类","code":"CGDD1709289847","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-09-28","dep_brief_name":"紫金","dep_ids":"10","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3843","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"西区食堂"}],"plan_date":"2017-09-29 09:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"242.00","total_money":"2802.36"},{"cat_name":"鲜肉类","code":"CGDD1709289846","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-09-28","dep_brief_name":"紫金","dep_ids":"10","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3842","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"西区食堂"}],"plan_date":"2017-09-29 09:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"12.00","total_money":"138.96"},{"cat_name":"鲜肉类","code":"CGDD1709289845","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-09-28","dep_brief_name":"紫金","dep_ids":"9","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3841","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"668","contact_person":"张三","dep_name":"东区食堂"}],"plan_date":"2017-09-29 09:00","realname":"系统管理员","request_dep_strs":"东区食堂","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"100.00","total_money":"1158.00"},{"cat_name":"鲜肉类","code":"CGDD1709289844","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-09-28","dep_brief_name":"紫金","dep_ids":"10","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3840","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"西区食堂"}],"plan_date":"2017-09-28 00:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"5","supply_name":"杭州杨大妈农副产品配送有限公司","total_amount":"32.00","total_money":"1622.72"},{"cat_name":"半成品类","code":"CGDD1709289843","com_brief_name":"浙大","com_id":"1","com_name":"浙大饮食中心","create_date":"2017-09-28","dep_brief_name":"紫金","dep_ids":"10","dep_root_id":"1","dep_root_name":"第一餐饮中心（紫金港）","id":"3839","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"西区食堂"}],"plan_date":"2017-09-28 00:00","realname":"系统管理员","request_dep_strs":"西区食堂","status":"1","supply_name":"杭州绿萌食品有限公司","total_amount":"2.00","total_money":"8.40"},{"cat_name":"果蔬类","code":"CGDD1709289828","com_brief_name":"交通","com_id":"6","com_name":"浙江交通学院","create_date":"2017-09-28","dep_brief_name":"浙交饮食","dep_ids":"125","dep_root_id":"121","dep_root_name":"浙江交通学院饮食中心","id":"3836","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"乐雅苑"}],"plan_date":"2017-09-28 00:00","realname":"余爽","request_dep_strs":"乐雅苑","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"20.00","total_money":"190.00"},{"cat_name":"水果类","code":"CGDD1709289829","com_brief_name":"交通","com_id":"6","com_name":"浙江交通学院","create_date":"2017-09-28","dep_brief_name":"浙交饮食","dep_ids":"125","dep_root_id":"121","dep_root_name":"浙江交通学院饮食中心","id":"3837","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"乐雅苑"}],"plan_date":"2017-09-28 00:00","realname":"余爽","request_dep_strs":"乐雅苑","status":"5","supply_name":"杭州羊皮卷贸易有限公司","total_amount":"30.00","total_money":"240.00"},{"cat_name":"粮油类","code":"CGDD1709289830","com_brief_name":"交通","com_id":"6","com_name":"浙江交通学院","create_date":"2017-09-28","dep_brief_name":"浙交饮食","dep_ids":"125","dep_root_id":"121","dep_root_name":"浙江交通学院饮食中心","id":"3838","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"乐雅苑"}],"plan_date":"2017-09-28 00:00","realname":"余爽","request_dep_strs":"乐雅苑","status":"2","supply_name":"杭州粮油食品有限公司","total_amount":"40.00","total_money":"320.00"},{"cat_name":"果蔬类","code":"CGDD1709289823","com_brief_name":"交通","com_id":"6","com_name":"浙江交通学院","create_date":"2017-09-28","dep_brief_name":"浙交饮食","dep_ids":"125","dep_root_id":"121","dep_root_name":"浙江交通学院饮食中心","id":"3834","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"乐雅苑"}],"plan_date":"2017-09-29 09:00","realname":"余爽","request_dep_strs":"乐雅苑","status":"5","supply_name":"杭州蔬菜物流有限公司","total_amount":"300.00","total_money":"1380.00"},{"cat_name":"粮油类","code":"CGDD1709289824","com_brief_name":"交通","com_id":"6","com_name":"浙江交通学院","create_date":"2017-09-28","dep_brief_name":"浙交饮食","dep_ids":"125","dep_root_id":"121","dep_root_name":"浙江交通学院饮食中心","id":"3835","is_del":"0","is_new":0,"is_used":"0","phone":[{"address":"","contact_number":"","contact_person":"","dep_name":"乐雅苑"}],"plan_date":"2017-09-29 09:00","realname":"余爽","request_dep_strs":"乐雅苑","status":"5","supply_name":"杭州粮油食品有限公司","total_amount":"300.00","total_money":"2400.00"}]
+         * total : 107
+         * total_amount : 33895.00
+         * total_money : 203422.97
          */
 
         private String count;
@@ -107,26 +107,28 @@ public class OrderListBean {
 
         public static class RowsBean {
             /**
-             * cat_name : 果蔬类
-             * code : CGDD1708309435
+             * cat_name : 鲜肉类
+             * code : CGDD1709289847
              * com_brief_name : 浙大
              * com_id : 1
              * com_name : 浙大饮食中心
-             * create_date : 2017-08-30
+             * create_date : 2017-09-28
              * dep_brief_name : 紫金
+             * dep_ids : 10
              * dep_root_id : 1
              * dep_root_name : 第一餐饮中心（紫金港）
-             * id : 3735
+             * id : 3843
              * is_del : 0
              * is_new : 0
              * is_used : 0
-             * plan_date : 2017-08-31 09:00
-             * realname : 采购测试
-             * request_dep_strs : 总仓
-             * status : 2
+             * phone : [{"address":"","contact_number":"","contact_person":"","dep_name":"西区食堂"}]
+             * plan_date : 2017-09-29 09:00
+             * realname : 系统管理员
+             * request_dep_strs : 西区食堂
+             * status : 5
              * supply_name : 杭州蔬菜物流有限公司
-             * total_amount : 200.00
-             * total_money : 1270.00
+             * total_amount : 242.00
+             * total_money : 2802.36
              */
 
             private String cat_name;
@@ -136,6 +138,7 @@ public class OrderListBean {
             private String com_name;
             private String create_date;
             private String dep_brief_name;
+            private String dep_ids;
             private String dep_root_id;
             private String dep_root_name;
             private String id;
@@ -149,6 +152,7 @@ public class OrderListBean {
             private String supply_name;
             private String total_amount;
             private String total_money;
+            private List<PhoneBean> phone;
 
             public String getCat_name() {
                 return cat_name;
@@ -204,6 +208,14 @@ public class OrderListBean {
 
             public void setDep_brief_name(String dep_brief_name) {
                 this.dep_brief_name = dep_brief_name;
+            }
+
+            public String getDep_ids() {
+                return dep_ids;
+            }
+
+            public void setDep_ids(String dep_ids) {
+                this.dep_ids = dep_ids;
             }
 
             public String getDep_root_id() {
@@ -308,6 +320,60 @@ public class OrderListBean {
 
             public void setTotal_money(String total_money) {
                 this.total_money = total_money;
+            }
+
+            public List<PhoneBean> getPhone() {
+                return phone;
+            }
+
+            public void setPhone(List<PhoneBean> phone) {
+                this.phone = phone;
+            }
+
+            public static class PhoneBean {
+                /**
+                 * address :
+                 * contact_number :
+                 * contact_person :
+                 * dep_name : 西区食堂
+                 */
+
+                private String address;
+                private String contact_number;
+                private String contact_person;
+                private String dep_name;
+
+                public String getAddress() {
+                    return address;
+                }
+
+                public void setAddress(String address) {
+                    this.address = address;
+                }
+
+                public String getContact_number() {
+                    return contact_number;
+                }
+
+                public void setContact_number(String contact_number) {
+                    this.contact_number = contact_number;
+                }
+
+                public String getContact_person() {
+                    return contact_person;
+                }
+
+                public void setContact_person(String contact_person) {
+                    this.contact_person = contact_person;
+                }
+
+                public String getDep_name() {
+                    return dep_name;
+                }
+
+                public void setDep_name(String dep_name) {
+                    this.dep_name = dep_name;
+                }
             }
         }
     }

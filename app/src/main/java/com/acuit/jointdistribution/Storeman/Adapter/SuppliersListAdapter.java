@@ -15,7 +15,7 @@ import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Bean.StoreInListBySupplierBean;
 import com.acuit.jointdistribution.Storeman.Bean.SuppliersListBean;
 import com.acuit.jointdistribution.Storeman.View.StoreInDetilsActivity;
-import com.acuit.jointdistribution.Storeman.View.StoreInListActivity;
+import com.acuit.jointdistribution.Storeman.View.ReceivedActivity;
 import com.acuit.jointdistribution.Storeman.View.SupplierListActivity;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -97,7 +97,7 @@ public class SuppliersListAdapter extends RecyclerView.Adapter {
             if (1 == dataList.get(position).getCount()) {
                 getSingleStoreIn(dataList.get(position));
             } else {
-                Intent intent = new Intent(mActivity, StoreInListActivity.class);
+                Intent intent = new Intent(mActivity, ReceivedActivity.class);
                 intent.putExtra("SupplierBean", dataList.get(position));
                 mActivity.startActivity(intent);
             }
@@ -149,7 +149,7 @@ public class SuppliersListAdapter extends RecyclerView.Adapter {
             }
         };
 
-        stringRequest.setTag("StoreInListActivity");
+        stringRequest.setTag("ReceivedActivity");
         BaseApplication.getRequestQueue().add(stringRequest);
     }
 

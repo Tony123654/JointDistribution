@@ -54,14 +54,23 @@
     </RelativeLayout>
 
 
-    <ListView
-        android:id="@+id/lv_receive_view"
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/xrv_receiveList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="#cccccc">
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1">
 
-    </ListView>
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+    <!--<ListView-->
+    <!--android:id="@+id/lv_receive_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="#cccccc">-->
+
+    <!--</ListView>-->
 
     <View
         android:layout_width="match_parent"
@@ -205,8 +214,8 @@
             android:layout_alignParentEnd="true"
             android:background="@color/colorTitle"
             android:text="接单"
-            android:textSize="16sp"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

@@ -200,7 +200,7 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
             }
         };
 
-        stringRequest.setTag("StoreInListActivity");
+        stringRequest.setTag("ReceivedActivity");
         BaseApplication.getRequestQueue().add(stringRequest);
     }
 

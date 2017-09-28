@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Bean.StoreInListBySupplierBean;
 import com.acuit.jointdistribution.Storeman.View.StoreInDetilsActivity;
-import com.acuit.jointdistribution.Storeman.View.StoreInListActivity;
+import com.acuit.jointdistribution.Storeman.View.ReceivedActivity;
 
 import java.util.List;
 
@@ -28,10 +28,10 @@ import java.util.List;
 public class StoreInListAdapter extends RecyclerView.Adapter {
 //public class StoreInListAdapter extends XRecyclerView.Adapter {
 
-    private StoreInListActivity mActivity;
+    private ReceivedActivity mActivity;
     private List<StoreInListBySupplierBean.DataBean.StoreInListBean> dataList;
 
-    public StoreInListAdapter(List<StoreInListBySupplierBean.DataBean.StoreInListBean> dataList, StoreInListActivity mActivity) {
+    public StoreInListAdapter(List<StoreInListBySupplierBean.DataBean.StoreInListBean> dataList, ReceivedActivity mActivity) {
         this.dataList = dataList;
         this.mActivity = mActivity;
     }
