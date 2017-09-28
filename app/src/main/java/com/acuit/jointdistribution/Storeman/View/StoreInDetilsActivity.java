@@ -274,10 +274,15 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
 //                System.out.println("aaa url:" + GlobalContants.URL_SAVE_STOREIN);
 //                System.out.println("aaa json:" + response);
                 Gson gson = new Gson();
-                CodeMsgDataBean codeMsgDataBean = gson.fromJson(response, CodeMsgDataBean.class);
-                Toast.makeText(mActivity, codeMsgDataBean.getMsg(), Toast.LENGTH_SHORT).show();
-                if (200 == codeMsgDataBean.getCode()) {
-                    finish();
+                try {
+                    CodeMsgDataBean codeMsgDataBean = gson.fromJson(response, CodeMsgDataBean.class);
+
+                    Toast.makeText(mActivity, codeMsgDataBean.getMsg(), Toast.LENGTH_SHORT).show();
+                    if (200 == codeMsgDataBean.getCode()) {
+                        finish();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(StoreInDetilsActivity.this, "异常订单", Toast.LENGTH_SHORT).show();
                 }
             }
 

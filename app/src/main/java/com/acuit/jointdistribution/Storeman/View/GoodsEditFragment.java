@@ -163,12 +163,13 @@ public class GoodsEditFragment extends Fragment implements View.OnClickListener,
     }
 
     private void initData() {
+//        System.out.println("aaa goodsBean:" + goodsBean.toString());
         tvGoodsUnit1.setText(goodsBean.getUnit());
         tvGoodsUnit2.setText(goodsBean.getUnit());
         tvGoodsUnit3.setText(goodsBean.getUnit());
 
         tvGoodsName.setText(goodsBean.getStock_name());
-        tvUnitPrice.setText(goodsBean.getPrice_unit());
+        tvUnitPrice.setText(goodsBean.getBuy_price());
         tvGoodsAmount.setText(goodsBean.getOrder_amount());
 
         etReciverAmount.setText(goodsBean.getIn_amount());

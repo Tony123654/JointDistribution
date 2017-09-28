@@ -2,6 +2,7 @@ package com.acuit.jointdistribution.Storeman.View;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.ArrayMap;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -38,7 +39,7 @@ import java.util.Map;
  * 更新描述: <p>
  */
 
-public class StoremanHomePage extends BasePager implements View.OnClickListener {
+public class StoremanHomePage extends BasePager implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     private LinearLayout llMessageCenter;
     private LinearLayout llCheckOrder;
@@ -54,6 +55,7 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
     private MessageImageView mivCheckOrder;
     private MessageImageView mivInvaluateOrder;
     private MessageImageView mivMessageCenter;
+    private SwipeRefreshLayout srlRefresh;
 
     public StoremanHomePage(Activity activity) {
         super(activity);
@@ -84,7 +86,12 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
 //        tvHaventDistribution = (TextView) view.findViewById(R.id.tv_haventDistribution);
 //        tvParticalDistribution = (TextView) view.findViewById(R.id.tv_particalDistribution);
 
+        srlRefresh = (SwipeRefreshLayout) view.findViewById(R.id.srl_refresh);
+        srlRefresh.setColorSchemeColors(android.R.color.holo_blue_bright, android.R.color.holo_green_light,android.R.color.holo_green_dark,
+                android.R.color.holo_orange_light, android.R.color.holo_purple, android.R.color.holo_blue_dark);
+
         tvScanCode.setOnClickListener(this);
+        srlRefresh.setOnRefreshListener(this);
         llCheckOrder.setOnClickListener(this);
         llMessageCenter.setOnClickListener(this);
         llEvaluateOrder.setOnClickListener(this);
@@ -127,7 +134,7 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
     /**
      * 获取展示数据，设置给页面
      */
-    private void setText() {
+//    private void setText() {
 
 //        String dataUrl = BaseApplication.getLoginBean().getData().getUser_info().getRole_page().get(0).getAjax_url();
 //        if (null != dataUrl && !dataUrl.isEmpty()) {
@@ -147,8 +154,8 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
 //            getData(supplyUrl);
 //
 //        }
-
-    }
+//
+//    }
 
     /**
      * 获取 未接单数 未接单供应商数
@@ -218,8 +225,8 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
             @Override
             public void onResponse(String response) {
 
-                System.out.println("aaa json:" + response);
-                System.out.println("aaa url:" + GlobalContants.URL_UNACCEPT_ORDER_AMOUNT);
+//                System.out.println("aaa json:" + response);
+//                System.out.println("aaa url:" + GlobalContants.URL_UNACCEPT_ORDER_AMOUNT);
                 Gson gson = new Gson();
                 SuppliersListBean suppliersListBean = gson.fromJson(response, SuppliersListBean.class);
 //                if (200 == suppliersListBean.getCode()) {
@@ -233,6 +240,7 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
 
                     mivCheckOrder.setCurrentMode(3);
                     mivCheckOrder.setMessageNumber(Integer.parseInt(countStoreInBean.getCount()));
+                    srlRefresh.setRefreshing(false);
                 }
             }
         }, new Response.ErrorListener() {
@@ -265,5 +273,11 @@ public class StoremanHomePage extends BasePager implements View.OnClickListener 
 
         stringRequest.setTag("HomeActivity");
         BaseApplication.getRequestQueue().add(stringRequest);
+    }
+
+    @Override
+    public void onRefresh() {
+        getData();
+        getCount();
     }
 }
