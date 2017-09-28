@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="西红柿"
-        android:textColor="#33b688" />
+        android:textColor="#33b688"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_goodsWeight"
@@ -24,7 +25,8 @@
         android:layout_below="@id/tv_goodsName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="3dp"
-        android:text="596.00kg" />
+        android:text="596.00kg"
+        android:textSize="18sp" />
 
 </RelativeLayout>
 

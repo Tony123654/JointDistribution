@@ -1,6 +1,7 @@
 package com.acuit.jointdistribution.Storeman.View;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -120,17 +121,6 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
             storeInGoodsAdapter.notifyDataSetChanged();
         }
 
-//        提示：不是待验收状态的——入库单
-//        if (!storeInDetailBean.getData().get(0).getStatus().equals("2")) {
-//            showDialog();
-//        }
-
-    }
-
-    private void showDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("注意！本订单不是待验收状态！");
-        builder.create().show();
     }
 
     @Override
@@ -144,11 +134,28 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
 //                startActivity(new Intent(StoreInDetilsActivity.this, ScanCodeActivity.class));
                 break;
             case R.id.btn_check:
-                checkStoreIn();
+                showDialog();
                 break;
 
 
         }
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                checkStoreIn();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.setMessage("确认验收本入库单吗？");
+        builder.create().show();
     }
 
 
@@ -264,7 +271,8 @@ public class StoreInDetilsActivity extends BaseActivity implements View.OnClickL
         StringRequest stringRequest = new StringRequest(Request.Method.POST, GlobalContants.URL_SAVE_STOREIN, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("aaa json:" + response);
+//                System.out.println("aaa url:" + GlobalContants.URL_SAVE_STOREIN);
+//                System.out.println("aaa json:" + response);
                 Gson gson = new Gson();
                 CodeMsgDataBean codeMsgDataBean = gson.fromJson(response, CodeMsgDataBean.class);
                 Toast.makeText(mActivity, codeMsgDataBean.getMsg(), Toast.LENGTH_SHORT).show();
