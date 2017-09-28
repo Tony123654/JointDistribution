@@ -99,13 +99,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
 
             android:text="部门："
             android:textSize="16sp" />
@@ -115,7 +116,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-
+            android:gravity="center"
             android:text="东区食堂" />
 
         <TextView
@@ -123,6 +124,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="浙大" />
 
         <TextView
@@ -136,7 +138,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginLeft="5dp"
         android:orientation="horizontal">
 
         <TextView
@@ -160,7 +162,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="5dp"
         android:orientation="horizontal">
 
         <TextView
@@ -233,10 +235,10 @@
         android:id="@+id/tv_receive_button"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:text="接单"
         android:background="#23b587"
+        android:gravity="center"
+        android:text="接单"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
 </LinearLayout>

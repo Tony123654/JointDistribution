@@ -19,8 +19,10 @@ import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Supplier.Adapter.AreaAdapter;
 import com.acuit.jointdistribution.Supplier.Adapter.MyAdapter;
 import com.acuit.jointdistribution.Supplier.Adapter.ReceiveRightAdapter;
+import com.acuit.jointdistribution.Supplier.Domain.AeraBean;
 import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
 import com.acuit.jointdistribution.Supplier.Domain.OrderListBean;
 import com.acuit.jointdistribution.Supplier.GlobalInfo.GlobalValue;
@@ -45,6 +47,7 @@ public class ReceivedActivity extends BaseActivity {
     private ArrayList<OrderListBean.DataBean.RowsBean> mList;
 
 
+    private ArrayList<AeraBean.DataBean> aereList;
     private ListView listView;
     private OrderListBean order;
     private MyAdapter mAdapter;
@@ -69,6 +72,9 @@ public class ReceivedActivity extends BaseActivity {
     private GridView rightMenuView;
     private ArrayList<OnlySchoolBean.DataBean> gv_list;
     private ReceiveRightAdapter receiveRightAdapter;
+    private AeraBean areaInfo;
+    private TextView pickingArea;
+    private GridView area;
 
 
     @Override
@@ -205,6 +211,7 @@ public class ReceivedActivity extends BaseActivity {
                             receiveRightAdapter = new ReceiveRightAdapter(gv_list, ReceivedActivity.this);
                         rightMenuView.setAdapter(receiveRightAdapter);
 
+
                     }
 
                     @Override
@@ -213,8 +220,56 @@ public class ReceivedActivity extends BaseActivity {
 
                     }
                 });
-    }
+        //适配结束，点击进行区域选择
+        if (rightMenuView != null) {
+            rightMenuView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String id_area = gv_list.get(position).getId();
+                    HttpUtils hu = new HttpUtils();
+                    RequestParams params1 = new RequestParams();
+                    params1.addBodyParameter("dep_class", 3 + "");
+                    params1.addBodyParameter("com_id", id_area);
+                    hu.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=ajax&a=get_all_dep", params1,
+                            new RequestCallBack<String>() {
 
+
+                                @Override
+                                public void onSuccess(ResponseInfo<String> responseInfo) {
+                                    String result = responseInfo.result;
+                                    System.out.println("hhh:"+result);
+                                    Gson gson = new Gson();
+                                    areaInfo = gson.fromJson(result, AeraBean.class);
+
+                                    aereList = new ArrayList<>();
+
+
+
+                                    aereList.clear();
+                                    aereList.addAll(areaInfo.getData());
+//                                    pickingArea = (TextView) findViewById(R.id.tv_picking_area);
+
+//                                    pickingArea.setVisibility(View.VISIBLE);
+                                    area = (GridView) findViewById(R.id.gv_area);
+
+                                    AreaAdapter areaAdapter = new AreaAdapter(aereList, ReceivedActivity.this);
+
+
+                                    area.setAdapter(areaAdapter);
+
+                                }
+
+                                @Override
+                                public void onFailure(HttpException error, String msg) {
+
+                                }
+                            });
+
+                }
+            });
+
+        }
+    }
     private void initDrawerLayout() {
 
         drawerLayout = (DrawerLayout) super.findViewById(R.id.drawer_layout);

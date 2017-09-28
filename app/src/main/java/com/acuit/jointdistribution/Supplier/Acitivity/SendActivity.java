@@ -120,7 +120,7 @@ public class SendActivity extends BaseActivity {
                         Gson gson = new Gson();
                         OnlySchoolBean onlySchoolInfo = gson.fromJson(result, OnlySchoolBean.class);
 
-                        System.out.println("hhh:" + result);
+//                        System.out.println("hhh:" + result);
                         gv_list.clear();
                         gv_list.addAll(onlySchoolInfo.getData());
 
@@ -148,7 +148,7 @@ public class SendActivity extends BaseActivity {
                 Intent intent = new Intent(SendActivity.this, SendInfoActivity.class);
                 intent.putExtra("listId", listId);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
 

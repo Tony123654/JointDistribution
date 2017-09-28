@@ -67,9 +67,9 @@ public class SendAdapter extends BaseAdapter {
             holder.total_amount = (TextView) convertView.findViewById(R.id.tv_total_amount);
             holder.contact_person = (TextView) convertView.findViewById(R.id.tv_contact_person);
             holder.contact_number = (TextView) convertView.findViewById(R.id.tv_contact_number);
-            holder.request_dep_str = (TextView) convertView.findViewById(R.id.tv_request_dep_strs);
-            holder.com_brief_name = (TextView) convertView.findViewById(R.id.tv_com_brief_name);
-            holder.dep_root_name = (TextView) convertView.findViewById(R.id.tv_dep_root_name);
+            holder.request_dep_str = (TextView) convertView.findViewById(R.id.tv_dep_name2);
+            holder.com_brief_name = (TextView) convertView.findViewById(R.id.tv_dep2_name);
+//            holder.dep_root_name = (TextView) convertView.findViewById(R.id.tv_dep_root_name);
 
 
 //            holder.rb_send.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -101,9 +101,9 @@ public class SendAdapter extends BaseAdapter {
 
         holder.create_date.setText(item.getCreate_date());
 //        holder.plan_date.setText(item.getPlan_date_str());
-        holder.request_dep_str.setText(item.getDep2_address());
-        holder.com_brief_name.setText("("+item.getCom_brief_name());
-        holder.dep_root_name.setText("-"+item.getDep_brief_name()+")");
+        holder.request_dep_str.setText(item.getDep_name2());
+        holder.com_brief_name.setText("("+item.getDep_name());
+//        holder.dep_root_name.setText("-"+item.getDep_brief_name()+")");
         holder.total_amount.setText(item.getStatis_num());
         holder.contact_person.setText(item.getPhone().getContact_person());
 

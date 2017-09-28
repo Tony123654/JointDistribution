@@ -45,9 +45,9 @@
                 android:src="@mipmap/yellowjine" />
 
             <LinearLayout
-                android:layout_marginLeft="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -55,17 +55,18 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="18sp"
                     android:gravity="center"
-                    android:text="000" />
+                    android:textColor="#666666"
+                    android:textSize="18sp" />
 
                 <TextView
-
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="今日订单总额" />
+                    android:textColor="#666666"
+                    android:text="今日订单总额"
+                     />
 
             </LinearLayout>
 
@@ -96,8 +97,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textSize="18sp"
-                    android:text="000" />
+                    android:textColor="#666666"
+                    android:textSize="18sp" />
 
                 <TextView
 
@@ -105,6 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textColor="#666666"
                     android:text="今日订单数量" />
 
             </LinearLayout>
@@ -118,16 +120,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="70dp"
         android:layout_marginRight="30dp"
+        android:layout_marginTop="70dp"
         android:orientation="horizontal">
 
 
         <LinearLayout
-            android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -147,9 +149,9 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="18sp"
                     android:gravity="center"
-                    android:text="000" />
+                    android:textColor="#666666"
+                    android:textSize="18sp" />
 
                 <TextView
 
@@ -157,6 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textColor="#666666"
                     android:text="本周订单总额" />
 
             </LinearLayout>
@@ -188,14 +191,15 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textSize="18sp"
-                    android:text="000" />
+                    android:textColor="#666666"
+                    android:textSize="18sp" />
 
                 <TextView
 
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="#666666"
                     android:gravity="center"
                     android:text="本周订单数量" />
 
@@ -216,10 +220,10 @@
 
 
         <LinearLayout
-            android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -240,7 +244,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="000"
+                    android:textColor="#666666"
                     android:textSize="18sp" />
 
                 <TextView
@@ -249,6 +253,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textColor="#666666"
                     android:text="本月订单总额" />
 
             </LinearLayout>
@@ -280,7 +285,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="000"
                     android:textColor="#666666"
                     android:textSize="18sp" />
 
