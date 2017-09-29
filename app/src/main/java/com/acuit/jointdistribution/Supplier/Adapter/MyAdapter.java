@@ -145,7 +145,7 @@
 //                }
 //
 //
-
+//
 ////        holder.dep_name.setText(item.getDep_name);
 //        holder.com_brief_name.setText("(" + item.getCom_brief_name());
 //        holder.brief_name.setText("—" + item.getDep_brief_name() + ")");

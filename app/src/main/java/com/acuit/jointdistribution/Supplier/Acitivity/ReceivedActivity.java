@@ -55,9 +55,6 @@ import java.util.Map;
  */
 public class ReceivedActivity extends BaseActivity implements View.OnClickListener, XRecyclerView.LoadingListener {
 
-    private ArrayList<OrderListBean.DataBean.RowsBean> mList;
-
-
     private ArrayList<AeraBean.DataBean> areaList;
     private ListView listView;
     private OrderListBean order;
@@ -74,7 +71,7 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
 
     private AlertDialog.Builder builder;
 
-    private ArrayList<String> selectedOrders = new ArrayList<>();
+    private ArrayList<Integer> selectedOrders = new ArrayList<>();
     private ArrayList<Integer> selectAll = new ArrayList<>();
     //    private ArrayList<OnlySchoolBean.DataBean> chooseList;
     private AlertDialog dialog;
@@ -91,6 +88,7 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
     private boolean Flag_LoadMore = false;
     private XRecyclerView xrvReceiveList;
     private List<OrderListBean.DataBean.RowsBean> receiveInList = new ArrayList<OrderListBean.DataBean.RowsBean>();
+    private GlobalValue globalValue;
 
 
     @Override
@@ -167,9 +165,9 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
             }
         });
 
-        mList = new ArrayList<>();
+        receiveInList = new ArrayList<>();
 //全选
-        final GlobalValue globalValue = new GlobalValue();
+        globalValue = new GlobalValue();
         selectAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,19 +176,19 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
                 if (isCheck) {
                     if (v == selectAllButton) selectAllButton.setChecked(false);
                     if (null != receivedInListAdapter) {
-//                        receivedInListAdapter.disSelectAll();
+                        receivedInListAdapter.disSelectAll();
                     }
                     selectAll.clear();
                     selectedOrders.clear();
                 } else {
                     if (v == selectAllButton) selectAllButton.setChecked(true);
-                    selectAll.add(mList.size());
+                    selectAll.add(receiveInList.size());
                     selectedOrders.clear();
-                    for (int i = 0; i < mList.size(); i++) {
-                        selectedOrders.add(i + "");
+                    for (int i = 0; i < receiveInList.size(); i++) {
+                        selectedOrders.add(i);
                     }
                     if (null != receivedInListAdapter) {
-//                        receivedInListAdapter.selectAll();
+                        receivedInListAdapter.selectAll();
                     }
 
                 }
@@ -324,8 +322,8 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onResponse(String response) {
 
-                System.out.println("ttt:" + GlobalContants.URL_BUY_ORDER_LIST);
-                System.out.println("ttt:" + response);
+//                System.out.println("ttt:" + GlobalContants.URL_BUY_ORDER_LIST);
+//                System.out.println("ttt:" + response);
 
                 Gson gson = new Gson();
                 OrderListBean orderListBean = gson.fromJson(response, OrderListBean.class);
@@ -357,7 +355,7 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
                 ArrayMap<String, String> params = new ArrayMap<String, String>();
 
                 params.put("token", BaseApplication.getLoginBean().getData().getToken());
-                params.put("start_date", Tools.getSimpleFormatedTime(new Date(0).getTime()/ 1000 + ""));
+                params.put("start_date", Tools.getSimpleFormatedTime(new Date(0).getTime() / 1000 + ""));
                 params.put("end_date", Tools.getSimpleFormatedTime(System.currentTimeMillis() / 1000 + ""));
                 params.put("rows", 10 + "");
                 params.put("page", 1 + "");
@@ -411,14 +409,14 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
 //
 //                        Gson gson = new Gson();
 //                        order = gson.fromJson(result, OrderListBean.class);
-//                        mList.clear();
-//                        mList.addAll(order.getData().getRows());
-////                        mList.addAll(order.getData().getRows());
-//                        if (mList.size() == 0) {
+//                        receiveInList.clear();
+//                        receiveInList.addAll(order.getData().getRows());
+////                        receiveInList.addAll(order.getData().getRows());
+//                        if (receiveInList.size() == 0) {
 //                            //暂无订单
 //                        } else {
 ////                            lv_list.setDividerHeight(20);
-//                            mAdapter = new MyAdapter(mList, ReceivedActivity.this, selectAll);
+//                            mAdapter = new MyAdapter(receiveInList, ReceivedActivity.this, selectAll);
 //                            lv_list.setAdapter(mAdapter);
 //                        }
 //
@@ -438,7 +436,7 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //
 //
-//                String listId = mList.get(position).getId();
+//                String listId = receiveInList.get(position).getId();
 //                System.out.println("跳转过去了：" + listId);
 //                Intent intent = new Intent(ReceivedActivity.this, ReceivedMenuInfoActivity.class);
 //                intent.putExtra("listId", listId);
@@ -473,7 +471,7 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
 
                 xrvReceiveList.refreshComplete();
                 xrvReceiveList.loadMoreComplete();
-                receivedInListAdapter = new ReceivedInListAdapter(receiveInList, ReceivedActivity.this, selectAll);
+                receivedInListAdapter = new ReceivedInListAdapter(receiveInList, ReceivedActivity.this);
                 xrvReceiveList.setAdapter(receivedInListAdapter);
             }
 
@@ -519,19 +517,24 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
 
 
     public void selectedOrder(int position) {
-        selectedOrders.add(position + "");
+        selectedOrders.add(position);
         calculate();
-        if (selectedOrders.size() == mList.size()) {
+        if (selectedOrders.size() == receiveInList.size()) {
             selectAllButton.setChecked(true);
+            globalValue.setCheck(true);
         }
     }
 
     public void unselectedOrder(int position) {
 //        System.out.println("aaa unselected:" + position + "  seletctedOrders.size():" + selectedOrders.size());
         if (selectedOrders.size() != 0) {
-            selectedOrders.remove(selectedOrders.indexOf(position + ""));
+            selectedOrders.remove(Integer.valueOf(position));
+
+//            System.out.println("qqq:position" + position);
             calculate();
             selectAllButton.setChecked(false);
+            globalValue.setCheck(false);
+//            selectAll = false;
         }
 
     }
@@ -541,8 +544,10 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
         float totalMoney = 0;
 
         if (selectedOrders.size() != 0) {
-            for (String position : selectedOrders) {
-                totalMoney = totalMoney + Float.valueOf(mList.get(Integer.parseInt(position)).getTotal_money());
+            System.out.println("aaa selectedOrders:" + selectedOrders.toString());
+            for (Integer position : selectedOrders) {
+
+                totalMoney = totalMoney + Float.valueOf(receiveInList.get(position).getTotal_money());
             }
         }
 
@@ -554,6 +559,7 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
+
 
     }
 }

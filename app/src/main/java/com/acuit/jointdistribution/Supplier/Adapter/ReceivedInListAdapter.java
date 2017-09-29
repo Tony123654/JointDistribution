@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -31,28 +30,26 @@ import java.util.List;
 
 public class ReceivedInListAdapter extends RecyclerView.Adapter {
 
-    private  List<OrderListBean.DataBean.RowsBean> receiveInList;
-    private  ReceivedActivity mActivity;
-    private  ArrayList<Integer> selectAll;
+    //    private final int position;
+    private List<OrderListBean.DataBean.RowsBean> receiveInList;
+    private ReceivedActivity mActivity;
     private ArrayList<Integer> selectedPosition;
+    private boolean selectAll = false;
 
-
-    public ReceivedInListAdapter(List<OrderListBean.DataBean.RowsBean> receiveInList, ReceivedActivity mActivity, ArrayList<Integer> selectAll) {
+    public ReceivedInListAdapter(List<OrderListBean.DataBean.RowsBean> receiveInList, ReceivedActivity mActivity) {
         this.receiveInList = receiveInList;
         this.mActivity = mActivity;
-        this.selectAll = selectAll;
-
         selectedPosition = new ArrayList<>();
+//        selectedPosition = new ArrayList<>();
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int position) {
 
         View itemView = LayoutInflater.from(mActivity).inflate(R.layout.listitem, parent, false);
 
-
-        return new ReceivedInList_ViewHold(itemView);
-//        return new StoreInList_ViewHold(itemView);
+//        System.out.println("aaa position:"+position);
+        return new ReceivedInList_ViewHold(itemView, position);
     }
 
 
@@ -66,10 +63,14 @@ public class ReceivedInListAdapter extends RecyclerView.Adapter {
         viewHold.getComBriefName().setText(receiveInList.get(position).getCom_brief_name());
         viewHold.getDepBriefName().setText(receiveInList.get(position).getDep_brief_name());
         viewHold.getRequestDepStrs().setText(receiveInList.get(position).getRequest_dep_strs());
-//        viewHold.getTotalMoney().setText(receiveInList.get(position).getTotal_money());
+        viewHold.getTotalMoney().setText(receiveInList.get(position).getTotal_money() + "");
         viewHold.getTotalAmount().setText(receiveInList.get(position).getTotal_amount());
-//        viewHold.getRbitem().setChecked(receiveInList.get(position).);
-
+        viewHold.setItemPosition(position);
+        if (selectAll) {
+            viewHold.getRbitem().setChecked(true);
+        } else {
+            viewHold.getRbitem().setChecked(false);
+        }
 
     }
 
@@ -79,50 +80,108 @@ public class ReceivedInListAdapter extends RecyclerView.Adapter {
         return receiveInList.size();
     }
 
+    public void selectAll() {
+        selectAll = true;
+        selectedPosition.clear();
+        for (int i = 0; i < receiveInList.size(); i++) {
+            selectedPosition.add(new Integer(i));
+        }
+        notifyDataSetChanged();
+    }
+
+    public void disSelectAll() {
+        selectAll = false;
+        selectedPosition.clear();
+        notifyDataSetChanged();
+    }
+
+
     class ReceivedInList_ViewHold extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private final TextView receiveCreateDate;
-        private final TextView totalMoney;
-        private final TextView totalAmount;
-        private final TextView planDate;
-        private final TextView comBriefName;
-        private final TextView depBriefName;
-        private final TextView requestDepStrs;
-        private final RadioButton rb_item;
+        private TextView receiveCreateDate;
+        private TextView totalMoney;
+        private TextView totalAmount;
+        private TextView planDate;
+        private TextView comBriefName;
+        private TextView depBriefName;
+        private TextView requestDepStrs;
+        private RadioButton rb_item;
+        private int itemPosition = -1;
+        private GlobalValue globalValue;
 
-        public ReceivedInList_ViewHold(View itemView) {
+        public ReceivedInList_ViewHold(View itemView, final int position) {
+
+
             super(itemView);
-
+            itemPosition = position;
             receiveCreateDate = (TextView) itemView.findViewById(R.id.tv_receive_create_date);
-            totalMoney = (TextView) itemView.findViewById(R.id.tv_receive_totao_money);
+            totalMoney = (TextView) itemView.findViewById(R.id.tv_receive_total_money);
             totalAmount = (TextView) itemView.findViewById(R.id.tv_receive_total_amount);
             planDate = (TextView) itemView.findViewById(R.id.tv_receive_plan_date);
             comBriefName = (TextView) itemView.findViewById(R.id.tv_receive_com_brief_name);
             depBriefName = (TextView) itemView.findViewById(R.id.tv_receive_dep_brief_name);
             requestDepStrs = (TextView) itemView.findViewById(R.id.tv_receive_request_dep_strs);
 
+            globalValue = new GlobalValue();
             rb_item = (RadioButton) itemView.findViewById(R.id.rb_item);
 
-
-//            final ViewHolder finalHolder = holder;
-//            ReceivedInList_ViewHold  holder = holder;
-            final GlobalValue globalValue = new GlobalValue();
-            rb_item.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked){
-
-                        mActivity.selectedOrder(getAdapterPosition());
-                    }else {
-                        mActivity.unselectedOrder(getAdapterPosition());
-                    }
-                    globalValue.setCheck(isChecked);
-                }
-            });
-
+//状态改变
+//
+//            rb_item.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                @Override
+//                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                    if (isChecked) {
+//                        if (itemPosition!=-1)
+//
+//                            if (!selectedPosition.contains(itemPosition)) {
+//                                rb_item.setChecked(false);
+//                            } else {
+//                                rb_item.setChecked(true);
+//                            }
+//                        mActivity.selectedOrder(itemPosition);
+//                    } else {
+//                        mActivity.unselectedOrder(itemPosition);
+//                    }
+//                    globalValue.setCheck(isChecked);
+//                }
+//            });
 
 
             itemView.setOnClickListener(this);
+
+
+            rb_item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (selectAll) {
+                        globalValue.setCheck(true);
+                    }
+                    boolean isCheck = globalValue.isCheck();
+
+                    System.out.println("kkk globalValueisCheck" + isCheck + "     "
+
+
+                            + position);
+
+                    if (isCheck) {
+                        if (v.getId() == rb_item.getId()) {
+                            rb_item.setChecked(false);
+                            selectedPosition.remove(new Integer(itemPosition));
+                            ReceivedInListAdapter.this.mActivity.unselectedOrder(itemPosition);
+                            globalValue.setCheck(false);
+                            selectAll = false;
+                        }
+                    } else {
+                        if (v.getId() == rb_item.getId()) {
+                            rb_item.setChecked(true);
+                            globalValue.setCheck(true);
+                            selectedPosition.add(new Integer(itemPosition));
+                            ReceivedInListAdapter.this.mActivity.selectedOrder(itemPosition);
+                        }
+                    }
+                }
+            });
+
         }
 
         @Override
@@ -151,19 +210,33 @@ public class ReceivedInListAdapter extends RecyclerView.Adapter {
             return planDate;
         }
 
-        public TextView getComBriefName(){
+        public TextView getComBriefName() {
             return comBriefName;
         }
 
-        public TextView getDepBriefName(){
+        public TextView getDepBriefName() {
             return depBriefName;
         }
-        public RadioButton getRbitem(){
+
+        public RadioButton getRbitem() {
 
             return rb_item;
         }
-        public TextView getRequestDepStrs(){
+
+        public TextView getRequestDepStrs() {
             return requestDepStrs;
+        }
+
+        public RadioButton getRb_item() {
+            return rb_item;
+        }
+
+        public int getItemPosition() {
+            return itemPosition;
+        }
+
+        public void setItemPosition(int itemPosition) {
+            this.itemPosition = itemPosition;
         }
     }
 
