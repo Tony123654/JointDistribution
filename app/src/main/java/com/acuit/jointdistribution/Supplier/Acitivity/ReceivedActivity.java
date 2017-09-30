@@ -23,7 +23,7 @@ import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Adapter.AreaAdapter;
-//import com.acuit.jointdistribution.Supplier.Adapter.MyAdapter;
+import com.acuit.jointdistribution.Supplier.Adapter.PointAdapter;
 import com.acuit.jointdistribution.Supplier.Adapter.ReceiveRightAdapter;
 import com.acuit.jointdistribution.Supplier.Adapter.ReceivedInListAdapter;
 import com.acuit.jointdistribution.Supplier.Domain.AeraBean;
@@ -49,7 +49,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  * 接单界面
  */
@@ -58,11 +57,9 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
     private ArrayList<AeraBean.DataBean> areaList;
     private ListView listView;
     private OrderListBean order;
-    //    private MyAdapter mAdapter;
     private TextView tv;
     private TextView tvSelectedCount;
     private TextView tvTotalMoney;
-    //    private TextView tvTotalAmount;
     private TextView receiveButtom;
     private TextView reset;
     private int total = -1;
@@ -80,15 +77,18 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
     private ImageView ib_receive_choose;
     private DrawerLayout drawerLayout;
     private GridView rightMenuView;
-    private ArrayList<OnlySchoolBean.DataBean> gv_list;
+    private ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list;
     private ReceiveRightAdapter receiveRightAdapter;
     private AeraBean areaInfo;
-    private TextView pickingArea;
     private GridView area;
     private boolean Flag_LoadMore = false;
     private XRecyclerView xrvReceiveList;
     private List<OrderListBean.DataBean.RowsBean> receiveInList = new ArrayList<OrderListBean.DataBean.RowsBean>();
     private GlobalValue globalValue;
+    private TextView pichingArea;
+    private TextView pichingPoint;
+    private TextView pickingArea;
+    private TextView pickingPoint;
 
 
     @Override
@@ -98,8 +98,13 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
         tvSelectedCount = (TextView) findViewById(R.id.tv_receive_count);
         tvTotalMoney = (TextView) findViewById(R.id.tv_receive_total_money);
 //        tvTotalAmount = (TextView) findViewById(R.id.tv_receive_total_amount);
+
+
         selectAllButton = (RadioButton) findViewById(R.id.rb_receive_select_all);
         receiveButtom = (TextView) findViewById(R.id.btn_receive_button);
+
+        pichingArea = (TextView) findViewById(R.id.tv_picking_area);
+        pichingPoint = (TextView) findViewById(R.id.tv_picking_point);
 
         ib_back_home = (ImageView) findViewById(R.id.ib_back_receive_menu);
 
@@ -211,20 +216,21 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
 
         });
 
-        initSchoolData();
 
         rightMenuView = (GridView) findViewById(R.id.gv_right_menu);
         gv_list = new ArrayList<>();
 
+        initSchoolData();
     }
 
 
     private void initSchoolData() {
+
         HttpUtils utils = new HttpUtils();
         RequestParams params = new RequestParams();
         params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
 
-        utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=com_list", params,
+        utils.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_VIEW_BUY, params,
                 new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> responseInfo) {
@@ -234,7 +240,7 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
 
 //                        System.out.println("hhh:" + result);
                         gv_list.clear();
-                        gv_list.addAll(onlySchoolInfo.getData());
+                        gv_list.addAll(onlySchoolInfo.getData().getRows());
 
                         if (gv_list != null)
 
@@ -250,55 +256,132 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
 
                     }
                 });
-        //适配结束，点击进行区域选择
-        if (rightMenuView != null) {
-            rightMenuView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String id_area = gv_list.get(position).getId();
-                    HttpUtils hu = new HttpUtils();
-                    RequestParams params1 = new RequestParams();
-                    params1.addBodyParameter("dep_class", 3 + "");
-                    params1.addBodyParameter("com_id", id_area);
-                    hu.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=ajax&a=get_all_dep", params1,
-                            new RequestCallBack<String>() {
 
 
-                                @Override
-                                public void onSuccess(ResponseInfo<String> responseInfo) {
-                                    String result = responseInfo.result;
-//                                    System.out.println("hhh:" + result);
-                                    Gson gson = new Gson();
-                                    areaInfo = gson.fromJson(result, AeraBean.class);
-
-                                    areaList = new ArrayList<>();
 
 
-                                    areaList.clear();
-                                    areaList.addAll(areaInfo.getData());
-//                                    pickingArea = (TextView) findViewById(R.id.tv_picking_area);
-
-//                                    pickingArea.setVisibility(View.VISIBLE);
-                                    area = (GridView) findViewById(R.id.gv_area);
-
-                                    AreaAdapter areaAdapter = new AreaAdapter(areaList, ReceivedActivity.this);
+                //点击学校获取区域
 
 
-                                    area.setAdapter(areaAdapter);
+                pickingArea = (TextView) findViewById(R.id.tv_picking_area);
+                pickingPoint = (TextView) findViewById(R.id.tv_picking_point);
 
-                                }
+                pickingArea.setVisibility(View.GONE);
+                pickingPoint.setVisibility(View.GONE);
 
-                                @Override
-                                public void onFailure(HttpException error, String msg) {
+                if (rightMenuView != null) {
+                    rightMenuView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
 
-                                }
-                            });
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            pickingArea.setVisibility(View.VISIBLE);
+
+
+                            String id_area = gv_list.get(position).getId();
+
+                            HttpUtils hu = new HttpUtils();
+                            RequestParams params1 = new RequestParams();
+                            params1.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
+                            params1.addBodyParameter("dep_class", 3 + "");
+                            params1.addBodyParameter("com_id", id_area);
+                            hu.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_GET_ALL_DEP, params1,
+                                    new RequestCallBack<String>() {
+
+
+                                        @Override
+                                        public void onSuccess(ResponseInfo<String> responseInfo) {
+                                            String result = responseInfo.result;
+
+
+
+                                            Gson gson = new Gson();
+
+                                            areaInfo = gson.fromJson(result, AeraBean.class);
+                                            System.out.println("aaa  areaInfo:" + areaInfo);
+                                            areaList = new ArrayList<>();
+
+
+                                            areaList.clear();
+
+                                            areaList.addAll(areaInfo.getData());
+
+                                            area = (GridView) findViewById(R.id.gv_area);
+
+                                            AreaAdapter areaAdapter = new AreaAdapter(areaList, ReceivedActivity.this);
+                                            area.setAdapter(areaAdapter);
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(HttpException error, String msg) {
+                                            Toast.makeText(BaseApplication.getContext(), "暂时无数据", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    });
+
+                            //点击区域获取配送点
+                            if (area!=null){
+                                area.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                        pichingPoint.setVisibility(View.VISIBLE);
+
+                                        String lk_value = areaList.get(position).getLk_value();
+
+
+                                        HttpUtils http = new HttpUtils();
+
+                                        RequestParams params2 = new RequestParams();
+                                        params2.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
+                                        params2.addBodyParameter("dep_parent",lk_value);
+                                        http.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_GET_ALL_DEP, params2,
+                                                new RequestCallBack<String>() {
+                                                    @Override
+                                                    public void onSuccess(ResponseInfo<String> responseInfo) {
+
+                                                        String result = responseInfo.result;
+                                                        Gson gson = new Gson();
+                                                        AeraBean pointBean = gson.fromJson(result, AeraBean.class);
+
+
+                                                        ArrayList<AeraBean.DataBean> pointList = new ArrayList<>();
+
+                                                        pointList.clear();
+
+                                                        pointList.addAll(pointBean.getData());
+
+                                                        GridView pointView = (GridView) findViewById(R.id.gv_point);
+                                                   PointAdapter pointAdapter = new PointAdapter(pointList,ReceivedActivity.this);
+                                                        pointView.setAdapter(pointAdapter);
+
+
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(HttpException error, String msg) {
+
+                                                        Toast.makeText(BaseApplication.getContext(),"网络加载失败",Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+
+
+                                    }
+                                });
+
+                            }
+
+
+
+                        }
+
+
+                    });
 
                 }
-            });
 
-        }
-    }
+}
+
 
     private void initDrawerLayout() {
 
@@ -371,87 +454,6 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
 
     }
 
-
-//    private void getDataFromServer() {
-//
-//        HttpUtils http = new HttpUtils();
-//
-//
-//        RequestParams params = new RequestParams();
-//        params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
-//        params.addBodyParameter("start_date", (new Date(0)).getTime() / 1000 + "");
-//        params.addBodyParameter("end_date", System.currentTimeMillis() / 1000 + "");
-//        params.addBodyParameter("page", "1");
-//        params.addBodyParameter("rows", "10");
-//        params.addBodyParameter("status", "2");
-//
-//        http.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_BUY_ORDER_LIST, params,
-////        http.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=buy_order_list", params,
-//
-//                new RequestCallBack<String>() {
-//
-//                    @Override
-//                    public void onFailure(HttpException error, String msg) {
-//                        Toast.makeText(BaseApplication.getContext(), "网络访问失败", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(ResponseInfo<String> responseInfo) {
-//                        String result = responseInfo.result;
-//                        System.out.println("qqq:" + result);
-//                        //保存数据
-//                        PrefUtils.putString(getApplicationContext(), "list", result);
-//                        ProcessData(result);
-//                    }
-//
-//                    //解析数据
-//                    private void ProcessData(String result) {
-//
-//                        Gson gson = new Gson();
-//                        order = gson.fromJson(result, OrderListBean.class);
-//                        receiveInList.clear();
-//                        receiveInList.addAll(order.getData().getRows());
-////                        receiveInList.addAll(order.getData().getRows());
-//                        if (receiveInList.size() == 0) {
-//                            //暂无订单
-//                        } else {
-////                            lv_list.setDividerHeight(20);
-//                            mAdapter = new MyAdapter(receiveInList, ReceivedActivity.this, selectAll);
-//                            lv_list.setAdapter(mAdapter);
-//                        }
-//
-//
-////                        tvTotalAmount.setText(order.getData().getTotal_amount());
-////                        tvTotalMoney.setText(order.getData().getTotal_money());
-//
-//                    }
-//
-//
-//                });
-//
-//        lv_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//
-//                String listId = receiveInList.get(position).getId();
-//                System.out.println("跳转过去了：" + listId);
-//                Intent intent = new Intent(ReceivedActivity.this, ReceivedMenuInfoActivity.class);
-//                intent.putExtra("listId", listId);
-//                ReceivedActivity.this.startActivity(intent);
-////                finish();
-//
-//            }
-//        });
-//
-////        receiveButtom.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                rb.isChecked();
-////            }
-////        });
 
 
     private void initAdapter() {

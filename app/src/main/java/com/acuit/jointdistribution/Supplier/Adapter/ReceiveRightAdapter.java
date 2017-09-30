@@ -26,12 +26,12 @@ import java.util.ArrayList;
 public class ReceiveRightAdapter extends BaseAdapter{
 
 
-    private final ArrayList<OnlySchoolBean.DataBean> gv_list;
+    private final ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list;
     private final ReceivedActivity mActivity;
-    private OnlySchoolBean.DataBean receiveRightMenuItem;
+    private OnlySchoolBean.DataBean.RowsBean receiveRightMenuItem;
 
 
-    public ReceiveRightAdapter(ArrayList<OnlySchoolBean.DataBean> gv_list, ReceivedActivity mActivity) {
+    public ReceiveRightAdapter(ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list, ReceivedActivity mActivity) {
         this.gv_list = gv_list;
         this.mActivity = mActivity;
 
@@ -72,10 +72,10 @@ public class ReceiveRightAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
 //        alterItem = (AlterOrderInfoBean.DataBean.ListBean) getItem(position);
-        receiveRightMenuItem = (OnlySchoolBean.DataBean)getItem(position);
+        receiveRightMenuItem = (OnlySchoolBean.DataBean.RowsBean)getItem(position);
 
 
-        holder.name.setText(receiveRightMenuItem.getName());
+        holder.name.setText(receiveRightMenuItem.getBrief());
 
         return convertView;
     }

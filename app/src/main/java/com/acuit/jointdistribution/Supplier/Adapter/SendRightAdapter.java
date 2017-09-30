@@ -26,11 +26,11 @@ import java.util.ArrayList;
 public class SendRightAdapter extends BaseAdapter{
 
 
-    private OnlySchoolBean.DataBean receiveRightMenuItem;
-    private final ArrayList<OnlySchoolBean.DataBean> gv_list;
+    private OnlySchoolBean.DataBean.RowsBean receiveRightMenuItem;
+    private final ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list;
     private final SendActivity mActivity;
 
-    public SendRightAdapter(ArrayList<OnlySchoolBean.DataBean> gv_list, SendActivity mActivity) {
+    public SendRightAdapter(ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list, SendActivity mActivity) {
         this.gv_list = gv_list;
         this.mActivity = mActivity;
 
@@ -73,10 +73,10 @@ public class SendRightAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
 //        alterItem = (AlterOrderInfoBean.DataBean.ListBean) getItem(position);
-        receiveRightMenuItem = (OnlySchoolBean.DataBean)getItem(position);
+        receiveRightMenuItem = (OnlySchoolBean.DataBean.RowsBean) getItem(position);
 
 
-        holder.name.setText(receiveRightMenuItem.getName());
+        holder.name.setText(receiveRightMenuItem.getBrief());
 
         return convertView;
     }

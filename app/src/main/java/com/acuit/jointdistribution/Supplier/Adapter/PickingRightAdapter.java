@@ -26,11 +26,11 @@ import java.util.ArrayList;
 public class PickingRightAdapter extends BaseAdapter{
 
 
-    private OnlySchoolBean.DataBean receiveRightMenuItem;
-    private final ArrayList<OnlySchoolBean.DataBean> gv_list;
+    private OnlySchoolBean.DataBean.RowsBean receiveRightMenuItem;
+    private final ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list;
     private final PickingActivity mActivity;
 
-    public PickingRightAdapter(ArrayList<OnlySchoolBean.DataBean> gv_list, PickingActivity mActivity) {
+    public PickingRightAdapter(ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list, PickingActivity mActivity) {
         this.gv_list = gv_list;
         this.mActivity = mActivity;
 
@@ -61,8 +61,8 @@ public class PickingRightAdapter extends BaseAdapter{
         ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = View.inflate(BaseApplication.getContext(), R.layout.receive_right_menu_item, null);
-            holder.name = (TextView) convertView.findViewById(R.id.tv_name);
+            convertView = View.inflate(BaseApplication.getContext(), R.layout.picking_right_menu_item, null);
+            holder.name = (TextView) convertView.findViewById(R.id.tv_picking_name);
 
 
             System.out.println("eee:"+holder.name);
@@ -73,10 +73,10 @@ public class PickingRightAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
 //        alterItem = (AlterOrderInfoBean.DataBean.ListBean) getItem(position);
-        receiveRightMenuItem = (OnlySchoolBean.DataBean)getItem(position);
+        receiveRightMenuItem = (OnlySchoolBean.DataBean.RowsBean)getItem(position);
 
 
-        holder.name.setText(receiveRightMenuItem.getName());
+        holder.name.setText(receiveRightMenuItem.getBrief());
 
         return convertView;
     }

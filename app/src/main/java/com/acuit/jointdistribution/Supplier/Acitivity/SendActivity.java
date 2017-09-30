@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
+import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Storeman.Bean.StoreInListBySupplierBean;
@@ -57,7 +58,7 @@ public class SendActivity extends BaseActivity {
     private SendAdapter sendAdapter;
     private DrawerLayout drawerLayout;
     private GridView rightMenuView;
-    private ArrayList<OnlySchoolBean.DataBean> gv_list;
+    private ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list;
     private StoreInListBySupplierBean storeInList;
     private StoreInfoListBean storeInfoListBean;
 
@@ -112,7 +113,7 @@ public class SendActivity extends BaseActivity {
         RequestParams params = new RequestParams();
         params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
 
-        utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=com_list", params,
+        utils.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_VIEW_BUY, params,
                 new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> responseInfo) {
@@ -122,7 +123,7 @@ public class SendActivity extends BaseActivity {
 
 //                        System.out.println("hhh:" + result);
                         gv_list.clear();
-                        gv_list.addAll(onlySchoolInfo.getData());
+                        gv_list.addAll(onlySchoolInfo.getData().getRows());
 
                         if (gv_list != null) {
 

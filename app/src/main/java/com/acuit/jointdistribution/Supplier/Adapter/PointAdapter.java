@@ -7,15 +7,15 @@ import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Supplier.Acitivity.PurchaseChangedActivity;
-import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
+import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
+import com.acuit.jointdistribution.Supplier.Domain.AeraBean;
 
 import java.util.ArrayList;
 
 /**
- * 类名: ReceiveRightAdapter <p>
+ * 类名: PointAdapter <p>
  * 创建人: Mwb <p>
- * 创建时间: 2017/9/19 0019 18:36 <p>
+ * 创建时间: 2017/9/30 0030 17:06 <p>
  * 描述:
  * <p>
  * 更新人: <p>
@@ -23,32 +23,27 @@ import java.util.ArrayList;
  * 更新描述: <p>
  */
 
-public class PurchaseRightAdapter extends BaseAdapter{
+public class PointAdapter extends BaseAdapter {
 
+    private final ArrayList<AeraBean.DataBean> pointList;
+    private final ReceivedActivity mActivity;
 
-    private OnlySchoolBean.DataBean.RowsBean receiveRightMenuItem;
-    private final ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list;
-    private final PurchaseChangedActivity mActivity;
-
-    public PurchaseRightAdapter(ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list, PurchaseChangedActivity mActivity) {
-        this.gv_list = gv_list;
+    public PointAdapter(ArrayList<AeraBean.DataBean> pointList, ReceivedActivity mActivity) {
+        this.pointList = pointList;
         this.mActivity = mActivity;
-
     }
-
-
-
 
     @Override
     public int getCount() {
-        return gv_list.size();
+        return pointList.size();
     }
 
 
     @Override
     public Object getItem(int position) {
-        return gv_list.get(position);
+        return pointList.get(position);
     }
+
 
     @Override
     public long getItemId(int position) {
@@ -58,14 +53,16 @@ public class PurchaseRightAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+
         ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = View.inflate(BaseApplication.getContext(), R.layout.receive_right_menu_item, null);
-            holder.name = (TextView) convertView.findViewById(R.id.tv_name);
+            convertView = View.inflate(BaseApplication.getContext(), R.layout.receive_rught_point_item, null);
+            holder.name = (TextView) convertView.findViewById(R.id.tv_point_name);
 
 
-            System.out.println("eee:"+holder.name);
+//            System.out.println("yyy:"+holder.name);
             convertView.setTag(holder);
 
         } else {
@@ -73,13 +70,16 @@ public class PurchaseRightAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
 //        alterItem = (AlterOrderInfoBean.DataBean.ListBean) getItem(position);
-        receiveRightMenuItem = (OnlySchoolBean.DataBean.RowsBean)getItem(position);
+//        receiveRightMenuItem = (OnlySchoolBean.DataBean)getItem(position);
 
+        AeraBean.DataBean areaItem = (AeraBean.DataBean) getItem(position);
 
-        holder.name.setText(receiveRightMenuItem.getBrief());
+        holder.name.setText(areaItem.getLk_option()
+        );
 
         return convertView;
     }
+
     static class ViewHolder {
 
 

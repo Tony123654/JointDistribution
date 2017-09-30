@@ -54,7 +54,7 @@ public class PurchaseChangedActivity extends BaseActivity {
     private ArrayList<String> selectedOrders = new ArrayList<>();
     private ArrayList<Integer> selectAll = new ArrayList<>();
     private DrawerLayout drawerLayout;
-    private ArrayList<OnlySchoolBean.DataBean> gv_list;
+    private ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list;
     private GridView rightMenu;
 
 
@@ -149,7 +149,7 @@ public class PurchaseChangedActivity extends BaseActivity {
         RequestParams params = new RequestParams();
         params.addBodyParameter("token", BaseApplication.getLoginBean().getData().getToken());
 
-        utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=com_list", params,
+        utils.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_VIEW_BUY, params,
                 new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> responseInfo) {
@@ -159,7 +159,7 @@ public class PurchaseChangedActivity extends BaseActivity {
 
                         System.out.println("hhh:" + result);
                         gv_list.clear();
-                        gv_list.addAll(onlySchoolInfo.getData());
+                        gv_list.addAll(onlySchoolInfo.getData().getRows());
 
                         if (gv_list != null) {
                             rightMenu.setAdapter(new PurchaseRightAdapter(gv_list, PurchaseChangedActivity.this));

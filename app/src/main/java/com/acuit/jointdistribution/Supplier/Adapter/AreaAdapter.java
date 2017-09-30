@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public class AreaAdapter extends BaseAdapter {
 
-    private final ArrayList<AeraBean.DataBean> areaList;
-    private final ReceivedActivity mActivity;
+    private  ArrayList<AeraBean.DataBean> areaList;
+    private  ReceivedActivity mActivity;
 
     public AreaAdapter(ArrayList<AeraBean.DataBean> areaList, ReceivedActivity mActivity) {
 

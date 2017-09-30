@@ -43,7 +43,7 @@ public class PickingActivity extends BaseActivity {
     private ImageView picking_choose;
     private DrawerLayout drawerLayout;
     private GridView rightMenuView;
-    private ArrayList<OnlySchoolBean.DataBean> gv_list;
+    private ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list;
     private TextView pickingReset;
     private TextView pickingComplate;
 
@@ -111,17 +111,18 @@ public class PickingActivity extends BaseActivity {
         RequestParams params = new RequestParams();
         params.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
 
-        utils.send(HttpRequest.HttpMethod.POST, "http://192.168.2.241/admin.php?c=Minterface&a=com_list", params,
+        utils.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_VIEW_BUY, params,
                 new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> responseInfo) {
                         String result = responseInfo.result;
                         Gson gson = new Gson();
+
                         OnlySchoolBean onlySchoolInfo= gson.fromJson(result, OnlySchoolBean.class);
 
                         System.out.println("hhh:"+result);
                         gv_list.clear();
-                        gv_list.addAll(onlySchoolInfo.getData());
+                        gv_list.addAll(onlySchoolInfo.getData().getRows());
 
                         if (gv_list!=null){
 

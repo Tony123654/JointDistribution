@@ -24,15 +24,15 @@
 
 
     <GridView
-        android:numColumns="3"
-        android:columnWidth="5dp"
-        android:horizontalSpacing="5dp"
-        android:verticalSpacing="10dp"
-        android:gravity="center"
         android:id="@+id/gv_right_menu"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:columnWidth="5dp"
+        android:gravity="center"
+        android:horizontalSpacing="5dp"
+        android:numColumns="3"
+        android:verticalSpacing="10dp">
 
     </GridView>
 
@@ -46,6 +46,26 @@
 
     <GridView
         android:id="@+id/gv_area"
+        android:numColumns="3"
+        android:columnWidth="5dp"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </GridView>
+    <TextView
+        android:id="@+id/tv_picking_point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="配送点"
+        android:textSize="15sp" />
+
+    <GridView
+        android:id="@+id/gv_point"
         android:numColumns="3"
         android:columnWidth="5dp"
         android:horizontalSpacing="5dp"

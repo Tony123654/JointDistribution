@@ -12,8 +12,8 @@ import java.io.File;
 public class GlobalContants {
 
     //    http://xxx/admin.php?c=Minterface&a=login
-    public static final String SERVER_IP = "192.168.2.241";
-//    public static final String SERVER_IP = "api.acuit.net";
+//    public static final String SERVER_IP = "192.168.2.241";
+    public static final String SERVER_IP = "api.acuit.net";
 
     public static final String BASE_URL = "http:" + File.separator + File.separator + SERVER_IP;
 
@@ -106,12 +106,18 @@ public class GlobalContants {
     public static final String URL_BUY_ORDER_LIST = SERVER_URL + "buy_order_list";
     //    统计分析
     public static final String URL_COUNT_ORDER_MONEY_NUMBER = SERVER_URL + "count_order_money_number";
-    //    订单详情
+    //    公司名称
     public static final String URL_VIEW_BUY = SERVER_URL + "get_com_list";
     //     采购变更单
     public static final String URL_BUY_ORDER_ALTER = SERVER_URL + "buy_order_alter";
     //采购单详情
     public static final String URL_VIEW_BUY_ORDER_ALTER = SERVER_URL + "view_buy_order_alter";
+
+
+    //区域和部门
+    public static final String URL_GET_ALL_DEP = SERVER_URL + "get_all_dep";
+
+
 
 }
 
