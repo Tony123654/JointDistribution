@@ -54,7 +54,6 @@ import java.util.Map;
  */
 public class ReceivedActivity extends BaseActivity implements View.OnClickListener, XRecyclerView.LoadingListener {
 
-    private ArrayList<AeraBean.DataBean> areaList;
     private ListView listView;
     private OrderListBean order;
     private TextView tv;
@@ -85,10 +84,12 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
     private XRecyclerView xrvReceiveList;
     private List<OrderListBean.DataBean.RowsBean> receiveInList = new ArrayList<OrderListBean.DataBean.RowsBean>();
     private GlobalValue globalValue;
-    private TextView pichingArea;
     private TextView pichingPoint;
+    private TextView pichingArea;
     private TextView pickingArea;
     private TextView pickingPoint;
+    private ArrayList<AeraBean.DataBean> areaList;
+    private ArrayList<AeraBean.DataBean> pointList;
 
 
     @Override
@@ -124,6 +125,12 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
         receiveReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pickingArea.setVisibility(View.GONE);
+                areaList.clear();
+                pickingPoint.setVisibility(View.GONE);
+                pointList.clear();
+
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(ReceivedActivity.this);
                 builder.setMessage("请重新选择条件");
                 builder.create().show();
@@ -293,25 +300,25 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
                                         public void onSuccess(ResponseInfo<String> responseInfo) {
                                             String result = responseInfo.result;
 
-
+//                                            System.out.println("eee:"+result);
 
                                             Gson gson = new Gson();
 
                                             areaInfo = gson.fromJson(result, AeraBean.class);
-                                            System.out.println("aaa  areaInfo:" + areaInfo);
-                                            areaList = new ArrayList<>();
 
 
-                                            areaList.clear();
+                                                areaList = new ArrayList<>();
 
-                                            areaList.addAll(areaInfo.getData());
+                                                areaList.clear();
 
-                                            area = (GridView) findViewById(R.id.gv_area);
+                                                areaList.addAll(areaInfo.getData());
 
-                                            AreaAdapter areaAdapter = new AreaAdapter(areaList, ReceivedActivity.this);
-                                            area.setAdapter(areaAdapter);
+                                                area = (GridView) findViewById(R.id.gv_area);
 
-                                        }
+                                                AreaAdapter areaAdapter = new AreaAdapter(areaList, ReceivedActivity.this);
+                                                area.setAdapter(areaAdapter);
+                                            }
+
 
                                         @Override
                                         public void onFailure(HttpException error, String msg) {
@@ -345,7 +352,7 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
                                                         AeraBean pointBean = gson.fromJson(result, AeraBean.class);
 
 
-                                                        ArrayList<AeraBean.DataBean> pointList = new ArrayList<>();
+                                                        pointList = new ArrayList<>();
 
                                                         pointList.clear();
 
@@ -379,6 +386,7 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
                     });
 
                 }
+//                。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
 
 }
 

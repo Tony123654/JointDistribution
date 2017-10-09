@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="学校"
+        android:textColor="@color/colorTitle"
         android:textSize="15sp"/>
 
 
@@ -30,7 +31,7 @@
         android:layout_weight="1"
         android:columnWidth="5dp"
         android:gravity="center"
-        android:horizontalSpacing="5dp"
+        android:horizontalSpacing="10dp"
         android:numColumns="3"
         android:verticalSpacing="10dp">
 
@@ -42,6 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="配送区域"
+        android:textColor="@color/colorTitle"
+
         android:textSize="15sp" />
 
     <GridView
@@ -62,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="配送点"
+        android:textColor="@color/colorTitle"
         android:textSize="15sp" />
 
     <GridView

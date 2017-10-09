@@ -8,8 +8,9 @@
         android:background="#F5F5F5"
         android:text="配送点"
         android:id="@+id/tv_point_name"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textColor="#617079"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

@@ -225,6 +225,12 @@ public class ReceivedMenuInfoActivity extends BaseActivity {
         mPopWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         mPopWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
 
+//        View contentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.popuplayout, null);
+//        mPopWindow = new PopupWindow(contentView);
+//        mPopWindow.setWidth(ViewGroup.LayoutParams.FILL_PARENT);
+//        mPopWindow.setHeight(ViewGroup.LayoutParams.FILL_PARENT);
+
+
         TextView tv1 = (TextView)contentView.findViewById(R.id.tv_back_first);
         TextView tv2 = (TextView)contentView.findViewById(R.id.tv_retrospect);
         TextView tv3 = (TextView)contentView.findViewById(R.id.tv_message);
@@ -256,5 +262,6 @@ public class ReceivedMenuInfoActivity extends BaseActivity {
         });
 
         mPopWindow.showAsDropDown(ib_more);
+
     }
 }

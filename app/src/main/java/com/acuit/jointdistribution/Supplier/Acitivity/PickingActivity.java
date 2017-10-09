@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,7 +19,10 @@ import com.acuit.jointdistribution.Common.Global.GlobalContants;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.R;
 import com.acuit.jointdistribution.Supplier.Adapter.PickingAdapter;
+import com.acuit.jointdistribution.Supplier.Adapter.PickingAreaAdapter;
+import com.acuit.jointdistribution.Supplier.Adapter.PickingPointAdapter;
 import com.acuit.jointdistribution.Supplier.Adapter.PickingRightAdapter;
+import com.acuit.jointdistribution.Supplier.Domain.AeraBean;
 import com.acuit.jointdistribution.Supplier.Domain.OnlySchoolBean;
 import com.acuit.jointdistribution.Supplier.Domain.PickingOrderInfoBean;
 import com.google.gson.Gson;
@@ -46,6 +50,13 @@ public class PickingActivity extends BaseActivity {
     private ArrayList<OnlySchoolBean.DataBean.RowsBean> gv_list;
     private TextView pickingReset;
     private TextView pickingComplate;
+    private TextView pickingArea;
+    private TextView pickingPoint;
+    private AeraBean areaInfo;
+    private GridView area;
+    private TextView pichingPoint;
+    private ArrayList<AeraBean.DataBean> areaList;
+    private ArrayList<AeraBean.DataBean> pointList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +83,11 @@ public class PickingActivity extends BaseActivity {
         pickingReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pickingArea.setVisibility(View.GONE);
+                areaList.clear();
+                pickingPoint.setVisibility(View.GONE);
+                pointList.clear();
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(PickingActivity.this);
                 builder.setMessage("请重新筛选");
                 builder.create().show();
@@ -98,7 +114,7 @@ public class PickingActivity extends BaseActivity {
                 toggleRightSliding();
             }
         });
-        inntData();
+        initData();
         initSchoolData();
 
         rightMenuView = (GridView) findViewById(R.id.gv_right_menu);
@@ -126,7 +142,8 @@ public class PickingActivity extends BaseActivity {
 
                         if (gv_list!=null){
 
-                            rightMenuView.setAdapter(new PickingRightAdapter(gv_list,PickingActivity.this));
+                      PickingRightAdapter pickingRightAdapter  = new PickingRightAdapter(gv_list,PickingActivity.this);
+                            rightMenuView.setAdapter(pickingRightAdapter);
                         }
 
 
@@ -140,12 +157,131 @@ public class PickingActivity extends BaseActivity {
                 });
 
 
+        pickingArea = (TextView) findViewById(R.id.tv_picking_area);
+        pickingPoint = (TextView) findViewById(R.id.tv_picking_point);
+
+        pickingArea.setVisibility(View.GONE);
+        pickingPoint.setVisibility(View.GONE);
+
+        if (rightMenuView != null) {
+            rightMenuView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    pickingArea.setVisibility(View.VISIBLE);
+
+
+                    String id_area = gv_list.get(position).getId();
+
+                    HttpUtils hu = new HttpUtils();
+                    RequestParams params1 = new RequestParams();
+                    params1.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
+                    params1.addBodyParameter("dep_class", 3 + "");
+                    params1.addBodyParameter("com_id", id_area);
+                    hu.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_GET_ALL_DEP, params1,
+                            new RequestCallBack<String>() {
+
+
+                                @Override
+                                public void onSuccess(ResponseInfo<String> responseInfo) {
+                                    String result = responseInfo.result;
+
+
+
+                                    Gson gson = new Gson();
+
+                                    areaInfo = gson.fromJson(result, AeraBean.class);
+                                    System.out.println("aaa  areaInfo:" + areaInfo);
+
+                                    areaList = new ArrayList<>();
+
+                                    areaList.clear();
+
+                                    areaList.addAll(areaInfo.getData());
+
+                                    area = (GridView) findViewById(R.id.gv_area);
+
+                                    PickingAreaAdapter areaAdapter = new PickingAreaAdapter(areaList, PickingActivity.this);
+                                    area.setAdapter(areaAdapter);
+
+
+                                }
+
+                                @Override
+                                public void onFailure(HttpException error, String msg) {
+                                    Toast.makeText(BaseApplication.getContext(), "暂时无数据", Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+
+                    //点击区域获取配送点
+                    if (area!=null){
+                        area.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                pichingPoint.setVisibility(View.VISIBLE);
+
+                                String lk_value = areaList.get(position).getLk_value();
+
+
+                                HttpUtils http = new HttpUtils();
+
+                                RequestParams params2 = new RequestParams();
+                                params2.addBodyParameter("token",BaseApplication.getLoginBean().getData().getToken());
+                                params2.addBodyParameter("dep_parent",lk_value);
+                                http.send(HttpRequest.HttpMethod.POST, GlobalContants.URL_GET_ALL_DEP, params2,
+                                        new RequestCallBack<String>() {
+                                            @Override
+                                            public void onSuccess(ResponseInfo<String> responseInfo) {
+
+                                                String result = responseInfo.result;
+                                                Gson gson = new Gson();
+                                                AeraBean pointBean = gson.fromJson(result, AeraBean.class);
+
+
+                                                pointList = new ArrayList<>();
+
+                                                pointList.clear();
+
+                                                pointList.addAll(pointBean.getData());
+
+                                                GridView pointView = (GridView) findViewById(R.id.gv_point);
+                                                PickingPointAdapter pointAdapter = new PickingPointAdapter(pointList,PickingActivity.this);
+                                                pointView.setAdapter(pointAdapter);
+
+
+                                            }
+
+                                            @Override
+                                            public void onFailure(HttpException error, String msg) {
+
+                                                Toast.makeText(BaseApplication.getContext(),"网络加载失败",Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+
+                            }
+                        });
+
+                    }
+
+
+
+                }
+
+
+            });
+
+        }
+
     }
 
 
-    private void inntData() {
+    private void initData() {
         getDataFromServer();
     }
+
 
     public void getDataFromServer() {
 

@@ -5,10 +5,11 @@
     android:padding="10dp"
     android:orientation="vertical">
     <TextView
-        android:background="#F5F5F5"
+        android:background="#D3E2D8"
         android:text="区域"
         android:id="@+id/tv_area_name"
-        android:textSize="12sp"
+        android:textSize="16sp"
+        android:gravity="center"
         android:textColor="#617079"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

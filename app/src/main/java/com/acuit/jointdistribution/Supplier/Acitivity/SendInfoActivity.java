@@ -6,15 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseActivity;
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.Common.Global.GlobalContants;
+import com.acuit.jointdistribution.Common.Utils.Tools;
 import com.acuit.jointdistribution.Common.View.Activity.HomeActivity;
 import com.acuit.jointdistribution.Common.View.Activity.SuggestionFeedbackActivity;
 import com.acuit.jointdistribution.R;
+import com.acuit.jointdistribution.Supplier.Adapter.SendInfoAdapter;
 import com.acuit.jointdistribution.Supplier.Domain.StoreSendInfoBean;
 import com.acuit.jointdistribution.Supplier.Utils.ToastUtils;
 import com.google.gson.Gson;
@@ -25,13 +28,15 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 
+import java.util.ArrayList;
+
 import static com.acuit.jointdistribution.Supplier.Utils.MyHttpUtils.getHttpUtils;
 
 public class SendInfoActivity extends BaseActivity {
     private String id;
 
     private TextView createDate;
-//    private TextView planDate;
+    private TextView planDate;
     private TextView contactPerson;
     private TextView contactNumber;
     private TextView price;
@@ -42,9 +47,11 @@ public class SendInfoActivity extends BaseActivity {
     private TextView tv_total_amount;
     private TextView send;
     private ImageView backSend;
+    private ListView sendList;
     private ImageView sendMore;
     private PopupWindow mPopWindow;
     private StoreSendInfoBean storeSendInfoBean;
+    private ArrayList<StoreSendInfoBean.DataBean.ListBean> sendListInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,16 +72,21 @@ public class SendInfoActivity extends BaseActivity {
         createDate = (TextView) findViewById(R.id.tv_send_create_date);
         tv_send_address = (TextView) findViewById(R.id.tv_send_address);
 
-//        planDate = (TextView) findViewById(R.id.tv_send_plan_date);
+        planDate = (TextView) findViewById(R.id.tv_send_plan_date);
         contactPerson = (TextView) findViewById(R.id.tv_send_contact_person);
         contactNumber = (TextView) findViewById(R.id.tv_send_contact_number);
         send = (TextView) findViewById(R.id.tv_send);
 
-        price = (TextView) findViewById(R.id.tv_send_price);
+//        price = (TextView) findViewById(R.id.tv_send_price);
         code = (TextView) findViewById(R.id.tv_send_code);
-        stockName = (TextView) findViewById(R.id.tv_send_stock_name);
-        unitName = (TextView) findViewById(R.id.tv_send_unit_name);
         tv_total_amount = (TextView) findViewById(R.id.tv_send_total_amount);
+        sendList = (ListView) findViewById(R.id.lv_sendList);
+
+
+
+
+
+
 //        send.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -174,11 +186,11 @@ public class SendInfoActivity extends BaseActivity {
                         Gson gson = new Gson();
                         storeSendInfoBean = gson.fromJson(result, StoreSendInfoBean.class);
 
+                        tv_send_address.setText(storeSendInfoBean.getData().get(0).getDep_name());
                         code.setText(storeSendInfoBean.getData().get(0).getCode());
-                        tv_send_address.setText(storeSendInfoBean.getData().get(0).getDep2_address());
                         createDate.setText(storeSendInfoBean.getData().get(0).getCreate_date());
-//                        planDate.setText(Tools.getFormatedTime(storeSendInfoBean.getData().get(0).getPlan_date()));
-                        contactNumber.setText(storeSendInfoBean.getData().get(0).getContact_number());
+                        planDate.setText(Tools.getFormatedTime(storeSendInfoBean.getData().get(0).getPlan_date()));
+                        contactNumber.setText("("+storeSendInfoBean.getData().get(0).getContact_phone()+")");
                         contactPerson.setText(storeSendInfoBean.getData().get(0).getContact_person());
                         tv_total_amount.setText(storeSendInfoBean.getData().get(0).getStatis_num()+ "kg");
 
@@ -189,6 +201,21 @@ public class SendInfoActivity extends BaseActivity {
 //                        stockName.setText(storeSendInfoBean.getData().getStock_list_app().get(0).getStock_name());
 //                        unitName.setText(storeSendInfoBean.getData().getStock_list_app().get(0).getUnit_name());
 //                        price.setText(storeSendInfoBean.getData().getStock_list_app().get(0).getPrice());
+
+                        sendListInfo = new ArrayList<StoreSendInfoBean.DataBean.ListBean>();
+
+                        sendListInfo.clear();
+                        sendListInfo.addAll(storeSendInfoBean.getData().get(0).getList());
+
+                        if (null!=sendListInfo){
+
+                            SendInfoAdapter sendInfoAdapter = new SendInfoAdapter(sendListInfo,SendInfoActivity.this);
+
+                            sendList.setAdapter(sendInfoAdapter);
+
+                        }
+
+
 
 
                     }

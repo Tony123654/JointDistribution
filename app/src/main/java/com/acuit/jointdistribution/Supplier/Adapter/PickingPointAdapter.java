@@ -7,15 +7,15 @@ import android.widget.TextView;
 
 import com.acuit.jointdistribution.Common.Base.BaseApplication;
 import com.acuit.jointdistribution.R;
-import com.acuit.jointdistribution.Supplier.Acitivity.ReceivedActivity;
+import com.acuit.jointdistribution.Supplier.Acitivity.PickingActivity;
 import com.acuit.jointdistribution.Supplier.Domain.AeraBean;
 
 import java.util.ArrayList;
 
 /**
- * 类名: PointAdapter <p>
+ * 类名: PickingPointAdapter <p>
  * 创建人: Mwb <p>
- * 创建时间: 2017/9/30 0030 17:06 <p>
+ * 创建时间: 2017/10/9 0009 14:39 <p>
  * 描述:
  * <p>
  * 更新人: <p>
@@ -23,16 +23,16 @@ import java.util.ArrayList;
  * 更新描述: <p>
  */
 
-public class PointAdapter extends BaseAdapter {
+public class PickingPointAdapter extends BaseAdapter {
 
     private final ArrayList<AeraBean.DataBean> pointList;
-    private final ReceivedActivity mActivity;
+    private final PickingActivity mActivity;
 
-    public PointAdapter(ArrayList<AeraBean.DataBean> pointList, ReceivedActivity mActivity) {
+    public PickingPointAdapter(ArrayList<AeraBean.DataBean> pointList, PickingActivity mActivity) {
         this.pointList = pointList;
         this.mActivity = mActivity;
-    }
 
+    }
 
     @Override
     public int getCount() {

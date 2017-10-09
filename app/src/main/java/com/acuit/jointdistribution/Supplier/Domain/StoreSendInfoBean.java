@@ -15,9 +15,10 @@ import java.util.List;
 
 public class StoreSendInfoBean {
 
+
     /**
      * code : 200
-     * data : [{"affair_type":"1","balance_id":"3","brief":"","buy_money":"26973.00","buy_order_id":"2","buy_user":"系统管理员","code":"RKD010116090359","com_brief_name":"","com_id":"0","contact_number":"","contact_person":"","create_date":"2016-09-29 01:09:44","dep2_address":"中天MCC","dep_brief_name":"中天MCC","dep_code2":"0101","dep_contact_phone":"13800138000","dep_contact_user":"哈哈","dep_id":"1","dep_id2":"8","dep_id3":"0","dep_name":"紫金港餐饮中心","dep_name2":"接待餐厅","direct_info":{"can_direct_select":1,"direct_in_out":"1","direct_out_info":[{"dep_id":"8","dep_name":"三楼餐厅"}]},"from_where":"0","id":"2","is_dash_back":"N","is_dash_backed":"N","is_del":"0","is_direct_out":"N","is_paid":"0","is_used":"1","item_count":3,"list":[{"already_in_amount":"0.00","back_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"2","buy_order_list_id":"3","buy_price":"9.0000","cat_name":"粮油类","check_standard":"","code":"RKD01011609035901","dep_code":"0101","dep_id":"8","dep_name":"接待餐厅","hang_num":"0","id":"3","img_urls":[],"in_amount":"999.00","in_money":"8991.0000","in_price":"9.0000","left_in_amount":"999.00","money_gap":"179.8200","order_amount":"999.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"0","standard":"1*25kg","stock_code":"1010200002","stock_id":"1257","stock_name":"中筋特一粉","storage_unit":"0","store_in_id":"2","total_money":"9170.8200","unit_conv":"1.00"},{"already_in_amount":"0.00","back_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"2","buy_order_list_id":"4","buy_price":"9.0000","cat_name":"粮油类","check_standard":"","code":"RKD01011609035902","ctrl_id":2,"dep_code":"0101","dep_id":"8","dep_name":"接待餐厅","hang_num":"0","id":"4","img_urls":[],"in_amount":"999.00","in_money":"8991.0000","in_price":"9.0000","left_in_amount":"999.00","money_gap":"179.8200","order_amount":"999.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"0","standard":"","stock_code":"1010200007","stock_id":"3106","stock_name":"金法高面包粉","storage_unit":"0","store_in_id":"2","total_money":"9170.8200","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"2","buy_order_list_id":"5","buy_price":"9.0000","cat_name":"粮油类","check_standard":"","code":"RKD01011609035903","ctrl_id":3,"dep_code":"0101","dep_id":"8","dep_name":"接待餐厅","hang_num":"0","id":"5","img_urls":[],"in_amount":"999.00","in_money":"8991.0000","in_price":"9.0000","left_in_amount":"999.00","money_gap":"179.8200","order_amount":"999.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"0","standard":"1*25kg","stock_code":"1010200012","stock_id":"3111","stock_name":"苏三零特精粉","storage_unit":"0","store_in_id":"2","total_money":"9170.8200","unit":"千克","unit_conv":"1.00","unit_id":"6"}],"ljtrue":"0","money_gap":"539.46","month":"09","need_dep_name":"三楼餐厅","origin_code":"","plan_date":1475110800,"price_money":"23869.91","rate_brief":"","rate_star":"0","request_id":"0","request_ids":"","return_money":"0.00","return_num":"0.00","sign_date":"","statis_money":"27512.46","statis_num":"2997.00","status":"4","status_name":"已入库","store_in_date":"2016-09-29 01:09:31","supply_id":"46","supply_name":"福新面粉（宜兴）有限","tax_money":"3103.09","update_date":"0000-00-00 00:00:00","year":"2016"}]
+     * data : [{"affair_type":"1","balance_id":"0","brief":"","buy_money":"0.00","buy_order_id":"1047","buy_user":"14024","check_user":"14129","code":"RKD010816120442","com_id":"1","com_name":"浙大饮食中心","contact_person":"","contact_phone":"","create_date":"2016-12-21 10:12:25","dep_code2":"0108","dep_id":"1","dep_id2":"15","dep_id3":"0","dep_name":"紫金港餐饮中心","dep_name2":"总仓","direct_info":{"can_direct_select":1,"direct_in_out":"0","direct_out_info":[{"dep_id":"15","dep_name":"总仓"}]},"entering_user":"14129","from_where":"0","id":"85","is_dash_back":"N","is_dash_backed":"N","is_del":"0","is_direct_out":"N","is_paid":"0","is_used":"1","item_count":11,"list":[{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9634","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044210","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"706","in_amount":"1.00","in_money":"0.0000","in_price":"13.0000","left_in_amount":"1.00","money_gap":"0.0000","order_amount":"1.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"11","request_stock_id":"372407","stock_code":"1070100012","stock_id":"1314","stock_name":"13kg脆皮干(1元","storage_unit":"11","store_in_id":"85","total_money":"0.0000","unit":"袋","unit_conv":"1.00","unit_id":"11"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9625","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044201","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"697","in_amount":"1.00","in_money":"0.0000","in_price":"8.0000","left_in_amount":"1.00","money_gap":"0.0000","order_amount":"1.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"11","request_stock_id":"372297","stock_code":"1070200002","stock_id":"515","stock_name":"味干8kg","storage_unit":"11","store_in_id":"85","total_money":"0.0000","unit":"袋","unit_conv":"1.00","unit_id":"11"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9626","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044202","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"698","in_amount":"42.00","in_money":"0.0000","in_price":"30.0000","left_in_amount":"42.00","money_gap":"0.0000","order_amount":"42.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"6","request_stock_id":"371979,372195","stock_code":"1070200003","stock_id":"517","stock_name":"散装油面筋","storage_unit":"6","store_in_id":"85","total_money":"0.0000","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9627","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044203","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"699","in_amount":"5.50","in_money":"0.0000","in_price":"7.0000","left_in_amount":"5.50","money_gap":"0.0000","order_amount":"5.50","pic_url":"","price_gap_ratio":"2.00","price_unit":"6","request_stock_id":"372029","stock_code":"1070200007","stock_id":"528","stock_name":"大素几","storage_unit":"6","store_in_id":"85","total_money":"0.0000","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9628","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044204","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"700","in_amount":"66.00","in_money":"0.0000","in_price":"0.7200","left_in_amount":"66.00","money_gap":"0.0000","order_amount":"66.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"20","request_stock_id":"372010,372249,372527","stock_code":"1070200008","stock_id":"529","stock_name":"白玉豆腐400g","storage_unit":"20","store_in_id":"85","total_money":"0.0000","unit":"盒","unit_conv":"1.00","unit_id":"20"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9629","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044205","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"701","in_amount":"7.00","in_money":"0.0000","in_price":"14.0000","left_in_amount":"7.00","money_gap":"0.0000","order_amount":"7.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"37","request_stock_id":"372020","stock_code":"1070200010","stock_id":"998","stock_name":"老豆腐（白干）","storage_unit":"37","store_in_id":"85","total_money":"0.0000","unit":"板","unit_conv":"1.00","unit_id":"37"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9630","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044206","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"702","in_amount":"4.50","in_money":"0.0000","in_price":"12.0000","left_in_amount":"4.50","money_gap":"0.0000","order_amount":"4.50","pic_url":"","price_gap_ratio":"2.00","price_unit":"6","request_stock_id":"372014","stock_code":"1070200014","stock_id":"1002","stock_name":"珍珠油豆腐","storage_unit":"6","store_in_id":"85","total_money":"0.0000","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9631","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044207","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"703","in_amount":"7.50","in_money":"0.0000","in_price":"8.0000","left_in_amount":"7.50","money_gap":"0.0000","order_amount":"7.50","pic_url":"","price_gap_ratio":"2.00","price_unit":"6","request_stock_id":"372403","stock_code":"1070200015","stock_id":"1003","stock_name":"鸿光浪花香干","storage_unit":"6","store_in_id":"85","total_money":"0.0000","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9632","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044208","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"704","in_amount":"49.00","in_money":"0.0000","in_price":"12.0000","left_in_amount":"49.00","money_gap":"0.0000","order_amount":"49.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"6","request_stock_id":"372006,372331,372228,372500","stock_code":"1070200024","stock_id":"1012","stock_name":"薄型干","storage_unit":"6","store_in_id":"85","total_money":"0.0000","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9633","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044209","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"705","in_amount":"83.00","in_money":"0.0000","in_price":"14.0000","left_in_amount":"83.00","money_gap":"0.0000","order_amount":"83.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"37","request_stock_id":"372339,371983","stock_code":"1070200035","stock_id":"1049","stock_name":"鸿光老豆腐(板装)","storage_unit":"37","store_in_id":"85","total_money":"0.0000","unit":"板","unit_conv":"1.00","unit_id":"37"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9635","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044211","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"707","in_amount":"5.00","in_money":"0.0000","in_price":"0.7700","left_in_amount":"5.00","money_gap":"0.0000","order_amount":"5.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"28","request_stock_id":"372017","stock_code":"1070200045","stock_id":"3180","stock_name":"蛋玉(日本豆腐)","storage_unit":"28","store_in_id":"85","total_money":"0.0000","unit":"条","unit_conv":"1.00","unit_id":"28"}],"ljtrue":"0","money_gap":"0.00","month":"03","need_dep_name":"总仓","origin_code":"","plan_date":"0","price_money":"0.00","rate_brief":"","rate_star":"0","request_id":"0","request_ids":"","return_money":"0.00","return_num":"0.00","sign_date":"","statis_money":"0.00","statis_num":"271.50","status":"5","store_in_date":"2017-03-07 06:03:39","supply_id":"61","supply_name":"杭州豆制食品有限公司","tax_money":"0.00","update_date":"0000-00-00 00:00:00","year":"2017"}]
      * msg : 执行成功！
      */
 
@@ -52,45 +53,43 @@ public class StoreSendInfoBean {
     public static class DataBean {
         /**
          * affair_type : 1
-         * balance_id : 3
+         * balance_id : 0
          * brief :
-         * buy_money : 26973.00
-         * buy_order_id : 2
-         * buy_user : 系统管理员
-         * code : RKD010116090359
-         * com_brief_name :
-         * com_id : 0
-         * contact_number :
+         * buy_money : 0.00
+         * buy_order_id : 1047
+         * buy_user : 14024
+         * check_user : 14129
+         * code : RKD010816120442
+         * com_id : 1
+         * com_name : 浙大饮食中心
          * contact_person :
-         * create_date : 2016-09-29 01:09:44
-         * dep2_address : 中天MCC
-         * dep_brief_name : 中天MCC
-         * dep_code2 : 0101
-         * dep_contact_phone : 13800138000
-         * dep_contact_user : 哈哈
+         * contact_phone :
+         * create_date : 2016-12-21 10:12:25
+         * dep_code2 : 0108
          * dep_id : 1
-         * dep_id2 : 8
+         * dep_id2 : 15
          * dep_id3 : 0
          * dep_name : 紫金港餐饮中心
-         * dep_name2 : 接待餐厅
-         * direct_info : {"can_direct_select":1,"direct_in_out":"1","direct_out_info":[{"dep_id":"8","dep_name":"三楼餐厅"}]}
+         * dep_name2 : 总仓
+         * direct_info : {"can_direct_select":1,"direct_in_out":"0","direct_out_info":[{"dep_id":"15","dep_name":"总仓"}]}
+         * entering_user : 14129
          * from_where : 0
-         * id : 2
+         * id : 85
          * is_dash_back : N
          * is_dash_backed : N
          * is_del : 0
          * is_direct_out : N
          * is_paid : 0
          * is_used : 1
-         * item_count : 3
-         * list : [{"already_in_amount":"0.00","back_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"2","buy_order_list_id":"3","buy_price":"9.0000","cat_name":"粮油类","check_standard":"","code":"RKD01011609035901","dep_code":"0101","dep_id":"8","dep_name":"接待餐厅","hang_num":"0","id":"3","img_urls":[],"in_amount":"999.00","in_money":"8991.0000","in_price":"9.0000","left_in_amount":"999.00","money_gap":"179.8200","order_amount":"999.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"0","standard":"1*25kg","stock_code":"1010200002","stock_id":"1257","stock_name":"中筋特一粉","storage_unit":"0","store_in_id":"2","total_money":"9170.8200","unit_conv":"1.00"},{"already_in_amount":"0.00","back_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"2","buy_order_list_id":"4","buy_price":"9.0000","cat_name":"粮油类","check_standard":"","code":"RKD01011609035902","ctrl_id":2,"dep_code":"0101","dep_id":"8","dep_name":"接待餐厅","hang_num":"0","id":"4","img_urls":[],"in_amount":"999.00","in_money":"8991.0000","in_price":"9.0000","left_in_amount":"999.00","money_gap":"179.8200","order_amount":"999.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"0","standard":"","stock_code":"1010200007","stock_id":"3106","stock_name":"金法高面包粉","storage_unit":"0","store_in_id":"2","total_money":"9170.8200","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"2","buy_order_list_id":"5","buy_price":"9.0000","cat_name":"粮油类","check_standard":"","code":"RKD01011609035903","ctrl_id":3,"dep_code":"0101","dep_id":"8","dep_name":"接待餐厅","hang_num":"0","id":"5","img_urls":[],"in_amount":"999.00","in_money":"8991.0000","in_price":"9.0000","left_in_amount":"999.00","money_gap":"179.8200","order_amount":"999.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"0","standard":"1*25kg","stock_code":"1010200012","stock_id":"3111","stock_name":"苏三零特精粉","storage_unit":"0","store_in_id":"2","total_money":"9170.8200","unit":"千克","unit_conv":"1.00","unit_id":"6"}]
+         * item_count : 11
+         * list : [{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9634","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044210","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"706","in_amount":"1.00","in_money":"0.0000","in_price":"13.0000","left_in_amount":"1.00","money_gap":"0.0000","order_amount":"1.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"11","request_stock_id":"372407","stock_code":"1070100012","stock_id":"1314","stock_name":"13kg脆皮干(1元","storage_unit":"11","store_in_id":"85","total_money":"0.0000","unit":"袋","unit_conv":"1.00","unit_id":"11"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9625","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044201","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"697","in_amount":"1.00","in_money":"0.0000","in_price":"8.0000","left_in_amount":"1.00","money_gap":"0.0000","order_amount":"1.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"11","request_stock_id":"372297","stock_code":"1070200002","stock_id":"515","stock_name":"味干8kg","storage_unit":"11","store_in_id":"85","total_money":"0.0000","unit":"袋","unit_conv":"1.00","unit_id":"11"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9626","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044202","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"698","in_amount":"42.00","in_money":"0.0000","in_price":"30.0000","left_in_amount":"42.00","money_gap":"0.0000","order_amount":"42.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"6","request_stock_id":"371979,372195","stock_code":"1070200003","stock_id":"517","stock_name":"散装油面筋","storage_unit":"6","store_in_id":"85","total_money":"0.0000","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9627","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044203","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"699","in_amount":"5.50","in_money":"0.0000","in_price":"7.0000","left_in_amount":"5.50","money_gap":"0.0000","order_amount":"5.50","pic_url":"","price_gap_ratio":"2.00","price_unit":"6","request_stock_id":"372029","stock_code":"1070200007","stock_id":"528","stock_name":"大素几","storage_unit":"6","store_in_id":"85","total_money":"0.0000","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9628","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044204","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"700","in_amount":"66.00","in_money":"0.0000","in_price":"0.7200","left_in_amount":"66.00","money_gap":"0.0000","order_amount":"66.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"20","request_stock_id":"372010,372249,372527","stock_code":"1070200008","stock_id":"529","stock_name":"白玉豆腐400g","storage_unit":"20","store_in_id":"85","total_money":"0.0000","unit":"盒","unit_conv":"1.00","unit_id":"20"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9629","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044205","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"701","in_amount":"7.00","in_money":"0.0000","in_price":"14.0000","left_in_amount":"7.00","money_gap":"0.0000","order_amount":"7.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"37","request_stock_id":"372020","stock_code":"1070200010","stock_id":"998","stock_name":"老豆腐（白干）","storage_unit":"37","store_in_id":"85","total_money":"0.0000","unit":"板","unit_conv":"1.00","unit_id":"37"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9630","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044206","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"702","in_amount":"4.50","in_money":"0.0000","in_price":"12.0000","left_in_amount":"4.50","money_gap":"0.0000","order_amount":"4.50","pic_url":"","price_gap_ratio":"2.00","price_unit":"6","request_stock_id":"372014","stock_code":"1070200014","stock_id":"1002","stock_name":"珍珠油豆腐","storage_unit":"6","store_in_id":"85","total_money":"0.0000","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9631","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044207","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"703","in_amount":"7.50","in_money":"0.0000","in_price":"8.0000","left_in_amount":"7.50","money_gap":"0.0000","order_amount":"7.50","pic_url":"","price_gap_ratio":"2.00","price_unit":"6","request_stock_id":"372403","stock_code":"1070200015","stock_id":"1003","stock_name":"鸿光浪花香干","storage_unit":"6","store_in_id":"85","total_money":"0.0000","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9632","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044208","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"704","in_amount":"49.00","in_money":"0.0000","in_price":"12.0000","left_in_amount":"49.00","money_gap":"0.0000","order_amount":"49.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"6","request_stock_id":"372006,372331,372228,372500","stock_code":"1070200024","stock_id":"1012","stock_name":"薄型干","storage_unit":"6","store_in_id":"85","total_money":"0.0000","unit":"千克","unit_conv":"1.00","unit_id":"6"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9633","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044209","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"705","in_amount":"83.00","in_money":"0.0000","in_price":"14.0000","left_in_amount":"83.00","money_gap":"0.0000","order_amount":"83.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"37","request_stock_id":"372339,371983","stock_code":"1070200035","stock_id":"1049","stock_name":"鸿光老豆腐(板装)","storage_unit":"37","store_in_id":"85","total_money":"0.0000","unit":"板","unit_conv":"1.00","unit_id":"37"},{"already_in_amount":"0.00","back_brief":"","budget":"支","buy_order_id":"1047","buy_order_list_id":"9635","buy_price":"0.00","cat_name":"豆制品类","check_standard":"","code":"RKD01081612044211","dep_code":"0108","dep_id":"15","dep_name":"总仓","hang_num":"0","id":"707","in_amount":"5.00","in_money":"0.0000","in_price":"0.7700","left_in_amount":"5.00","money_gap":"0.0000","order_amount":"5.00","pic_url":"","price_gap_ratio":"2.00","price_unit":"28","request_stock_id":"372017","stock_code":"1070200045","stock_id":"3180","stock_name":"蛋玉(日本豆腐)","storage_unit":"28","store_in_id":"85","total_money":"0.0000","unit":"条","unit_conv":"1.00","unit_id":"28"}]
          * ljtrue : 0
-         * money_gap : 539.46
-         * month : 09
-         * need_dep_name : 三楼餐厅
+         * money_gap : 0.00
+         * month : 03
+         * need_dep_name : 总仓
          * origin_code :
-         * plan_date : 1475110800
-         * price_money : 23869.91
+         * plan_date : 0
+         * price_money : 0.00
          * rate_brief :
          * rate_star : 0
          * request_id : 0
@@ -98,16 +97,15 @@ public class StoreSendInfoBean {
          * return_money : 0.00
          * return_num : 0.00
          * sign_date :
-         * statis_money : 27512.46
-         * statis_num : 2997.00
-         * status : 4
-         * status_name : 已入库
-         * store_in_date : 2016-09-29 01:09:31
-         * supply_id : 46
-         * supply_name : 福新面粉（宜兴）有限
-         * tax_money : 3103.09
+         * statis_money : 0.00
+         * statis_num : 271.50
+         * status : 5
+         * store_in_date : 2017-03-07 06:03:39
+         * supply_id : 61
+         * supply_name : 杭州豆制食品有限公司
+         * tax_money : 0.00
          * update_date : 0000-00-00 00:00:00
-         * year : 2016
+         * year : 2017
          */
 
         private String affair_type;
@@ -116,23 +114,21 @@ public class StoreSendInfoBean {
         private String buy_money;
         private String buy_order_id;
         private String buy_user;
+        private String check_user;
         private String code;
-        private String com_brief_name;
         private String com_id;
-        private String contact_number;
+        private String com_name;
         private String contact_person;
+        private String contact_phone;
         private String create_date;
-        private String dep2_address;
-        private String dep_brief_name;
         private String dep_code2;
-        private String dep_contact_phone;
-        private String dep_contact_user;
         private String dep_id;
         private String dep_id2;
         private String dep_id3;
         private String dep_name;
         private String dep_name2;
         private DirectInfoBean direct_info;
+        private String entering_user;
         private String from_where;
         private String id;
         private String is_dash_back;
@@ -147,7 +143,7 @@ public class StoreSendInfoBean {
         private String month;
         private String need_dep_name;
         private String origin_code;
-        private int plan_date;
+        private String plan_date;
         private String price_money;
         private String rate_brief;
         private String rate_star;
@@ -159,7 +155,6 @@ public class StoreSendInfoBean {
         private String statis_money;
         private String statis_num;
         private String status;
-        private String status_name;
         private String store_in_date;
         private String supply_id;
         private String supply_name;
@@ -216,20 +211,20 @@ public class StoreSendInfoBean {
             this.buy_user = buy_user;
         }
 
+        public String getCheck_user() {
+            return check_user;
+        }
+
+        public void setCheck_user(String check_user) {
+            this.check_user = check_user;
+        }
+
         public String getCode() {
             return code;
         }
 
         public void setCode(String code) {
             this.code = code;
-        }
-
-        public String getCom_brief_name() {
-            return com_brief_name;
-        }
-
-        public void setCom_brief_name(String com_brief_name) {
-            this.com_brief_name = com_brief_name;
         }
 
         public String getCom_id() {
@@ -240,12 +235,12 @@ public class StoreSendInfoBean {
             this.com_id = com_id;
         }
 
-        public String getContact_number() {
-            return contact_number;
+        public String getCom_name() {
+            return com_name;
         }
 
-        public void setContact_number(String contact_number) {
-            this.contact_number = contact_number;
+        public void setCom_name(String com_name) {
+            this.com_name = com_name;
         }
 
         public String getContact_person() {
@@ -256,6 +251,14 @@ public class StoreSendInfoBean {
             this.contact_person = contact_person;
         }
 
+        public String getContact_phone() {
+            return contact_phone;
+        }
+
+        public void setContact_phone(String contact_phone) {
+            this.contact_phone = contact_phone;
+        }
+
         public String getCreate_date() {
             return create_date;
         }
@@ -264,44 +267,12 @@ public class StoreSendInfoBean {
             this.create_date = create_date;
         }
 
-        public String getDep2_address() {
-            return dep2_address;
-        }
-
-        public void setDep2_address(String dep2_address) {
-            this.dep2_address = dep2_address;
-        }
-
-        public String getDep_brief_name() {
-            return dep_brief_name;
-        }
-
-        public void setDep_brief_name(String dep_brief_name) {
-            this.dep_brief_name = dep_brief_name;
-        }
-
         public String getDep_code2() {
             return dep_code2;
         }
 
         public void setDep_code2(String dep_code2) {
             this.dep_code2 = dep_code2;
-        }
-
-        public String getDep_contact_phone() {
-            return dep_contact_phone;
-        }
-
-        public void setDep_contact_phone(String dep_contact_phone) {
-            this.dep_contact_phone = dep_contact_phone;
-        }
-
-        public String getDep_contact_user() {
-            return dep_contact_user;
-        }
-
-        public void setDep_contact_user(String dep_contact_user) {
-            this.dep_contact_user = dep_contact_user;
         }
 
         public String getDep_id() {
@@ -350,6 +321,14 @@ public class StoreSendInfoBean {
 
         public void setDirect_info(DirectInfoBean direct_info) {
             this.direct_info = direct_info;
+        }
+
+        public String getEntering_user() {
+            return entering_user;
+        }
+
+        public void setEntering_user(String entering_user) {
+            this.entering_user = entering_user;
         }
 
         public String getFrom_where() {
@@ -464,11 +443,11 @@ public class StoreSendInfoBean {
             this.origin_code = origin_code;
         }
 
-        public int getPlan_date() {
+        public String getPlan_date() {
             return plan_date;
         }
 
-        public void setPlan_date(int plan_date) {
+        public void setPlan_date(String plan_date) {
             this.plan_date = plan_date;
         }
 
@@ -560,14 +539,6 @@ public class StoreSendInfoBean {
             this.status = status;
         }
 
-        public String getStatus_name() {
-            return status_name;
-        }
-
-        public void setStatus_name(String status_name) {
-            this.status_name = status_name;
-        }
-
         public String getStore_in_date() {
             return store_in_date;
         }
@@ -627,8 +598,8 @@ public class StoreSendInfoBean {
         public static class DirectInfoBean {
             /**
              * can_direct_select : 1
-             * direct_in_out : 1
-             * direct_out_info : [{"dep_id":"8","dep_name":"三楼餐厅"}]
+             * direct_in_out : 0
+             * direct_out_info : [{"dep_id":"15","dep_name":"总仓"}]
              */
 
             private int can_direct_select;
@@ -661,8 +632,8 @@ public class StoreSendInfoBean {
 
             public static class DirectOutInfoBean {
                 /**
-                 * dep_id : 8
-                 * dep_name : 三楼餐厅
+                 * dep_id : 15
+                 * dep_name : 总仓
                  */
 
                 private String dep_id;
@@ -689,45 +660,41 @@ public class StoreSendInfoBean {
         public static class ListBean {
             /**
              * already_in_amount : 0.00
-             * back_amount : 0.00
              * back_brief :
              * budget : 支
-             * buy_order_id : 2
-             * buy_order_list_id : 3
-             * buy_price : 9.0000
-             * cat_name : 粮油类
+             * buy_order_id : 1047
+             * buy_order_list_id : 9634
+             * buy_price : 0.00
+             * cat_name : 豆制品类
              * check_standard :
-             * code : RKD01011609035901
-             * dep_code : 0101
-             * dep_id : 8
-             * dep_name : 接待餐厅
+             * code : RKD01081612044210
+             * dep_code : 0108
+             * dep_id : 15
+             * dep_name : 总仓
              * hang_num : 0
-             * id : 3
-             * img_urls : []
-             * in_amount : 999.00
-             * in_money : 8991.0000
-             * in_price : 9.0000
-             * left_in_amount : 999.00
-             * money_gap : 179.8200
-             * order_amount : 999.00
+             * id : 706
+             * in_amount : 1.00
+             * in_money : 0.0000
+             * in_price : 13.0000
+             * left_in_amount : 1.00
+             * money_gap : 0.0000
+             * order_amount : 1.00
              * pic_url :
              * price_gap_ratio : 2.00
-             * price_unit : 0
-             * standard : 1*25kg
-             * stock_code : 1010200002
-             * stock_id : 1257
-             * stock_name : 中筋特一粉
-             * storage_unit : 0
-             * store_in_id : 2
-             * total_money : 9170.8200
+             * price_unit : 11
+             * request_stock_id : 372407
+             * stock_code : 1070100012
+             * stock_id : 1314
+             * stock_name : 13kg脆皮干(1元
+             * storage_unit : 11
+             * store_in_id : 85
+             * total_money : 0.0000
+             * unit : 袋
              * unit_conv : 1.00
-             * ctrl_id : 2
-             * unit : 千克
-             * unit_id : 6
+             * unit_id : 11
              */
 
             private String already_in_amount;
-            private String back_amount;
             private String back_brief;
             private String budget;
             private String buy_order_id;
@@ -750,18 +717,16 @@ public class StoreSendInfoBean {
             private String pic_url;
             private String price_gap_ratio;
             private String price_unit;
-            private String standard;
+            private String request_stock_id;
             private String stock_code;
             private String stock_id;
             private String stock_name;
             private String storage_unit;
             private String store_in_id;
             private String total_money;
-            private String unit_conv;
-            private int ctrl_id;
             private String unit;
+            private String unit_conv;
             private String unit_id;
-            private List<?> img_urls;
 
             public String getAlready_in_amount() {
                 return already_in_amount;
@@ -769,14 +734,6 @@ public class StoreSendInfoBean {
 
             public void setAlready_in_amount(String already_in_amount) {
                 this.already_in_amount = already_in_amount;
-            }
-
-            public String getBack_amount() {
-                return back_amount;
-            }
-
-            public void setBack_amount(String back_amount) {
-                this.back_amount = back_amount;
             }
 
             public String getBack_brief() {
@@ -955,12 +912,12 @@ public class StoreSendInfoBean {
                 this.price_unit = price_unit;
             }
 
-            public String getStandard() {
-                return standard;
+            public String getRequest_stock_id() {
+                return request_stock_id;
             }
 
-            public void setStandard(String standard) {
-                this.standard = standard;
+            public void setRequest_stock_id(String request_stock_id) {
+                this.request_stock_id = request_stock_id;
             }
 
             public String getStock_code() {
@@ -1011,22 +968,6 @@ public class StoreSendInfoBean {
                 this.total_money = total_money;
             }
 
-            public String getUnit_conv() {
-                return unit_conv;
-            }
-
-            public void setUnit_conv(String unit_conv) {
-                this.unit_conv = unit_conv;
-            }
-
-            public int getCtrl_id() {
-                return ctrl_id;
-            }
-
-            public void setCtrl_id(int ctrl_id) {
-                this.ctrl_id = ctrl_id;
-            }
-
             public String getUnit() {
                 return unit;
             }
@@ -1035,20 +976,20 @@ public class StoreSendInfoBean {
                 this.unit = unit;
             }
 
+            public String getUnit_conv() {
+                return unit_conv;
+            }
+
+            public void setUnit_conv(String unit_conv) {
+                this.unit_conv = unit_conv;
+            }
+
             public String getUnit_id() {
                 return unit_id;
             }
 
             public void setUnit_id(String unit_id) {
                 this.unit_id = unit_id;
-            }
-
-            public List<?> getImg_urls() {
-                return img_urls;
-            }
-
-            public void setImg_urls(List<?> img_urls) {
-                this.img_urls = img_urls;
             }
         }
     }

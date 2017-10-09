@@ -17,14 +17,13 @@ import java.util.ArrayList;
 
 public class AreaAdapter extends BaseAdapter {
 
-    private  ArrayList<AeraBean.DataBean> areaList;
-    private  ReceivedActivity mActivity;
+
+    private final ArrayList<AeraBean.DataBean> areaList;
+    private final ReceivedActivity mActivity;
 
     public AreaAdapter(ArrayList<AeraBean.DataBean> areaList, ReceivedActivity mActivity) {
-
         this.areaList = areaList;
         this.mActivity = mActivity;
-
     }
 
     @Override
