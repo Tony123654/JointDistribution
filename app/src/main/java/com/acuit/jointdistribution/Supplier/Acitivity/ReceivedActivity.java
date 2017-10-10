@@ -1,6 +1,7 @@
 package com.acuit.jointdistribution.Supplier.Acitivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.widget.DrawerLayout;
@@ -300,14 +301,14 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
                                         public void onSuccess(ResponseInfo<String> responseInfo) {
                                             String result = responseInfo.result;
 
+                                            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP);
 //                                            System.out.println("eee:"+result);
 
                                             Gson gson = new Gson();
 
                                             areaInfo = gson.fromJson(result, AeraBean.class);
 
-
-                                                areaList = new ArrayList<>();
+                                            areaList = new ArrayList<>();
 
                                                 areaList.clear();
 
@@ -366,6 +367,7 @@ public class ReceivedActivity extends BaseActivity implements View.OnClickListen
                                                     }
 
                                                     @Override
+
                                                     public void onFailure(HttpException error, String msg) {
 
                                                         Toast.makeText(BaseApplication.getContext(),"网络加载失败",Toast.LENGTH_SHORT).show();

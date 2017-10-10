@@ -24,12 +24,12 @@ import java.util.ArrayList;
  */
 
 public class PickingAreaAdapter extends BaseAdapter {
-    private  ArrayList<AeraBean.DataBean> areaList;
+    private  ArrayList<AeraBean.DataBean> areaList1;
     private PickingActivity mActivity;
 
     public PickingAreaAdapter(ArrayList<AeraBean.DataBean> areaList,  PickingActivity mActivity) {
 
-        this.areaList = areaList;
+        this.areaList1 = areaList;
 
         this.mActivity = mActivity;
 
@@ -37,12 +37,12 @@ public class PickingAreaAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return areaList.size();
+        return areaList1.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return areaList.get(position);
+        return areaList1.get(position);
     }
 
     @Override

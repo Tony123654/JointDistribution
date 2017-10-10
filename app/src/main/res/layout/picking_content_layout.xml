@@ -72,79 +72,113 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="15dp">
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/tv_area"
             android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content"
 
+            android:gravity="center"
             android:layout_weight="1"
             android:text="配送区域:" />
 
         <TextView
             android:id="@+id/tv_picking_dep_brief_name"
             android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:gravity="right"
+            android:gravity="center"
             android:text="紫金港" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="15dp">
+        android:padding="5dp">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="计划送达日期：" />
 
         <TextView
             android:id="@+id/tv_picking_create_date"
             android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
+            android:gravity="center"
             android:text="shijian" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="15dp">
+        android:padding="5dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
+            android:gravity="center"
             android:layout_weight="1"
             android:text="制单日期：" />
 
         <TextView
             android:id="@+id/tv_picking_make_date"
             android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
+            android:gravity="center"
             android:text="time" />
 
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+           />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="总数量：" />
+        <TextView
+            android:id="@+id/tv_picking_total_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+</LinearLayout>
+    </LinearLayout>
+
+
+
 
     <ListView
         android:id="@+id/lv_pickingList"

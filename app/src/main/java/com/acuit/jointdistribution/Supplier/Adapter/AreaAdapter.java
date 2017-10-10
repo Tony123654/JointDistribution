@@ -62,6 +62,8 @@ public class AreaAdapter extends BaseAdapter {
 
         AeraBean.DataBean areaItem = (AeraBean.DataBean) getItem(position);
 
+//        holder.name.setText(areaItem.getLk_brief());
+
         holder.name.setText(areaItem.getLk_brief());
 
         return convertView;

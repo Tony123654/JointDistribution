@@ -181,6 +181,7 @@ public class SendActivity extends BaseActivity {
                                 public void onSuccess(ResponseInfo<String> responseInfo) {
                                     String result = responseInfo.result;
 
+                                    System.out.println("ppp"+result);
 
 
                                     Gson gson = new Gson();
